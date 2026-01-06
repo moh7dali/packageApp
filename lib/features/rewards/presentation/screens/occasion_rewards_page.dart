@@ -1,0 +1,42 @@
+import 'package:my_custom_widget/features/rewards/domain/entity/campaign_details.dart';
+import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../../../shared/widgets/pagination_list/pagination_list_view.dart';
+import '../getx/rewards_controller.dart';
+import '../widgets/reward_widget.dart';
+import '../widgets/user_rewards_loading_widget.dart';
+import 'campign_rewards_screen.dart';
+
+class OccasionRewards extends StatelessWidget {
+  const OccasionRewards({super.key, required this.categoriesId});
+
+  final String categoriesId;
+
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<RewardsController>(
+      builder: (controller) {
+        return Column(
+          children: [
+            Expanded(
+              child: PaginationListView<CampaignDetails>(
+                loadFirstList: () async => controller.getCampaignListApi(page: 1, catId: categoriesId),
+                loadMoreList: (page) async => controller.getCampaignListApi(page: page, catId: categoriesId),
+                itemBuilder: (context, value) => OccasionCampaignCard(
+                  campaignDetails: value,
+                  onTap: () => Get.to(CampaignRewardsScreen(selectedCampaignDetails: value)),
+                ),
+                emptyWidget: NoItemWidget(),
+                loadingWidget: UserRewardsLoadingWidget(hasImg: false),
+                emptyText: 'emptyRewards'.tr,
+              ),
+            ),
+            SizedBox(height: Get.height * .01),
+          ],
+        );
+      },
+    );
+  }
+}
