@@ -6,7 +6,10 @@ import 'package:get/get.dart';
 import 'package:http_proxy_override/http_proxy_override.dart';
 
 import 'core/constants/constants.dart';
+import 'core/routes/routes_generator.dart';
 import 'core/utils/network_info.dart';
+import 'core/utils/theme.dart';
+import 'core/utils/translate/translation.dart';
 import 'injection_container.dart' as di;
 import 'shared/getx/theme_controller.dart';
 import 'shared/helper/shared_preferences_storage.dart';
@@ -24,70 +27,55 @@ bool isZoomed = false;
 final ThemeController themeController = ThemeController();
 NetworkInfo? networkInfo;
 
-class MyCustomWidget extends StatefulWidget {
-  const MyCustomWidget({super.key, this.settings = const MyCustomWidgetSettings()});
-
-  final MyCustomWidgetSettings settings;
-
-  @override
-  State<MyCustomWidget> createState() => _MyCustomWidgetState();
+class MozaicLoyaltySDKConfig {
+  static final translations = Translation();
+  static final theme = AppTheme.lightTheme;
+  static final getPages = RouteGeneratorList().appRoutes;
+  static const initialRoute = RouteConstant.splashPage;
+  static const fallbackLocale = Locale('en');
 }
 
-class _MyCustomWidgetState extends State<MyCustomWidget> {
-  static bool _started = false;
+class MozaicLoyaltySDK {
+  static bool _initialized = false;
+  static late MozaicLoyaltySDKSettings settings;
 
-  @override
-  void initState() {
-    super.initState();
-    _start();
-  }
+  static Future<void> init({required MozaicLoyaltySDKSettings sdkSettings}) async {
+    if (_initialized) return;
+    _initialized = true;
 
-  Future<void> _start() async {
-    if (_started) {
-      Get.offAllNamed(RouteConstant.splashPage);
-      return;
+    settings = sdkSettings;
+
+    await di.init();
+
+    if (!Get.isRegistered<ThemeController>()) {
+      Get.put(themeController, permanent: true);
     }
-    _started = true;
 
-    try {
-      await di.init();
+    final defaultLanguage = await di.sl<SharedPreferencesStorage>().getAppLanguage();
+    await di.sl<SharedPreferencesStorage>().setAppLanguage(defaultLanguage);
+    appLanguage = defaultLanguage;
 
-      if (!Get.isRegistered<ThemeController>()) {
-        Get.put(themeController, permanent: true);
-      }
+    networkInfo = NetworkInfoImpl(di.sl());
 
-      final defaultLanguage = await di.sl<SharedPreferencesStorage>().getAppLanguage();
-      await di.sl<SharedPreferencesStorage>().setAppLanguage(defaultLanguage);
-      appLanguage = await di.sl<SharedPreferencesStorage>().getAppLanguage();
-
-      networkInfo = NetworkInfoImpl(di.sl());
-
-      if (AppConstants.isProxyEnable) {
-        final proxy = await HttpProxyOverride.createHttpProxy();
-        HttpOverrides.global = proxy;
-      }
-
-      Get.offAllNamed(RouteConstant.splashPage);
-    } catch (e) {
-      _started = false;
-      Get.snackbar('Package init failed', e.toString(), snackPosition: SnackPosition.BOTTOM);
+    if (AppConstants.isProxyEnable) {
+      final proxy = await HttpProxyOverride.createHttpProxy();
+      HttpOverrides.global = proxy;
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final content = const Scaffold(body: Center(child: CircularProgressIndicator()));
-
-    if (widget.settings.hostUsesScreenUtil) {
-      return content;
-    }
-    return ScreenUtilInit(designSize: widget.settings.designSize, minTextAdapt: true, splitScreenMode: true, builder: (_, __) => content);
   }
 }
 
-class MyCustomWidgetSettings {
+class MozaicLoyaltySDKSettings {
   final bool hostUsesScreenUtil;
   final Size designSize;
 
-  const MyCustomWidgetSettings({this.hostUsesScreenUtil = false, this.designSize = const Size(360, 690)});
+  const MozaicLoyaltySDKSettings({required this.hostUsesScreenUtil, this.designSize = const Size(360, 690)});
+}
+
+class MozaicScreenUtil {
+  static Widget ensure({required Widget child}) {
+    if (MozaicLoyaltySDK.settings.hostUsesScreenUtil) {
+      return child;
+    }
+    return ScreenUtilInit(designSize: MozaicLoyaltySDK.settings.designSize, minTextAdapt: true, splitScreenMode: true, builder: (_, __) => child);
+  }
 }
