@@ -4,15 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:http_proxy_override/http_proxy_override.dart';
+import 'package:my_custom_widget/core/utils/translate/translation.dart';
+import 'package:my_custom_widget/shared/helper/shared_preferences_storage.dart';
 
 import 'core/constants/constants.dart';
 import 'core/routes/routes_generator.dart';
 import 'core/utils/network_info.dart';
-import 'core/utils/theme.dart';
-import 'core/utils/translate/translation.dart';
 import 'injection_container.dart' as di;
 import 'shared/getx/theme_controller.dart';
-import 'shared/helper/shared_preferences_storage.dart';
 import 'shared/model/cart_items.dart';
 import 'shared/model/push_notification_model.dart';
 
@@ -24,18 +23,13 @@ bool isSystem = false;
 bool fromPush = false;
 PushNotificationModel? systemNotificationModel;
 bool isZoomed = false;
+
 final ThemeController themeController = ThemeController();
 NetworkInfo? networkInfo;
 
-class MozaicLoyaltySDKConfig {
-  static final translations = Translation();
-  static final theme = AppTheme.lightTheme;
-  static final getPages = RouteGeneratorList().appRoutes;
-  static const initialRoute = RouteConstant.splashPage;
-  static const fallbackLocale = Locale('en');
-}
+class MozaicLoyaltySDK extends StatelessWidget {
+  const MozaicLoyaltySDK({super.key});
 
-class MozaicLoyaltySDK {
   static bool _initialized = false;
   static late MozaicLoyaltySDKSettings settings;
 
@@ -52,7 +46,9 @@ class MozaicLoyaltySDK {
     }
 
     final defaultLanguage = await di.sl<SharedPreferencesStorage>().getAppLanguage();
+
     await di.sl<SharedPreferencesStorage>().setAppLanguage(defaultLanguage);
+
     appLanguage = defaultLanguage;
 
     networkInfo = NetworkInfoImpl(di.sl());
@@ -62,20 +58,30 @@ class MozaicLoyaltySDK {
       HttpOverrides.global = proxy;
     }
   }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!settings.userUseScreenUtils) {
+      return ScreenUtilInit(designSize: const Size(375, 812), minTextAdapt: true, builder: (_, __) => _buildApp());
+    }
+
+    return _buildApp();
+  }
+
+  Widget _buildApp() {
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      translations: Translation(),
+      locale: const Locale('en'),
+      fallbackLocale: const Locale('en'),
+      getPages: RouteGeneratorList().appRoutes,
+      initialRoute: RouteConstant.splashPage,
+    );
+  }
 }
 
 class MozaicLoyaltySDKSettings {
-  final bool hostUsesScreenUtil;
-  final Size designSize;
+  final bool userUseScreenUtils;
 
-  const MozaicLoyaltySDKSettings({required this.hostUsesScreenUtil, this.designSize = const Size(360, 690)});
-}
-
-class MozaicScreenUtil {
-  static Widget ensure({required Widget child}) {
-    if (MozaicLoyaltySDK.settings.hostUsesScreenUtil) {
-      return child;
-    }
-    return ScreenUtilInit(designSize: MozaicLoyaltySDK.settings.designSize, minTextAdapt: true, splitScreenMode: true, builder: (_, __) => child);
-  }
+  const MozaicLoyaltySDKSettings({this.userUseScreenUtils = true});
 }
