@@ -1,12 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:get/get.dart';
 import 'package:my_custom_widget/features/home/data/datasources/home_api_datasorce.dart';
 import 'package:my_custom_widget/features/home/domain/entities/home_details.dart';
 
 import '../../../../core/api/api_response_error.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
-import '../../../../core/utils/network_info.dart';
 import '../../domain/repositories/home_repository.dart';
 
 class HomeRepositoryImpl implements HomeRepository {

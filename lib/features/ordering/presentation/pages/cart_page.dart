@@ -1,6 +1,6 @@
-import 'package:my_custom_widget/features/ordering/presentation/getx/cart_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/features/ordering/presentation/getx/cart_controller.dart';
 
 import '../widget/cart_widget.dart';
 

@@ -11,6 +11,7 @@ import '../../shared/helper/shared_preferences_storage.dart';
 import '../../shared/model/login_model.dart';
 import '../constants/constants.dart';
 import '../error/exceptions.dart';
+import '../sdk/sdk_rouutes.dart';
 import '../utils/app_log.dart';
 import 'api_end_points.dart';
 import 'api_response.dart';
@@ -84,7 +85,7 @@ class ApiRequest<T> {
     } else {
       sl<SharedPreferencesStorage>().deleteAllData();
       Get.deleteAll();
-      Get.offAllNamed(RouteConstant.authPage);
+      SDKNav.offAllNamed(RouteConstant.authPage);
       SharedHelper().errorSnackBar("unauthorized".tr);
     }
     return null;
@@ -119,12 +120,12 @@ class ApiRequest<T> {
 
     if (response.statusCode == 401) {
       if (isTemp) {
-        Get.back();
+        SDKNav.back();
         SharedHelper().closeAllDialogs();
         SharedHelper().errorSnackBar("unauthorized".tr);
       } else if (fromLogin) {
         sl<SharedPreferencesStorage>().deleteAllData();
-        Get.offAllNamed(RouteConstant.authPage);
+        SDKNav.offAllNamed(RouteConstant.authPage);
         SharedHelper().closeAllDialogs();
         SharedHelper().errorSnackBar("unauthorized".tr);
       } else {
@@ -225,12 +226,12 @@ class ApiRequest<T> {
 
     if (response.statusCode == 401) {
       if (isTemp) {
-        Get.back();
+        SDKNav.back();
         SharedHelper().closeAllDialogs();
         SharedHelper().errorSnackBar("unauthorized".tr);
       } else if (fromLogin) {
         sl<SharedPreferencesStorage>().deleteAllData();
-        Get.offAllNamed(RouteConstant.authPage);
+        SDKNav.offAllNamed(RouteConstant.authPage);
         SharedHelper().closeAllDialogs();
         SharedHelper().errorSnackBar("unauthorized".tr);
       } else {

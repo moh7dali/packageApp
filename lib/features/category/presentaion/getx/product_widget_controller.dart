@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../injection_container.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../../../shared/helper/shared_preferences_storage.dart';
@@ -117,7 +118,7 @@ class ProductWidgetController extends GetxController {
       "${'limitationTex'.tr} ${formatAmountWithCurrency(productDetails.maximumPurchaseAmount ?? 0)}",
       noCancel: true,
       confirm: () {
-        Get.back();
+        SDKNav.back();
       },
     );
   }

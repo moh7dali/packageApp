@@ -1,5 +1,5 @@
-import 'package:my_custom_widget/features/menu/domain/entity/invite_friend.dart';
 import 'package:dartz/dartz.dart';
+import 'package:my_custom_widget/features/menu/domain/entity/invite_friend.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';

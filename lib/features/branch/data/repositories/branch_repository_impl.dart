@@ -1,15 +1,14 @@
+import 'package:dartz/dartz.dart';
+import 'package:get/get.dart';
 import 'package:my_custom_widget/core/utils/app_log.dart';
 import 'package:my_custom_widget/features/branch/data/datasources/branch_api_datasource.dart';
 import 'package:my_custom_widget/features/branch/domain/entities/branch_details.dart';
 import 'package:my_custom_widget/features/branch/domain/entities/closest_branches.dart';
 import 'package:my_custom_widget/features/branch/domain/repositories/branch_repository.dart';
-import 'package:dartz/dartz.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/api/api_response_error.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
-import '../../../../core/utils/network_info.dart';
 import '../../domain/entities/branches_list.dart';
 
 class BranchRepositoryImpl implements BranchRepository {

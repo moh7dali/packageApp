@@ -1,8 +1,9 @@
-import 'package:my_custom_widget/core/constants/assets_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/core/constants/assets_constants.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../shared/model/onboarding_model.dart';
 
 class OnboardingController extends GetxController {
@@ -32,7 +33,7 @@ class OnboardingController extends GetxController {
   }
 
   void _goToHome() {
-    Get.offAllNamed(RouteConstant.authPage);
+    SDKNav.offAllNamed(RouteConstant.authPage);
   }
 
   @override

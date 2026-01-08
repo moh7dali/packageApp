@@ -1,7 +1,8 @@
-import 'package:my_custom_widget/core/constants/constants.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/core/constants/constants.dart';
 
 import '../../../../core/constants/assets_constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../injection_container.dart';
 import '../../../../shared/helper/payment_helper.dart';
 import '../../../../shared/helper/shared_helper.dart';
@@ -64,7 +65,7 @@ class TopUpListController extends GetxController {
             },
             (result) {
               if (result.paymentToken != null) {
-                Get.back();
+                SDKNav.back();
                 payWithPayMob(
                   paymentToken: result.paymentToken!,
                   onSuccessful: () {
@@ -87,7 +88,7 @@ class TopUpListController extends GetxController {
     SharedHelper().closeAllDialogs();
     Map<String, int> pageIndex = {'index': 0};
     Get.deleteAll();
-    Get.offAllNamed(RouteConstant.mainPage, arguments: pageIndex);
+    SDKNav.offAllNamed(RouteConstant.mainPage, arguments: pageIndex);
     SharedHelper().actionDialog(
       isRowStyle: false,
       "topUpSuccessful",
@@ -107,7 +108,7 @@ class TopUpListController extends GetxController {
 
   void orderPending() {
     SharedHelper().closeAllDialogs();
-    Get.offAllNamed(RouteConstant.mainPage);
+    SDKNav.offAllNamed(RouteConstant.mainPage);
     SharedHelper().actionDialog(
       "orderPending",
       "paymentPendingMessage",

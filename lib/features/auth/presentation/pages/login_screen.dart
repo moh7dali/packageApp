@@ -1,10 +1,10 @@
-import 'package:my_custom_widget/core/constants/constants.dart';
-import 'package:my_custom_widget/shared/widgets/hero_logo.dart';
-import 'package:my_custom_widget/shared/widgets/loading_button_widget/progress_button.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/core/constants/constants.dart';
+import 'package:my_custom_widget/shared/widgets/hero_logo.dart';
+import 'package:my_custom_widget/shared/widgets/loading_button_widget/progress_button.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../../../../my_custom_widget.dart';

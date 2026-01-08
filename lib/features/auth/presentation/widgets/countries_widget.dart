@@ -1,8 +1,7 @@
-import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
+import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
 
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/utils/theme.dart';

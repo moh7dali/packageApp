@@ -1,11 +1,12 @@
-import 'package:my_custom_widget/features/address/presentation/getx/address_controller.dart';
-import 'package:my_custom_widget/shared/widgets/bottom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:my_custom_widget/features/address/presentation/getx/address_controller.dart';
+import 'package:my_custom_widget/shared/widgets/bottom_widget.dart';
 
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../../../shared/widgets/no_item_widget.dart';
@@ -13,7 +14,7 @@ import '../../../../shared/widgets/no_item_widget.dart';
 Widget buildAddNewAddressButton(AddressController controller) {
   return GestureDetector(
     onTap: () {
-      Get.toNamed(RouteConstant.mapPage, arguments: {'initialCamera': CameraPosition(target: controller.selectedPosition, zoom: 11.0)});
+      SDKNav.toNamed(RouteConstant.mapPage, arguments: {'initialCamera': CameraPosition(target: controller.selectedPosition, zoom: 11.0)});
     },
     child: Card(
       child: Padding(

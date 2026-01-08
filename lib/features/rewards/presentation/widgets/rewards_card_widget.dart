@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../core/constants/assets_constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../my_custom_widget.dart';
 import '../../../../shared/helper/shared_helper.dart';
@@ -60,7 +61,7 @@ class RewardCardWidget extends StatelessWidget {
             image: img,
             confirmText: "close".tr,
             noCancel: true,
-            confirm: () => Get.back(),
+            confirm: () => SDKNav.back(),
           );
         },
         child: Container(

@@ -1,11 +1,12 @@
-import 'package:my_custom_widget/features/address/domain/usecases/delete_customer_address.dart';
-import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:my_custom_widget/features/address/domain/usecases/delete_customer_address.dart';
+import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../injection_container.dart';
 import '../../../../shared/helper/location_helper.dart';
 import '../../../../shared/widgets/loading_widget.dart';
@@ -75,7 +76,7 @@ class AddressController extends GetxController {
       currentLocation = LatLng(pos.latitude, pos.longitude);
       _controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(pos.latitude, pos.longitude), zoom: 15)));
       if (Get.isOverlaysOpen) {
-        Get.back();
+        SDKNav.back();
       }
     });
   }
@@ -139,8 +140,8 @@ class AddressController extends GetxController {
               SharedHelper().closeAllDialogs();
               resetValues();
               if (isOrder) {
-                Get.back();
-                Get.back();
+                SDKNav.back();
+                SDKNav.back();
                 final selectedOrderMethodController = Get.find<SelectedOrderMethodController>();
                 selectedOrderMethodController.getCustomerAddressesApi();
               } else {

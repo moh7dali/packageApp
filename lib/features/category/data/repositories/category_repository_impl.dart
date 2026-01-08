@@ -1,9 +1,9 @@
+import 'package:dartz/dartz.dart';
 import 'package:my_custom_widget/features/category/data/datasources/category_api_datasource.dart';
 import 'package:my_custom_widget/features/category/domain/entities/category.dart';
 import 'package:my_custom_widget/features/category/domain/entities/filters.dart';
 import 'package:my_custom_widget/features/category/domain/entities/product.dart';
 import 'package:my_custom_widget/features/category/domain/entities/product_details.dart';
-import 'package:dartz/dartz.dart';
 
 import '../../../../core/api/api_response_error.dart';
 import '../../../../core/error/exceptions.dart';

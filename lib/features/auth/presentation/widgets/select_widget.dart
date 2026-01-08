@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:my_custom_widget/core/constants/constants.dart';
 import 'package:my_custom_widget/shared/widgets/button_widget.dart';
 
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../address/presentation/getx/address_controller.dart';
 import '../../domain/entities/area.dart';
@@ -196,7 +197,7 @@ class _SelectWidgetState<T> extends State<SelectWidget<T>> {
                 } else {
                   widget.controller?.update();
                 }
-                Get.back();
+                SDKNav.back();
               },
             ),
           ),

@@ -1,13 +1,12 @@
-import 'package:my_custom_widget/core/constants/assets_constants.dart';
-import 'package:my_custom_widget/core/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/core/constants/assets_constants.dart';
+import 'package:my_custom_widget/core/utils/theme.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../../../shared/widgets/button_widget.dart';
 import '../../../../shared/widgets/profile_text_field.dart';
-import '../../../../shared/widgets/translated_image_widget.dart';
 import '../../../auth/domain/entities/area.dart';
 import '../../../auth/domain/entities/city.dart';
 import '../../../auth/presentation/getx/city_area_controller.dart';

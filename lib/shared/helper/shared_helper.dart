@@ -14,6 +14,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../core/constants/assets_constants.dart';
 import '../../core/constants/constants.dart';
+import '../../core/sdk/sdk_rouutes.dart';
 import '../../core/utils/theme.dart';
 import '../../features/branch/domain/entities/branch_details.dart';
 import '../../injection_container.dart';
@@ -65,7 +66,7 @@ class SharedHelper<T> {
           confirmText: 'login'.tr,
           onConfirm: () {
             SharedHelper().closeAllDialogs();
-            Get.offAllNamed(RouteConstant.authPage);
+            SDKNav.offAllNamed(RouteConstant.authPage);
           },
         ),
       );
@@ -327,7 +328,7 @@ class SharedHelper<T> {
       icon: const Icon(Icons.error, color: AppTheme.accentColor),
       mainButton: TextButton(
         onPressed: () {
-          closeOne ? Get.back() : SharedHelper().closeAllDialogs();
+          closeOne ? SDKNav.back() : SharedHelper().closeAllDialogs();
         },
         child: Icon(Icons.close, color: AppTheme.accentColor),
       ),
@@ -448,7 +449,7 @@ class SharedHelper<T> {
                         title: "tryAgain".tr,
                         function: () {
                           completer.complete(request());
-                          Get.back();
+                          SDKNav.back();
                         },
                         isSmall: true,
                       ),
@@ -549,7 +550,7 @@ class SharedHelper<T> {
               function: () async {
                 if (await networkInfo!.isConnected) {
                   completer.complete(request());
-                  Get.back();
+                  SDKNav.back();
                 }
               },
             ),

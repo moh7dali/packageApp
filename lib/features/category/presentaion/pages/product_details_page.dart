@@ -1,7 +1,7 @@
-import 'package:my_custom_widget/features/category/presentaion/getx/product_details_controller.dart';
-import 'package:my_custom_widget/features/category/presentaion/widgets/product_details_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/features/category/presentaion/getx/product_details_controller.dart';
+import 'package:my_custom_widget/features/category/presentaion/widgets/product_details_loading.dart';
 
 import '../../domain/entities/category.dart';
 import '../../domain/entities/product.dart';

@@ -1,5 +1,5 @@
-import 'package:my_custom_widget/features/address/domain/entity/customer_addresses.dart';
 import 'package:dartz/dartz.dart';
+import 'package:my_custom_widget/features/address/domain/entity/customer_addresses.dart';
 
 import '../../../../core/error/failures.dart';
 

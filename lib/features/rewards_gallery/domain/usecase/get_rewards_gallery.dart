@@ -1,6 +1,6 @@
+import 'package:dartz/dartz.dart';
 import 'package:my_custom_widget/features/rewards_gallery/domain/entity/reward_gallery.dart';
 import 'package:my_custom_widget/features/rewards_gallery/domain/repositories/rewards_gallery_repository.dart';
-import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';

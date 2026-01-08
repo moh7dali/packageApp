@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_custom_widget/features/splash/presentation/getx/splash_controller.dart';
 import 'package:my_custom_widget/features/splash/presentation/widgets/popup_widget.dart';
 import 'package:my_custom_widget/shared/widgets/app_background.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../../core/api/api_end_points.dart';

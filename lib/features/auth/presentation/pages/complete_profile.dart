@@ -1,7 +1,7 @@
-import 'package:my_custom_widget/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/core/constants/constants.dart';
 
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/utils/theme.dart';

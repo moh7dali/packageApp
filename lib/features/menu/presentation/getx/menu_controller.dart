@@ -4,6 +4,7 @@ import 'package:my_custom_widget/my_custom_widget.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../injection_container.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../../../shared/helper/shared_preferences_storage.dart';
@@ -32,7 +33,7 @@ class MenuTabController extends GetxController {
           }, (r) async {
             await sl<SharedPreferencesStorage>().deleteAllData();
             Get.deleteAll();
-            Get.offAllNamed(RouteConstant.authPage);
+            SDKNav.offAllNamed(RouteConstant.authPage);
           }));
     } else {
       await logout.repository.logOut().then((value) => value.fold((failure) {
@@ -40,7 +41,7 @@ class MenuTabController extends GetxController {
           }, (r) async {
             await sl<SharedPreferencesStorage>().deleteAllData();
             Get.deleteAll();
-            Get.offAllNamed(RouteConstant.authPage);
+            SDKNav.offAllNamed(RouteConstant.authPage);
           }));
     }
   }

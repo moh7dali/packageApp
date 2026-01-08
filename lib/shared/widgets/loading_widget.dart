@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
+import '../../core/sdk/sdk_rouutes.dart';
 import '../../core/utils/theme.dart';
 
 class LoadingWidget extends StatelessWidget {
@@ -18,7 +19,7 @@ class LoadingWidget extends StatelessWidget {
       body: Center(
         child: GestureDetector(
           onTap: () {
-            Get.back();
+            SDKNav.back();
           },
           child: CardAppWidget(
             child: SizedBox(

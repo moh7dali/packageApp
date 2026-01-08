@@ -1,10 +1,11 @@
-import 'package:my_custom_widget/core/constants/assets_constants.dart';
-import 'package:my_custom_widget/features/auth/presentation/getx/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/core/constants/assets_constants.dart';
+import 'package:my_custom_widget/features/auth/presentation/getx/auth_controller.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../injection_container.dart';
 import '../../../../shared/helper/shared_helper.dart';
@@ -69,7 +70,7 @@ class ReferralScreen extends StatelessWidget {
                     function: () {
                       sl<SharedPreferencesStorage>().setHasReferral(true);
                       Get.deleteAll();
-                      Get.offAllNamed(RouteConstant.mainPage);
+                      SDKNav.offAllNamed(RouteConstant.mainPage);
                     },
                   ),
                 ],

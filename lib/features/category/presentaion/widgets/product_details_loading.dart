@@ -1,6 +1,6 @@
-import 'package:my_custom_widget/core/constants/assets_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/core/constants/assets_constants.dart';
 
 import '../../../../core/utils/theme.dart';
 

@@ -1,5 +1,5 @@
-import 'package:my_custom_widget/features/ordering/domain/usecases/get_order_details.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/features/ordering/domain/usecases/get_order_details.dart';
 
 import '../../../../injection_container.dart';
 import '../../../../shared/helper/shared_helper.dart';

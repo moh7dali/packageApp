@@ -1,11 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_custom_widget/features/branch/domain/entities/branch_details.dart';
 import 'package:my_custom_widget/features/branch/presentaion/getx/branch_list_controller.dart';
 import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 
-import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/widgets/pagination_list/pagination_list_view.dart';
 import '../../../rewards/presentation/widgets/user_rewards_loading_widget.dart';

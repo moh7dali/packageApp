@@ -1,11 +1,12 @@
-import 'package:my_custom_widget/features/address/presentation/widget/my_address_widgets.dart';
-import 'package:my_custom_widget/features/order_method/presentation/widgets/background_image.dart';
-import 'package:my_custom_widget/features/order_method/presentation/widgets/branch_card_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:my_custom_widget/features/address/presentation/widget/my_address_widgets.dart';
+import 'package:my_custom_widget/features/order_method/presentation/widgets/background_image.dart';
+import 'package:my_custom_widget/features/order_method/presentation/widgets/branch_card_loading.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/widgets/no_item_widget.dart';
 import '../../../../shared/widgets/pagination_list/pagination_list_view.dart';
@@ -90,7 +91,7 @@ class Delivery extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 print("allooww");
-                Get.toNamed(
+                SDKNav.toNamed(
                   RouteConstant.mapPage,
                   preventDuplicates: false,
                   arguments: {'initialCamera': CameraPosition(target: selectedOrderMethodController.selectedPosition, zoom: 11.0)},

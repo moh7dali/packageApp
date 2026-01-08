@@ -1,13 +1,11 @@
+import 'package:dartz/dartz.dart';
 import 'package:my_custom_widget/features/rewards_gallery/data/datasource/rewards_gallery_api_datasource.dart';
 import 'package:my_custom_widget/features/rewards_gallery/domain/entity/reward_gallery.dart';
 import 'package:my_custom_widget/features/rewards_gallery/domain/repositories/rewards_gallery_repository.dart';
-import 'package:dartz/dartz.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/api/api_response_error.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
-import '../../../../core/utils/network_info.dart';
 
 class RewardsGalleryRepositoryImpl implements RewardsGalleryRepository {
   final RewardsGalleryApiDatasource remoteDataSource;

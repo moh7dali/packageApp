@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_custom_widget/features/loyalty/domain/entity/user_loyalty_data.dart';
 import 'package:my_custom_widget/features/loyalty/domain/usecase/get_user_balance_history.dart';
 import 'package:my_custom_widget/features/loyalty/domain/usecase/get_user_loyalty_data.dart';
 import 'package:my_custom_widget/injection_container.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 import '../../../../core/utils/theme.dart';

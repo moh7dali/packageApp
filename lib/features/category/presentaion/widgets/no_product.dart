@@ -1,5 +1,5 @@
-import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
 
 class NoProduct extends StatelessWidget {
   const NoProduct({super.key});

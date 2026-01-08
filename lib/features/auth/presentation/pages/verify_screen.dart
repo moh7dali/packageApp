@@ -1,14 +1,15 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:my_custom_widget/core/utils/theme.dart';
 import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 import 'package:my_custom_widget/shared/widgets/bottom_widget.dart';
 import 'package:my_custom_widget/shared/widgets/hero_logo.dart';
 import 'package:my_custom_widget/shared/widgets/loading_button_widget/progress_button.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../shared/getx/merchant_info_controller.dart';
 import '../../../../shared/widgets/button_widget.dart';
 import '../../../../shared/widgets/change_language_widget.dart';
@@ -261,7 +262,7 @@ class VerifyScreen extends StatelessWidget {
                           },
                           onConfirm: () {
                             SharedHelper().closeAllDialogs();
-                            Get.back();
+                            SDKNav.back();
                           },
                         ),
                       );

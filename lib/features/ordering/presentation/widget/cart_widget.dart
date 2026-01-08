@@ -1,13 +1,13 @@
 import 'dart:math';
 
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_custom_widget/core/constants/assets_constants.dart';
 import 'package:my_custom_widget/core/utils/theme.dart';
 import 'package:my_custom_widget/features/ordering/presentation/getx/cart_controller.dart';
 import 'package:my_custom_widget/shared/widgets/bottom_widget.dart';
 import 'package:my_custom_widget/shared/widgets/button_widget.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../shared/helper/shared_helper.dart';

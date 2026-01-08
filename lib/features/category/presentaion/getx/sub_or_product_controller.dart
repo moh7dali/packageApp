@@ -1,11 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_custom_widget/features/branch/domain/entities/branch_details.dart';
 import 'package:my_custom_widget/features/category/domain/entities/category.dart';
 import 'package:my_custom_widget/features/category/domain/entities/product.dart';
 import 'package:my_custom_widget/features/category/domain/usecases/get_category_products.dart';
 import 'package:my_custom_widget/features/category/domain/usecases/get_sub_categories.dart';
 import 'package:my_custom_widget/shared/helper/shared_preferences_storage.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../injection_container.dart';

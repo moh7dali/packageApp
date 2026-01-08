@@ -1,6 +1,6 @@
-import 'package:my_custom_widget/core/utils/app_log.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/core/utils/app_log.dart';
 
 import '../../../../shared/widgets/loading_button_widget/progress_button.dart';
 import '../getx/auth_controller.dart';

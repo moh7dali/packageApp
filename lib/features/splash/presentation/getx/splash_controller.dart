@@ -148,10 +148,10 @@ class SplashController extends GetxController {
     cartItems.value = await sl<SharedPreferencesStorage>().getCartItems();
     if (await SharedHelper().isUserLoggedIn()) {
       if (await sl<SharedPreferencesStorage>().getIsCompleted()) {
-        Get.offAllNamed(RouteConstant.mainPage);
+        SDKNav.offAllNamed(RouteConstant.mainPage);
       } else {
         Get.deleteAll();
-        Get.offAllNamed(RouteConstant.completeProfile);
+        SDKNav.offAllNamed(RouteConstant.completeProfile);
       }
     } else {
       SDKNav.offAllNamed(RouteConstant.onBoarding);

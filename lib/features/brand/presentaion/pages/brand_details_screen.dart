@@ -11,7 +11,6 @@ import '../../../../core/utils/theme.dart';
 import '../../../../shared/widgets/app_background.dart';
 import '../../../../shared/widgets/data_loading_widget.dart';
 import '../../../../shared/widgets/url_widget.dart';
-import '../../../branch/presentaion/pages/branch_list_screen.dart';
 
 class BrandDetailsScreen extends StatelessWidget {
   const BrandDetailsScreen({super.key, required this.brandID});

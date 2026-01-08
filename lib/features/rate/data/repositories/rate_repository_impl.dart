@@ -1,12 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:get/get.dart';
 import 'package:my_custom_widget/core/error/failures.dart';
 import 'package:my_custom_widget/features/rate/data/datasourse/rate_api_datasourse.dart';
 import 'package:my_custom_widget/features/rate/domian/repositories/rate_repository.dart';
 
 import '../../../../core/api/api_response_error.dart';
 import '../../../../core/error/exceptions.dart';
-import '../../../../core/utils/network_info.dart';
 
 class RateRepositoryImpl implements RateRepositories {
   final RateApiDataSource remoteDataSource;

@@ -3,10 +3,8 @@ import 'package:get/get.dart';
 import 'package:my_custom_widget/features/loyalty/domain/entity/point_schema_brand.dart';
 import 'package:my_custom_widget/features/loyalty/domain/usecase/get_tiers_loyalty_data.dart';
 
-import '../../../../core/utils/theme.dart';
 import '../../../../injection_container.dart';
 import '../../../../shared/helper/shared_helper.dart';
-import '../../../home/domain/entities/tier.dart';
 
 class PointSchemaController extends GetxController {
   final GetTiersLoyaltyData getTiersLoyaltyData;

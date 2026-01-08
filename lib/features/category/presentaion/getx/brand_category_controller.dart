@@ -1,6 +1,6 @@
+import 'package:get/get.dart';
 import 'package:my_custom_widget/core/constants/constants.dart';
 import 'package:my_custom_widget/features/category/domain/usecases/get_brand_categories.dart';
-import 'package:get/get.dart';
 
 import '../../../../injection_container.dart';
 import '../../../../shared/helper/shared_helper.dart';

@@ -1,12 +1,13 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_custom_widget/core/constants/constants.dart';
 import 'package:my_custom_widget/features/category/domain/entities/category.dart';
 import 'package:my_custom_widget/features/category/domain/entities/product.dart';
 import 'package:my_custom_widget/features/home/domain/entities/slider.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/constants/assets_constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../../category/presentaion/pages/product_details_page.dart';
@@ -61,7 +62,7 @@ class _CarouselWithIndicatorState extends State<SliderAdsWidget> {
                 case SliderAssignType.assignedToCategory:
                   SharedHelper().needLogin(() async {
                     // SharedHelper().scaleDialog(OrderMethodPopup(onFinish: () {
-                    Get.toNamed(
+                    SDKNav.toNamed(
                       RouteConstant.subOrProductPage,
                       preventDuplicates: false,
                       arguments: {

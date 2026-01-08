@@ -1,10 +1,11 @@
-import 'package:my_custom_widget/features/ordering/presentation/widget/cart_icon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/features/ordering/presentation/widget/cart_icon_widget.dart';
 
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../my_custom_widget.dart';
 import '../../../../shared/helper/shared_helper.dart';
@@ -45,7 +46,7 @@ AppBar heroAppBar({HomeController? controller, required Color bg}) {
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
             child: GestureDetector(
               onTap: () {
-                SharedHelper().needLogin(() => Get.toNamed(RouteConstant.notificationsPage));
+                SharedHelper().needLogin(() => SDKNav.toNamed(RouteConstant.notificationsPage));
               },
               child: Container(
                 decoration: BoxDecoration(

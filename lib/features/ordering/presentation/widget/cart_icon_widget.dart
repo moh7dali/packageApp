@@ -1,13 +1,14 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:my_custom_widget/features/order_method/presentation/pages/selected_order_method.dart';
 import 'package:my_custom_widget/my_custom_widget.dart';
 import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 import 'package:my_custom_widget/shared/model/cart_items.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../injection_container.dart';
 import '../../../../shared/helper/shared_preferences_storage.dart';
@@ -35,12 +36,12 @@ class CartIconWidget extends StatelessWidget {
                 onTap: () {
                   SharedHelper().needLogin(() async {
                     if (await sl<SharedPreferencesStorage>().getIsBranchSelected()) {
-                      Get.toNamed(RouteConstant.cartPage);
+                      SDKNav.toNamed(RouteConstant.cartPage);
                     } else {
                       SharedHelper().scaleDialog(
                         SelectedOrderMethod(
                           onFinish: () {
-                            Get.toNamed(RouteConstant.cartPage);
+                            SDKNav.toNamed(RouteConstant.cartPage);
                           },
                         ),
                       );

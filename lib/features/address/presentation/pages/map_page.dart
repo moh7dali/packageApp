@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../getx/address_controller.dart';
 
@@ -80,7 +81,7 @@ class MapPage extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             controller.nameController.text = controller.addressDetails;
-                            Get.toNamed(RouteConstant.addressDetailsPage);
+                            SDKNav.toNamed(RouteConstant.addressDetailsPage);
                           },
                           child: Container(
                             decoration: BoxDecoration(

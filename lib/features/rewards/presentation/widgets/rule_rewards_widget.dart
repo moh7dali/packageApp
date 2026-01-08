@@ -1,7 +1,7 @@
-import 'package:my_custom_widget/features/rewards/presentation/widgets/rewards_card_widget.dart';
-import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/features/rewards/presentation/widgets/rewards_card_widget.dart';
+import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../../domain/entity/campaign_rules_rewards.dart';

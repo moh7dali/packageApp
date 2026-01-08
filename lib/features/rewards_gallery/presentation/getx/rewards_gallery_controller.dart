@@ -5,6 +5,7 @@ import 'package:my_custom_widget/features/rewards_gallery/domain/usecase/redeem_
 import 'package:get/get.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../injection_container.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../../../shared/model/pagination_list_model.dart';
@@ -73,7 +74,7 @@ class RewardsGalleryController extends GetxController {
             confirmText: "rewards",
             confirm: () {
               SharedHelper().closeAllDialogs();
-              Get.toNamed(RouteConstant.rewardsScreen);
+              SDKNav.toNamed(RouteConstant.rewardsScreen);
             },
             cancel: () {
               SharedHelper().closeAllDialogs();

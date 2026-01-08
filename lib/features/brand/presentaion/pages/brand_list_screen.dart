@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/core/constants/constants.dart';
 import 'package:my_custom_widget/features/brand/domain/entities/brand_details.dart';
 import 'package:my_custom_widget/features/brand/presentaion/getx/brand_list_controller.dart';
 
@@ -35,7 +34,7 @@ class BrandListScreen extends StatelessWidget {
                 loadMoreList: (page) async => controller.getBusinessUnitBrands(page: page),
                 itemBuilder: (context, value) => GestureDetector(
                   onTap: () {
-                    // Get.toNamed(RouteConstant.brandDetailsPage, arguments: value.id!.toInt());
+                    // SDKNav.toNamed(RouteConstant.brandDetailsPage, arguments: value.id!.toInt());
                   },
                   child: AppCard(
                     isWhite: true,

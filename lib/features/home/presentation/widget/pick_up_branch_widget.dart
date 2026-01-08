@@ -1,6 +1,6 @@
-import 'package:my_custom_widget/features/branch/domain/entities/branch_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/features/branch/domain/entities/branch_details.dart';
 
 import '../../../../core/utils/theme.dart';
 

@@ -46,7 +46,7 @@ class MozaicLoyaltySDK extends StatelessWidget {
 
     final sdkTranslations = Translation();
     Get.appendTranslations(sdkTranslations.keys);
-    final defaultLanguage = await di.sl<SharedPreferencesStorage>().getAppLanguage();
+    String defaultLanguage = settings.sdkLanguage ?? await di.sl<SharedPreferencesStorage>().getAppLanguage();
     await di.sl<SharedPreferencesStorage>().setAppLanguage(defaultLanguage);
     appLanguage = defaultLanguage;
     Get.updateLocale(Locale(appLanguage));

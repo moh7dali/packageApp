@@ -1,17 +1,18 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_custom_widget/core/constants/constants.dart';
 import 'package:my_custom_widget/core/utils/theme.dart';
 import 'package:my_custom_widget/features/auth/presentation/Getx/auth_controller.dart';
 import 'package:my_custom_widget/features/menu/presentation/pages/language_page.dart';
 import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 import 'package:my_custom_widget/shared/widgets/hero_logo.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/constants/assets_constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../shared/screens/app_web_view_Screen.dart';
 import '../../../loyalty/presentation/pages/point_schema_page.dart';
 import '../getx/menu_controller.dart';
@@ -63,7 +64,7 @@ class MenuTab extends StatelessWidget {
                           onTap: () async {
                             SharedHelper().needLogin(() {
                               Get.delete<AuthController>();
-                              return Get.toNamed(RouteConstant.profilePage);
+                              return SDKNav.toNamed(RouteConstant.profilePage);
                             });
                           },
                         ),
@@ -78,21 +79,21 @@ class MenuTab extends StatelessWidget {
                           title: 'orderHistory',
                           icon: AssetsConsts.ordersHistory,
                           onTap: () {
-                            SharedHelper().needLogin(() => Get.toNamed(RouteConstant.orderHistoryPage));
+                            SharedHelper().needLogin(() => SDKNav.toNamed(RouteConstant.orderHistoryPage));
                           },
                         ),
                         MenuTabItemWidget(
                           title: 'inviteFriends',
                           icon: AssetsConsts.inviteFriend,
                           onTap: () {
-                            SharedHelper().needLogin(() => Get.toNamed(RouteConstant.invitePage));
+                            SharedHelper().needLogin(() => SDKNav.toNamed(RouteConstant.invitePage));
                           },
                         ),
                         MenuTabItemWidget(
                           title: 'contactUs',
                           icon: AssetsConsts.engageWithUs,
                           onTap: () {
-                            Get.toNamed(RouteConstant.merchantInfoPage);
+                            SDKNav.toNamed(RouteConstant.merchantInfoPage);
                           },
                         ),
                         MenuTabItemWidget(
@@ -117,21 +118,21 @@ class MenuTab extends StatelessWidget {
                           title: 'termsCondition',
                           icon: AssetsConsts.terms,
                           onTap: () {
-                            Get.to(AppWebViewScreen(url: AppConstants.termsAndCondition, title: 'termsCondition'.tr));
+                            SDKNav.to(AppWebViewScreen(url: AppConstants.termsAndCondition, title: 'termsCondition'.tr));
                           },
                         ),
                         MenuTabItemWidget(
                           title: 'privacyPolicy',
                           icon: AssetsConsts.privacyPolicy,
                           onTap: () {
-                            Get.to(AppWebViewScreen(url: AppConstants.privacyPolicy, title: 'privacyPolicy'.tr));
+                            SDKNav.to(AppWebViewScreen(url: AppConstants.privacyPolicy, title: 'privacyPolicy'.tr));
                           },
                         ),
                         MenuTabItemWidget(
                           title: 'developedBy',
                           icon: AssetsConsts.developer,
                           onTap: () {
-                            Get.to(DeveloperWidget());
+                            SDKNav.to(DeveloperWidget());
                           },
                           isLast: true,
                         ),
@@ -161,7 +162,7 @@ class MenuTab extends StatelessWidget {
                             'confirmLogout',
                             confirmText: 'logOut'.tr,
                             confirm: () async => controller.logoutOrDeleteAccount(),
-                            cancel: () => Get.back(),
+                            cancel: () => SDKNav.back(),
                           ),
                         );
                       },

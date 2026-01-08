@@ -1,7 +1,7 @@
-import 'package:my_custom_widget/features/loyalty/presentation/widgets/loyalty_card_loading_widget.dart';
-import 'package:my_custom_widget/features/loyalty/presentation/widgets/new_loyalty_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/features/loyalty/presentation/widgets/loyalty_card_loading_widget.dart';
+import 'package:my_custom_widget/features/loyalty/presentation/widgets/new_loyalty_card_widget.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../../../topup/presentation/widgets/wallet_history_list.dart';

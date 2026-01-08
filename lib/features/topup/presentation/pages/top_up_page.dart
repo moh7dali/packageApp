@@ -1,9 +1,8 @@
-import 'package:my_custom_widget/features/topup/presentation/getx/get_customer_wallet_history_controller.dart';
-import 'package:my_custom_widget/features/topup/presentation/widgets/wallet_balance_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/features/topup/presentation/getx/get_customer_wallet_history_controller.dart';
+import 'package:my_custom_widget/features/topup/presentation/widgets/wallet_balance_widget.dart';
 
-import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/widgets/no_item_widget.dart';
 import '../../../../shared/widgets/pagination_list/pagination_list_view.dart';

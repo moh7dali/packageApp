@@ -1,8 +1,8 @@
-import 'package:my_custom_widget/features/notifications/domain/entity/notification.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dismissible_page/dismissible_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:my_custom_widget/features/notifications/domain/entity/notification.dart';
 
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/utils/theme.dart';

@@ -1,9 +1,10 @@
-import 'package:my_custom_widget/shared/model/cart_items.dart';
-import 'package:my_custom_widget/shared/widgets/add_to_cart_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/shared/model/cart_items.dart';
+import 'package:my_custom_widget/shared/widgets/add_to_cart_dialog.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../injection_container.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../../../shared/helper/shared_preferences_storage.dart';
@@ -331,7 +332,7 @@ class ProductDetailsController extends GetxController {
     await SharedHelper().closeAllDialogs();
 
     if (isSlider) {
-      Get.toNamed(RouteConstant.brandCategoryPage);
+      SDKNav.toNamed(RouteConstant.brandCategoryPage);
     }
     SharedHelper().scaleDialog(AddToCartDialog());
   }
@@ -376,7 +377,7 @@ class ProductDetailsController extends GetxController {
       "${'limitationTex'.tr} ${formatAmountWithCurrency(productDetails?.maximumPurchaseAmount ?? 0)}",
       noCancel: true,
       confirm: () {
-        Get.back();
+        SDKNav.back();
       },
     );
   }

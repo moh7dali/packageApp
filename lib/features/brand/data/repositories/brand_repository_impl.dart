@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:get/get.dart';
 import 'package:my_custom_widget/features/brand/data/datasources/brand_api_datasource.dart';
 import 'package:my_custom_widget/features/brand/domain/entities/brand_details.dart';
 import 'package:my_custom_widget/features/brand/domain/entities/brands_list.dart';
@@ -8,7 +7,6 @@ import 'package:my_custom_widget/features/brand/domain/repositories/brand_reposi
 import '../../../../core/api/api_response_error.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
-import '../../../../core/utils/network_info.dart';
 
 class BrandRepositoryImpl implements BrandRepository {
   final BrandApiDataSource remoteDataSource;

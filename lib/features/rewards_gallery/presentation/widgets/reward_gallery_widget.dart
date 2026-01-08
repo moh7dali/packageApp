@@ -1,13 +1,14 @@
-import 'package:my_custom_widget/core/constants/assets_constants.dart';
-import 'package:my_custom_widget/features/rewards_gallery/domain/entity/reward_gallery.dart';
-import 'package:my_custom_widget/shared/helper/shared_helper.dart';
-import 'package:my_custom_widget/shared/widgets/button_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:linkwell/linkwell.dart';
+import 'package:my_custom_widget/core/constants/assets_constants.dart';
+import 'package:my_custom_widget/features/rewards_gallery/domain/entity/reward_gallery.dart';
+import 'package:my_custom_widget/shared/helper/shared_helper.dart';
+import 'package:my_custom_widget/shared/widgets/button_widget.dart';
 
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../my_custom_widget.dart';
 import '../getx/rewards_gallery_controller.dart';
@@ -62,7 +63,7 @@ class RewardsGalleryWidget extends StatelessWidget {
                           confirm: () {
                             if ((controller.quantity * (rewardsGallery.numberOfPoints ?? 0)) >
                                 (controller.userLoyaltyData?.loyaltyData?.pointsBalance ?? 0)) {
-                              Get.back();
+                              SDKNav.back();
                               SharedHelper().errorSnackBar("youDoNotHaveBalance".tr);
                             } else {
                               controller.redeemRewardsApi(rewardId: rewardsGallery.id);

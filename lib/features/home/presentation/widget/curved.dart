@@ -1,10 +1,10 @@
-import 'package:my_custom_widget/core/constants/assets_constants.dart';
-import 'package:my_custom_widget/core/utils/theme.dart';
-import 'package:my_custom_widget/features/category/domain/entities/category.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/core/constants/assets_constants.dart';
+import 'package:my_custom_widget/core/utils/theme.dart';
+import 'package:my_custom_widget/features/category/domain/entities/category.dart';
 
 class CurvedCategoryScroller extends StatefulWidget {
   final List<Category> items;

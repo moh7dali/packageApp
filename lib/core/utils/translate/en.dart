@@ -1,7 +1,8 @@
+import '../../../my_custom_widget.dart';
 import '../../constants/constants.dart';
 
-const Map<String, String> en = {
-  "title": "Arabica",
+final Map<String, String> en = {
+  "title": "${MozaicLoyaltySDK.settings.appTitleEn}",
   "forceUpdate": "Update the app to continue!",
   "update": "Update",
   'pleaseEnterYourMobileNumber': "Enter your mobile number to begin",

@@ -1,8 +1,7 @@
-import 'package:my_custom_widget/core/constants/assets_constants.dart';
-import 'package:my_custom_widget/features/rewards_gallery/domain/entity/reward_gallery.dart';
-import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/features/rewards_gallery/domain/entity/reward_gallery.dart';
+import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/widgets/pagination_list/pagination_list_view.dart';

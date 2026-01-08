@@ -1,7 +1,7 @@
-import 'package:my_custom_widget/shared/helper/shared_helper.dart';
-import 'package:my_custom_widget/shared/widgets/button_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/shared/helper/shared_helper.dart';
+import 'package:my_custom_widget/shared/widgets/button_widget.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/widgets/loading_widget.dart';

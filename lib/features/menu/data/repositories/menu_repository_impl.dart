@@ -1,13 +1,11 @@
+import 'package:dartz/dartz.dart';
 import 'package:my_custom_widget/core/error/failures.dart';
 import 'package:my_custom_widget/features/menu/domain/entity/invite_friend.dart';
 import 'package:my_custom_widget/features/menu/domain/entity/merchant_info.dart';
 import 'package:my_custom_widget/features/menu/domain/entity/profile_info.dart';
-import 'package:dartz/dartz.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/api/api_response_error.dart';
 import '../../../../core/error/exceptions.dart';
-import '../../../../core/utils/network_info.dart';
 import '../../domain/repositories/menu_repository.dart';
 import '../datasources/menu_api_datasource.dart';
 

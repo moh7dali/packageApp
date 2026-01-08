@@ -1,17 +1,18 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_custom_widget/features/address/domain/entity/address.dart';
 import 'package:my_custom_widget/features/ordering/domain/entity/create_order.dart';
 import 'package:my_custom_widget/features/ordering/domain/entity/order_checkout_data.dart';
 import 'package:my_custom_widget/features/ordering/domain/usecases/create_order_usecase.dart';
 import 'package:my_custom_widget/shared/helper/payment_helper.dart';
 import 'package:my_custom_widget/shared/model/cart_items.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/api/api_response.dart';
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../injection_container.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../../../shared/helper/shared_preferences_storage.dart';
@@ -192,7 +193,7 @@ class CartController extends GetxController {
         title: "".tr,
         description: "confirmRemoveItemName".trParams({"item": itemName}),
         onCancel: () {
-          Get.back();
+          SDKNav.back();
         },
         onConfirm: () async {
           SharedHelper().closeAllDialogs();
@@ -589,7 +590,7 @@ class CartController extends GetxController {
       "${'limitationTex'.tr} ${formatAmountWithCurrency(product.productDetails.maximumPurchaseAmount ?? 0)}",
       noCancel: true,
       confirm: () {
-        Get.back();
+        SDKNav.back();
       },
     );
   }
@@ -626,7 +627,7 @@ class CartController extends GetxController {
   void orderDone() {
     SharedHelper().closeAllDialogs();
     removeAllItems();
-    Get.offAllNamed(RouteConstant.mainPage);
+    SDKNav.offAllNamed(RouteConstant.mainPage);
     SharedHelper().actionDialog(
       isRowStyle: false,
       "orderReceived",
@@ -643,7 +644,7 @@ class CartController extends GetxController {
       },
       cancel: () {
         SharedHelper().closeAllDialogs();
-        Get.toNamed(RouteConstant.orderHistoryPage);
+        SDKNav.toNamed(RouteConstant.orderHistoryPage);
       },
     );
   }
@@ -651,7 +652,7 @@ class CartController extends GetxController {
   void orderPending() {
     SharedHelper().closeAllDialogs();
     removeAllItems();
-    Get.offAllNamed(RouteConstant.mainPage);
+    SDKNav.offAllNamed(RouteConstant.mainPage);
     SharedHelper().actionDialog(
       "orderPending",
       "paymentPendingMessage",
@@ -666,7 +667,7 @@ class CartController extends GetxController {
       },
       cancel: () {
         SharedHelper().closeAllDialogs();
-        Get.toNamed(RouteConstant.orderHistoryPage);
+        SDKNav.toNamed(RouteConstant.orderHistoryPage);
       },
     );
   }

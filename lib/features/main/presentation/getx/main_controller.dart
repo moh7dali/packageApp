@@ -1,3 +1,7 @@
+import "package:curved_navigation_bar/curved_navigation_bar.dart";
+import "package:flutter/material.dart";
+import "package:flutter_advanced_drawer/flutter_advanced_drawer.dart";
+import "package:get/get.dart";
 import "package:my_custom_widget/core/constants/constants.dart";
 import "package:my_custom_widget/features/branch/domain/usecases/get_closest_branches.dart";
 import "package:my_custom_widget/features/branch/presentaion/pages/branch_list_screen.dart";
@@ -5,10 +9,6 @@ import "package:my_custom_widget/features/home/presentation/pages/home_tab.dart"
 import "package:my_custom_widget/features/menu/presentation/pages/menu_tab.dart";
 import "package:my_custom_widget/injection_container.dart";
 import "package:my_custom_widget/shared/helper/shared_helper.dart";
-import "package:curved_navigation_bar/curved_navigation_bar.dart";
-import "package:flutter/material.dart";
-import "package:flutter_advanced_drawer/flutter_advanced_drawer.dart";
-import "package:get/get.dart";
 
 import "../../../../core/utils/app_log.dart";
 import "../../../../shared/helper/device_info.dart";

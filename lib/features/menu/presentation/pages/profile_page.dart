@@ -6,6 +6,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import '../../../../core/api/api_end_points.dart';
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../../../shared/widgets/bottom_widget.dart';
@@ -29,7 +30,7 @@ class ProfilePage extends StatelessWidget {
             actions: [
               IconButton(
                 onPressed: () {
-                  Get.toNamed(RouteConstant.completeProfile);
+                  SDKNav.toNamed(RouteConstant.completeProfile);
                 },
                 icon: SvgPicture.asset(AssetsConsts.edit, color: AppTheme.primaryColor, width: 30),
               ),
@@ -124,7 +125,7 @@ class ProfilePage extends StatelessWidget {
                                     //   label: "myAddresses",
                                     //   isDelete: true,
                                     //   onTap: () {
-                                    //     Get.toNamed(RouteConstant.myAddressPage);
+                                    //     SDKNav.toNamed(RouteConstant.myAddressPage);
                                     //   },
                                     // ),
                                     ProfileFieldWidget(
@@ -143,7 +144,7 @@ class ProfilePage extends StatelessWidget {
                                                 controller.logoutOrDeleteAccount(delete: true);
                                               },
                                               onCancel: () {
-                                                Get.back();
+                                                SDKNav.back();
                                               },
                                             ),
                                           ),

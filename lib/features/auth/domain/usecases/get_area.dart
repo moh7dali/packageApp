@@ -1,5 +1,5 @@
-import 'package:my_custom_widget/features/auth/domain/entities/area.dart';
 import 'package:dartz/dartz.dart';
+import 'package:my_custom_widget/features/auth/domain/entities/area.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';

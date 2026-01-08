@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../../../shared/widgets/sar_widget.dart';
@@ -33,7 +34,7 @@ class WalletBalanceWidget extends StatelessWidget {
             SizedBox(height: Get.height * .04),
             GestureDetector(
               onTap: () {
-                Get.toNamed(RouteConstant.topUpListScreen);
+                SDKNav.toNamed(RouteConstant.topUpListScreen);
               },
               child: Row(
                 children: [

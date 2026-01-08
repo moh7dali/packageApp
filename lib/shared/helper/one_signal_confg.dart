@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 
 import '../../core/constants/constants.dart';
+import '../../core/sdk/sdk_rouutes.dart';
 import '../../features/main/presentation/getx/main_controller.dart';
 import '../../features/notifications/presentation/getx/notifications_controller.dart';
 import '../../features/rate/presentation/widgets/rate_widget.dart';
@@ -20,7 +21,7 @@ class OneSignalConfig {
     switch (notification.trg) {
       case NotificationTriggerType.addedPoints: // 1 - rate branch
       case NotificationTriggerType.redeemedPoints: // 2 - rate branch
-        Get.offAllNamed(RouteConstant.mainPage);
+        SDKNav.offAllNamed(RouteConstant.mainPage);
         SharedHelper().scaleDialog(RateWidget(notification: notification));
         break;
       case NotificationTriggerType.newRegistration: // 6 - go to rewards screen
@@ -28,13 +29,13 @@ class OneSignalConfig {
       case NotificationTriggerType.addReferral: // 7 - go to rewards screen
       case NotificationTriggerType.redeemReward: // 14 - go to rewards screen
       case NotificationTriggerType.reward: // 3 - go to rewards screen
-        Get.offAllNamed(RouteConstant.mainPage);
+        SDKNav.offAllNamed(RouteConstant.mainPage);
         Get.put(MainController({'index': 3}));
         break;
       case NotificationTriggerType.system:
         isSystem = true;
         fromPush = false;
-        Get.offAllNamed(RouteConstant.splashPage);
+        SDKNav.offAllNamed(RouteConstant.splashPage);
         break;
       case NotificationTriggerType.share: // 4 - go to notification center screen
       case NotificationTriggerType.balanceTransferAddition: // 8 - go to notification center screen
@@ -51,7 +52,7 @@ class OneSignalConfig {
       case NotificationTriggerType.addedByAdmin: // 21 - go to notification center screen
       case NotificationTriggerType.tierUpgrade: // Tier Upgrade
       default: // - go to notification center screen
-        Get.offAllNamed(RouteConstant.mainPage);
+        SDKNav.offAllNamed(RouteConstant.mainPage);
         SharedHelper().actionDialog(
           notification.title ?? "",
           notification.body ?? "",
@@ -59,7 +60,7 @@ class OneSignalConfig {
           image: notification.image,
           confirm: () {
             SharedHelper().closeAllDialogs();
-            Get.toNamed(RouteConstant.notificationsPage);
+            SDKNav.toNamed(RouteConstant.notificationsPage);
           },
           confirmText: 'done'.tr,
         );
@@ -74,7 +75,7 @@ class OneSignalConfig {
       case NotificationTriggerType.redeemedPoints: // 2 - rate branch
         Map<String, int> pageIndex = {'index': 0};
         Get.deleteAll();
-        Get.offAllNamed(RouteConstant.mainPage, arguments: pageIndex);
+        SDKNav.offAllNamed(RouteConstant.mainPage, arguments: pageIndex);
         SharedHelper().scaleDialog(RateWidget(notification: notification));
         break;
       case NotificationTriggerType.newRegistration: // 6 - go to rewards screen
@@ -98,9 +99,9 @@ class OneSignalConfig {
           image: notification.image,
           confirm: () {
             SharedHelper().closeAllDialogs();
-            Get.offAllNamed(RouteConstant.mainPage);
+            SDKNav.offAllNamed(RouteConstant.mainPage);
             Get.put(MainController({'index': 3}));
-            // Get.toNamed(RouteConstant.rewardsScreen);
+            // SDKNav.toNamed(RouteConstant.rewardsScreen);
           },
         );
         break;
@@ -128,7 +129,7 @@ class OneSignalConfig {
       case NotificationTriggerType.detectedByAdmin: // 22 - go to notification center screen
         Map<String, int> pageIndex = {'index': 0};
         Get.deleteAll();
-        Get.offAllNamed(RouteConstant.mainPage, arguments: pageIndex);
+        SDKNav.offAllNamed(RouteConstant.mainPage, arguments: pageIndex);
         SharedHelper().actionDialog(
           notification.title ?? "",
           notification.body ?? "",
@@ -136,7 +137,7 @@ class OneSignalConfig {
           image: notification.image,
           confirm: () {
             SharedHelper().closeAllDialogs();
-            Get.toNamed(RouteConstant.notificationsPage);
+            SDKNav.toNamed(RouteConstant.notificationsPage);
           },
           confirmText: 'done'.tr,
         );
@@ -169,7 +170,7 @@ class OneSignalConfig {
           image: notification.image,
           confirm: () {
             SharedHelper().closeAllDialogs();
-            Get.toNamed(RouteConstant.notificationsPage);
+            SDKNav.toNamed(RouteConstant.notificationsPage);
           },
           confirmText: 'done'.tr,
         );

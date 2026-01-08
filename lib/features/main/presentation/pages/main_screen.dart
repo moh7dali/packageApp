@@ -1,11 +1,12 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:my_custom_widget/core/utils/theme.dart';
 import 'package:my_custom_widget/features/main/presentation/getx/main_controller.dart';
 import 'package:my_custom_widget/features/main/presentation/widgets/hero_app_bar.dart';
 import 'package:my_custom_widget/shared/widgets/bottom_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../widgets/bottom_nav_bar.dart';
 
@@ -30,7 +31,7 @@ class MainScreen extends StatelessWidget {
                   title: "exitApp".tr,
                   description: "confirmExitApp".tr,
                   onCancel: () {
-                    Get.back();
+                    SDKNav.back();
                   },
                   onConfirm: () {
                     SystemNavigator.pop();

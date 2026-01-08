@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../my_custom_widget.dart';
 import '../../domain/entities/category.dart';
@@ -22,7 +23,7 @@ class CategoryWidget extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           Get.delete<SubOrProductController>();
-          Get.toNamed(
+          SDKNav.toNamed(
             RouteConstant.subOrProductPage,
             preventDuplicates: false,
             arguments: {'selectedCategory': category, 'parentCategoryList': parentCategoryList},

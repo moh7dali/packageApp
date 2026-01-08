@@ -1,10 +1,11 @@
-import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../branch/domain/entities/branch_details.dart';
 
@@ -53,7 +54,7 @@ class CheckInBranches extends StatelessWidget {
           GestureDetector(
             onTap: () {
               SharedHelper().closeAllDialogs();
-              Get.toNamed(RouteConstant.branchDetailsPage, arguments: selectedBranch.id!.toInt());
+              SDKNav.toNamed(RouteConstant.branchDetailsPage, arguments: selectedBranch.id!.toInt());
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,

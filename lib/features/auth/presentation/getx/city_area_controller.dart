@@ -1,8 +1,8 @@
+import 'package:get/get.dart';
 import 'package:my_custom_widget/core/constants/constants.dart';
 import 'package:my_custom_widget/core/utils/app_log.dart';
 import 'package:my_custom_widget/features/auth/domain/usecases/get_area.dart';
 import 'package:my_custom_widget/shared/helper/shared_helper.dart';
-import 'package:get/get.dart';
 
 import '../../../../injection_container.dart';
 import '../../domain/entities/area.dart';

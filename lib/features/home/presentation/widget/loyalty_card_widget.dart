@@ -1,12 +1,13 @@
-import 'package:my_custom_widget/features/home/presentation/widget/loyalty_card_no_user_widget.dart';
-import 'package:my_custom_widget/shared/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:liquid_progress_indicator_v2/liquid_progress_indicator.dart';
+import 'package:my_custom_widget/features/home/presentation/widget/loyalty_card_no_user_widget.dart';
+import 'package:my_custom_widget/shared/widgets/button_widget.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../../../shared/widgets/sar_widget.dart';
@@ -42,7 +43,7 @@ class LoyaltyCardWidget extends StatelessWidget {
                           icon: Icons.account_balance_wallet_outlined,
                           showCurrency: true,
                           onInfoTap: () {
-                            // Get.toNamed(RouteConstant.topUpPage, arguments: homeController.customerData?.customerLoyaltyData?.wallet);
+                            // SDKNav.toNamed(RouteConstant.topUpPage, arguments: homeController.customerData?.customerLoyaltyData?.wallet);
                             homeController.gotoRewards(isPoints: true, isDeals: false);
                           },
                         ),
@@ -90,7 +91,7 @@ class LoyaltyCardWidget extends StatelessWidget {
                               title: "topUp".tr,
                               isDoneBtn: true,
                               function: () {
-                                Get.toNamed(RouteConstant.topUpListScreen);
+                                SDKNav.toNamed(RouteConstant.topUpListScreen);
                               },
                             ),
                           ),

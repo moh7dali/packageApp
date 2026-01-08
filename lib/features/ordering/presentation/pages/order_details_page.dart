@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_custom_widget/features/ordering/presentation/getx/order_detail_controller.dart';
 import 'package:my_custom_widget/features/ordering/presentation/widget/order_history_card_widget.dart';
-import 'package:my_custom_widget/shared/widgets/app_background.dart';
 
 import '../../domain/entity/order_history.dart';
 import '../widget/loading_history_widget.dart';

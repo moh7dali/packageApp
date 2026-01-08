@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_custom_widget/features/offers/presentation/getx/offers_controller.dart';
 import 'package:my_custom_widget/features/offers/presentation/widgets/offer_widget.dart';
 import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../../shared/widgets/pagination_list/pagination_list_view.dart';
 import '../../../notifications/presentation/widgets/notification_card_loading.dart';

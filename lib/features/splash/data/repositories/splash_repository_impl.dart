@@ -1,10 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:my_custom_widget/core/error/exceptions.dart';
 import 'package:my_custom_widget/core/error/failures.dart';
-import 'package:my_custom_widget/core/utils/network_info.dart';
 import 'package:my_custom_widget/features/splash/data/datasources/splash_api_datasource.dart';
 import 'package:my_custom_widget/features/splash/domain/entities/application_version.dart';
-import 'package:dartz/dartz.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/api/api_response_error.dart';
 import '../../domain/entities/advertising_list.dart';

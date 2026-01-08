@@ -1,10 +1,11 @@
+import 'package:get/get.dart';
 import 'package:my_custom_widget/features/notifications/domain/entity/notification.dart';
 import 'package:my_custom_widget/features/notifications/domain/usecases/change_notifications_read_status.dart';
 import 'package:my_custom_widget/features/notifications/domain/usecases/get_customer_notifications.dart';
 import 'package:my_custom_widget/my_custom_widget.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/app_log.dart';
 import '../../../../injection_container.dart';
 import '../../../../shared/helper/shared_helper.dart';
@@ -51,7 +52,7 @@ class NotificationsController extends GetxController {
         .then(
           (value) => value.fold(
             (failure) {
-              Get.back();
+              SDKNav.back();
               SharedHelper().errorSnackBar(failure.errorsModel.errorMessage ?? "");
             },
             (r) async {
@@ -104,7 +105,7 @@ class NotificationsController extends GetxController {
       case NotificationTriggerType.migration: // 12 - go to notification center screen
         Map<String, int> pageIndex = {'index': 1};
         Get.deleteAll();
-        Get.offAllNamed(RouteConstant.mainPage, arguments: pageIndex);
+        SDKNav.offAllNamed(RouteConstant.mainPage, arguments: pageIndex);
         break;
       case NotificationTriggerType.reward: // 3 - go to rewards screen
       case NotificationTriggerType.newRegistration: // 6 - go to rewards screen
@@ -112,7 +113,7 @@ class NotificationsController extends GetxController {
       case NotificationTriggerType.redeemReward: // 14 - go to rewards screen
         Map<String, int> pageIndex = {'index': 3};
         Get.deleteAll();
-        Get.offAllNamed(RouteConstant.mainPage, arguments: pageIndex);
+        SDKNav.offAllNamed(RouteConstant.mainPage, arguments: pageIndex);
         break;
 
       case NotificationTriggerType.system: // 10 - go to notification center screen

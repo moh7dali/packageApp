@@ -1,11 +1,11 @@
-import 'package:my_custom_widget/features/address/domain/entity/address.dart';
-import 'package:my_custom_widget/features/branch/domain/entities/branch_details.dart';
-import 'package:my_custom_widget/shared/helper/shared_helper.dart';
-import 'package:my_custom_widget/shared/widgets/button_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/features/address/domain/entity/address.dart';
+import 'package:my_custom_widget/features/branch/domain/entities/branch_details.dart';
+import 'package:my_custom_widget/shared/helper/shared_helper.dart';
+import 'package:my_custom_widget/shared/widgets/button_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/constants/assets_constants.dart';

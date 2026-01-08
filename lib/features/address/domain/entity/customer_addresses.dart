@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import 'address.dart';
 
 class CustomerAddresses extends Equatable {

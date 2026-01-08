@@ -1,9 +1,9 @@
-import 'package:my_custom_widget/features/category/presentaion/getx/product_widget_controller.dart';
-import 'package:my_custom_widget/features/category/presentaion/pages/product_details_page.dart';
-import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/features/category/presentaion/getx/product_widget_controller.dart';
+import 'package:my_custom_widget/features/category/presentaion/pages/product_details_page.dart';
+import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/utils/theme.dart';

@@ -1,8 +1,8 @@
-import 'package:my_custom_widget/core/constants/constants.dart';
-import 'package:my_custom_widget/features/address/domain/entity/address.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:my_custom_widget/core/constants/constants.dart';
+import 'package:my_custom_widget/features/address/domain/entity/address.dart';
 
 import '../../../../injection_container.dart';
 import '../../../../my_custom_widget.dart';

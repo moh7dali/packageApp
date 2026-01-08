@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_custom_widget/core/constants/constants.dart';
 import 'package:my_custom_widget/core/utils/theme.dart';
 import 'package:my_custom_widget/shared/helper/shared_helper.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../domain/entity/order_history.dart';
 import 'loading_history_widget.dart';
 
@@ -74,7 +75,7 @@ class OrderHistoryCardWidget extends StatelessWidget {
                   height: 32,
                   child: OutlinedButton(
                     onPressed: () {
-                      Get.toNamed(RouteConstant.orderDetailsPage, arguments: orderHistory);
+                      SDKNav.toNamed(RouteConstant.orderDetailsPage, arguments: orderHistory);
                     },
                     style: OutlinedButton.styleFrom(
                       side: BorderSide(color: AppTheme.primaryColor.withOpacity(.4)),

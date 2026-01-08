@@ -1,7 +1,7 @@
-import 'package:my_custom_widget/features/rewards/presentation/getx/rewards_controller.dart';
-import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/features/rewards/presentation/getx/rewards_controller.dart';
+import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
 
 import '../../../../shared/widgets/pagination_list/pagination_list_view.dart';
 import '../../domain/entity/user_rewards.dart';

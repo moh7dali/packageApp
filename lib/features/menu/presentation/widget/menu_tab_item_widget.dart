@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../my_custom_widget.dart';
 import '../getx/menu_controller.dart';
@@ -85,7 +85,7 @@ class MenuTabItemWidget extends StatelessWidget {
                       controller!.changeTheme = v;
                       controller!.update();
                       themeController.toggleTheme();
-                      Get.back();
+                      SDKNav.back();
                     },
                   )
                       : Container(

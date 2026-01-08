@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../core/constants/assets_constants.dart';
+import '../../core/sdk/sdk_rouutes.dart';
 
 class ImagePreview extends StatelessWidget {
   const ImagePreview({super.key, required this.image});
@@ -13,7 +14,7 @@ class ImagePreview extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.back();
+        SDKNav.back();
       },
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -26,15 +27,15 @@ class ImagePreview extends StatelessWidget {
                 width: double.infinity,
                 child: GestureDetector(
                   onTap: () {
-                    Get.back();
+                    SDKNav.back();
                   },
                   child: DismissiblePage(
                     backgroundColor: Colors.transparent,
                     onDismissed: () {
-                      Get.back();
+                      SDKNav.back();
                     },
                     onDragEnd: () {
-                      Get.back();
+                      SDKNav.back();
                     },
                     direction: DismissiblePageDismissDirection.multi,
                     isFullScreen: true,

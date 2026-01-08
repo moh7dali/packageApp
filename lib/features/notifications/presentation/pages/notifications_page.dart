@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 
-import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/utils/app_log.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/widgets/no_item_widget.dart';

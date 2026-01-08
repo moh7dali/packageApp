@@ -1,7 +1,7 @@
-import 'package:my_custom_widget/features/splash/presentation/widgets/circular_countdown_widget.dart';
-import 'package:my_custom_widget/shared/widgets/hero_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/features/splash/presentation/widgets/circular_countdown_widget.dart';
+import 'package:my_custom_widget/shared/widgets/hero_logo.dart';
 
 import '../../domain/entities/advertising.dart';
 import '../getx/splash_controller.dart';

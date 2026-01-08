@@ -1,10 +1,5 @@
-import 'package:my_custom_widget/core/constants/assets_constants.dart';
-import 'package:my_custom_widget/features/order_method/presentation/pages/selected_order_method.dart';
-import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../../shared/widgets/translated_image_widget.dart';
 
 class OrderMethodPopup extends StatelessWidget {
   const OrderMethodPopup({super.key, required this.onFinish});

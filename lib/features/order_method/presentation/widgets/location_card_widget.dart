@@ -1,7 +1,7 @@
-import 'package:my_custom_widget/features/address/domain/entity/address.dart';
-import 'package:my_custom_widget/features/address/presentation/widget/my_address_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/features/address/domain/entity/address.dart';
+import 'package:my_custom_widget/features/address/presentation/widget/my_address_widgets.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../getx/selected_order_method_controller.dart';

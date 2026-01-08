@@ -1,6 +1,6 @@
-import 'package:my_custom_widget/shared/widgets/sar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/shared/widgets/sar_widget.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/helper/shared_helper.dart';

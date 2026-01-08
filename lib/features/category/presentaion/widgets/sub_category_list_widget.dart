@@ -1,6 +1,6 @@
-import 'package:my_custom_widget/features/category/presentaion/widgets/no_product.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/features/category/presentaion/widgets/no_product.dart';
 
 import '../../../../shared/widgets/pagination_list/pagination_list_view.dart';
 import '../../../notifications/presentation/widgets/notification_card_loading.dart';

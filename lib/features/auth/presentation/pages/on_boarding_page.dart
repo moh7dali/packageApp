@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_custom_widget/core/utils/theme.dart';
 import 'package:my_custom_widget/features/auth/presentation/getx/onboarding_controller.dart';
 import 'package:my_custom_widget/features/auth/presentation/widgets/curved_widget.dart';
 import 'package:my_custom_widget/shared/widgets/button_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../../shared/model/onboarding_model.dart';
 
@@ -31,6 +31,8 @@ class OnboardingPage extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  const SizedBox(height: 14),
+                  Text("title".tr, style: AppTheme.textStyle(color: AppTheme.primaryColor)),
                   Obx(() {
                     final current = controller.currentPage.value;
                     return Row(

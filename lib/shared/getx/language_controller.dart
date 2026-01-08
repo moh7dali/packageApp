@@ -1,5 +1,6 @@
 import "dart:ui";
 
+import "package:my_custom_widget/core/sdk/sdk_rouutes.dart";
 import "package:my_custom_widget/my_custom_widget.dart";
 import "package:my_custom_widget/shared/helper/shared_helper.dart";
 import "package:get/get.dart";
@@ -48,7 +49,7 @@ class LanguageController extends GetxController {
     });
     if (toPage != '') {
       Get.deleteAll();
-      Get.offAllNamed(toPage);
+      SDKNav.offAllNamed(toPage);
     }
     update();
   }

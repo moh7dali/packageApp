@@ -1,11 +1,11 @@
-import 'package:my_custom_widget/core/utils/theme.dart';
-import 'package:my_custom_widget/features/category/presentaion/getx/product_details_controller.dart';
-import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dismissible_page/dismissible_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/core/utils/theme.dart';
+import 'package:my_custom_widget/features/category/presentaion/getx/product_details_controller.dart';
+import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/constants/assets_constants.dart';

@@ -9,6 +9,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/app_log.dart';
 import '../../../../injection_container.dart';
 import '../../../../shared/helper/device_info.dart';
@@ -205,7 +206,7 @@ class AuthController extends GetxController with CodeAutoFill {
   skip() {
     FocusManager.instance.primaryFocus?.unfocus();
     isSkipped = ValueNotifier(true);
-    Get.offAllNamed(RouteConstant.mainPage);
+    SDKNav.offAllNamed(RouteConstant.mainPage);
   }
 
   verifyMobileNumber() async {
@@ -241,7 +242,7 @@ class AuthController extends GetxController with CodeAutoFill {
                 sl<SharedPreferencesStorage>().setTempToken(verifyMobileNumber.token);
                 smsCodeController.clear();
                 errorController = StreamController<ErrorAnimationType>();
-                Get.toNamed(RouteConstant.verifyPage);
+                SDKNav.toNamed(RouteConstant.verifyPage);
                 startTimer();
                 sl<SharedPreferencesStorage>().setMobile("${AppConstants.countryCode}$number");
               });
@@ -277,9 +278,9 @@ class AuthController extends GetxController with CodeAutoFill {
               Future.delayed(const Duration(seconds: 1), () async {
                 if (checkValidationCode.isCompleted == true) {
                   Get.deleteAll();
-                  Get.offAllNamed(RouteConstant.mainPage);
+                  SDKNav.offAllNamed(RouteConstant.mainPage);
                 } else {
-                  Get.offAllNamed(RouteConstant.completeProfile);
+                  SDKNav.offAllNamed(RouteConstant.completeProfile);
                 }
               });
             },
@@ -372,16 +373,16 @@ class AuthController extends GetxController with CodeAutoFill {
               await resetBtnState();
               if (profile != null) {
                 getProfileInfo();
-                Get.back();
+                SDKNav.back();
               } else {
                 if (await sl<SharedPreferencesStorage>().getHasReferral() == true) {
                   ///Go to Main Screen
                   Get.deleteAll();
-                  Get.offAllNamed(RouteConstant.mainPage);
+                  SDKNav.offAllNamed(RouteConstant.mainPage);
                 } else {
                   ///Go to Referral Screen
                   Get.deleteAll();
-                  Get.offAllNamed(RouteConstant.referralPage);
+                  SDKNav.offAllNamed(RouteConstant.referralPage);
                 }
               }
             },
@@ -414,7 +415,7 @@ class AuthController extends GetxController with CodeAutoFill {
               sl<SharedPreferencesStorage>().setHasReferral(true);
               resetBtnState();
               Get.deleteAll();
-              Get.offAllNamed(RouteConstant.mainPage);
+              SDKNav.offAllNamed(RouteConstant.mainPage);
             },
           ),
         );
@@ -516,7 +517,7 @@ class AuthController extends GetxController with CodeAutoFill {
           (r) async {
             await sl<SharedPreferencesStorage>().deleteAllData();
             // Get.deleteAll();
-            Get.offAllNamed(RouteConstant.authPage);
+            SDKNav.offAllNamed(RouteConstant.authPage);
           },
         ),
       );
@@ -529,7 +530,7 @@ class AuthController extends GetxController with CodeAutoFill {
           (r) async {
             await sl<SharedPreferencesStorage>().deleteAllData();
             // Get.deleteAll();
-            Get.offAllNamed(RouteConstant.authPage);
+            SDKNav.offAllNamed(RouteConstant.authPage);
           },
         ),
       );

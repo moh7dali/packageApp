@@ -1,5 +1,5 @@
-import 'package:my_custom_widget/features/branch/domain/entities/branch_details.dart';
 import 'package:flutter/material.dart';
+import 'package:my_custom_widget/features/branch/domain/entities/branch_details.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../getx/selected_order_method_controller.dart';

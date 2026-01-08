@@ -1,7 +1,8 @@
+import '../../../my_custom_widget.dart';
 import '../../constants/constants.dart';
 
-const Map<String, String> ar = {
-  "title": "أريبكا",
+final Map<String, String> ar = {
+  "title": "${MozaicLoyaltySDK.settings.appTitleAr}",
   "forceUpdate": "يرجى تحديث التطبيق للمتابعة!",
   "update": "تحديث",
   'pleaseEnterYourMobileNumber': "أدخل رقم هاتفك للبدء",

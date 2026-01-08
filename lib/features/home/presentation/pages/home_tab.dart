@@ -5,6 +5,7 @@ import 'package:my_custom_widget/features/home/presentation/getx/home_controller
 import 'package:my_custom_widget/features/home/presentation/widget/slider_widget.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../../main/presentation/widgets/hero_app_bar.dart';
 import '../../../order_method/presentation/pages/selected_order_method.dart';
@@ -96,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                       if (controller.isShowReferral && controller.referralCampaign != null)
                         SuperPremiumReferAndEarnButton(
                           onTap: () {
-                            SharedHelper().needLogin(() => Get.toNamed(RouteConstant.invitePage));
+                            SharedHelper().needLogin(() => SDKNav.toNamed(RouteConstant.invitePage));
                           },
                         ),
                       SizedBox(height: Get.height * .01),
@@ -148,7 +149,7 @@ class HomeScreen extends StatelessWidget {
                                           return MissionsWidget(
                                             campaignDetails: controller.missions[index],
                                             onTab: () {
-                                              Get.to(CampaignRewardsScreen(selectedCampaignDetails: controller.missions[index]));
+                                              SDKNav.to(CampaignRewardsScreen(selectedCampaignDetails: controller.missions[index]));
                                             },
                                             isHome: true,
                                             isPrimary: index % 2 != 0,
@@ -217,7 +218,7 @@ class HomeScreen extends StatelessWidget {
                                                 confirmText: "close".tr,
                                                 noCancel: true,
                                                 confirm: () {
-                                                  Get.back();
+                                                  SDKNav.back();
                                                 },
                                               );
                                             },

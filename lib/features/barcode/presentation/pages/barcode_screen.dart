@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:ui';
 
-import 'package:my_custom_widget/features/barcode/presentation/getx/user_barcode_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:my_custom_widget/features/barcode/presentation/getx/user_barcode_controller.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../../../core/constants/assets_constants.dart';

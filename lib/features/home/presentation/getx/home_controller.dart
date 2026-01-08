@@ -1,9 +1,10 @@
-import "package:my_custom_widget/features/category/domain/entities/category.dart";
-import "package:my_custom_widget/features/home/domain/usecases/get_home_details.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:my_custom_widget/features/category/domain/entities/category.dart";
+import "package:my_custom_widget/features/home/domain/usecases/get_home_details.dart";
 
 import "../../../../core/constants/constants.dart";
+import "../../../../core/sdk/sdk_rouutes.dart";
 import "../../../../core/utils/theme.dart";
 import "../../../../injection_container.dart";
 import "../../../../my_custom_widget.dart";
@@ -137,7 +138,7 @@ class HomeController extends GetxController {
 
   void gotoSubOrProduct(Category newCat) {
     Get.delete<SubOrProductController>();
-    Get.toNamed(
+    SDKNav.toNamed(
       RouteConstant.subOrProductPage,
       preventDuplicates: false,
       arguments: {'selectedCategory': newCat, 'parentCategoryList': homeDetails?.categoryList?.category ?? []},
@@ -287,7 +288,7 @@ class HomeController extends GetxController {
         }
       }
     } else {
-      Get.offAllNamed(RouteConstant.mainPage);
+      SDKNav.offAllNamed(RouteConstant.mainPage);
       if (isPoints) {
         Get.put(MainController({"index": 2}));
       } else {
