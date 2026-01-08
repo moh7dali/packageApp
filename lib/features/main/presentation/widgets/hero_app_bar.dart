@@ -12,7 +12,7 @@ import '../../../barcode/presentation/getx/user_barcode_controller.dart';
 import '../../../barcode/presentation/pages/barcode_screen.dart';
 import '../../../home/presentation/getx/home_controller.dart';
 
-AppBar heroAppBar({HomeController? controller, Color bg = AppTheme.primaryColor}) {
+AppBar heroAppBar({HomeController? controller, required Color bg}) {
   return AppBar(
     backgroundColor: bg,
     titleSpacing: 10,

@@ -8,14 +8,14 @@ import '../../core/utils/theme.dart';
 import '../helper/shared_helper.dart';
 
 class SarWidget extends StatelessWidget {
-  const SarWidget({super.key, this.size = 18, this.color = AppTheme.primaryColor});
+  const SarWidget({super.key, this.size = 18, this.color});
 
   final double size;
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(AssetsConsts.sarLogo, width: size, height: size, color: color);
+    return SvgPicture.asset(AssetsConsts.sarLogo, width: size, height: size, color: color ?? AppTheme.primaryColor);
   }
 }
 

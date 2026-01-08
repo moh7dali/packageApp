@@ -511,7 +511,7 @@ Widget youTubeWidget(String? url) {
               SizedBox(width: Get.width * .05),
               Container(
                 decoration: BoxDecoration(borderRadius: AppTheme.borderRadius, color: Colors.white),
-                child: const Padding(
+                child:  Padding(
                   padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 5),
                   child: Icon(Icons.play_arrow_rounded, size: 40, color: AppTheme.primaryColor),
                 ),

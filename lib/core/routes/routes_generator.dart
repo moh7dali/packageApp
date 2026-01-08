@@ -70,10 +70,6 @@ class RouteGeneratorList {
       name: RouteConstant.brandScreen,
       page: () => BrandDetailsScreen(brandID: Get.arguments as int),
     ),
-    // GetPage(
-    //   name: RouteConstant.branchesPage,
-    //   page: () => BranchListScreen(brandId: Get.arguments as int),
-    // ),
     GetPage(name: RouteConstant.pointsScreen, page: () => const PointsScreen()),
     GetPage(name: RouteConstant.brandCategoryPage, page: () => const BrandCategoryPage()),
     GetPage(
@@ -127,25 +123,22 @@ class RouteGeneratorList {
     ),
   ];
 
-  static GetPage appPage({required String name, required Widget Function() page}) {
-    // final ConnectivityService connectivityService = Get.put(ConnectivityService());
-    return GetPage(
-      name: name,
-      page: () => Obx(() {
-        // appLog("ConnectivityService.connectionStatus.value =${connectivityService.connectionStatus.value}");
-        // if (connectivityService.connectionStatus.value.first == ConnectivityResult.mobile ||
-        //     connectivityService.connectionStatus.value.first == ConnectivityResult.wifi) {
-        return page();
-        // } else {
-        //   return FutureBuilder<bool>(
-        //       future: InternetConnectionChecker.instance.hasConnection,
-        //       builder: (context, snapshot) {
-        //         if (snapshot.data ?? true) return page();
-        //         return const NoInternetPage();
-        //       });
-        // }
-      }),
-      transition: Transition.fadeIn,
+  Route<dynamic>? onGenerateRoute(RouteSettings settings) {
+    final GetPage? route = appRoutes.firstWhereOrNull(
+          (element) => element.name == settings.name,
     );
+
+    if (route != null) {
+      return GetPageRoute(
+        settings: settings,
+        routeName: route.name,
+        page: route.page,
+        transition: route.transition ?? Transition.fadeIn,
+        binding: route.binding,
+        bindings: route.bindings,
+        popGesture: route.popGesture,
+      );
+    }
+    return null;
   }
 }

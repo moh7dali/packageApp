@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_custom_widget/core/utils/theme.dart';
 import 'package:my_custom_widget/features/home/presentation/getx/home_controller.dart';
 import 'package:my_custom_widget/features/home/presentation/widget/slider_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../shared/helper/shared_helper.dart';
@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
       init: HomeController(),
       builder: (controller) => Scaffold(
         backgroundColor: AppTheme.bgColor,
-        appBar: heroAppBar(controller: controller),
+        appBar: heroAppBar(controller: controller, bg: AppTheme.primaryColor),
         body: RefreshIndicator(
           color: AppTheme.primaryColor,
           onRefresh: () async {

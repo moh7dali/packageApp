@@ -1,3 +1,4 @@
+import 'package:my_custom_widget/core/utils/theme.dart';
 import 'package:my_custom_widget/features/main/presentation/getx/main_controller.dart';
 import 'package:my_custom_widget/features/main/presentation/widgets/hero_app_bar.dart';
 import 'package:my_custom_widget/shared/widgets/bottom_widget.dart';
@@ -39,7 +40,7 @@ class MainScreen extends StatelessWidget {
             }
           },
           child: Scaffold(
-            appBar: controller.currentIndex != 0 ? heroAppBar() : null,
+            appBar: controller.currentIndex != 0 ? heroAppBar(bg: AppTheme.primaryColor) : null,
             bottomNavigationBar: const AppBottomNavigationBar(),
             body: Column(children: [Expanded(child: controller.currentWidget)]),
             // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

@@ -8,7 +8,7 @@ class BottomWidget extends StatelessWidget {
   final String cancelText;
   final String confirmText;
   final Color cancelColor;
-  final Color confirmColor;
+  final Color? confirmColor;
   final VoidCallback onCancel;
   final VoidCallback onConfirm;
 
@@ -19,7 +19,7 @@ class BottomWidget extends StatelessWidget {
     this.cancelText = "cancel",
     this.confirmText = "confirm",
     this.cancelColor = AppTheme.accentColor,
-    this.confirmColor = AppTheme.primaryColor,
+    this.confirmColor,
     required this.onCancel,
     required this.onConfirm,
   });
@@ -69,7 +69,7 @@ class BottomWidget extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: confirmColor,
+                    backgroundColor: confirmColor??AppTheme.primaryColor,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                   ),
                   onPressed: onConfirm,

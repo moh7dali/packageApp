@@ -130,7 +130,7 @@ class MapPage extends StatelessWidget {
                       ignoring: true,
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
-                        children: const [
+                        children:  [
                           Icon(
                             Icons.location_on_outlined,
                             size: 50,

@@ -1,13 +1,14 @@
 import "dart:io";
 
-import "package:my_custom_widget/my_custom_widget.dart";
-import "package:my_custom_widget/shared/helper/device_info.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
+import "package:my_custom_widget/my_custom_widget.dart";
+import "package:my_custom_widget/shared/helper/device_info.dart";
 import "package:package_info_plus/package_info_plus.dart";
 import "package:url_launcher/url_launcher.dart";
 
 import "../../../../core/constants/constants.dart";
+import "../../../../core/sdk/sdk_rouutes.dart";
 import "../../../../core/utils/app_log.dart";
 import "../../../../injection_container.dart";
 import "../../../../shared/helper/shared_helper.dart";
@@ -153,7 +154,7 @@ class SplashController extends GetxController {
         Get.offAllNamed(RouteConstant.completeProfile);
       }
     } else {
-      Get.offAllNamed(RouteConstant.onBoarding);
+      SDKNav.offAllNamed(RouteConstant.onBoarding);
     }
   }
 }

@@ -47,7 +47,7 @@ class SplashScreen extends StatelessWidget {
                             AnimatedOpacity(
                               opacity: controller.isLoadingCircle ? 1 : 0,
                               duration: const Duration(milliseconds: 300),
-                              child: const CircularProgressIndicator(color: AppTheme.primaryColor),
+                              child:  CircularProgressIndicator(color: AppTheme.primaryColor),
                             ),
                           ],
                         ),

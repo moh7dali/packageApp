@@ -106,7 +106,7 @@ class Delivery extends StatelessWidget {
                   padding: const EdgeInsets.all(12),
                   child: Row(
                     children: [
-                      const Icon(Icons.add_location_alt_outlined, color: AppTheme.primaryColor, size: 30),
+                       Icon(Icons.add_location_alt_outlined, color: AppTheme.primaryColor, size: 30),
                       Expanded(
                         child: Text(
                           'addNewAddress'.tr,
@@ -178,7 +178,7 @@ class PickUp extends StatelessWidget {
               padding: const EdgeInsets.all(4),
               child: Row(
                 children: [
-                  const Icon(Icons.search_rounded, color: AppTheme.primaryColor),
+                   Icon(Icons.search_rounded, color: AppTheme.primaryColor),
                   const SizedBox(width: 10),
                   Expanded(
                     child: TextField(

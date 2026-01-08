@@ -5,8 +5,10 @@ import '../../my_custom_widget.dart';
 
 class AppTheme {
   static const primaryColorString = "#711D20";
-  static const primaryColor = Color(0xff711D20);
-  static const secondaryColor = Color(0xffdadada);
+
+  static Color get primaryColor => MozaicLoyaltySDK.settings.primaryColor ?? const Color(0xff711D20);
+
+  static Color get secondaryColor => MozaicLoyaltySDK.settings.secondaryColor ?? const Color(0xffdadada);
   static const bgColor = Color(0xffF7F9F8);
   static const accentColor = whiteColor;
   static const blackColor = Colors.black;
@@ -17,14 +19,7 @@ class AppTheme {
   static const optionsBGColor = Color(0xffBCBEC0);
   static const pickUp = Color(0xff454547);
   static const delivery = Color(0xffd0d0d0);
-  static final gradient1 = LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [
-      primaryColor,
-      Color(0xFFC9A89A),
-    ],
-  );
+  static final gradient1 = LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [primaryColor, Color(0xFFC9A89A)]);
 
   static Color get textColor => themeController.isDark.value ? accentColor : blackColor;
 
@@ -33,7 +28,7 @@ class AppTheme {
   static BorderRadius borderRadius = BorderRadius.circular(8.r);
   static BorderRadius bigBorderRadius = BorderRadius.circular(12.r);
 
-  static const underLineBorder = UnderlineInputBorder(borderSide: BorderSide(color: primaryColor, width: 1));
+  static final underLineBorder = UnderlineInputBorder(borderSide: BorderSide(color: primaryColor, width: 1));
   static final outLineBorder = OutlineInputBorder(
     borderSide: BorderSide(color: secondaryColor, width: 1),
     borderRadius: bigBorderRadius,
@@ -55,12 +50,7 @@ class AppTheme {
   static const double btnSize = 12;
 
   static TextStyle textStyle({required Color color, double size = size16, bool isBold = false}) {
-    return TextStyle(
-      color: color,
-      fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
-      fontSize: size.sp,
-      fontFamily: "font",
-    );
+    return TextStyle(color: color, fontWeight: isBold ? FontWeight.bold : FontWeight.normal, fontSize: size.sp, fontFamily: "font");
   }
 
   static Color fromHex(String hexString, {double withOpacity = 1}) {
