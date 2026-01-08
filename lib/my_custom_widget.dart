@@ -67,49 +67,22 @@ class MozaicLoyaltySDK extends StatelessWidget {
       builder: (context, child) {
         return PopScope(
           canPop: false,
-          // onPopInvokedWithResult: (didPop, result) async {
-          //   if (didPop) return;
-          //   if (Get.isDialogOpen == true || Get.isBottomSheetOpen == true) {
-          //     Get.back();
-          //     return;
-          //   }
-          //   final state = MozaicLoyaltySDK.sdkNavKey.currentState;
-          //   if (state != null && state.canPop()) {
-          //     state.pop();
-          //   } else {
-          //     Navigator.of(context).pop();
-          //   }
-          // },
           onPopInvokedWithResult: (didPop, result) async {
             if (didPop) return;
 
-            // 1. Check for Overlays safely
             if (Get.isDialogOpen == true || Get.isBottomSheetOpen == true) {
               await SharedHelper().closeAllDialogs();
               return;
             }
 
-            // 2. Check internal pages
-            final sdkNav = MozaicLoyaltySDK.sdkNavKey.currentState;
-            if (sdkNav != null && sdkNav.canPop()) {
-              sdkNav.pop();
+            final state = MozaicLoyaltySDK.sdkNavKey.currentState;
+            if (state != null && state.canPop()) {
+              state.pop();
             } else {
-              // Exit SDK to Host
-              if (Navigator.of(context).canPop()) {
-                Navigator.of(context).pop();
-              }
+              Navigator.of(context).pop();
             }
           },
-          child: GetBuilder<ThemeController>(
-            init: themeController,
-            builder: (controller) {
-              if (MozaicLoyaltySDK.settings.hostAppUseGetx) {
-                return _buildNestedNavigator();
-              } else {
-                return _buildStandaloneApp();
-              }
-            },
-          ),
+          child: MozaicLoyaltySDK.settings.hostAppUseGetx ? _buildNestedNavigator() : _buildStandaloneApp(),
         );
       },
     );

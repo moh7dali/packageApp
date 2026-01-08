@@ -29,32 +29,23 @@ class SharedHelper<T> {
   }
 
   Future<void> closeAllDialogs() async {
-    // 1. Clear snackbars
     SnackbarController.cancelAllSnackbars();
 
-    // 2. Safely close dialogs/bottom sheets
-    while (Get.isDialogOpen == true || Get.isBottomSheetOpen == true) {
-      // Get the safest context available
-      final context = MozaicLoyaltySDK.sdkNavKey.currentContext ?? Get.overlayContext;
-
-      if (context != null) {
-        final nav = Navigator.of(context, rootNavigator: true);
-
-        // CRITICAL: Only pop if there is a route to pop!
-        if (nav.canPop()) {
-          nav.pop();
-        } else {
-          // If we can't pop via Navigator, try the GetX way as a last resort
-          Get.back();
-          break; // Break loop to prevent infinite retry
+    if (MozaicLoyaltySDK.settings.hostAppUseGetx == false) {
+      Get.until((_) => !Get.isDialogOpen!);
+      Get.until((_) => !Get.isBottomSheetOpen!);
+    } else {
+      while (Get.isDialogOpen == true || Get.isBottomSheetOpen == true) {
+        Get.back(id: 1, closeOverlays: true);
+        await Future.delayed(const Duration(milliseconds: 50));
+        if (Get.isDialogOpen == true || Get.isBottomSheetOpen == true) {
+          final context = MozaicLoyaltySDK.sdkNavKey.currentContext;
+          if (context != null) {
+            Navigator.of(context, rootNavigator: true).pop();
+          }
         }
-      } else {
-        Get.back();
-        break;
+        await Future.delayed(const Duration(milliseconds: 50));
       }
-
-      // Small delay to allow Get.isDialogOpen to update
-      await Future.delayed(const Duration(milliseconds: 50));
     }
   }
 
@@ -134,7 +125,7 @@ class SharedHelper<T> {
 
   void scaleDialog(Widget widget, {bool dismissible = true, double horizontal = 0}) {
     Get.generalDialog(
-      navigatorKey: MozaicLoyaltySDK.sdkNavKey,
+      navigatorKey: MozaicLoyaltySDK.settings.hostAppUseGetx ? Get.nestedKey(1) : MozaicLoyaltySDK.sdkNavKey,
       barrierDismissible: dismissible,
       barrierLabel: "appName".tr,
       barrierColor: AppTheme.secondaryColor.withOpacity(.75),
