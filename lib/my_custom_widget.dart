@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:http_proxy_override/http_proxy_override.dart';
 import 'package:my_custom_widget/core/utils/theme.dart';
 import 'package:my_custom_widget/core/utils/translate/translation.dart';
+import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 import 'package:my_custom_widget/shared/helper/shared_preferences_storage.dart';
 
 import 'core/constants/constants.dart';
@@ -32,6 +33,7 @@ NetworkInfo? networkInfo;
 class MozaicLoyaltySDK extends StatelessWidget {
   const MozaicLoyaltySDK({super.key});
 
+  static final GlobalKey<NavigatorState> sdkNavKey = GlobalKey<NavigatorState>(debugLabel: 'MozaicSDKKey');
   static bool _initialized = false;
   static const int sdkNavigatorId = 1;
   static late MozaicLoyaltySDKSettings settings;
@@ -63,11 +65,52 @@ class MozaicLoyaltySDK extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       builder: (context, child) {
-        if (MozaicLoyaltySDK.settings.hostAppUseGetx) {
-          return _buildNestedNavigator();
-        } else {
-          return _buildStandaloneApp();
-        }
+        return PopScope(
+          canPop: false,
+          // onPopInvokedWithResult: (didPop, result) async {
+          //   if (didPop) return;
+          //   if (Get.isDialogOpen == true || Get.isBottomSheetOpen == true) {
+          //     Get.back();
+          //     return;
+          //   }
+          //   final state = MozaicLoyaltySDK.sdkNavKey.currentState;
+          //   if (state != null && state.canPop()) {
+          //     state.pop();
+          //   } else {
+          //     Navigator.of(context).pop();
+          //   }
+          // },
+          onPopInvokedWithResult: (didPop, result) async {
+            if (didPop) return;
+
+            // 1. Check for Overlays safely
+            if (Get.isDialogOpen == true || Get.isBottomSheetOpen == true) {
+              await SharedHelper().closeAllDialogs();
+              return;
+            }
+
+            // 2. Check internal pages
+            final sdkNav = MozaicLoyaltySDK.sdkNavKey.currentState;
+            if (sdkNav != null && sdkNav.canPop()) {
+              sdkNav.pop();
+            } else {
+              // Exit SDK to Host
+              if (Navigator.of(context).canPop()) {
+                Navigator.of(context).pop();
+              }
+            }
+          },
+          child: GetBuilder<ThemeController>(
+            init: themeController,
+            builder: (controller) {
+              if (MozaicLoyaltySDK.settings.hostAppUseGetx) {
+                return _buildNestedNavigator();
+              } else {
+                return _buildStandaloneApp();
+              }
+            },
+          ),
+        );
       },
     );
   }
@@ -79,7 +122,7 @@ class MozaicLoyaltySDK extends StatelessWidget {
         locale: Locale(appLanguage),
         delegates: const [GlobalMaterialLocalizations.delegate, GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate],
         child: Navigator(
-          key: Get.nestedKey(sdkNavigatorId),
+          key: MozaicLoyaltySDK.sdkNavKey,
           initialRoute: RouteConstant.splashPage,
           onGenerateRoute: (settings) => RouteGeneratorList().onGenerateRoute(settings),
         ),
@@ -89,6 +132,7 @@ class MozaicLoyaltySDK extends StatelessWidget {
 
   Widget _buildStandaloneApp() {
     return GetMaterialApp(
+      navigatorKey: MozaicLoyaltySDK.sdkNavKey,
       debugShowCheckedModeBanner: false,
       translations: Translation(),
       locale: Locale(appLanguage),

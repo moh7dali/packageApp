@@ -1,9 +1,5 @@
 import 'dart:async';
 
-import 'package:my_custom_widget/core/utils/app_log.dart';
-import 'package:my_custom_widget/features/barcode/presentation/pages/barcode_screen.dart';
-import 'package:my_custom_widget/shared/widgets/bottom_widget.dart';
-import 'package:my_custom_widget/shared/widgets/button_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +7,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:lottie/lottie.dart';
+import 'package:my_custom_widget/core/utils/app_log.dart';
+import 'package:my_custom_widget/features/barcode/presentation/pages/barcode_screen.dart';
+import 'package:my_custom_widget/shared/widgets/bottom_widget.dart';
+import 'package:my_custom_widget/shared/widgets/button_widget.dart';
 
 import '../../core/constants/assets_constants.dart';
 import '../../core/constants/constants.dart';
@@ -24,15 +24,38 @@ import 'shared_preferences_storage.dart';
 class SharedHelper<T> {
   static String getSecondDurationFormat(Duration duration) {
     String twoDigits(int n) => n.toString().padLeft(2, "0");
-    // String twoDigitMinutes = twoDigits(duration.inMinutes.remainder(60));
     String twoDigitSeconds = twoDigits(duration.inSeconds.remainder(60));
     return twoDigitSeconds;
   }
 
-  Future closeAllDialogs() async {
+  Future<void> closeAllDialogs() async {
+    // 1. Clear snackbars
     SnackbarController.cancelAllSnackbars();
-    Get.until((_) => !Get.isDialogOpen!);
-    Get.until((_) => !Get.isBottomSheetOpen!);
+
+    // 2. Safely close dialogs/bottom sheets
+    while (Get.isDialogOpen == true || Get.isBottomSheetOpen == true) {
+      // Get the safest context available
+      final context = MozaicLoyaltySDK.sdkNavKey.currentContext ?? Get.overlayContext;
+
+      if (context != null) {
+        final nav = Navigator.of(context, rootNavigator: true);
+
+        // CRITICAL: Only pop if there is a route to pop!
+        if (nav.canPop()) {
+          nav.pop();
+        } else {
+          // If we can't pop via Navigator, try the GetX way as a last resort
+          Get.back();
+          break; // Break loop to prevent infinite retry
+        }
+      } else {
+        Get.back();
+        break;
+      }
+
+      // Small delay to allow Get.isDialogOpen to update
+      await Future.delayed(const Duration(milliseconds: 50));
+    }
   }
 
   static String getNumberFormat(num number, {bool isCurrency = false}) {
@@ -111,9 +134,12 @@ class SharedHelper<T> {
 
   void scaleDialog(Widget widget, {bool dismissible = true, double horizontal = 0}) {
     Get.generalDialog(
-      pageBuilder: (ctx, a1, a2) {
-        return Container();
-      },
+      navigatorKey: MozaicLoyaltySDK.sdkNavKey,
+      barrierDismissible: dismissible,
+      barrierLabel: "appName".tr,
+      barrierColor: AppTheme.secondaryColor.withOpacity(.75),
+      transitionDuration: const Duration(milliseconds: 300),
+      pageBuilder: (ctx, a1, a2) => const SizedBox.shrink(),
       transitionBuilder: (ctx, a1, a2, child) {
         var curve = Curves.easeInOut.transform(a1.value);
         return Padding(
@@ -121,10 +147,6 @@ class SharedHelper<T> {
           child: Transform.scale(scale: curve, child: widget),
         );
       },
-      barrierColor: AppTheme.secondaryColor.withOpacity(.75),
-      barrierDismissible: dismissible,
-      barrierLabel: "appName".tr,
-      transitionDuration: const Duration(milliseconds: 300),
     );
   }
 

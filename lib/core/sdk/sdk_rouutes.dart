@@ -1,23 +1,30 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../my_custom_widget.dart';
 
 class SDKNav {
-  static int? get currentId => MozaicLoyaltySDK.settings.hostAppUseGetx ? MozaicLoyaltySDK.sdkNavigatorId : null;
+  static NavigatorState? get _state => MozaicLoyaltySDK.sdkNavKey.currentState;
 
   static void toNamed(String route, {dynamic arguments, bool preventDuplicates = true}) {
-    Get.toNamed(route, arguments: arguments, id: currentId, preventDuplicates: true);
+    _state?.pushNamed(route, arguments: arguments);
+  }
+
+  static void to(dynamic page) {
+    _state?.push(page);
   }
 
   static void offAllNamed(String route, {dynamic arguments}) {
-    Get.offAllNamed(route, id: currentId, arguments: arguments);
+    _state?.pushNamedAndRemoveUntil(route, (route) => false, arguments: arguments);
   }
 
   static void back() {
-    Get.back(id: currentId);
-  }
-
-  static void to(dynamic page, {dynamic arguments}) {
-    Get.to(page, arguments: arguments, id: currentId);
+    if (Get.isDialogOpen == true || Get.isBottomSheetOpen == true) {
+      Get.back();
+    } else {
+      if (_state?.canPop() ?? false) {
+        _state?.pop();
+      }
+    }
   }
 }
