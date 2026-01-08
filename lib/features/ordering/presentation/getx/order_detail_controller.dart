@@ -8,7 +8,7 @@ import '../../domain/entity/order_history.dart';
 
 class OrderDetailsController extends GetxController {
   final GetOrderDetails getOrderDetails;
-  final OrderHistory orderHistory;
+  final OrderHistory? orderHistory;
 
   OrderDetailsController({required this.orderHistory}) : getOrderDetails = sl();
 
@@ -16,7 +16,7 @@ class OrderDetailsController extends GetxController {
   bool isLoading = true;
 
   Future<void> getOrderDetailsApi() async {
-    Map<String, dynamic> body = {"orderId": "${orderHistory.id}"};
+    Map<String, dynamic> body = {"orderId": "${orderHistory?.id}"};
     await getOrderDetails.repository.getOrderDetails(body: body).then(
           (value) => value.fold(
             (failure) {
