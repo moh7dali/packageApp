@@ -1,6 +1,5 @@
 import 'package:dismissible_page/dismissible_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../core/constants/assets_constants.dart';
 import '../../core/sdk/sdk_rouutes.dart';

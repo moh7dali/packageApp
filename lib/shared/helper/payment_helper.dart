@@ -1,7 +1,7 @@
-import 'package:my_custom_widget/core/constants/constants.dart';
-import 'package:my_custom_widget/core/utils/theme.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/core/constants/constants.dart';
+import 'package:my_custom_widget/core/utils/theme.dart';
 
 const methodChannel = MethodChannel('paymob_sdk_flutter');
 

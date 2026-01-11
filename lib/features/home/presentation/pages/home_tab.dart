@@ -8,15 +8,12 @@ import '../../../../core/constants/constants.dart';
 import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../../main/presentation/widgets/hero_app_bar.dart';
-import '../../../order_method/presentation/pages/selected_order_method.dart';
 import '../../../rewards/presentation/screens/campign_rewards_screen.dart';
 import '../../domain/entities/slider.dart';
-import '../widget/curved.dart';
 import '../widget/loyalty_card_loading.dart';
 import '../widget/loyalty_card_widget.dart';
 import '../widget/missioons_widget.dart';
 import '../widget/pages_card_loading.dart';
-import '../widget/pick_up_branch_widget.dart';
 import '../widget/refere_widget.dart';
 import '../widget/rewards_widget.dart';
 
@@ -28,7 +25,6 @@ class HomeScreen extends StatelessWidget {
     return GetBuilder<HomeController>(
       init: HomeController(),
       builder: (controller) => Scaffold(
-        backgroundColor: AppTheme.bgColor,
         appBar: heroAppBar(controller: controller, bg: AppTheme.primaryColor),
         body: RefreshIndicator(
           color: AppTheme.primaryColor,
@@ -54,40 +50,6 @@ class HomeScreen extends StatelessWidget {
                 : Column(
                     children: [
                       LoyaltyCardWidget(homeController: controller),
-                      if (controller.isLogin)
-                        PickupBranchCard(
-                          selectedBranch: controller.selectedBranch,
-                          onChangeTap: () {
-                            SharedHelper().scaleDialog(
-                              SelectedOrderMethod(
-                                onFinish: () async {
-                                  controller.setSelectedBranch();
-                                },
-                              ),
-                            );
-                          },
-                        ),
-                      CurvedCategoryScroller(
-                        items: controller.homeDetails?.categoryList?.category ?? [],
-                        onTap: (category) {
-                          if (!controller.isLogin) {
-                            controller.gotoSubOrProduct(category);
-                            return;
-                          }
-                          if (controller.selectedBranch != null) {
-                            controller.gotoSubOrProduct(category);
-                            return;
-                          }
-                          SharedHelper().scaleDialog(
-                            SelectedOrderMethod(
-                              onFinish: () async {
-                                controller.setSelectedBranch();
-                                controller.gotoSubOrProduct(category);
-                              },
-                            ),
-                          );
-                        },
-                      ),
                       SizedBox(height: Get.height * .01),
                       SliderAdsWidget(
                         slides: (controller.homeDetails?.sliders?.sliders ?? []).firstOrNull?.sliderItems ?? [],

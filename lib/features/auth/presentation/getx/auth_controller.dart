@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:my_custom_widget/my_custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -205,7 +204,6 @@ class AuthController extends GetxController with CodeAutoFill {
 
   skip() {
     FocusManager.instance.primaryFocus?.unfocus();
-    isSkipped = ValueNotifier(true);
     SDKNav.offAllNamed(RouteConstant.mainPage);
   }
 

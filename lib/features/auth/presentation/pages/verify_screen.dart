@@ -12,7 +12,6 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../shared/getx/merchant_info_controller.dart';
 import '../../../../shared/widgets/button_widget.dart';
-import '../../../../shared/widgets/change_language_widget.dart';
 import '../../../../shared/widgets/shake_widget.dart';
 import '../getx/auth_controller.dart';
 import '../widgets/spinner_text_widget.dart';
@@ -31,15 +30,7 @@ class VerifyScreen extends StatelessWidget {
     }
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        leading: Container(),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: ChangeLanguageWidget(pageRoute: ''),
-          ),
-        ],
-      ),
+      appBar: AppBar(leading: Container()),
       body: GetBuilder<AuthController>(
         builder: (c) => Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -52,12 +43,10 @@ class VerifyScreen extends StatelessWidget {
                   SizedBox(height: Get.height * .01),
                   HeroLogo(smallLogo: true),
                   SizedBox(height: Get.height * .03),
-
-                  // ✅ Main WOW Card
                   Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: AppTheme.bgColor,
+                      color: AppTheme.bgThemeColor,
                       borderRadius: BorderRadius.circular(22),
                       border: Border.all(color: AppTheme.primaryColor.withOpacity(0.35)),
                       boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 18, offset: const Offset(0, 10))],
@@ -79,13 +68,12 @@ class VerifyScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 12),
 
-                          // ✅ Phone pill
                           Directionality(
                             textDirection: TextDirection.ltr,
                             child: Container(
                               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: AppTheme.bgThemeColor,
                                 borderRadius: BorderRadius.circular(18),
                                 border: Border.all(color: AppTheme.primaryColor.withOpacity(.14)),
                               ),
@@ -102,9 +90,9 @@ class VerifyScreen extends StatelessWidget {
                             child: Container(
                               padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: AppTheme.bgThemeColor,
                                 borderRadius: BorderRadius.circular(22),
-                                border: Border.all(color: AppTheme.primaryColor.withOpacity(.14)),
+                                border: Border.all(color: AppTheme.primaryColor.withOpacity(.5)),
                               ),
                               child: Directionality(
                                 textDirection: TextDirection.ltr,
@@ -246,7 +234,6 @@ class VerifyScreen extends StatelessWidget {
 
                   SizedBox(height: Get.height * .03),
 
-                  // ✅ Wrong mobile (same logic)
                   GestureDetector(
                     onTap: () {
                       String number = controller.mobileController.text;
@@ -270,9 +257,9 @@ class VerifyScreen extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: AppTheme.bgThemeColor,
                         borderRadius: BorderRadius.circular(18),
-                        border: Border.all(color: AppTheme.primaryColor.withOpacity(.12)),
+                        border: Border.all(color: AppTheme.primaryColor.withOpacity(.5)),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,

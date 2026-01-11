@@ -15,7 +15,7 @@ class LoyaltyCardLoading extends StatelessWidget {
         padding: const EdgeInsets.all(36.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [LoadingAnimationWidget.beat(color: AppTheme.accentColor, size: Get.height * .12)],
+          children: [LoadingAnimationWidget.beat(color: AppTheme.primaryColor, size: Get.height * .12)],
         ),
       ),
     );

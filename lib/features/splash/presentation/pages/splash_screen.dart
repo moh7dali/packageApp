@@ -58,7 +58,7 @@ class SplashScreen extends StatelessWidget {
                           future: PackageInfo.fromPlatform(),
                           builder: (context, snapshot) => Text(
                             'V.${snapshot.data?.version ?? ""} ${ApiEndPoints.apiLink.contains("staging") ? "staging" : ""}',
-                            style: AppTheme.textStyle(size: AppTheme.size14, color: AppTheme.accentColor),
+                            style: AppTheme.textStyle(size: AppTheme.size14, color: AppTheme.primaryColor),
                           ),
                         ),
                       ),

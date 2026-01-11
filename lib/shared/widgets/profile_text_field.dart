@@ -1,9 +1,9 @@
-import 'package:my_custom_widget/core/utils/app_log.dart';
-import 'package:my_custom_widget/shared/widgets/shake_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/core/utils/app_log.dart';
+import 'package:my_custom_widget/shared/widgets/shake_widget.dart';
 
 import '../../core/utils/theme.dart';
 import '../helper/shared_helper.dart';
@@ -90,10 +90,10 @@ class ProfileTextField extends StatelessWidget {
               style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size14),
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: AppTheme.bgThemeColor,
                 counter: const SizedBox(width: 0, height: 0),
                 hintText: label.tr,
-                hintStyle: AppTheme.textStyle(color: AppTheme.textColor.withOpacity(.45), size: AppTheme.size14),
+                hintStyle: AppTheme.textStyle(color: AppTheme.greyColor, size: AppTheme.size14),
                 contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(18),

@@ -4,37 +4,21 @@ import 'package:get/get.dart';
 import '../../injection_container.dart';
 import '../helper/shared_preferences_storage.dart';
 
-class ThemeController<T> extends GetxController {
+class ThemeController extends GetxController {
   Rx<ThemeMode> themeMode = ThemeMode.light.obs;
   Rx<bool> isDark = false.obs;
 
-  @override
-  void onInit() {
-    init();
-    super.onInit();
+  Future<void> initTheme() async {
+    bool darkPreference = await sl<SharedPreferencesStorage>().getTheme();
+    isDark.value = darkPreference;
+    themeMode.value = darkPreference ? ThemeMode.dark : ThemeMode.light;
+    Get.changeThemeMode(themeMode.value);
   }
 
-  init() async {
-    // isDark.value = await sl<SharedPreferencesStorage>().getTheme();
-    // if (isDark.value) {
-    themeMode.value = ThemeMode.light;
-    // }
-  }
-
-  void toggleTheme({GetxController? controller}) {
-    themeMode.value = themeMode.value == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
-    isDark.value = themeMode.value == ThemeMode.dark;
+  void toggleTheme() {
+    isDark.value = !isDark.value;
+    themeMode.value = isDark.value ? ThemeMode.dark : ThemeMode.light;
     Get.changeThemeMode(themeMode.value);
     sl<SharedPreferencesStorage>().setTheme(isDark.value);
-    Get.forceAppUpdate();
-    // if (Get.isRegistered<MainController>() && Get.isRegistered<HomeController>()) {
-    //   print("Yes");
-    //   MainController mainController = Get.find<MainController>();
-    //   mainController.update();
-    //   HomeController homeController = Get.find<HomeController>();
-    //   homeController.update();
-    // } else {
-    //   print("No");
-    // }
   }
 }

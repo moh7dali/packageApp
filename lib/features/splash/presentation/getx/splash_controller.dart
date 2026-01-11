@@ -1,8 +1,6 @@
 import "dart:io";
 
-import "package:flutter/services.dart";
 import "package:get/get.dart";
-import "package:my_custom_widget/my_custom_widget.dart";
 import "package:my_custom_widget/shared/helper/device_info.dart";
 import "package:package_info_plus/package_info_plus.dart";
 import "package:url_launcher/url_launcher.dart";
@@ -34,32 +32,7 @@ class SplashController extends GetxController {
     super.onInit();
     Future.delayed(Duration(seconds: 1), () {
       DeviceInfo.getDeviceData();
-      if (!fromPush) {
-        if (isSystem && systemNotificationModel != null) {
-          SharedHelper().actionDialog(
-            systemNotificationModel!.title ?? "",
-            systemNotificationModel!.body ?? "",
-            hasImage: systemNotificationModel!.image != null,
-            image: systemNotificationModel!.image,
-            confirm: () {
-              SharedHelper().closeAllDialogs();
-              _getApplicationVersion();
-              systemNotificationModel = null;
-              isSystem = false;
-            },
-            cancel: () {
-              SystemNavigator.pop();
-              if (Platform.isIOS) {
-                exit(0);
-              }
-            },
-          );
-        } else {
-          _getApplicationVersion();
-          systemNotificationModel = null;
-          isSystem = false;
-        }
-      }
+      _getApplicationVersion();
     });
   }
 
@@ -145,7 +118,6 @@ class SplashController extends GetxController {
     appLog(await SharedHelper().isUserLoggedIn(), tag: "isUserLoggedIn");
     appLog(await sl<SharedPreferencesStorage>().getIsCompleted(), tag: "getIsCompleted");
     sl<SharedPreferencesStorage>().setShowQr(true);
-    cartItems.value = await sl<SharedPreferencesStorage>().getCartItems();
     if (await SharedHelper().isUserLoggedIn()) {
       if (await sl<SharedPreferencesStorage>().getIsCompleted()) {
         SDKNav.offAllNamed(RouteConstant.mainPage);
@@ -154,7 +126,7 @@ class SplashController extends GetxController {
         SDKNav.offAllNamed(RouteConstant.completeProfile);
       }
     } else {
-      SDKNav.offAllNamed(RouteConstant.onBoarding);
+      SDKNav.offAllNamed(RouteConstant.authPage);
     }
   }
 }

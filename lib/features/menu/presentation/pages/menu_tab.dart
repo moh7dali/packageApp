@@ -6,18 +6,19 @@ import 'package:get/get.dart';
 import 'package:my_custom_widget/core/constants/constants.dart';
 import 'package:my_custom_widget/core/utils/theme.dart';
 import 'package:my_custom_widget/features/auth/presentation/Getx/auth_controller.dart';
-import 'package:my_custom_widget/features/menu/presentation/pages/language_page.dart';
 import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 import 'package:my_custom_widget/shared/widgets/hero_logo.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/sdk/sdk_rouutes.dart';
+import '../../../../my_custom_widget.dart';
 import '../../../../shared/screens/app_web_view_Screen.dart';
 import '../../../loyalty/presentation/pages/point_schema_page.dart';
 import '../getx/menu_controller.dart';
 import '../widget/developer_widget.dart';
 import '../widget/menu_tab_item_widget.dart';
+import 'language_page.dart';
 
 class MenuTab extends StatelessWidget {
   const MenuTab({super.key});
@@ -75,13 +76,7 @@ class MenuTab extends StatelessWidget {
                             SharedHelper().scaleDialog(PointSchemaPage());
                           },
                         ),
-                        MenuTabItemWidget(
-                          title: 'orderHistory',
-                          icon: AssetsConsts.ordersHistory,
-                          onTap: () {
-                            SharedHelper().needLogin(() => SDKNav.toNamed(RouteConstant.orderHistoryPage));
-                          },
-                        ),
+
                         MenuTabItemWidget(
                           title: 'inviteFriends',
                           icon: AssetsConsts.inviteFriend,
@@ -90,12 +85,13 @@ class MenuTab extends StatelessWidget {
                           },
                         ),
                         MenuTabItemWidget(
-                          title: 'contactUs',
-                          icon: AssetsConsts.engageWithUs,
+                          title: 'Language',
+                          icon: AssetsConsts.language,
                           onTap: () {
-                            SDKNav.toNamed(RouteConstant.merchantInfoPage);
+                            SharedHelper().bottomSheet(LanguagePage());
                           },
                         ),
+
                         MenuTabItemWidget(
                           title: 'rateOurApp',
                           icon: AssetsConsts.rateOurApp,
@@ -107,13 +103,7 @@ class MenuTab extends StatelessWidget {
                             }
                           },
                         ),
-                        MenuTabItemWidget(
-                          title: 'Language',
-                          icon: AssetsConsts.language,
-                          onTap: () {
-                            SharedHelper().bottomSheet(LanguagePage());
-                          },
-                        ),
+
                         MenuTabItemWidget(
                           title: 'termsCondition',
                           icon: AssetsConsts.terms,
@@ -136,11 +126,22 @@ class MenuTab extends StatelessWidget {
                           },
                           isLast: true,
                         ),
+                        MenuTabItemWidget(
+                          title: 'nightMode',
+                          icon: AssetsConsts.iconLogo,
+                          onTap: () {
+                            controller.changeTheme = !controller.changeTheme;
+                            controller.update();
+                            themeController.toggleTheme();
+                            Get.back();
+                          },
+                          isNight: true,
+                          controller: controller,
+                        ),
                       ],
                     ),
                   ),
                 ),
-
                 if (kDebugMode) ...[
                   const SizedBox(height: 14),
                   // Debug Logout Card (still premium)
@@ -170,7 +171,6 @@ class MenuTab extends StatelessWidget {
                     ),
                   ),
                 ],
-
                 const SizedBox(height: 16),
               ],
             ),

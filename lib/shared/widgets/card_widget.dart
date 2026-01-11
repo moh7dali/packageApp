@@ -11,12 +11,12 @@ class CardAppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.accentColor,
+        color: AppTheme.primaryColor,
         borderRadius: AppTheme.bigBorderRadius,
-        border: Border.all(color: AppTheme.accentColor, width: 1),
+        border: Border.all(color: AppTheme.primaryColor, width: 1),
         boxShadow: [
           BoxShadow(
-            color: AppTheme.accentColor,
+            color: AppTheme.primaryColor,
             blurRadius: 15,
             blurStyle: BlurStyle.solid,
           )

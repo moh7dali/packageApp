@@ -29,7 +29,7 @@ class PagesCard extends StatelessWidget {
           Positioned(
             child: Text(
               pageInfo.title,
-              style: AppTheme.textStyle(color: AppTheme.accentColor, size: AppTheme.size16),
+              style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size16),
             ),
           ),
         ],

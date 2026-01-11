@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../my_custom_widget.dart';
 import '../../../../shared/getx/language_controller.dart';
+import '../../../../shared/helper/shared_helper.dart';
 import '../../../../shared/widgets/loading_widget.dart';
 
 class LanguagePage extends StatelessWidget {
@@ -38,7 +38,7 @@ class LanguagePage extends StatelessWidget {
               child: Card(
                 // width: Get.width,
                 // decoration: BoxDecoration(
-                color: appLanguage == 'ar' ? AppTheme.primaryColor : AppTheme.accentColor,
+                color: appLanguage == 'ar' ? AppTheme.primaryColor : AppTheme.primaryColor,
                 //   boxShadow: [BoxShadow(color: AppTheme.blackColor.withOpacity(.7), blurRadius: 10, blurStyle: BlurStyle.outer)],
                 //   borderRadius: AppTheme.borderRadius,
                 // ),
@@ -46,12 +46,12 @@ class LanguagePage extends StatelessWidget {
                   padding: const EdgeInsets.all(8),
                   child: Row(
                     children: [
-                      if (appLanguage == "ar") Icon(Icons.check, color: AppTheme.accentColor),
+                      if (appLanguage == "ar") Icon(Icons.check, color: AppTheme.primaryColor),
                       Expanded(
                         child: Text(
                           'العربية',
                           style: AppTheme.textStyle(
-                            color: controller.appLang == "ar" ? AppTheme.accentColor : AppTheme.textColor,
+                            color: controller.appLang == "ar" ? AppTheme.primaryColor : AppTheme.textColor,
                             size: AppTheme.size18,
                             isBold: true,
                           ),
@@ -77,7 +77,7 @@ class LanguagePage extends StatelessWidget {
               child: Card(
                 // width: Get.width,
                 // decoration: BoxDecoration(
-                color: appLanguage == 'en' ? AppTheme.primaryColor : AppTheme.accentColor,
+                color: appLanguage == 'en' ? AppTheme.primaryColor : AppTheme.primaryColor,
                 //   boxShadow: [BoxShadow(color: AppTheme.blackColor.withOpacity(.7), blurRadius: 10, blurStyle: BlurStyle.outer)],
                 //   borderRadius: AppTheme.borderRadius,
                 // ),
@@ -85,12 +85,12 @@ class LanguagePage extends StatelessWidget {
                   padding: EdgeInsets.all(8),
                   child: Row(
                     children: [
-                      if (appLanguage == "en") Icon(Icons.check, color: AppTheme.accentColor),
+                      if (appLanguage == "en") Icon(Icons.check, color: AppTheme.primaryColor),
                       Expanded(
                         child: Text(
                           'English',
                           style: AppTheme.textStyle(
-                            color: controller.appLang == "en" ? AppTheme.accentColor : AppTheme.textColor,
+                            color: controller.appLang == "en" ? AppTheme.primaryColor : AppTheme.textColor,
                             size: AppTheme.size18,
                             isBold: true,
                           ),

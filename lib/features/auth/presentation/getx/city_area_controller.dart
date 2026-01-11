@@ -46,7 +46,6 @@ class CityAndAreaController extends GetxController {
     update();
     await getCities.repository.getCities(body: {
       "countryId": "${AppConstants.countryId}",
-      // "merchantId": "${AppConstants.merchantId}",
     }).then((value) => value.fold(
           (failure) {
             SharedHelper().errorSnackBar(failure.errorsModel.errorMessage ?? "");

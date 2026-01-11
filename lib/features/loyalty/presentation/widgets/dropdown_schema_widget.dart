@@ -58,7 +58,7 @@ class _DropDownSchemaState extends State<DropDownSchema> {
 
   Widget _buildEmptyState() {
     return Container(
-      decoration: BoxDecoration(color: AppTheme.accentColor, shape: BoxShape.circle),
+      decoration: BoxDecoration(color: AppTheme.primaryColor, shape: BoxShape.circle),
       child: Padding(
         padding: const EdgeInsets.all(50),
         child: Column(

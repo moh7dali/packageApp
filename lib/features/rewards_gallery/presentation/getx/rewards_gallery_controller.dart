@@ -1,8 +1,8 @@
+import 'package:get/get.dart';
 import 'package:my_custom_widget/core/constants/assets_constants.dart';
 import 'package:my_custom_widget/features/loyalty/presentation/getx/points_controller.dart';
 import 'package:my_custom_widget/features/rewards_gallery/domain/entity/reward_gallery.dart';
 import 'package:my_custom_widget/features/rewards_gallery/domain/usecase/redeem_reward.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/sdk/sdk_rouutes.dart';

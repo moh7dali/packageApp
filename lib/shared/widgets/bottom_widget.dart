@@ -7,7 +7,7 @@ class BottomWidget extends StatelessWidget {
   final String description;
   final String cancelText;
   final String confirmText;
-  final Color cancelColor;
+  final Color? cancelColor;
   final Color? confirmColor;
   final VoidCallback onCancel;
   final VoidCallback onConfirm;
@@ -18,7 +18,7 @@ class BottomWidget extends StatelessWidget {
     required this.description,
     this.cancelText = "cancel",
     this.confirmText = "confirm",
-    this.cancelColor = AppTheme.accentColor,
+    this.cancelColor,
     this.confirmColor,
     required this.onCancel,
     required this.onConfirm,
@@ -28,8 +28,8 @@ class BottomWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20),
-      decoration: const BoxDecoration(
-        color: Colors.white,
+      decoration: BoxDecoration(
+        color: AppTheme.bgThemeColor,
         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
       ),
       child: Column(
@@ -39,14 +39,14 @@ class BottomWidget extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: AppTheme.textStyle(color: AppTheme.blackColor, size: AppTheme.size18, isBold: true),
+                style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size18, isBold: true),
               ),
             ],
           ),
           const SizedBox(height: 12),
           Text(
             description,
-            style: AppTheme.textStyle(color: AppTheme.blackColor.withOpacity(.75), size: AppTheme.size14),
+            style: AppTheme.textStyle(color: AppTheme.textColor.withOpacity(.75), size: AppTheme.size14),
             textAlign: TextAlign.start,
           ),
           const SizedBox(height: 24),
@@ -55,13 +55,13 @@ class BottomWidget extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: cancelColor,
+                    backgroundColor: cancelColor ?? AppTheme.primaryColor,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                   ),
                   onPressed: onCancel,
                   child: Text(
                     cancelText.tr,
-                    style: AppTheme.textStyle(color: AppTheme.blackColor, size: AppTheme.size14),
+                    style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size14),
                   ),
                 ),
               ),
@@ -69,13 +69,13 @@ class BottomWidget extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: confirmColor??AppTheme.primaryColor,
+                    backgroundColor: confirmColor ?? AppTheme.primaryColor,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                   ),
                   onPressed: onConfirm,
                   child: Text(
                     confirmText.tr,
-                    style: AppTheme.textStyle(color: AppTheme.accentColor, size: AppTheme.size14),
+                    style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size14),
                   ),
                 ),
               ),

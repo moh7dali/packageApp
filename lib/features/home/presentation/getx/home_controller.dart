@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:my_custom_widget/features/category/domain/entities/category.dart";
 import "package:my_custom_widget/features/home/domain/usecases/get_home_details.dart";
 
 import "../../../../core/constants/constants.dart";
@@ -9,11 +8,6 @@ import "../../../../core/utils/theme.dart";
 import "../../../../injection_container.dart";
 import "../../../../my_custom_widget.dart";
 import "../../../../shared/helper/shared_helper.dart";
-import "../../../../shared/helper/shared_preferences_storage.dart";
-import "../../../branch/domain/entities/branch_details.dart";
-import "../../../category/domain/usecases/get_category_products.dart";
-import "../../../category/presentaion/getx/sub_or_product_controller.dart";
-import "../../../category/presentaion/pages/sub_or_product_page.dart";
 import "../../../main/presentation/getx/main_controller.dart";
 import "../../../rewards/domain/entity/campaign_details.dart";
 import "../../../rewards/domain/entity/user_rewards.dart";
@@ -33,12 +27,10 @@ class HomeController extends GetxController {
   String homeWelcomeTitle = "";
   bool isHomeLoading = true;
   bool isLogin = false;
-  final GetCategoryProducts getCategoryProducts;
 
   ScrollController scrollController = ScrollController();
 
-  HomeController() : getHomeDetails = sl(), getCustomerHomeContents = sl(), getCampaignList = sl(), getCategoryProducts = sl(), getUserRewards = sl();
-  BranchDetails? selectedBranch;
+  HomeController() : getHomeDetails = sl(), getCustomerHomeContents = sl(), getCampaignList = sl(), getUserRewards = sl();
 
   @override
   void onInit() {
@@ -110,12 +102,10 @@ class HomeController extends GetxController {
             },
             (details) async {
               homeDetails = details;
-              numOfUnReadNotifications.value = homeDetails?.customerData?.unreadNotificationCount ?? 0;
               await getUserData();
               await getMissionsApi(catId: "1,3,4");
               await checkIfShowReferral();
               await getUserRewardsApi();
-              await setSelectedBranch();
               isHomeLoading = false;
               update();
             },
@@ -134,13 +124,7 @@ class HomeController extends GetxController {
 
   List<Map<String, dynamic>> tiersBoundaries = [];
 
-  Category? selectedCat;
   bool isProdLoading = true;
-
-  void gotoSubOrProduct(Category newCat) {
-    Get.delete<SubOrProductController>();
-    SDKNav.to(SubOrProductPage(selectedCategory: newCat, parentCategoryList: homeDetails?.categoryList?.category ?? []), preventDuplicates: false);
-  }
 
   Future getUserData() async {
     customerData = homeDetails?.customerData;
@@ -273,9 +257,9 @@ class HomeController extends GetxController {
     if (Get.isRegistered<MainController>()) {
       mainController = Get.find<MainController>();
       if (isPoints) {
-        mainController.onTapChanged(2);
+        mainController.onTapChanged(1);
       } else {
-        mainController.onTapChanged(3);
+        mainController.onTapChanged(2);
         if (isDeals) {
           RewardsController rewardsController = Get.put(RewardsController());
           rewardsController.tabController!.animateTo(1);
@@ -323,10 +307,5 @@ class HomeController extends GetxController {
       missions.removeWhere((element) => element.name == "دعوة");
       missions.removeWhere((element) => element.name == "تسجيل");
     }
-  }
-
-  Future<void> setSelectedBranch() async {
-    selectedBranch = await sl<SharedPreferencesStorage>().getSelectedBranch();
-    update();
   }
 }

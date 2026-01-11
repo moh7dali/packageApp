@@ -37,12 +37,12 @@ class BranchDetailsScreen extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.location_on,
-                                color: AppTheme.accentColor,
+                                color: AppTheme.primaryColor,
                               ),
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("location".tr, style: AppTheme.textStyle(color: AppTheme.accentColor, size: 16))
+                              Text("location".tr, style: AppTheme.textStyle(color: AppTheme.primaryColor, size: 16))
                             ],
                           ),
                         ),
@@ -62,12 +62,12 @@ class BranchDetailsScreen extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.call,
-                                color: AppTheme.accentColor,
+                                color: AppTheme.primaryColor,
                               ),
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("callUs".tr, style: AppTheme.textStyle(color: AppTheme.accentColor, size: 16))
+                              Text("callUs".tr, style: AppTheme.textStyle(color: AppTheme.primaryColor, size: 16))
                             ],
                           ),
                         ),

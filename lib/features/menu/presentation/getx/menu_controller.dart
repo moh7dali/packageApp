@@ -1,7 +1,7 @@
+import 'package:get/get.dart';
 import 'package:my_custom_widget/features/menu/domain/usecases/delete_account.dart';
 import 'package:my_custom_widget/features/menu/domain/usecases/logout.dart';
 import 'package:my_custom_widget/my_custom_widget.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/sdk/sdk_rouutes.dart';

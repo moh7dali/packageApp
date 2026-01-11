@@ -16,19 +16,11 @@ import 'core/sdk/sdk_settings.dart';
 import 'core/utils/network_info.dart';
 import 'injection_container.dart' as di;
 import 'shared/getx/theme_controller.dart';
-import 'shared/model/cart_items.dart';
-import 'shared/model/push_notification_model.dart';
 
-ValueNotifier<bool> isSkipped = ValueNotifier(false);
 String appLanguage = 'en';
-ValueNotifier<int> numOfUnReadNotifications = ValueNotifier(0);
-ValueNotifier<CartItems> cartItems = ValueNotifier(CartItems(products: []));
-bool isSystem = false;
-bool fromPush = false;
-PushNotificationModel? systemNotificationModel;
-bool isZoomed = false;
-final ThemeController themeController = ThemeController();
 NetworkInfo? networkInfo;
+
+ThemeController get themeController => Get.find<ThemeController>();
 
 class MozaicLoyaltySDK extends StatelessWidget {
   const MozaicLoyaltySDK({super.key});
@@ -41,11 +33,10 @@ class MozaicLoyaltySDK extends StatelessWidget {
   static Future<void> init({required MozaicLoyaltySDKSettings sdkSettings}) async {
     if (_initialized) return;
     _initialized = true;
-
     settings = sdkSettings;
-
     await di.init();
-
+    final controller = Get.put(ThemeController(), permanent: true);
+    await controller.initTheme();
     final sdkTranslations = Translation();
     Get.appendTranslations(sdkTranslations.keys);
     String defaultLanguage = settings.sdkLanguage ?? await di.sl<SharedPreferencesStorage>().getAppLanguage();
@@ -89,18 +80,21 @@ class MozaicLoyaltySDK extends StatelessWidget {
   }
 
   Widget _buildNestedNavigator() {
-    return Theme(
-      data: AppTheme.lightTheme,
-      child: Localizations(
-        locale: Locale(appLanguage),
-        delegates: const [GlobalMaterialLocalizations.delegate, GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate],
-        child: Navigator(
-          key: MozaicLoyaltySDK.sdkNavKey,
-          initialRoute: RouteConstant.splashPage,
-          onGenerateRoute: (settings) => RouteGeneratorList().onGenerateRoute(settings),
+    return Obx(() {
+      return Theme(
+        data: themeController.isDark.value ? AppTheme.darkTheme : AppTheme.lightTheme,
+        child: Localizations(
+          locale: Locale(appLanguage),
+          delegates: const [GlobalMaterialLocalizations.delegate, GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate],
+          child: Navigator(
+            key: MozaicLoyaltySDK.sdkNavKey,
+            initialRoute: RouteConstant.splashPage,
+            onGenerateRoute: (settings) => RouteGeneratorList().onGenerateRoute(settings),
+            observers: [GetObserver((_) {}, Get.routing)],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   Widget _buildStandaloneApp() {
@@ -111,6 +105,8 @@ class MozaicLoyaltySDK extends StatelessWidget {
       locale: Locale(appLanguage),
       fallbackLocale: const Locale('en'),
       theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: themeController.themeMode.value,
       getPages: RouteGeneratorList().appRoutes,
       initialRoute: RouteConstant.splashPage,
     );

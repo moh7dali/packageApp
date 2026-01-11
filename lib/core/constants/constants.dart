@@ -10,9 +10,6 @@ class AppConstants {
   static const int applicationId = 79;
   static const int brandId = 122;
 
-  // static const int merchantId = 3111;
-  // static const int applicationId = 3107;
-  // static const int brandId = 3128;
   static const int visitorTypeLookupId = 60;
   static const int visitorTypeAttributeId = 2;
 
@@ -33,9 +30,6 @@ class AppConstants {
   static const String privacyPolicy = '${ApiEndPoints.staging}Privacy/$merchantId';
   static const String websiteLink = 'https://alameedcoffee.com/';
 
-  static const bool deliveryByPaymentMethod = false;
-  static const bool includeTaxBeforeRedeemPoints = false;
-
   static final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
 
   static const bool isProxyEnable = true;
@@ -50,7 +44,6 @@ class HttpMethodRequest {
 
 class RouteConstant {
   static const String splashPage = '/my_custom_widget/splash';
-  static const String onBoarding = '/OnboardingPage';
   static const String appWebViewPage = '/AppWebViewScreen';
   static const String authPage = '/AuthPage';
   static const String mainPage = '/MainScreen';
@@ -59,33 +52,13 @@ class RouteConstant {
   static const String referralPage = '/ReferralScreen';
   static const String profilePage = '/ProfilePage';
   static const String invitePage = '/InvitePage';
-  static const String contactUsPage = '/ContactUsPage';
-  static const String merchantInfoPage = '/MerchantInfoPage';
   static const String branchDetailsPage = '/BranchDetailsScreen';
-  static const String branchesPage = '/BranchListScreen';
-  static const String brandsPage = '/BrandListScreen';
-  static const String languagePage = '/LanguagePage';
-  static const String developerPage = '/DeveloperWidget';
-  static const String notificationsPage = '/NotificationsPage';
   static const String rewardsScreen = '/RewardsTabScreen';
-  static const String brandScreen = '/BrandDetailsScreen';
   static const String pointsHistoryScreen = '/PointsHistoryScreen';
   static const String pointSchemaPage = '/PointSchemaPage';
   static const String barCodeScreen = '/BarcodeScreen';
-  static const String merchantHomeDetails = '/MerchantHomeDetails';
   static const String pointsScreen = '/PointsScreen';
-  static const String brandCategoryPage = '/BrandCategoryPage';
-  static const String subOrProductPage = '/SubOrProductPage';
-  static const String productDetailsPage = '/ProductDetailsPage';
-  static const String filtersPage = '/FiltersPage';
   static const String rewardsGalleryPage = '/RewardsGalleryPage';
-  static const String mapPage = '/MapPage';
-  static const String myAddressPage = '/MyAddressPage';
-  static const String addressDetailsPage = '/AddressDetailsPage';
-  static const String cartPage = '/CartPage';
-  static const String orderHistoryPage = '/OrderHistoryPage';
-  static const String orderDetailsPage = '/OrderDetailsPage';
-  static const String offersScreen = '/OffersScreen';
   static const String topUpListScreen = '/TopUpListPage';
   static const String topUpPage = '/TopUpPage';
 }
@@ -150,10 +123,6 @@ class SharedPreferencesKeyConstants {
 
   static const String hasReferral = "hasReferral";
 
-  static const String isPickUp = "isPickUp";
-
-  static const String isBranchSelected = "isBranchSelected";
-
   static const String showQr = "showQr";
 
   static const String isLogin = "isLogin";
@@ -164,13 +133,7 @@ class SharedPreferencesKeyConstants {
 
   static const String mobile = "mobile";
 
-  static const String selectedBranch = "selectedBranch";
-
-  static const String selectedAddress = "selectedAddress";
-
   static const String gender = "gender";
-
-  static const String cartItems = "cartItems";
 
   static const String userCountry = "userCountry";
 }

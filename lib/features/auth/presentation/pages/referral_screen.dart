@@ -88,7 +88,7 @@ class ReferralScreen extends StatelessWidget {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(24),
-                        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.06), blurRadius: 22, offset: const Offset(0, 12))],
+                        boxShadow: [BoxShadow(color: AppTheme.textColor.withOpacity(0.06), blurRadius: 22, offset: const Offset(0, 12))],
                       ),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(24),
@@ -99,63 +99,51 @@ class ReferralScreen extends StatelessWidget {
                               padding: const EdgeInsets.fromLTRB(16, 18, 16, 14),
                               child: Column(
                                 children: [
-                                  Icon(Icons.group_add_rounded, color: AppTheme.whiteColor, size: 30),
+                                  Icon(Icons.group_add_rounded, color: AppTheme.textColor, size: 30),
                                   const SizedBox(height: 10),
                                   Text(
                                     'referralCode'.tr,
                                     textAlign: TextAlign.center,
-                                    style: AppTheme.textStyle(color: AppTheme.whiteColor, size: AppTheme.size18, isBold: true),
+                                    style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size18, isBold: true),
                                   ),
                                   const SizedBox(height: 6),
                                   Text(
                                     'referralCodeTxt'.tr,
                                     textAlign: TextAlign.center,
-                                    style: AppTheme.textStyle(color: AppTheme.whiteColor.withOpacity(.85), size: AppTheme.size12),
+                                    style: AppTheme.textStyle(color: AppTheme.textColor.withOpacity(.85), size: AppTheme.size12),
                                   ),
                                 ],
                               ),
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                color: AppTheme.bgColor,
+
                                 border: Border(bottom: BorderSide(color: AppTheme.primaryColor)),
                                 borderRadius: BorderRadius.circular(24),
                               ),
                               padding: const EdgeInsets.fromLTRB(14, 16, 14, 16),
                               child: Column(
                                 children: [
-                                  Container(
-                                    width: double.infinity,
-                                    padding: const EdgeInsets.fromLTRB(12, 14, 12, 10),
-                                    decoration: BoxDecoration(
-                                      color: AppTheme.whiteColor,
-                                      borderRadius: BorderRadius.circular(22),
-                                      border: Border.all(color: AppTheme.primaryColor.withOpacity(.14)),
-                                      boxShadow: [
-                                        BoxShadow(color: AppTheme.primaryColor.withOpacity(0.06), blurRadius: 18, offset: const Offset(0, 10)),
-                                      ],
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        ProfileTextField(
-                                          label: 'referralCode',
-                                          maxLength: 6,
-                                          showLabelAsHeader: false,
-                                          isUpper: true,
-                                          icon: AssetsConsts.referral,
-                                          type: TextInputType.text,
-                                          controller: controller.referralController,
-                                          validator: (value) {
-                                            if (value!.isEmpty) {
-                                              controller.referralShakeKey.currentState!.shake();
-                                              return 'referralCodeError'.tr;
-                                            }
-                                            return null;
-                                          },
-                                          shakeKey: controller.referralShakeKey,
-                                        ),
-                                      ],
-                                    ),
+                                  Column(
+                                    children: [
+                                      ProfileTextField(
+                                        label: 'referralCode',
+                                        maxLength: 6,
+                                        showLabelAsHeader: false,
+                                        isUpper: true,
+                                        icon: AssetsConsts.referral,
+                                        type: TextInputType.text,
+                                        controller: controller.referralController,
+                                        validator: (value) {
+                                          if (value!.isEmpty) {
+                                            controller.referralShakeKey.currentState!.shake();
+                                            return 'referralCodeError'.tr;
+                                          }
+                                          return null;
+                                        },
+                                        shakeKey: controller.referralShakeKey,
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),

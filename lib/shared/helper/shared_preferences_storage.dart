@@ -1,19 +1,14 @@
 import 'dart:convert';
 
-import 'package:my_custom_widget/features/address/data/models/address_model.dart';
-import 'package:my_custom_widget/features/branch/domain/entities/branch_details.dart';
-import 'package:my_custom_widget/my_custom_widget.dart';
-import 'package:my_custom_widget/shared/model/cart_items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../core/constants/constants.dart';
-import '../../features/address/domain/entity/address.dart';
 import '../../features/auth/data/models/country_model.dart';
 import '../../features/auth/domain/entities/country.dart';
-import '../../features/branch/data/models/branch_details_model.dart';
+import '../../my_custom_widget.dart';
 
 class SharedPreferencesStorage {
   static late SharedPreferences? _preferences;
@@ -43,8 +38,17 @@ class SharedPreferencesStorage {
   }
 
   Future<bool> getTheme() async {
-    var brightness = SchedulerBinding.instance.window.platformBrightness;
-    return _preferences!.getBool(SharedPreferencesKeyConstants.appTheme) ?? (brightness == Brightness.dark);
+    if (MozaicLoyaltySDK.settings.sdkTheme != null) {
+      print("Priority: SDK Settings Found - ${MozaicLoyaltySDK.settings.sdkTheme}");
+      return MozaicLoyaltySDK.settings.sdkTheme == ThemeMode.dark;
+    }
+    bool? savedTheme = _preferences!.getBool(SharedPreferencesKeyConstants.appTheme);
+    if (savedTheme != null) {
+      print("Priority: Saved Pref Found - $savedTheme");
+      return savedTheme;
+    }
+
+    return SchedulerBinding.instance.platformDispatcher.platformBrightness == Brightness.dark;
   }
 
   setTempToken(String tempToken) async {
@@ -127,60 +131,6 @@ class SharedPreferencesStorage {
     return _preferences!.getBool(SharedPreferencesKeyConstants.isLogin) ?? false;
   }
 
-  Future setSelectedBranch(BranchDetails selectedBranch) async {
-    await _preferences!.setString(SharedPreferencesKeyConstants.selectedBranch, jsonEncode((selectedBranch as BranchDetailsModel).toJson()));
-  }
-
-  Future<BranchDetails?> getSelectedBranch() async {
-    String? branchString = _preferences!.getString(SharedPreferencesKeyConstants.selectedBranch);
-    if (branchString == null || branchString.isEmpty) {
-      return null;
-    }
-    return BranchDetailsModel.fromJson(json.decode(branchString));
-  }
-
-  Future setSelectedAddress(Address selectedAddress) async {
-    await _preferences!.setString(SharedPreferencesKeyConstants.selectedAddress, jsonEncode((selectedAddress as AddressModel).toJson()));
-  }
-
-  Future<Address?> getSelectedAddress() async {
-    String? addressString = _preferences!.getString(SharedPreferencesKeyConstants.selectedAddress);
-    if (addressString == null || addressString.isEmpty) {
-      return null;
-    }
-    return AddressModel.fromJson(json.decode(addressString));
-  }
-
-  Future setCartItems(CartItems item) async {
-    final model = CartItemsModel.fromEntity(item);
-    await _preferences!.setString(SharedPreferencesKeyConstants.cartItems, jsonEncode(model.toJson()));
-    cartItems.value = item;
-  }
-
-  Future<CartItems> getCartItems() async {
-    String? cartItemsString = _preferences!.getString(SharedPreferencesKeyConstants.cartItems);
-    if (cartItemsString == null || cartItemsString.isEmpty) {
-      return CartItems(products: []);
-    }
-    return CartItemsModel.fromJson(json.decode(cartItemsString));
-  }
-
-  Future setIsPickUp(bool isPickUp) async {
-    await _preferences!.setBool(SharedPreferencesKeyConstants.isPickUp, isPickUp);
-  }
-
-  Future<bool> getIsPickUp() async {
-    return _preferences!.getBool(SharedPreferencesKeyConstants.isPickUp) ?? true;
-  }
-
-  Future setIsBranchSelected(bool isBranchSelected) async {
-    await _preferences!.setBool(SharedPreferencesKeyConstants.isBranchSelected, isBranchSelected);
-  }
-
-  Future<bool> getIsBranchSelected() async {
-    return _preferences!.getBool(SharedPreferencesKeyConstants.isBranchSelected) ?? false;
-  }
-
   Future setShowQr(bool show) async {
     await _preferences!.setBool(SharedPreferencesKeyConstants.showQr, show);
   }
@@ -210,6 +160,5 @@ class SharedPreferencesStorage {
         await _preferences!.remove(key);
       }
     }
-    cartItems.value = CartItems(products: []);
   }
 }

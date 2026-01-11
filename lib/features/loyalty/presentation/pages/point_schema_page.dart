@@ -36,12 +36,12 @@ class PointSchemaPage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(28),
                               gradient: AppTheme.gradient1,
                               boxShadow: [BoxShadow(color: Colors.black.withOpacity(.18), blurRadius: 30, offset: const Offset(0, 18))],
-                              border: Border.all(color: Colors.white.withOpacity(.14)),
+                              border: Border.all(color: AppTheme.textColor.withOpacity(.14)),
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(28),
                               child: Container(
-                                decoration: BoxDecoration(color: Colors.white.withOpacity(.08)),
+                                decoration: BoxDecoration(color: AppTheme.textColor.withOpacity(.08)),
                                 child: Column(
                                   children: [
                                     Padding(
@@ -55,16 +55,16 @@ class PointSchemaPage extends StatelessWidget {
                                                   width: 44,
                                                   height: 44,
                                                   decoration: BoxDecoration(
-                                                    color: Colors.white.withOpacity(.12),
+                                                    color: AppTheme.whiteColor.withOpacity(.12),
                                                     borderRadius: BorderRadius.circular(16),
-                                                    border: Border.all(color: Colors.white.withOpacity(.16)),
+                                                    border: Border.all(color: AppTheme.textColor.withOpacity(.16)),
                                                   ),
-                                                  child: const Icon(Icons.stars_rounded, color: Colors.white),
+                                                  child: Icon(Icons.stars_rounded, color: AppTheme.textColor),
                                                 ),
                                                 const SizedBox(width: 10),
                                                 Text(
                                                   "tier".tr,
-                                                  style: AppTheme.textStyle(color: Colors.white, size: AppTheme.size16, isBold: true),
+                                                  style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size16, isBold: true),
                                                 ),
                                               ],
                                             ),
@@ -74,9 +74,9 @@ class PointSchemaPage extends StatelessWidget {
                                             children: [
                                               Text(
                                                 '${'points'.tr} / ',
-                                                style: AppTheme.textStyle(color: Colors.white.withOpacity(.85), size: AppTheme.size12),
+                                                style: AppTheme.textStyle(color: AppTheme.textColor.withOpacity(.85), size: AppTheme.size12),
                                               ),
-                                              SarWidget(size: 12, color: Colors.white.withOpacity(.85)),
+                                              SarWidget(size: 12, color: AppTheme.textColor.withOpacity(.85)),
                                             ],
                                           ),
                                         ],
@@ -87,7 +87,7 @@ class PointSchemaPage extends StatelessWidget {
                                       child: Container(
                                         padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
                                         decoration: BoxDecoration(
-                                          color: Colors.white,
+                                          color: AppTheme.bgThemeColor,
                                           borderRadius: const BorderRadius.only(topLeft: Radius.circular(26), topRight: Radius.circular(26)),
                                         ),
                                         child: ListView.builder(
@@ -114,7 +114,11 @@ class PointSchemaPage extends StatelessWidget {
                                                   borderRadius: AppTheme.bigBorderRadius,
                                                   border: Border.all(color: tierColor.withOpacity(.18)),
                                                   boxShadow: [
-                                                    BoxShadow(color: Colors.black.withOpacity(.04), blurRadius: 16, offset: const Offset(0, 10)),
+                                                    BoxShadow(
+                                                      color: AppTheme.textColor.withOpacity(.04),
+                                                      blurRadius: 16,
+                                                      offset: const Offset(0, 10),
+                                                    ),
                                                   ],
                                                 ),
                                                 child: Row(
@@ -177,7 +181,7 @@ class PointSchemaPage extends StatelessWidget {
                                                       Container(
                                                         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                                                         decoration: BoxDecoration(
-                                                          color: Colors.white,
+                                                          color: AppTheme.textColor,
                                                           borderRadius: BorderRadius.circular(16),
                                                           border: Border.all(color: tierColor.withOpacity(.18)),
                                                         ),

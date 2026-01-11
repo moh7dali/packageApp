@@ -1,8 +1,6 @@
-import 'package:my_custom_widget/features/category/data/models/category_model.dart';
 import 'package:my_custom_widget/features/home/data/models/slider_list_model.dart';
 import 'package:my_custom_widget/features/home/data/models/tiers_list_model.dart';
 
-import '../../../offers/data/models/offers_list_model.dart';
 import '../../domain/entities/home_details.dart';
 import 'brand_data_list_model.dart';
 import 'brands_list_model.dart';
@@ -19,8 +17,6 @@ class HomeDetailsModel extends HomeDetails {
     required super.malls,
     required super.customerData,
     required super.tiers,
-    required super.offersList,
-    required super.categoryList,
   });
 
   factory HomeDetailsModel.fromMap(Map<String, dynamic> json) {
@@ -32,8 +28,6 @@ class HomeDetailsModel extends HomeDetails {
       brandsData: json['BrandsData'] == null ? null : BrandDataListModel.fromJson(json['BrandsData']),
       tiers: json['Tiers'] == null ? null : TiersListModel.fromJson(json['Tiers']),
       customerData: json["LoyaltyData"] == null ? null : CustomerDataModel.fromJson(json["LoyaltyData"]),
-      offersList: json["Offers"] == null ? null : OffersListModel.fromJson(json["Offers"]),
-      categoryList: json["Categories"] == null ? null : CategoryListModel.fromJson(json["Categories"]),
     );
   }
 
@@ -44,8 +38,6 @@ class HomeDetailsModel extends HomeDetails {
     "Brands": brands,
     "BrandsData": brandsData,
     "Tiers": tiers,
-    "Offers": offersList,
     "LoyaltyData": customerData,
-    "Categories": categoryList,
   };
 }

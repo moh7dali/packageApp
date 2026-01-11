@@ -22,7 +22,7 @@ class MoreRewardsPage extends StatelessWidget {
                   indicatorSize: TabBarIndicatorSize.tab,
                   indicatorPadding: const EdgeInsets.all(4),
                   indicatorColor: AppTheme.primaryColor,
-                  labelStyle: AppTheme.textStyle(color: AppTheme.accentColor, isBold: true, size: AppTheme.size16),
+                  labelStyle: AppTheme.textStyle(color: AppTheme.primaryColor, isBold: true, size: AppTheme.size16),
                   unselectedLabelStyle: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size16),
                   controller: controller.moreRewardsTabController,
                   indicator: BoxDecoration(color: AppTheme.primaryColor, borderRadius: AppTheme.borderRadius),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_custom_widget/features/rewards_gallery/domain/entity/reward_gallery.dart';
+import 'package:my_custom_widget/shared/widgets/card_loading.dart';
 import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/widgets/pagination_list/pagination_list_view.dart';
-import '../../../notifications/presentation/widgets/notification_card_loading.dart';
 import '../getx/rewards_gallery_controller.dart';
 import '../widgets/reward_gallery_widget.dart';
 
@@ -44,7 +44,7 @@ class RewardsGalleryPage extends StatelessWidget {
             itemBuilder: (context, value) => RewardsGalleryWidget(rewardsGallery: value),
             emptyWidget: NoItemWidget(),
             emptyText: "",
-            loadingWidget: const NotificationCardLoading(),
+            loadingWidget: const CardLoading(),
             refreshFunction: () {
               controller.getUserLoyaltyDataApi();
             },

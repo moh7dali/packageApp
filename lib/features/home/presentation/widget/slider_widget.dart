@@ -2,17 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_custom_widget/core/constants/constants.dart';
-import 'package:my_custom_widget/features/category/domain/entities/category.dart';
-import 'package:my_custom_widget/features/category/domain/entities/product.dart';
 import 'package:my_custom_widget/features/home/domain/entities/slider.dart';
 
 import '../../../../core/constants/assets_constants.dart';
-import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
-import '../../../../shared/helper/shared_helper.dart';
-import '../../../category/presentaion/getx/sub_or_product_controller.dart';
-import '../../../category/presentaion/pages/product_details_page.dart';
-import '../../../category/presentaion/pages/sub_or_product_page.dart';
 
 class SliderAdsWidget extends StatefulWidget {
   const SliderAdsWidget({super.key, required this.slides, required this.isLoading});
@@ -40,41 +33,6 @@ class _CarouselWithIndicatorState extends State<SliderAdsWidget> {
                 case SliderAssignType.noAssign:
                   break;
                 case SliderAssignType.assignedToBrand:
-                  break;
-                case SliderAssignType.assignedToProduct:
-                  SharedHelper().needLogin(() async {
-                    // SharedHelper().scaleDialog(OrderMethodPopup(onFinish: () {
-                    Get.bottomSheet(
-                      FractionallySizedBox(
-                        heightFactor: .956,
-                        child: ProductDetailsPage(
-                          product: Product(id: item.assignmentEntityId),
-                          selectedCategory: Category(id: item.assignmentCategoryId),
-                          isSlider: true,
-                        ),
-                      ),
-                      isScrollControlled: true,
-                      backgroundColor: Colors.white,
-                      barrierColor: AppTheme.bgThemeColor,
-                    );
-                    // }
-                    // ));
-                  });
-                  break;
-                case SliderAssignType.assignedToCategory:
-                  SharedHelper().needLogin(() async {
-                    // SharedHelper().scaleDialog(OrderMethodPopup(onFinish: () {
-                    Get.delete<SubOrProductController>();
-                    SDKNav.to(
-                      SubOrProductPage(
-                        selectedCategory: Category(id: item.assignmentEntityId),
-                        parentCategoryList: [Category(id: item.assignmentEntityId)],
-                        sliderCategoryId: item.assignmentEntityId,
-                      ),
-                      preventDuplicates: false,
-                    );
-                    // }));
-                  });
                   break;
               }
             },

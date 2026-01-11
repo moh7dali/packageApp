@@ -23,7 +23,7 @@ import '../../../rewards/domain/entity/campaign_details.dart';
 //         width: isHome ? Get.width * .45 : Get.width,
 //         margin: EdgeInsets.all(isHome ? 4 : 12),
 //         decoration: BoxDecoration(
-//           color: AppTheme.accentColor,
+//           color: AppTheme.primaryColor,
 //           borderRadius: AppTheme.borderRadius,
 //           border: Border.all(color: AppTheme.primaryColor.withOpacity(.1), width: 2),
 //           boxShadow: [
@@ -79,7 +79,7 @@ import '../../../rewards/domain/entity/campaign_details.dart';
 //               //     children: [
 //               //       Text(
 //               //         "discoverNow".tr,
-//               //         style: AppTheme.textStyle(color: AppTheme.accentColor, size: AppTheme.size16),
+//               //         style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size16),
 //               //       ),
 //               //       Icon(Icons.navigate_next)
 //               //     ],
@@ -113,7 +113,7 @@ class MissionsWidget extends StatelessWidget {
         width: Get.width,
         margin: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: AppTheme.accentColor,
+          color: AppTheme.primaryColor,
           borderRadius: AppTheme.borderRadius,
           border: Border.all(color: AppTheme.primaryColor.withOpacity(.1), width: 2),
           boxShadow: [BoxShadow(color: AppTheme.primaryColor.withOpacity(.2), blurRadius: 2, blurStyle: BlurStyle.outer)],
@@ -170,16 +170,16 @@ class MissionsWidget extends StatelessWidget {
         width: Get.width * .60,
         margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
         decoration: BoxDecoration(
-          color: AppTheme.accentColor,
+          color: AppTheme.bgThemeColor.withOpacity(.75),
           borderRadius: AppTheme.bigBorderRadius,
-          border: Border.all(color: AppTheme.primaryColor.withOpacity(0.08), width: 1.4),
+          border: Border.all(color: AppTheme.primaryColor.withOpacity(0.12), width: 1.4),
           boxShadow: [BoxShadow(color: AppTheme.primaryColor.withOpacity(.06), blurRadius: 12, offset: const Offset(0, 6))],
         ),
         child: Container(
           margin: const EdgeInsets.all(1),
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
-            color: AppTheme.accentColor,
+            color: AppTheme.bgThemeColor.withOpacity(.75),
             borderRadius: AppTheme.borderRadius,
             boxShadow: [BoxShadow(color: AppTheme.primaryColor.withOpacity(.10), blurRadius: 10, offset: const Offset(0, 4))],
           ),

@@ -6,7 +6,6 @@ import 'package:my_custom_widget/shared/widgets/button_widget.dart';
 
 import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
-import '../../../address/presentation/getx/address_controller.dart';
 import '../../domain/entities/area.dart';
 import '../../domain/entities/city.dart';
 import '../../domain/entities/gender.dart';
@@ -25,7 +24,6 @@ class SelectWidget<T> extends StatefulWidget {
     this.isDate = false,
     this.isAddress = false,
     this.controller,
-    this.addressController,
     this.cityAndAreaController,
   });
 
@@ -36,7 +34,6 @@ class SelectWidget<T> extends StatefulWidget {
   final bool isDate;
   final bool isAddress;
   final AuthController? controller;
-  final AddressController? addressController;
   final CityAndAreaController? cityAndAreaController;
 
   @override
@@ -83,11 +80,7 @@ class _SelectWidgetState<T> extends State<SelectWidget<T>> {
                       mode: CupertinoDatePickerMode.date,
                       onDateTimeChanged: (value) {
                         widget.selectedItem = value as T?;
-                        if (widget.isAddress) {
-                          widget.addressController?.isTheCupertinoPickerMove = true;
-                        } else {
-                          widget.controller?.isTheCupertinoPickerMove = true;
-                        }
+                        widget.controller?.isTheCupertinoPickerMove = true;
                       },
                     ),
                   )
@@ -102,11 +95,7 @@ class _SelectWidgetState<T> extends State<SelectWidget<T>> {
                     itemExtent: 40,
                     onSelectedItemChanged: (int index) {
                       widget.selectedItem = widget.listOfItems![index];
-                      if (widget.isAddress) {
-                        widget.addressController?.isTheCupertinoPickerMove = true;
-                      } else {
-                        widget.controller?.isTheCupertinoPickerMove = true;
-                      }
+                      widget.controller?.isTheCupertinoPickerMove = true;
                     },
                     children: (widget.listOfItems ?? [])
                         .map(
@@ -126,18 +115,10 @@ class _SelectWidgetState<T> extends State<SelectWidget<T>> {
             child: AppButton(
               title: "done".tr,
               function: () {
-                if (widget.isAddress) {
-                  if ((widget.selectedItem == null || widget.addressController?.isTheCupertinoPickerMove == false) && widget.isDate == false) {
-                    widget.selectedItem = widget.listOfItems?.firstOrNull;
-                  } else if ((widget.selectedItem == null || widget.addressController?.isTheCupertinoPickerMove == false) && widget.isDate) {
-                    widget.selectedItem = DateTime(2000) as T?;
-                  }
-                } else {
-                  if ((widget.selectedItem == null || widget.controller?.isTheCupertinoPickerMove == false) && widget.isDate == false) {
-                    widget.selectedItem = widget.listOfItems?.firstOrNull;
-                  } else if ((widget.selectedItem == null || widget.controller?.isTheCupertinoPickerMove == false) && widget.isDate) {
-                    widget.selectedItem = DateTime(2000) as T?;
-                  }
+                if ((widget.selectedItem == null || widget.controller?.isTheCupertinoPickerMove == false) && widget.isDate == false) {
+                  widget.selectedItem = widget.listOfItems?.firstOrNull;
+                } else if ((widget.selectedItem == null || widget.controller?.isTheCupertinoPickerMove == false) && widget.isDate) {
+                  widget.selectedItem = DateTime(2000) as T?;
                 }
 
                 switch (widget.tag) {
@@ -158,34 +139,20 @@ class _SelectWidgetState<T> extends State<SelectWidget<T>> {
                     widget.controller?.anniversaryController.text = widget.controller!.dateFormat.format(widget.controller!.selectedAnniversaryDate!);
                     break;
                   case SelectWidgetConstant.city:
-                    if (widget.isAddress) {
-                      widget.addressController?.selectedCity = widget.selectedItem as City?;
-                      widget.addressController?.cityController.text = widget.addressController?.selectedCity?.name ?? "";
-                      widget.cityAndAreaController?.allArea = [];
-                      widget.addressController?.selectedArea == null;
-                      widget.addressController?.areaController.text = '';
-                      if (widget.addressController?.selectedCity != null) {
-                        widget.cityAndAreaController?.getAreaList(cityId: widget.addressController?.selectedCity?.id ?? 0);
-                      }
-                    } else {
-                      widget.controller?.selectedCity = widget.selectedItem as City?;
-                      widget.controller?.cityController.text = widget.controller?.selectedCity?.name ?? "";
-                      // widget.cityAndAreaController?.allArea = [];
-                      // widget.controller?.selectedArea == null;
-                      // widget.controller?.areaController.text = '';
-                      // if (widget.controller?.selectedCity != null) {
-                      //   widget.cityAndAreaController?.getAreaList(cityId: widget.controller?.selectedCity?.id ?? 0);
-                      // }
-                    }
+                    widget.controller?.selectedCity = widget.selectedItem as City?;
+                    widget.controller?.cityController.text = widget.controller?.selectedCity?.name ?? "";
+                    // widget.cityAndAreaController?.allArea = [];
+                    // widget.controller?.selectedArea == null;
+                    // widget.controller?.areaController.text = '';
+                    // if (widget.controller?.selectedCity != null) {
+                    //   widget.cityAndAreaController?.getAreaList(cityId: widget.controller?.selectedCity?.id ?? 0);
+                    // }
+
                     break;
                   case SelectWidgetConstant.area:
-                    if (widget.isAddress) {
-                      widget.addressController?.selectedArea = widget.selectedItem as Area?;
-                      widget.addressController?.areaController.text = widget.addressController?.selectedArea?.name ?? "";
-                    } else {
-                      widget.controller?.selectedArea = widget.selectedItem as Area?;
-                      widget.controller?.areaController.text = widget.controller?.selectedArea?.name ?? "";
-                    }
+                    widget.controller?.selectedArea = widget.selectedItem as Area?;
+                    widget.controller?.areaController.text = widget.controller?.selectedArea?.name ?? "";
+
                     break;
                   case SelectWidgetConstant.lookup:
                     widget.controller?.selectedVisitorType = widget.selectedItem as LookUp?;
@@ -193,8 +160,6 @@ class _SelectWidgetState<T> extends State<SelectWidget<T>> {
                     break;
                 }
                 if (widget.isAddress) {
-                  widget.addressController?.update();
-                } else {
                   widget.controller?.update();
                 }
                 SDKNav.back();

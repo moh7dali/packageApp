@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:my_custom_widget/features/main/presentation/getx/main_controller.dart';
 
@@ -16,7 +17,6 @@ class AppBottomNavigationBar extends StatelessWidget {
     return GetBuilder<MainController>(
       builder: (controller) {
         final h = Platform.isIOS ? 92.0 : 78.0;
-
         return SafeArea(
           top: false,
           child: Container(
@@ -24,10 +24,10 @@ class AppBottomNavigationBar extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(.92),
+                color: AppTheme.bgThemeColor,
                 borderRadius: BorderRadius.circular(26),
-                border: Border.all(color: AppTheme.primaryColor.withOpacity(.10)),
-                boxShadow: [BoxShadow(color: Colors.black.withOpacity(.08), blurRadius: 26, offset: const Offset(0, 14))],
+                border: Border.all(color: AppTheme.primaryColor),
+                boxShadow: [BoxShadow(color: AppTheme.textColor.withOpacity(.08), blurRadius: 26, offset: const Offset(0, 14))],
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -43,29 +43,26 @@ class AppBottomNavigationBar extends StatelessWidget {
                     label: 'points'.tr,
                     image: AssetsConsts.points,
                     isSvg: true,
-                    isActive: controller.currentIndex == 2,
-                    onTap: () => controller.onTapChanged(2),
+                    isActive: controller.currentIndex == 1,
+                    onTap: () => controller.onTapChanged(1),
+                  ),
+                  GestureDetector(
+                    onTap: () => controller.onTapChanged(4),
+                    child: SvgPicture.asset(AssetsConsts.iconLogo, color: AppTheme.primaryColor, height: 30, width: 30),
                   ),
                   NavigationItem(
                     label: 'rewards'.tr,
                     image: AssetsConsts.rewards,
                     isSvg: true,
-                    isActive: controller.currentIndex == 3,
-                    onTap: () => controller.onTapChanged(3),
-                  ),
-                  NavigationItem(
-                    label: 'branches'.tr,
-                    isSvg: true,
-                    image: AssetsConsts.tabBranches,
-                    isActive: controller.currentIndex == 1,
-                    onTap: () => controller.onTapChanged(1),
+                    isActive: controller.currentIndex == 2,
+                    onTap: () => controller.onTapChanged(2),
                   ),
                   NavigationItem(
                     label: 'menu'.tr,
                     image: AssetsConsts.menu,
                     isSvg: true,
-                    isActive: controller.currentIndex == 4,
-                    onTap: () => controller.onTapChanged(4),
+                    isActive: controller.currentIndex == 3,
+                    onTap: () => controller.onTapChanged(3),
                   ),
                 ],
               ),

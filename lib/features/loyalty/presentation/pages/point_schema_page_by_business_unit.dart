@@ -117,7 +117,7 @@ class PointSchemaPageByBusinessUnit extends StatelessWidget {
                                                                   : controller.pointSchemaList![index].tierId == 2
                                                                   ? "${"from".tr} ${SharedHelper.getNumberFormat(min)}  ${'jd'.tr} ${"to".tr} ${SharedHelper.getNumberFormat(max - 1)}  ${'jd'.tr}"
                                                                   : "${"above".tr} ${SharedHelper.getNumberFormat(min)}  ${'jd'.tr}",
-                                                              style: AppTheme.textStyle(color: AppTheme.accentColor, size: AppTheme.size10),
+                                                              style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size10),
                                                             ),
                                                           ],
                                                         ),

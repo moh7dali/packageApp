@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:my_custom_widget/core/api/request_logger.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:my_custom_widget/core/api/request_logger.dart';
 
 import '../../injection_container.dart';
 import '../../my_custom_widget.dart';

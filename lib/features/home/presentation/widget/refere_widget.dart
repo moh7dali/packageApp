@@ -35,7 +35,7 @@ class _SuperPremiumReferAndEarnButtonState extends State<SuperPremiumReferAndEar
             boxShadow: [BoxShadow(color: AppTheme.primaryColor.withOpacity(.18), blurRadius: 16, offset: const Offset(0, 6))],
           ),
           child: Container(
-            decoration: BoxDecoration(color: const Color(0xFFF7F9F8).withOpacity(0.96), borderRadius: BorderRadius.circular(18)),
+            decoration: BoxDecoration(color: AppTheme.bgThemeColor.withOpacity(0.96), borderRadius: BorderRadius.circular(18)),
             padding: const EdgeInsets.all(8),
             child: Row(
               children: [

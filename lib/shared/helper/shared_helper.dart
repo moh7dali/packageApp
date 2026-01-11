@@ -49,6 +49,7 @@ class SharedHelper<T> {
     }
   }
 
+
   static String getNumberFormat(num number, {bool isCurrency = false}) {
     if (isCurrency) {
       return intl.NumberFormat("#,##0.00").format(number);
@@ -98,11 +99,11 @@ class SharedHelper<T> {
     return dateFormat.format(dateTime);
   }
 
-  void bottomSheet(Widget widget, {bool isScrollControlled = false, Color bgColor = AppTheme.accentColor}) {
+  void bottomSheet(Widget widget, {bool isScrollControlled = false}) {
     Get.bottomSheet(
       widget,
       isScrollControlled: isScrollControlled,
-      backgroundColor: bgColor,
+      backgroundColor: AppTheme.bgThemeColor,
       enableDrag: true,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(topLeft: Radius.circular(12.r), topRight: Radius.circular(12.r)),
@@ -128,7 +129,7 @@ class SharedHelper<T> {
       navigatorKey: MozaicLoyaltySDK.settings.hostAppUseGetx ? Get.nestedKey(1) : MozaicLoyaltySDK.sdkNavKey,
       barrierDismissible: dismissible,
       barrierLabel: "appName".tr,
-      barrierColor: AppTheme.secondaryColor.withOpacity(.75),
+      barrierColor: AppTheme.bgThemeColor.withOpacity(.75),
       transitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (ctx, a1, a2) => const SizedBox.shrink(),
       transitionBuilder: (ctx, a1, a2, child) {
@@ -164,9 +165,10 @@ class SharedHelper<T> {
         child: AlertDialog(
           insetPadding: const EdgeInsets.all(8),
           contentPadding: const EdgeInsets.all(0),
+          backgroundColor: AppTheme.bgThemeColor,
           shape: RoundedRectangleBorder(
             borderRadius: AppTheme.bigBorderRadius,
-            side: BorderSide(color: AppTheme.accentColor, width: 5),
+            side: BorderSide(color: AppTheme.primaryColor, width: 2),
           ),
           content: SingleChildScrollView(
             child: Column(
@@ -338,12 +340,12 @@ class SharedHelper<T> {
           );
         },
       ),
-      icon: const Icon(Icons.error, color: AppTheme.accentColor),
+      icon:  Icon(Icons.error, color: AppTheme.primaryColor),
       mainButton: TextButton(
         onPressed: () {
           closeOne ? SDKNav.back() : SharedHelper().closeAllDialogs();
         },
-        child: Icon(Icons.close, color: AppTheme.accentColor),
+        child: Icon(Icons.close, color: AppTheme.primaryColor),
       ),
     );
 

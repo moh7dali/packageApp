@@ -78,7 +78,7 @@ class CompleteProfileScreen extends StatelessWidget {
                       Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
-                          color: AppTheme.bgColor,
+                          color: AppTheme.bgThemeColor,
                           borderRadius: BorderRadius.circular(22),
                           border: Border.all(color: AppTheme.primaryColor.withOpacity(0.4)),
                         ),

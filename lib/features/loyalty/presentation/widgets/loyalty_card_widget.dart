@@ -17,7 +17,7 @@
 //       margin: const EdgeInsets.symmetric(horizontal: 4),
 //       width: Get.width * .95,
 //       decoration: BoxDecoration(
-//         color: AppTheme.accentColor,
+//         color: AppTheme.primaryColor,
 //         borderRadius: AppTheme.borderRadius,
 //         border: Border.all(color: AppTheme.primaryColor.withOpacity(.2), width: 2),
 //         boxShadow: [
@@ -137,7 +137,7 @@
 //             ),
 //             Container(
 //               decoration: BoxDecoration(
-//                 color: AppTheme.accentColor,
+//                 color: AppTheme.primaryColor,
 //                 borderRadius: AppTheme.borderRadius,
 //                 border: Border.all(color: AppTheme.primaryColor.withOpacity(.2), width: 2),
 //                 boxShadow: [

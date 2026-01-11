@@ -14,9 +14,9 @@ class UserRewardsLoadingWidget extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: AppTheme.accentColor,
+        color: AppTheme.primaryColor,
         borderRadius: AppTheme.borderRadius,
-        border: Border.all(color: AppTheme.accentColor, width: 2),
+        border: Border.all(color: AppTheme.primaryColor, width: 2),
       ),
       child: Column(
         children: [

@@ -1,9 +1,9 @@
 import "dart:ui";
 
+import "package:get/get.dart";
 import "package:my_custom_widget/core/sdk/sdk_rouutes.dart";
 import "package:my_custom_widget/my_custom_widget.dart";
 import "package:my_custom_widget/shared/helper/shared_helper.dart";
-import "package:get/get.dart";
 import "package:onesignal_flutter/onesignal_flutter.dart";
 
 import "../../core/api/api_end_points.dart";

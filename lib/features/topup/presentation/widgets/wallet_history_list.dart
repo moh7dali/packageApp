@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_custom_widget/features/topup/presentation/widgets/top_up_history_widget.dart';
+import 'package:my_custom_widget/shared/widgets/card_loading.dart';
 
 import '../../../../shared/widgets/no_item_widget.dart';
 import '../../../../shared/widgets/pagination_list/pagination_list_view.dart';
 import '../../../loyalty/presentation/getx/points_controller.dart';
-import '../../../notifications/presentation/widgets/notification_card_loading.dart';
 import '../../domain/entities/top_up_history.dart';
 
 class WalletHistoryTab extends StatelessWidget {
@@ -25,7 +25,7 @@ class WalletHistoryTab extends StatelessWidget {
       itemBuilder: (context, value) => TopUpHistoryWidget(value: value),
       emptyWidget: const NoItemWidget(),
       emptyText: "emptyList".tr,
-      loadingWidget: const NotificationCardLoading(),
+      loadingWidget: const CardLoading(),
     );
   }
 }

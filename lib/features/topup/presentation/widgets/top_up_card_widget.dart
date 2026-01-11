@@ -21,7 +21,7 @@ class TopUpCardWidget extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: AppTheme.bgColor,
+
         borderRadius: BorderRadius.circular(18),
         border: Border.all(color: AppTheme.primaryColor.withOpacity(0.15)),
         boxShadow: [BoxShadow(color: AppTheme.primaryColor.withOpacity(0.08), blurRadius: 10, offset: const Offset(0, 4))],

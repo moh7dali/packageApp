@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_custom_widget/features/topup/presentation/getx/get_customer_wallet_history_controller.dart';
 import 'package:my_custom_widget/features/topup/presentation/widgets/wallet_balance_widget.dart';
+import 'package:my_custom_widget/shared/widgets/card_loading.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/widgets/no_item_widget.dart';
 import '../../../../shared/widgets/pagination_list/pagination_list_view.dart';
-import '../../../notifications/presentation/widgets/notification_card_loading.dart';
 import '../../domain/entities/top_up_history.dart';
 import '../widgets/top_up_history_widget.dart';
 
@@ -23,7 +23,7 @@ class TopUpPage extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             backgroundColor: AppTheme.primaryColor,
-            iconTheme: IconThemeData(color: AppTheme.accentColor),
+            iconTheme: IconThemeData(color: AppTheme.primaryColor),
           ),
           body: SingleChildScrollView(
             controller: controller.scrollController,
@@ -58,7 +58,7 @@ class TopUpPage extends StatelessWidget {
                   itemBuilder: (context, value) => TopUpHistoryWidget(value: value),
                   emptyWidget: NoItemWidget(),
                   emptyText: "emptyList".tr,
-                  loadingWidget: const NotificationCardLoading(),
+                  loadingWidget: const CardLoading(),
                 ),
                 SizedBox(height: Get.height * .02),
               ],

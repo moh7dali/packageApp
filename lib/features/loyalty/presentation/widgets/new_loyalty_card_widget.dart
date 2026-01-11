@@ -85,10 +85,20 @@ class NewLoyaltyCardWidget extends StatelessWidget {
                     children: [
                       LoyaltyCardDetails(
                         controller: controller,
-                        label: "orderHistory".tr,
-                        value: controller.userLoyaltyData?.loyaltyData?.numberOfOrders ?? 0,
+                        label: "wallet".tr,
+                        value: controller.userLoyaltyData?.loyaltyData?.walletBalance ?? 0,
                       ),
                       const SizedBox(width: 10),
+                      LoyaltyCardDetails(
+                        controller: controller,
+                        label: "points".tr,
+                        value: controller.userLoyaltyData?.loyaltyData?.pointsBalance ?? 0,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
                       LoyaltyCardDetails(
                         controller: controller,
                         label: "visits".tr,
@@ -99,22 +109,6 @@ class NewLoyaltyCardWidget extends StatelessWidget {
                         controller: controller,
                         label: "redeemed".tr,
                         value: controller.userLoyaltyData?.loyaltyData?.redeemedPoints ?? 0,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      LoyaltyCardDetails(
-                        controller: controller,
-                        label: "wallet".tr,
-                        value: controller.userLoyaltyData?.loyaltyData?.walletBalance ?? 0,
-                      ),
-                      const SizedBox(width: 10),
-                      LoyaltyCardDetails(
-                        controller: controller,
-                        label: "points".tr,
-                        value: controller.userLoyaltyData?.loyaltyData?.pointsBalance ?? 0,
                       ),
                       const SizedBox(width: 10),
                       LoyaltyCardDetails(

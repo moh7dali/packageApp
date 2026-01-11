@@ -23,12 +23,18 @@ class HomeRewardCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: cardWidth,
+        decoration: BoxDecoration(
+          color: AppTheme.bgThemeColor.withOpacity(.75),
+          borderRadius: AppTheme.bigBorderRadius,
+          border: Border.all(color: AppTheme.primaryColor.withOpacity(0.12), width: 1.4),
+          boxShadow: [BoxShadow(color: AppTheme.primaryColor.withOpacity(.06), blurRadius: 12, offset: const Offset(0, 6))],
+        ),
         margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
         child: Card(
           shape: RoundedRectangleBorder(borderRadius: AppTheme.bigBorderRadius),
           elevation: 3,
           shadowColor: AppTheme.primaryColor.withOpacity(0.12),
-          color: AppTheme.whiteColor,
+          color: AppTheme.bgThemeColor.withOpacity(0.75),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -50,7 +50,7 @@ class MainScreen extends StatelessWidget {
             //   width: Get.width * .16,
             //   child: FloatingActionButton(
             //     shape: const CircleBorder(),
-            //     backgroundColor: AppTheme.accentColor,
+            //     backgroundColor: AppTheme.primaryColor,
             //     onPressed: () {
             //       SharedHelper().needLogin(() {
             //         controller.getUserLocation();

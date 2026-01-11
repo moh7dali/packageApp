@@ -16,7 +16,7 @@ class BorderPainter extends CustomPainter {
     double c2 = controller >= 0.5 ? (controller - 0.5) * 2 : 0; // Controller value for bottom and right border.
 
     Paint paint = Paint()
-      ..color = AppTheme.accentColor
+      ..color = AppTheme.primaryColor
       ..strokeWidth = 5
       ..style = PaintingStyle.stroke;
 

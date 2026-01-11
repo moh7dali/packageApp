@@ -30,7 +30,6 @@ class CountriesWidget extends StatelessWidget {
                   height: Get.height * .65,
                   width: Get.width * .75,
                   decoration: BoxDecoration(
-                      color: AppTheme.accentColor,
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(color: AppTheme.primaryColor.withOpacity(.4))),
                   child: GestureDetector(
@@ -83,14 +82,14 @@ class CountriesWidget extends StatelessWidget {
                                       title: Text(
                                         country.name ?? "",
                                         style: AppTheme.textStyle(
-                                            color: country.id == controller.selectedCountry.id ? AppTheme.accentColor : AppTheme.blackColor,
+                                            color: country.id == controller.selectedCountry.id ? AppTheme.primaryColor : AppTheme.blackColor,
                                             size: AppTheme.size14,
                                             isBold: true),
                                       ),
                                       trailing: Text(
                                         country.callingCode ?? "+962",
                                         style: AppTheme.textStyle(
-                                            color: country.id == controller.selectedCountry.id ? AppTheme.accentColor : AppTheme.blackColor,
+                                            color: country.id == controller.selectedCountry.id ? AppTheme.primaryColor : AppTheme.blackColor,
                                             size: AppTheme.size14,
                                             isBold: true),
                                       ),

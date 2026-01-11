@@ -1,6 +1,6 @@
+import 'package:get/get.dart';
 import 'package:my_custom_widget/core/constants/constants.dart';
 import 'package:my_custom_widget/features/menu/domain/entity/merchant_info.dart';
-import 'package:get/get.dart';
 
 import '../../features/menu/domain/usecases/get_merchant_info.dart';
 import '../../injection_container.dart';

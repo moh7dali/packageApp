@@ -4,26 +4,24 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../my_custom_widget.dart';
 
 class AppTheme {
-  static const primaryColorString = "#711D20";
-
-  static Color get primaryColor => MozaicLoyaltySDK.settings.primaryColor ?? const Color(0xff711D20);
-
-  static Color get secondaryColor => MozaicLoyaltySDK.settings.secondaryColor ?? const Color(0xffdadada);
-  static const bgColor = Color(0xffF7F9F8);
-  static const accentColor = whiteColor;
   static const blackColor = Colors.black;
   static const whiteColor = Colors.white;
   static const redColor = Colors.red;
   static const greyColor = Colors.grey;
   static const errorColor = redColor;
-  static const optionsBGColor = Color(0xffBCBEC0);
-  static const pickUp = Color(0xff454547);
-  static const delivery = Color(0xffd0d0d0);
-  static final gradient1 = LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [primaryColor, Color(0xFFC9A89A)]);
 
-  static Color get textColor => themeController.isDark.value ? accentColor : blackColor;
+  static const darkColor = Color(0xff464646);
+  static const primaryColorString = "#000000";
 
-  static Color get bgThemeColor => themeController.isDark.value ? blackColor : accentColor;
+  static Color get primaryColor => MozaicLoyaltySDK.settings.primaryColor ?? Color(0xff53bfed);
+
+  static Color get secondaryColor => MozaicLoyaltySDK.settings.secondaryColor ?? Color(0xff8bc541);
+
+  static final gradient1 = LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [primaryColor, secondaryColor]);
+
+  static Color get textColor => themeController.isDark.value ? whiteColor : blackColor;
+
+  static Color get bgThemeColor => themeController.isDark.value ? darkColor : whiteColor;
 
   static BorderRadius borderRadius = BorderRadius.circular(8.r);
   static BorderRadius bigBorderRadius = BorderRadius.circular(12.r);
@@ -64,29 +62,27 @@ class AppTheme {
     }
   }
 
-  static ThemeData lightTheme = ThemeData(
+  static ThemeData get lightTheme => ThemeData(
     brightness: Brightness.light,
     primaryColor: primaryColor,
-    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: primaryColor, primary: accentColor),
+    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: primaryColor, primary: whiteColor),
     textSelectionTheme: TextSelectionThemeData(
       cursorColor: primaryColor,
       selectionColor: primaryColor.withOpacity(.2),
       selectionHandleColor: primaryColor,
     ),
     cardTheme: CardThemeData(
-      color: accentColor,
-      elevation: 1,
-      shadowColor: accentColor,
-      surfaceTintColor: accentColor,
+      color: whiteColor,
+      surfaceTintColor: whiteColor,
       shape: RoundedRectangleBorder(
-        borderRadius: borderRadius,
-        side: BorderSide(color: greyColor.withOpacity(.35)),
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(color: primaryColor.withOpacity(.4)),
       ),
     ),
     checkboxTheme: CheckboxThemeData(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
-      side: BorderSide(color: greyColor.withOpacity(.35), width: 2),
-      checkColor: WidgetStateProperty.all(accentColor),
+      side: BorderSide(color: textColor, width: 2),
+      checkColor: WidgetStateProperty.all(whiteColor),
       fillColor: WidgetStateProperty.resolveWith((states) {
         return states.contains(WidgetState.selected) ? primaryColor : null;
       }),
@@ -99,53 +95,53 @@ class AppTheme {
         return blackColor;
       }),
     ),
-    dialogTheme: const DialogThemeData(surfaceTintColor: accentColor, backgroundColor: accentColor),
-    scaffoldBackgroundColor: accentColor,
-    indicatorColor: accentColor,
-    canvasColor: accentColor,
+    dialogTheme: const DialogThemeData(surfaceTintColor: whiteColor, backgroundColor: whiteColor),
+    scaffoldBackgroundColor: whiteColor,
+    indicatorColor: whiteColor,
+    canvasColor: whiteColor,
     appBarTheme: AppBarTheme(
       surfaceTintColor: Colors.transparent,
-      foregroundColor: accentColor,
-      backgroundColor: accentColor,
-      elevation: 5,
+      foregroundColor: whiteColor,
+      backgroundColor: whiteColor,
+      elevation: 0,
       centerTitle: true,
-      iconTheme: IconThemeData(color: primaryColor),
-      actionsIconTheme: IconThemeData(color: primaryColor),
-      titleTextStyle: textStyle(color: primaryColor, size: size16.sp),
+      iconTheme: IconThemeData(color: darkColor),
+      actionsIconTheme: IconThemeData(color: darkColor),
+      titleTextStyle: textStyle(color: darkColor, size: size14.sp),
     ),
     useMaterial3: true,
     pageTransitionsTheme: const PageTransitionsTheme(builders: {TargetPlatform.android: FadeUpwardsPageTransitionsBuilder()}),
-    bottomSheetTheme: const BottomSheetThemeData(backgroundColor: accentColor, surfaceTintColor: accentColor),
+    bottomSheetTheme: const BottomSheetThemeData(backgroundColor: whiteColor, surfaceTintColor: whiteColor),
   );
 
-  // static ThemeData darkTheme = lightTheme.copyWith(
-  //   brightness: Brightness.dark,
-  //   scaffoldBackgroundColor: darkColor,
-  //   canvasColor: darkColor,
-  //   cardTheme: CardThemeData(
-  //     color: darkColor,
-  //     surfaceTintColor: darkColor,
-  //     shape: RoundedRectangleBorder(
-  //       borderRadius: AppTheme.borderRadius,
-  //       side: BorderSide(color: primaryColor.withOpacity(.4)),
-  //     ),
-  //   ),
-  //   appBarTheme: lightTheme.appBarTheme.copyWith(
-  //     backgroundColor: darkColor,
-  //     foregroundColor: darkColor,
-  //     iconTheme: IconThemeData(color: accentColor),
-  //     actionsIconTheme: IconThemeData(color: accentColor),
-  //     titleTextStyle: textStyle(color: accentColor, size: size14.sp),
-  //   ),
-  //   dialogTheme: lightTheme.dialogTheme.copyWith(backgroundColor: Colors.grey[850]),
-  //   radioTheme: RadioThemeData(
-  //     fillColor: WidgetStateProperty.resolveWith<Color>((states) {
-  //       if (states.contains(WidgetState.selected)) {
-  //         return primaryColor;
-  //       }
-  //       return accentColor;
-  //     }),
-  //   ),
-  //   bottomSheetTheme: lightTheme.bottomSheetTheme.copyWith(backgroundColor: darkColor, surfaceTintColor: darkColor),
-  // );
+  static ThemeData get darkTheme => lightTheme.copyWith(
+    brightness: Brightness.dark,
+    scaffoldBackgroundColor: darkColor,
+    canvasColor: darkColor,
+    cardTheme: CardThemeData(
+      color: darkColor,
+      surfaceTintColor: darkColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(color: primaryColor.withOpacity(.4)),
+      ),
+    ),
+    appBarTheme: lightTheme.appBarTheme.copyWith(
+      backgroundColor: darkColor,
+      foregroundColor: darkColor,
+      iconTheme: IconThemeData(color: whiteColor),
+      actionsIconTheme: IconThemeData(color: whiteColor),
+      titleTextStyle: textStyle(color: whiteColor, size: size14.sp),
+    ),
+    dialogTheme: lightTheme.dialogTheme.copyWith(backgroundColor: Colors.grey[850]),
+    radioTheme: RadioThemeData(
+      fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
+          return primaryColor;
+        }
+        return whiteColor;
+      }),
+    ),
+    bottomSheetTheme: lightTheme.bottomSheetTheme.copyWith(backgroundColor: darkColor, surfaceTintColor: darkColor),
+  );
 }

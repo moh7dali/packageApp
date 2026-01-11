@@ -2,9 +2,7 @@ import "package:curved_navigation_bar/curved_navigation_bar.dart";
 import "package:flutter/material.dart";
 import "package:flutter_advanced_drawer/flutter_advanced_drawer.dart";
 import "package:get/get.dart";
-import "package:my_custom_widget/core/constants/constants.dart";
 import "package:my_custom_widget/features/branch/domain/usecases/get_closest_branches.dart";
-import "package:my_custom_widget/features/branch/presentaion/pages/branch_list_screen.dart";
 import "package:my_custom_widget/features/home/presentation/pages/home_tab.dart";
 import "package:my_custom_widget/features/menu/presentation/pages/menu_tab.dart";
 import "package:my_custom_widget/injection_container.dart";
@@ -59,28 +57,26 @@ class MainController extends GetxController with GetSingleTickerProviderStateMix
         update();
         break;
       case 1:
-        currentWidget = const BranchListScreen(brandId: AppConstants.brandId);
-        currentIndex = 1;
-        update();
+        SharedHelper().needLogin(() {
+          currentWidget = const PointsScreen();
+          currentIndex = 1;
+          update();
+        });
         break;
       case 2:
         SharedHelper().needLogin(() {
-          currentWidget = const PointsScreen();
+          currentWidget = const RewardsTabScreen();
           currentIndex = 2;
           update();
         });
         break;
       case 3:
-        SharedHelper().needLogin(() {
-          currentWidget = const RewardsTabScreen();
-          currentIndex = 3;
-          update();
-        });
+        currentWidget = const MenuTab();
+        currentIndex = 3;
+        update();
         break;
       case 4:
-        currentWidget = const MenuTab();
-        currentIndex = 4;
-        update();
+        getUserLocation();
         break;
       default:
         break;

@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/utils/theme.dart';
 
-class NotificationCardLoading extends StatelessWidget {
-  const NotificationCardLoading({super.key});
+class CardLoading extends StatelessWidget {
+  const CardLoading({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +13,9 @@ class NotificationCardLoading extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(color: AppTheme.accentColor, width: 2),
+          border: Border.all(color: AppTheme.primaryColor, width: 2),
           borderRadius: AppTheme.borderRadius,
-          color:AppTheme.accentColor,
+          color:AppTheme.primaryColor,
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),

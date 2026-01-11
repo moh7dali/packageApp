@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:my_custom_widget/core/utils/theme.dart';
 
 class CircularCountdownWidget extends StatefulWidget {
   final VoidCallback onFinish;
@@ -57,13 +58,10 @@ class _CircularCountdownWidgetState extends State<CircularCountdownWidget> {
     return Stack(
       alignment: Alignment.center,
       children: <Widget>[
-        CircularProgressIndicator(
-          value: progress,
-          strokeWidth: 2.0,
-        ),
+        CircularProgressIndicator(value: progress, strokeWidth: 2.0),
         Text(
           countdown.toString(),
-          style: const TextStyle(fontSize: 20.0),
+          style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size20),
         ),
       ],
     );

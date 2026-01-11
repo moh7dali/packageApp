@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 
-import '../../../../core/constants/assets_constants.dart';
-import '../../../../core/constants/constants.dart';
 import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../branch/domain/entities/branch_details.dart';
+import '../../../branch/presentaion/pages/branch_details_screen.dart';
 
 class CheckInBranches extends StatelessWidget {
   CheckInBranches({super.key, required this.selectedBranch, required this.isOutBranch});
@@ -26,16 +24,10 @@ class CheckInBranches extends StatelessWidget {
             decoration: BoxDecoration(color: AppTheme.textColor.withOpacity(.2), shape: BoxShape.circle),
             child: Padding(
               padding: const EdgeInsets.all(12.0),
-              child: Icon(
-                isOutBranch ? Icons.error_outline_rounded : Icons.check,
-                size: Get.height * .065,
-                color: AppTheme.primaryColor,
-              ),
+              child: Icon(isOutBranch ? Icons.error_outline_rounded : Icons.check, size: Get.height * .065, color: AppTheme.primaryColor),
             ),
           ),
-          SizedBox(
-            height: Get.height * .05,
-          ),
+          SizedBox(height: Get.height * .05),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -45,16 +37,14 @@ class CheckInBranches extends StatelessWidget {
                   style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size16),
                   textAlign: TextAlign.center,
                 ),
-              )
+              ),
             ],
           ),
-          SizedBox(
-            height: Get.height * .01,
-          ),
+          SizedBox(height: Get.height * .01),
           GestureDetector(
             onTap: () {
               SharedHelper().closeAllDialogs();
-              SDKNav.toNamed(RouteConstant.branchDetailsPage, arguments: selectedBranch.id!.toInt());
+              SDKNav.to(BranchDetailsScreen(branchID: selectedBranch.id!));
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -69,9 +59,7 @@ class CheckInBranches extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-            height: Get.height * .01,
-          ),
+          SizedBox(height: Get.height * .01),
         ],
       ),
     );

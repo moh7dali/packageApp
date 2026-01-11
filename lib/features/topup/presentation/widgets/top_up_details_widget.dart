@@ -26,7 +26,7 @@ class TopUpDetailsSheet extends StatelessWidget {
         final total = price * controller.quantity;
         return Container(
           decoration: BoxDecoration(
-            color: AppTheme.bgColor,
+
             borderRadius: BorderRadius.vertical(top: Radius.circular(12.r)),
             boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.10), blurRadius: 18, offset: const Offset(0, -6))],
           ),

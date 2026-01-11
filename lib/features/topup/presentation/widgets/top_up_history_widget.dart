@@ -25,9 +25,9 @@ class TopUpHistoryWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppTheme.bgThemeColor,
           borderRadius: AppTheme.bigBorderRadius,
-          border: Border.all(color: AppTheme.primaryColor.withOpacity(0.10)),
+          border: Border.all(color: AppTheme.primaryColor),
           boxShadow: [BoxShadow(color: AppTheme.primaryColor.withOpacity(0.06), blurRadius: 12, offset: const Offset(0, 5))],
         ),
         child: Padding(

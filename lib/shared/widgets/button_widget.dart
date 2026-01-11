@@ -1,7 +1,7 @@
-import 'package:my_custom_widget/core/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/core/utils/theme.dart';
 
 import 'loading_button_widget/iconed_button.dart';
 import 'loading_button_widget/progress_button.dart';
@@ -32,7 +32,7 @@ class AppButton extends StatelessWidget {
             height: 50.0,
             iconPadding: 0,
             textStyle: AppTheme.textStyle(
-              color: isDoneBtn ? AppTheme.accentColor : AppTheme.textColor,
+              color: isDoneBtn ? AppTheme.textColor : AppTheme.textColor,
               size: isSmall ? AppTheme.size12 : AppTheme.size14,
               isBold: true,
             ),
@@ -56,7 +56,7 @@ class AppButton extends StatelessWidget {
             color: isDoneBtn ? AppTheme.primaryColor : AppTheme.bgThemeColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25),
-              side: BorderSide(color: isDoneBtn ? AppTheme.primaryColor : AppTheme.accentColor),
+              side: BorderSide(color: isDoneBtn ? AppTheme.primaryColor : AppTheme.primaryColor),
             ),
             child: SizedBox(
               width: Get.width,
@@ -67,7 +67,7 @@ class AppButton extends StatelessWidget {
                     title.toUpperCase(),
                     textAlign: TextAlign.center,
                     style: AppTheme.textStyle(
-                      color: isDoneBtn ? AppTheme.accentColor : AppTheme.primaryColor,
+                      color: isDoneBtn ? AppTheme.bgThemeColor : AppTheme.primaryColor,
                       size: isSmall ? AppTheme.size12 : AppTheme.size14,
                       isBold: true,
                     ),
