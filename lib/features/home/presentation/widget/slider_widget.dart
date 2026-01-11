@@ -10,7 +10,9 @@ import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/helper/shared_helper.dart';
+import '../../../category/presentaion/getx/sub_or_product_controller.dart';
 import '../../../category/presentaion/pages/product_details_page.dart';
+import '../../../category/presentaion/pages/sub_or_product_page.dart';
 
 class SliderAdsWidget extends StatefulWidget {
   const SliderAdsWidget({super.key, required this.slides, required this.isLoading});
@@ -62,14 +64,14 @@ class _CarouselWithIndicatorState extends State<SliderAdsWidget> {
                 case SliderAssignType.assignedToCategory:
                   SharedHelper().needLogin(() async {
                     // SharedHelper().scaleDialog(OrderMethodPopup(onFinish: () {
-                    SDKNav.toNamed(
-                      RouteConstant.subOrProductPage,
+                    Get.delete<SubOrProductController>();
+                    SDKNav.to(
+                      SubOrProductPage(
+                        selectedCategory: Category(id: item.assignmentEntityId),
+                        parentCategoryList: [Category(id: item.assignmentEntityId)],
+                        sliderCategoryId: item.assignmentEntityId,
+                      ),
                       preventDuplicates: false,
-                      arguments: {
-                        'selectedCategory': Category(id: item.assignmentEntityId),
-                        'parentCategoryList': [Category(id: item.assignmentEntityId)],
-                        'sliderCategoryId': item.assignmentEntityId,
-                      },
                     );
                     // }));
                   });

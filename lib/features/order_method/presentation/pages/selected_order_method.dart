@@ -5,11 +5,11 @@ import 'package:my_custom_widget/features/address/presentation/widget/my_address
 import 'package:my_custom_widget/features/order_method/presentation/widgets/background_image.dart';
 import 'package:my_custom_widget/features/order_method/presentation/widgets/branch_card_loading.dart';
 
-import '../../../../core/constants/constants.dart';
 import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/widgets/no_item_widget.dart';
 import '../../../../shared/widgets/pagination_list/pagination_list_view.dart';
+import '../../../address/presentation/pages/map_page.dart';
 import '../../../branch/domain/entities/branch_details.dart';
 import '../getx/selected_order_method_controller.dart';
 import '../widgets/branch_card_widget.dart';
@@ -90,11 +90,9 @@ class Delivery extends StatelessWidget {
             SizedBox(height: 10),
             GestureDetector(
               onTap: () {
-                print("allooww");
-                SDKNav.toNamed(
-                  RouteConstant.mapPage,
+                SDKNav.to(
+                  MapPage(initialCamera: CameraPosition(target: selectedOrderMethodController.selectedPosition, zoom: 11.0)),
                   preventDuplicates: false,
-                  arguments: {'initialCamera': CameraPosition(target: selectedOrderMethodController.selectedPosition, zoom: 11.0)},
                 );
               },
               child: Card(
@@ -107,7 +105,7 @@ class Delivery extends StatelessWidget {
                   padding: const EdgeInsets.all(12),
                   child: Row(
                     children: [
-                       Icon(Icons.add_location_alt_outlined, color: AppTheme.primaryColor, size: 30),
+                      Icon(Icons.add_location_alt_outlined, color: AppTheme.primaryColor, size: 30),
                       Expanded(
                         child: Text(
                           'addNewAddress'.tr,
@@ -179,7 +177,7 @@ class PickUp extends StatelessWidget {
               padding: const EdgeInsets.all(4),
               child: Row(
                 children: [
-                   Icon(Icons.search_rounded, color: AppTheme.primaryColor),
+                  Icon(Icons.search_rounded, color: AppTheme.primaryColor),
                   const SizedBox(width: 10),
                   Expanded(
                     child: TextField(

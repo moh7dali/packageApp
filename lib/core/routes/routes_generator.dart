@@ -39,131 +39,7 @@ import '../../shared/screens/app_web_view_Screen.dart';
 import '../constants/constants.dart';
 
 class RouteGeneratorList {
-  Route<dynamic>? onGenerateRoute(RouteSettings settings) {
-    // We extract arguments from settings, NOT from Get.arguments
-    final args = settings.arguments;
-
-    switch (settings.name) {
-      case RouteConstant.splashPage:
-        return GetPageRoute(page: () => SplashScreen(), settings: settings);
-
-      case RouteConstant.onBoarding:
-        return GetPageRoute(page: () => OnboardingPage(), settings: settings);
-
-      // case RouteConstant.filtersPage:
-      //   return GetPageRoute(
-      //     settings: settings,
-      //     page: () => FiltersPage(
-      //       selectedCategory: args is Category  args : Category,
-      //     ),
-      //   );
-
-      case RouteConstant.mainPage:
-        return GetPageRoute(
-          settings: settings,
-          page: () => MainScreen(
-            pageIndex: args is Map<String, int>? ? args : null,
-          ),
-        );
-
-      case RouteConstant.branchDetailsPage:
-        return GetPageRoute(
-          settings: settings,
-          page: () => BranchDetailsScreen(
-            branchID: args is int ? args : 0,
-          ),
-        );
-
-      case RouteConstant.brandScreen:
-        return GetPageRoute(
-          settings: settings,
-          page: () => BrandDetailsScreen(
-            brandID: args is int ? args : 0,
-          ),
-        );
-
-      case RouteConstant.productDetailsPage:
-        return GetPageRoute(
-          settings: settings,
-          page: () {
-            final data = args is Map<String, dynamic> ? args : {};
-            return ProductDetailsPage(
-              product: data['product'],
-              selectedCategory: data['selectedCategory'],
-            );
-          },
-        );
-
-      case RouteConstant.mapPage:
-        return GetPageRoute(
-          settings: settings,
-          page: () {
-            final data = args is Map<String, dynamic> ? args : {};
-            return MapPage(initialCamera: data['initialCamera']);
-          },
-        );
-
-      case RouteConstant.orderDetailsPage:
-        return GetPageRoute(
-          settings: settings,
-          page: () => OrderDetailsPage(
-            orderHistory: args is OrderHistory ? args : null,
-          ),
-        );
-
-      case RouteConstant.addressDetailsPage:
-        return GetPageRoute(
-          settings: settings,
-          page: () => AddressDetailsPage(
-            isEdit: args is bool ? args : false,
-          ),
-        );
-
-      case RouteConstant.subOrProductPage:
-        return GetPageRoute(
-          settings: settings,
-          page: () {
-            final data = args is Map<String, dynamic> ? args : {};
-            return SubOrProductPage(
-              selectedCategory: data['selectedCategory'],
-              sliderCategoryId: data['sliderCategoryId'],
-              parentCategoryList: data['parentCategoryList'],
-            );
-          },
-        );
-
-      case RouteConstant.topUpPage:
-        return GetPageRoute(
-          settings: settings,
-          page: () => TopUpPage(
-            walletBalance: args is double ? args : 0.0,
-          ),
-        );
-
-      case RouteConstant.appWebViewPage:
-        return GetPageRoute(
-          settings: settings,
-          page: () {
-            final data = args is Map ? args : {};
-            return AppWebViewScreen(
-              title: data["title"] ?? "",
-              url: data["url"] ?? "",
-            );
-          },
-        );
-
-    // Default for pages with no arguments
-      default:
-        final pageBuilder = appRoutes.firstWhere(
-              (e) => e.name == settings.name,
-          orElse: () => GetPage(name: '/404', page: () => const SizedBox()),
-        ).page;
-        return GetPageRoute(settings: settings, page: pageBuilder);
-    }
-  }
-
-  // Keep your list for the default pages without arguments
-  static final List<GetPage> appRoutes = [
+  final List<GetPage> appRoutes = [
     GetPage(name: RouteConstant.splashPage, page: () => SplashScreen()),
     GetPage(name: RouteConstant.onBoarding, page: () => OnboardingPage()),
     GetPage(name: RouteConstant.authPage, page: () => const LoginScreen()),
@@ -175,16 +51,94 @@ class RouteGeneratorList {
     GetPage(name: RouteConstant.contactUsPage, page: () => const ContactUsPage()),
     GetPage(name: RouteConstant.merchantInfoPage, page: () => const MerchantInfoPage()),
     GetPage(name: RouteConstant.languagePage, page: () => const LanguagePage()),
+    GetPage(
+      name: RouteConstant.filtersPage,
+      page: () => FiltersPage(selectedCategory: Get.arguments as Category),
+    ),
+    GetPage(
+      name: RouteConstant.mainPage,
+      page: () => MainScreen(pageIndex: Get.arguments as Map<String, int>?),
+    ),
+    GetPage(
+      name: RouteConstant.branchDetailsPage,
+      page: () => BranchDetailsScreen(branchID: Get.arguments as int),
+    ),
     GetPage(name: RouteConstant.notificationsPage, page: () => const NotificationsPage()),
     GetPage(name: RouteConstant.rewardsScreen, page: () => const RewardsTabScreen()),
     GetPage(name: RouteConstant.pointSchemaPage, page: () => const PointSchemaPage()),
+    GetPage(
+      name: RouteConstant.brandScreen,
+      page: () => BrandDetailsScreen(brandID: Get.arguments as int),
+    ),
     GetPage(name: RouteConstant.pointsScreen, page: () => const PointsScreen()),
     GetPage(name: RouteConstant.brandCategoryPage, page: () => const BrandCategoryPage()),
+    GetPage(
+      name: RouteConstant.productDetailsPage,
+      page: () {
+        final args = Get.arguments as Map<String, dynamic>;
+        return ProductDetailsPage(product: args['product'], selectedCategory: args['selectedCategory']);
+      },
+    ),
     GetPage(name: RouteConstant.rewardsGalleryPage, page: () => RewardsGalleryPage()),
     GetPage(name: RouteConstant.myAddressPage, page: () => MyAddressPage()),
+    GetPage(
+      name: RouteConstant.mapPage,
+      page: () {
+        final args = Get.arguments as Map<String, dynamic>;
+        return MapPage(initialCamera: args['initialCamera']);
+      },
+    ),
+    GetPage(
+      name: RouteConstant.orderDetailsPage,
+      page: () {
+        return OrderDetailsPage(orderHistory: Get.arguments as OrderHistory);
+      },
+    ),
+    GetPage(
+      name: RouteConstant.addressDetailsPage,
+      page: () => AddressDetailsPage(isEdit: Get.arguments as bool? ?? false),
+    ),
+    GetPage(
+      name: RouteConstant.subOrProductPage,
+      page: () {
+        final args = Get.arguments as Map<String, dynamic>;
+        return SubOrProductPage(
+          selectedCategory: args['selectedCategory'],
+          sliderCategoryId: args['sliderCategoryId'],
+          parentCategoryList: args['parentCategoryList'],
+        );
+      },
+    ),
     GetPage(name: RouteConstant.cartPage, page: () => CartPage()),
     GetPage(name: RouteConstant.orderHistoryPage, page: () => OrderHistoryPage()),
     GetPage(name: RouteConstant.offersScreen, page: () => OffersScreen()),
     GetPage(name: RouteConstant.topUpListScreen, page: () => TopUpListPage()),
+    GetPage(
+      name: RouteConstant.topUpPage,
+      page: () => TopUpPage(walletBalance: Get.arguments as double?),
+    ),
+    GetPage(
+      name: RouteConstant.appWebViewPage,
+      page: () => AppWebViewScreen(title: (Get.arguments as Map)["title"], url: (Get.arguments as Map)["url"]),
+    ),
   ];
+
+  Route<dynamic>? onGenerateRoute(RouteSettings settings) {
+    final GetPage? route = appRoutes.firstWhereOrNull(
+          (element) => element.name == settings.name,
+    );
+
+    if (route != null) {
+      return GetPageRoute(
+        settings: settings,
+        routeName: route.name,
+        page: route.page,
+        transition: route.transition ?? Transition.fadeIn,
+        binding: route.binding,
+        bindings: route.bindings,
+        popGesture: route.popGesture,
+      );
+    }
+    return null;
+  }
 }

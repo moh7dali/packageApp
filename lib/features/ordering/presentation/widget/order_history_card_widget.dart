@@ -11,12 +11,12 @@ import 'loading_history_widget.dart';
 class OrderHistoryCardWidget extends StatelessWidget {
   const OrderHistoryCardWidget({super.key, required this.orderHistory, this.isDetails = false});
 
-  final OrderHistory? orderHistory;
+  final OrderHistory orderHistory;
   final bool isDetails;
 
   @override
   Widget build(BuildContext context) {
-    final statusData = getStatus(orderHistory!.orderStatus!);
+    final statusData = getStatus(orderHistory.orderStatus!);
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
@@ -34,7 +34,7 @@ class OrderHistoryCardWidget extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  '${'orderId'.tr}: #${orderHistory?.id}',
+                  '${'orderId'.tr}: #${orderHistory.id}',
                   style: AppTheme.textStyle(size: AppTheme.size14, color: AppTheme.textColor, isBold: true),
                 ),
               ),
@@ -42,17 +42,17 @@ class OrderHistoryCardWidget extends StatelessWidget {
             ],
           ),
           Text(
-            '${'orderDate'.tr}: ${SharedHelper.dateFormatToString(orderHistory!.creationDate!, withTime: true)}',
+            '${'orderDate'.tr}: ${SharedHelper.dateFormatToString(orderHistory.creationDate!, withTime: true)}',
             style: AppTheme.textStyle(size: AppTheme.size14, color: AppTheme.textColor.withOpacity(.7)),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
 
-          if (orderHistory!.isScheduled!) ...[
+          if (orderHistory.isScheduled!) ...[
             const SizedBox(height: 4),
             Text(
-              '${orderHistory!.deliveryMethodId == 1 ? 'deliveryDate'.tr : 'pickUpDate'.tr}: '
-              '${SharedHelper.dateFormatToString(orderHistory!.deliveryDate!, withTime: true)}',
+              '${orderHistory.deliveryMethodId == 1 ? 'deliveryDate'.tr : 'pickUpDate'.tr}: '
+              '${SharedHelper.dateFormatToString(orderHistory.deliveryDate!, withTime: true)}',
               style: AppTheme.textStyle(size: AppTheme.size12, color: AppTheme.textColor.withOpacity(.7)),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,

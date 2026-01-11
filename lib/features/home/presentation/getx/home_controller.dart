@@ -13,6 +13,7 @@ import "../../../../shared/helper/shared_preferences_storage.dart";
 import "../../../branch/domain/entities/branch_details.dart";
 import "../../../category/domain/usecases/get_category_products.dart";
 import "../../../category/presentaion/getx/sub_or_product_controller.dart";
+import "../../../category/presentaion/pages/sub_or_product_page.dart";
 import "../../../main/presentation/getx/main_controller.dart";
 import "../../../rewards/domain/entity/campaign_details.dart";
 import "../../../rewards/domain/entity/user_rewards.dart";
@@ -138,11 +139,7 @@ class HomeController extends GetxController {
 
   void gotoSubOrProduct(Category newCat) {
     Get.delete<SubOrProductController>();
-    SDKNav.toNamed(
-      RouteConstant.subOrProductPage,
-      preventDuplicates: false,
-      arguments: {'selectedCategory': newCat, 'parentCategoryList': homeDetails?.categoryList?.category ?? []},
-    );
+    SDKNav.to(SubOrProductPage(selectedCategory: newCat, parentCategoryList: homeDetails?.categoryList?.category ?? []), preventDuplicates: false);
   }
 
   Future getUserData() async {

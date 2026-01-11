@@ -10,7 +10,7 @@ import '../widget/order_details_widget.dart';
 class OrderDetailsPage extends StatelessWidget {
   const OrderDetailsPage({super.key, required this.orderHistory});
 
-  final OrderHistory? orderHistory;
+  final OrderHistory orderHistory;
 
   @override
   Widget build(BuildContext context) {

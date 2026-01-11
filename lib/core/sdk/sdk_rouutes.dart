@@ -6,12 +6,16 @@ import '../../my_custom_widget.dart';
 class SDKNav {
   static NavigatorState? get _state => MozaicLoyaltySDK.sdkNavKey.currentState;
 
-  static void toNamed(String route, {dynamic arguments, bool preventDuplicates = true}) {
+  static void toNamed(String route, {dynamic arguments}) {
     _state?.pushNamed(route, arguments: arguments);
   }
 
-  static void to(dynamic page) {
-    _state?.push(page);
+  static void to(dynamic page, {bool preventDuplicates = true}) {
+    if (preventDuplicates && MozaicLoyaltySDK.settings.hostAppUseGetx) {
+      _state?.push(page);
+    } else {
+      Get.to(page, preventDuplicates: false);
+    }
   }
 
   static void offAllNamed(String route, {dynamic arguments}) {

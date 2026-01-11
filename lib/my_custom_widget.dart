@@ -111,7 +111,7 @@ class MozaicLoyaltySDK extends StatelessWidget {
       locale: Locale(appLanguage),
       fallbackLocale: const Locale('en'),
       theme: AppTheme.lightTheme,
-      getPages: RouteGeneratorList.appRoutes,
+      getPages: RouteGeneratorList().appRoutes,
       initialRoute: RouteConstant.splashPage,
     );
   }
