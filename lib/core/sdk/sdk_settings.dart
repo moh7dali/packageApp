@@ -8,11 +8,13 @@ class MozaicLoyaltySDKSettings {
   final String? appTitleEn;
   final String? appTitleAr;
   final String? sdkLanguage;
+  final bool? redeemPointsQRCode;
   final ThemeMode? sdkTheme;
 
   const MozaicLoyaltySDKSettings({
     required this.logoWidget,
     this.hostAppUseGetx = false,
+    this.redeemPointsQRCode = true,
     this.primaryColor,
     this.secondaryColor,
     this.appTitleEn,

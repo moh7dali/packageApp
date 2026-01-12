@@ -7,7 +7,15 @@ import "../../../../core/sdk/sdk_rouutes.dart";
 import "../../../../core/utils/theme.dart";
 import "../../../../injection_container.dart";
 import "../../../../my_custom_widget.dart";
+import "../../../../shared/helper/device_info.dart";
+import "../../../../shared/helper/location_helper.dart";
 import "../../../../shared/helper/shared_helper.dart";
+import "../../../../shared/widgets/loading_widget.dart";
+import "../../../barcode/presentation/getx/user_barcode_controller.dart";
+import "../../../barcode/presentation/pages/barcode_screen.dart";
+import "../../../branch/domain/entities/branch_details.dart";
+import "../../../branch/domain/usecases/check_in_customer.dart";
+import "../../../branch/domain/usecases/get_closest_branches.dart";
 import "../../../main/presentation/getx/main_controller.dart";
 import "../../../rewards/domain/entity/campaign_details.dart";
 import "../../../rewards/domain/entity/user_rewards.dart";
@@ -18,19 +26,38 @@ import "../../domain/entities/customer_data.dart";
 import "../../domain/entities/home_details.dart";
 import "../../domain/entities/tier.dart";
 import "../../domain/usecases/get_customer_home_contents.dart";
+import "../widget/check_in_branch.dart";
+import "../widget/select_with_in_the_range_branches.dart";
 
 class HomeController extends GetxController {
   final GetHomeDetails getHomeDetails;
   final GetCustomerHomeContents getCustomerHomeContents;
   final GetCampaignList getCampaignList;
+  final GetClosestBranches getClosestBranches;
+  final CheckInCustomer checkInCustomer;
+
   HomeDetails? homeDetails;
-  String homeWelcomeTitle = "";
   bool isHomeLoading = true;
   bool isLogin = false;
-
+  BranchDetails? selectedBranch;
+  CustomerData? customerData;
+  String? currentTier;
+  int? currentTierId;
+  String? currentImageTier;
+  String? customerNumber;
+  double currentValue = 0.0;
+  String? nextTier;
+  String? nextImageTier;
+  List<Map<String, dynamic>> tiersBoundaries = [];
   ScrollController scrollController = ScrollController();
 
-  HomeController() : getHomeDetails = sl(), getCustomerHomeContents = sl(), getCampaignList = sl(), getUserRewards = sl();
+  HomeController()
+    : getHomeDetails = sl(),
+      getCustomerHomeContents = sl(),
+      getCampaignList = sl(),
+      getUserRewards = sl(),
+      getClosestBranches = sl(),
+      checkInCustomer = sl();
 
   @override
   void onInit() {
@@ -39,7 +66,6 @@ class HomeController extends GetxController {
   }
 
   Future<void> init() async {
-    homeWelcomeTitle = await getHeaderTitle();
     isLogin = await SharedHelper().isUserLoggedIn();
     if (isLogin) {
       getHomeForAuthUser();
@@ -106,19 +132,6 @@ class HomeController extends GetxController {
           ),
         );
   }
-
-  CustomerData? customerData;
-  String? currentTier;
-  int? currentTierId;
-  String? currentImageTier;
-  String? customerNumber;
-  double currentValue = 0.0;
-  String? nextTier;
-  String? nextImageTier;
-
-  List<Map<String, dynamic>> tiersBoundaries = [];
-
-  bool isProdLoading = true;
 
   Future getUserData() async {
     customerData = homeDetails?.customerData;
@@ -280,6 +293,7 @@ class HomeController extends GetxController {
   }
 
   bool isShowReferral = false;
+
   CampaignDetails? referralCampaign;
 
   Future<void> checkIfShowReferral() async {
@@ -300,6 +314,76 @@ class HomeController extends GetxController {
     } else {
       missions.removeWhere((element) => element.name == "دعوة");
       missions.removeWhere((element) => element.name == "تسجيل");
+    }
+  }
+
+  Future getUserLocation() async {
+    SharedHelper().bottomSheet(BottomLoadingWidget());
+    DeviceInfo.getDeviceData();
+    await LocationHelper.requestLocationPermission((pos) async {
+      await getClosestBranchesApi(pos.latitude, pos.longitude);
+    });
+  }
+
+  Future getClosestBranchesApi(double latitude, double longitude) async {
+    await getClosestBranches.repository
+        .getClosestBranches(body: {"CustomerLatitude": latitude, "CustomerLongitude": longitude})
+        .then(
+          (value) => value.fold(
+            (failure) {
+              SharedHelper().closeAllDialogs();
+              SharedHelper().errorSnackBar(failure.errorsModel.errorMessage ?? "");
+            },
+            (closestBranches) async {
+              if (closestBranches != null) {
+                SharedHelper().closeAllDialogs();
+                if ((closestBranches.withinTheRangeBranches ?? []).isNotEmpty) {
+                  selectedBranch = closestBranches.withinTheRangeBranches?.firstOrNull;
+                  if ((closestBranches.totalNumberOfResult ?? 0) > 1) {
+                    SharedHelper().bottomSheet(
+                      SelectWithInTheRangeBranches(withinTheRangeBranches: closestBranches.withinTheRangeBranches!, mainController: this),
+                      isScrollControlled: true,
+                    );
+                  } else {
+                    if ((closestBranches.totalNumberOfResult ?? 0) == 1) {
+                      await checkInUser(selectedBranch!);
+                    }
+                  }
+                } else if (closestBranches.outSideTheRangeBranch != null) {
+                  SharedHelper().bottomSheet(
+                    CheckInBranches(selectedBranch: closestBranches.outSideTheRangeBranch!, isOutBranch: true),
+                    isScrollControlled: true,
+                  );
+                }
+              }
+            },
+          ),
+        );
+  }
+
+  Future checkInUser(BranchDetails selectedBranch) async {
+    await checkInCustomer.repository
+        .checkInCustomer(queryParameters: {"branchId": "${selectedBranch.id}"})
+        .then(
+          (value) => value.fold(
+            (failure) {
+              SharedHelper().closeAllDialogs();
+              SharedHelper().errorSnackBar(failure.errorsModel.errorMessage ?? "");
+            },
+            (r) {
+              SharedHelper().closeAllDialogs();
+              SharedHelper().bottomSheet(CheckInBranches(selectedBranch: selectedBranch, isOutBranch: false), isScrollControlled: true);
+            },
+          ),
+        );
+  }
+
+  void redeemPoints() {
+    if (MozaicLoyaltySDK.settings.redeemPointsQRCode == true) {
+      Get.delete<UserBarcodeController>();
+      SharedHelper().needLogin(() => SharedHelper().scaleDialog(BarcodeScreen()));
+    } else {
+      getUserLocation();
     }
   }
 }

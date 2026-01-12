@@ -6,13 +6,8 @@ import 'package:my_custom_widget/shared/widgets/button_widget.dart';
 
 import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
-import '../../domain/entities/area.dart';
-import '../../domain/entities/city.dart';
 import '../../domain/entities/gender.dart';
-import '../../domain/entities/look_up.dart';
-import '../../domain/entities/marital_status.dart';
 import '../getx/auth_controller.dart';
-import '../getx/city_area_controller.dart';
 
 class SelectWidget<T> extends StatefulWidget {
   SelectWidget({
@@ -24,7 +19,6 @@ class SelectWidget<T> extends StatefulWidget {
     this.isDate = false,
     this.isAddress = false,
     this.controller,
-    this.cityAndAreaController,
   });
 
   final String tag;
@@ -34,7 +28,6 @@ class SelectWidget<T> extends StatefulWidget {
   final bool isDate;
   final bool isAddress;
   final AuthController? controller;
-  final CityAndAreaController? cityAndAreaController;
 
   @override
   State<SelectWidget<T>> createState() => _SelectWidgetState<T>();
@@ -129,34 +122,6 @@ class _SelectWidgetState<T> extends State<SelectWidget<T>> {
                   case SelectWidgetConstant.dateOfBirth:
                     widget.controller?.selectedDateOfBirth = widget.selectedItem as DateTime?;
                     widget.controller?.bodController.text = widget.controller!.dateFormat.format(widget.controller!.selectedDateOfBirth!);
-                    break;
-                  case SelectWidgetConstant.maritalStatus:
-                    widget.controller?.selectedMaritalStatus = widget.selectedItem as MaritalStatus?;
-                    widget.controller?.maritalController.text = widget.controller?.selectedMaritalStatus?.name ?? "";
-                    break;
-                  case SelectWidgetConstant.anniversaryDate:
-                    widget.controller?.selectedAnniversaryDate = widget.selectedItem as DateTime?;
-                    widget.controller?.anniversaryController.text = widget.controller!.dateFormat.format(widget.controller!.selectedAnniversaryDate!);
-                    break;
-                  case SelectWidgetConstant.city:
-                    widget.controller?.selectedCity = widget.selectedItem as City?;
-                    widget.controller?.cityController.text = widget.controller?.selectedCity?.name ?? "";
-                    // widget.cityAndAreaController?.allArea = [];
-                    // widget.controller?.selectedArea == null;
-                    // widget.controller?.areaController.text = '';
-                    // if (widget.controller?.selectedCity != null) {
-                    //   widget.cityAndAreaController?.getAreaList(cityId: widget.controller?.selectedCity?.id ?? 0);
-                    // }
-
-                    break;
-                  case SelectWidgetConstant.area:
-                    widget.controller?.selectedArea = widget.selectedItem as Area?;
-                    widget.controller?.areaController.text = widget.controller?.selectedArea?.name ?? "";
-
-                    break;
-                  case SelectWidgetConstant.lookup:
-                    widget.controller?.selectedVisitorType = widget.selectedItem as LookUp?;
-                    widget.controller?.visitorTypeController.text = widget.controller?.selectedVisitorType?.name ?? "";
                     break;
                 }
                 if (widget.isAddress) {

@@ -113,20 +113,6 @@ class ProfilePage extends StatelessWidget {
                                         title: "${controller.getMaritalState(controller.profile?.maritalStatusId ?? 0)?.name}",
                                         label: "maritalStatus",
                                       ),
-                                    if (controller.profile?.city != null)
-                                      ProfileFieldWidget(title: (controller.profile?.city?.name ?? "").toString(), label: "city"),
-                                    if (controller.profile?.area != null)
-                                      ProfileFieldWidget(title: (controller.profile?.area?.name ?? "").toString(), label: "area"),
-
-                                    // ProfileFieldWidget(
-                                    //   title: "myAddresses".tr,
-                                    //   image: AssetsConsts.savedAddress,
-                                    //   label: "myAddresses",
-                                    //   isDelete: true,
-                                    //   onTap: () {
-                                    //     SDKNav.toNamed(RouteConstant.myAddressPage);
-                                    //   },
-                                    // ),
                                     ProfileFieldWidget(
                                       label: "deleteAccount",
                                       title: "deleteAccount".tr,

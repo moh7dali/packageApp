@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:my_custom_widget/features/loyalty/presentation/pages/point_schema_page.dart';
 import 'package:my_custom_widget/features/menu/presentation/widget/developer_widget.dart';
 import 'package:my_custom_widget/features/rewards_gallery/presentation/screens/rewards_gallery_page.dart';
-import 'package:my_custom_widget/features/topup/presentation/pages/top_up_list_page.dart';
-import 'package:my_custom_widget/features/topup/presentation/pages/top_up_page.dart';
 
 import '../../features/auth/presentation/pages/complete_profile.dart';
 import '../../features/auth/presentation/pages/login_screen.dart';
@@ -46,11 +44,6 @@ class RouteGeneratorList {
       },
     ),
     GetPage(name: RouteConstant.rewardsGalleryPage, page: () => RewardsGalleryPage()),
-    GetPage(name: RouteConstant.topUpListScreen, page: () => TopUpListPage()),
-    GetPage(
-      name: RouteConstant.topUpPage,
-      page: () => TopUpPage(walletBalance: Get.arguments as double?),
-    ),
     GetPage(
       name: RouteConstant.campaignRewards,
       page: () {

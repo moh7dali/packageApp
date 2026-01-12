@@ -10,15 +10,13 @@ import '../../../../core/utils/theme.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../../../shared/model/pagination_list_model.dart';
 import '../../../home/domain/entities/tier.dart';
-import '../../../topup/domain/entities/top_up_history.dart';
-import '../../../topup/domain/usecases/get_customer_wallet_history.dart';
 import '../../domain/entity/user_balance_history.dart';
 
 class UserBalanceHistoryController extends GetxController with GetTickerProviderStateMixin {
   final GetUserBalanceHistory getUserBalanceHistory;
   final GetUserLoyaltyData getUserLoyaltyData;
 
-  UserBalanceHistoryController({this.context}) : getUserBalanceHistory = sl(), getUserLoyaltyData = sl(), getCustomerWalletHistory = sl();
+  UserBalanceHistoryController({this.context}) : getUserBalanceHistory = sl(), getUserLoyaltyData = sl();
 
   List<UserBalanceHistory> userBalanceHistoryList = [];
   UserLoyaltyData? userLoyaltyData;
@@ -118,30 +116,5 @@ class UserBalanceHistoryController extends GetxController with GetTickerProvider
   Color getTierColor() {
     String color = userTierData?.tierColor ?? AppTheme.primaryColorString;
     return AppTheme.fromHex(color);
-  }
-
-  final GetCustomerWalletHistory getCustomerWalletHistory;
-
-  List<TopUpHistory> topUpHistoryList = [];
-
-  Future<PaginationListModel> getTopUpHistoryApi({int page = 1}) async {
-    topUpHistoryList = [];
-    int totalNumberOfResult = 0;
-    await getCustomerWalletHistory.repository
-        .getCustomerWalletHistory(body: {"PageNumber": "$page"})
-        .then(
-          (value) => value.fold(
-            (failure) {
-              SharedHelper().errorSnackBar(failure.errorsModel.errorMessage ?? "");
-            },
-            (list) {
-              List<TopUpHistory> topUpForSize = list.customerWalletHistoryModelList ?? [];
-              topUpHistoryList = topUpForSize;
-              totalNumberOfResult = list.totalNumberofResult ?? 0;
-              update();
-            },
-          ),
-        );
-    return PaginationListModel(totalNumberOfResult: totalNumberOfResult, listOfObjects: topUpHistoryList);
   }
 }

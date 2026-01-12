@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:my_custom_widget/features/splash/presentation/getx/splash_controller.dart';
-import 'package:my_custom_widget/features/splash/presentation/widgets/popup_widget.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../../core/api/api_end_points.dart';
 import '../../../../core/utils/theme.dart';
@@ -21,43 +20,27 @@ class SplashScreen extends StatelessWidget {
             child: GetBuilder<SplashController>(
               init: SplashController(),
               builder: (controller) {
-                if (controller.advertisingDone) {
-                  return PopupWidget(advertising: controller.advertisingList?.advertisingList ?? [], controller: controller);
-                }
                 return Stack(
                   alignment: Alignment.center,
                   children: [
+                    Positioned(top: Get.height * .35, left: 0, right: 0, child: HeroLogo()),
                     AnimatedPositioned(
-                      top: controller.isLoading ? Get.height * .05 : Get.height * .35,
-                      left: 0,
-                      right: 0,
-                      duration: const Duration(milliseconds: 2000),
-                      child: HeroLogo(),
-                    ),
-                    AnimatedPositioned(
-                      bottom: controller.isLoadingCircle ? Get.height * .3 : 0,
+                      bottom: Get.height * .1,
                       left: 0,
                       right: 0,
                       duration: const Duration(milliseconds: 300),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          AnimatedOpacity(
-                            opacity: controller.isLoadingCircle ? 1 : 0,
-                            duration: const Duration(milliseconds: 300),
-                            child: CircularProgressIndicator(color: AppTheme.primaryColor),
-                          ),
+                          LoadingAnimationWidget.newtonCradle(color: AppTheme.primaryColor, size: Get.height * .25),
                         ],
                       ),
                     ),
                     Positioned(
                       bottom: 0,
-                      child: FutureBuilder<PackageInfo>(
-                        future: PackageInfo.fromPlatform(),
-                        builder: (context, snapshot) => Text(
-                          'V.${snapshot.data?.version ?? ""} ${ApiEndPoints.apiLink.contains("staging") ? "staging" : ""}',
-                          style: AppTheme.textStyle(size: AppTheme.size14, color: AppTheme.primaryColor),
-                        ),
+                      child: Text(
+                        ApiEndPoints.apiLink.contains("staging") ? "staging" : "",
+                        style: AppTheme.textStyle(size: AppTheme.size14, color: AppTheme.primaryColor),
                       ),
                     ),
                   ],

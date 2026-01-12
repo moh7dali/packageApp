@@ -41,7 +41,7 @@ class MainScreen extends StatelessWidget {
             }
           },
           child: Scaffold(
-            appBar: controller.currentIndex != 0 ? heroAppBar(bg: AppTheme.primaryColor) : null,
+            appBar: controller.currentIndex != 0 ? heroAppBar() : null,
             bottomNavigationBar: const AppBottomNavigationBar(),
             body: Column(children: [Expanded(child: controller.currentWidget)]),
             // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

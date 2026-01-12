@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_custom_widget/core/utils/theme.dart';
 import 'package:my_custom_widget/features/home/presentation/getx/home_controller.dart';
-import 'package:my_custom_widget/features/home/presentation/widget/slider_widget.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../shared/helper/shared_helper.dart';
+import '../../../../shared/widgets/button_widget.dart';
+import '../../../barcode/presentation/getx/user_barcode_controller.dart';
+import '../../../barcode/presentation/pages/barcode_screen.dart';
 import '../../../main/presentation/widgets/hero_app_bar.dart';
-import '../../domain/entities/slider.dart';
 import '../widget/loyalty_card_loading.dart';
 import '../widget/loyalty_card_widget.dart';
 import '../widget/missioons_widget.dart';
@@ -24,7 +25,7 @@ class HomeScreen extends StatelessWidget {
     return GetBuilder<HomeController>(
       init: HomeController(),
       builder: (controller) => Scaffold(
-        appBar: heroAppBar(controller: controller, bg: AppTheme.primaryColor),
+        appBar: heroAppBar(),
         body: RefreshIndicator(
           color: AppTheme.primaryColor,
           onRefresh: () async {
@@ -41,8 +42,6 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       LoyaltyCardLoading(),
                       SizedBox(height: Get.height * .02),
-                      SliderAdsWidget(slides: const [SliderItem(), SliderItem(), SliderItem()], isLoading: controller.isHomeLoading),
-                      SizedBox(height: Get.height * .02),
                       PagesCardsLoading(),
                     ],
                   )
@@ -50,9 +49,16 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       LoyaltyCardWidget(homeController: controller),
                       SizedBox(height: Get.height * .01),
-                      SliderAdsWidget(
-                        slides: (controller.homeDetails?.sliders?.sliders ?? []).firstOrNull?.sliderItems ?? [],
-                        isLoading: controller.isHomeLoading,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        child: AppButton(
+                          title: "redeemPoints".tr,
+                          isDoneBtn: false,
+                          function: () {
+                            Get.delete<UserBarcodeController>();
+                            SharedHelper().needLogin(() => SharedHelper().scaleDialog(BarcodeScreen()));
+                          },
+                        ),
                       ),
                       SizedBox(height: Get.height * .01),
                       if (controller.isShowReferral && controller.referralCampaign != null)

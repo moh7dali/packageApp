@@ -1,18 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/features/home/presentation/getx/home_controller.dart';
 import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 import 'package:my_custom_widget/shared/widgets/button_widget.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/widgets/loading_widget.dart';
 import '../../../branch/domain/entities/branch_details.dart';
-import '../getx/main_controller.dart';
+import '../../../main/presentation/getx/main_controller.dart';
 
 class SelectWithInTheRangeBranches extends StatelessWidget {
   SelectWithInTheRangeBranches({super.key, required this.withinTheRangeBranches, required this.mainController});
 
   List<BranchDetails> withinTheRangeBranches;
-  MainController mainController;
+  HomeController mainController;
 
   @override
   Widget build(BuildContext context) {

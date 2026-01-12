@@ -21,11 +21,8 @@ import '../../../menu/domain/entity/profile_info.dart';
 import '../../../menu/domain/usecases/delete_account.dart';
 import '../../../menu/domain/usecases/get_profile_info.dart';
 import '../../../menu/domain/usecases/logout.dart';
-import '../../domain/entities/area.dart';
-import '../../domain/entities/city.dart';
 import '../../domain/entities/country.dart';
 import '../../domain/entities/gender.dart';
-import '../../domain/entities/look_up.dart';
 import '../../domain/entities/marital_status.dart';
 import '../../domain/usecases/add_referral.dart';
 import '../../domain/usecases/get_countries.dart';
@@ -107,9 +104,6 @@ class AuthController extends GetxController with CodeAutoFill {
   Gender? selectedGenderType;
   DateTime? selectedDateOfBirth;
   MaritalStatus? selectedMaritalStatus;
-  City? selectedCity;
-  Area? selectedArea;
-  LookUp? selectedVisitorType;
 
   ///Referral Screen
   final referralFormKey = GlobalKey<FormState>();
@@ -334,20 +328,6 @@ class AuthController extends GetxController with CodeAutoFill {
       "Gender": selectedGenderType!.id,
       "BirthDate": selectedDateOfBirth!.toIso8601String(),
     };
-    // if (selectedVisitorType != null) {
-    //   body.putIfAbsent(
-    //     "ProfileAttributes",
-    //     () => [
-    //       if (selectedVisitorType != null) {"Id": AppConstants.visitorTypeAttributeId, "Value": "${selectedVisitorType!.id}"},
-    //     ],
-    //   );
-    // }
-    if (selectedCity != null) {
-      body.putIfAbsent("CityId", () => selectedCity!.id);
-    }
-    if (selectedArea != null) {
-      body.putIfAbsent("AreaId", () => selectedArea!.id!);
-    }
     if (selectedMaritalStatus != null) {
       body.putIfAbsent("MaritalStatusId", () => selectedMaritalStatus!.id);
       if (anniversaryController.text.isNotEmpty) {
@@ -433,12 +413,9 @@ class AuthController extends GetxController with CodeAutoFill {
     areaController.clear();
     selectedGenderType = null;
     selectedMaritalStatus = null;
-    selectedCity = null;
-    selectedArea = null;
     isResend = false;
     smsDuration = '00';
     timer = null;
-    selectedVisitorType = null;
     topText = "";
     bottomText = "";
   }
@@ -489,14 +466,6 @@ class AuthController extends GetxController with CodeAutoFill {
     selectedMaritalStatus = getMaritalState(profileInfo.maritalStatusId ?? 0);
     genderController.text = selectedGenderType?.name ?? "";
     maritalController.text = selectedMaritalStatus?.name ?? "";
-    selectedCity = profileInfo.city;
-    selectedArea = profileInfo.area;
-    cityController.text = selectedCity?.name ?? "";
-    areaController.text = selectedArea?.name ?? "";
-    int id = int.parse(profileInfo.profileAttributes?.firstWhereOrNull((element) => element.id == AppConstants.visitorTypeAttributeId)?.value ?? "0");
-    String name =
-        profileInfo.profileAttributes?.firstWhereOrNull((element) => element.id == AppConstants.visitorTypeAttributeId)?.attributeDisplayValue ?? "";
-    selectedVisitorType = LookUp(id: id, name: name);
     if (profileInfo.anniversary != null) {
       selectedAnniversaryDate = dateFormat.parse(profileInfo.anniversary!);
       anniversaryController.text = dateFormat.format(dateFormat.parse(profileInfo.anniversary!));

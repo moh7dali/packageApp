@@ -68,11 +68,6 @@ class RouteConstant {
 class SelectWidgetConstant {
   static const String gender = 'gender';
   static const String dateOfBirth = 'dateOfBirth';
-  static const String city = 'city';
-  static const String area = 'area';
-  static const String maritalStatus = 'maritalStatus';
-  static const String anniversaryDate = 'anniversaryDate';
-  static const String lookup = 'lookUp';
 }
 
 class NotificationTriggerType {

@@ -4,7 +4,6 @@ import 'package:my_custom_widget/features/loyalty/presentation/widgets/loyalty_c
 import 'package:my_custom_widget/features/loyalty/presentation/widgets/new_loyalty_card_widget.dart';
 
 import '../../../../core/utils/theme.dart';
-import '../../../topup/presentation/widgets/wallet_history_list.dart';
 import '../getx/points_controller.dart';
 import '../widgets/point_history_list.dart';
 
@@ -54,10 +53,7 @@ class PointsScreen extends StatelessWidget {
                                 borderRadius: AppTheme.borderRadius,
                                 boxShadow: [BoxShadow(color: AppTheme.primaryColor.withOpacity(0.25), blurRadius: 12, offset: const Offset(0, 5))],
                               ),
-                              tabs: [
-                                Tab(text: 'loyaltyTransactions'.tr),
-                                Tab(text: 'walletHistory'.tr),
-                              ],
+                              tabs: [Tab(text: 'loyaltyTransactions'.tr)],
                             ),
                           ),
                         ),
@@ -68,12 +64,7 @@ class PointsScreen extends StatelessWidget {
                 ),
               ];
             },
-            body: TabBarView(
-              children: [
-                PointsHistoryTab(controller: controller),
-                WalletHistoryTab(controller: controller),
-              ],
-            ),
+            body: TabBarView(children: [PointsHistoryTab(controller: controller)]),
           );
         },
       ),
