@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_custom_widget/features/loyalty/presentation/pages/point_schema_page.dart';
 import 'package:my_custom_widget/features/menu/presentation/widget/developer_widget.dart';
-import 'package:my_custom_widget/features/rewards_gallery/presentation/screens/rewards_gallery_page.dart';
 
 import '../../features/auth/presentation/pages/complete_profile.dart';
 import '../../features/auth/presentation/pages/login_screen.dart';
 import '../../features/auth/presentation/pages/referral_screen.dart';
 import '../../features/auth/presentation/pages/verify_screen.dart';
 import '../../features/branch/presentaion/pages/branch_details_screen.dart';
+import '../../features/home/presentation/pages/home_tab.dart';
 import '../../features/loyalty/presentation/pages/points_tab.dart';
-import '../../features/main/presentation/pages/main_screen.dart';
 import '../../features/menu/presentation/pages/invite_page.dart';
 import '../../features/menu/presentation/pages/profile_page.dart';
 import '../../features/rewards/presentation/screens/campign_rewards_screen.dart';
@@ -26,16 +25,12 @@ class RouteGeneratorList {
     GetPage(name: RouteConstant.verifyPage, page: () => const VerifyScreen()),
     GetPage(name: RouteConstant.completeProfile, page: () => const CompleteProfileScreen()),
     GetPage(name: RouteConstant.referralPage, page: () => const ReferralScreen()),
-    GetPage(name: RouteConstant.developerWidget, page: () => const DeveloperWidget()),
+    GetPage(name: RouteConstant.homeScreen, page: () => const HomeScreen()),
+    GetPage(name: RouteConstant.rewardsScreen, page: () => const RewardsTabScreen()),
+    GetPage(name: RouteConstant.pointsScreen, page: () => const PointsScreen()),
     GetPage(name: RouteConstant.profilePage, page: () => const ProfilePage()),
     GetPage(name: RouteConstant.invitePage, page: () => const InvitePage()),
-    GetPage(
-      name: RouteConstant.mainPage,
-      page: () => MainScreen(pageIndex: Get.arguments as Map<String, int>?),
-    ),
-    GetPage(name: RouteConstant.rewardsScreen, page: () => const RewardsTabScreen()),
-    GetPage(name: RouteConstant.pointSchemaPage, page: () => const PointSchemaPage()),
-    GetPage(name: RouteConstant.pointsScreen, page: () => const PointsScreen()),
+    GetPage(name: RouteConstant.developerWidget, page: () => const DeveloperWidget()),
     GetPage(
       name: RouteConstant.branchDetailsPage,
       page: () {
@@ -43,7 +38,6 @@ class RouteGeneratorList {
         return BranchDetailsScreen(branchID: branchId);
       },
     ),
-    GetPage(name: RouteConstant.rewardsGalleryPage, page: () => RewardsGalleryPage()),
     GetPage(
       name: RouteConstant.campaignRewards,
       page: () {

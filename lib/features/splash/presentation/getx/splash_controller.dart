@@ -25,7 +25,7 @@ class SplashController extends GetxController {
     sl<SharedPreferencesStorage>().setShowQr(true);
     if (await SharedHelper().isUserLoggedIn()) {
       if (await sl<SharedPreferencesStorage>().getIsCompleted()) {
-        SDKNav.offAllNamed(RouteConstant.mainPage);
+        SDKNav.offAllNamed(RouteConstant.homeScreen);
       } else {
         Get.deleteAll();
         SDKNav.offAllNamed(RouteConstant.completeProfile);

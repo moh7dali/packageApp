@@ -7,7 +7,6 @@ import 'package:my_custom_widget/shared/widgets/button_widget.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/widgets/loading_widget.dart';
 import '../../../branch/domain/entities/branch_details.dart';
-import '../../../main/presentation/getx/main_controller.dart';
 
 class SelectWithInTheRangeBranches extends StatelessWidget {
   SelectWithInTheRangeBranches({super.key, required this.withinTheRangeBranches, required this.mainController});

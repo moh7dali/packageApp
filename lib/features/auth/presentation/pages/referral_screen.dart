@@ -70,7 +70,7 @@ class ReferralScreen extends StatelessWidget {
                     function: () {
                       sl<SharedPreferencesStorage>().setHasReferral(true);
                       Get.deleteAll();
-                      SDKNav.offAllNamed(RouteConstant.mainPage);
+                      SDKNav.offAllNamed(RouteConstant.homeScreen);
                     },
                   ),
                 ],

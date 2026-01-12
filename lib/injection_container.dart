@@ -1,10 +1,5 @@
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:my_custom_widget/features/rewards_gallery/data/datasource/rewards_gallery_api_datasource.dart';
-import 'package:my_custom_widget/features/rewards_gallery/data/repositories/rewads_gallery_repository_impl.dart';
-import 'package:my_custom_widget/features/rewards_gallery/domain/repositories/rewards_gallery_repository.dart';
-import 'package:my_custom_widget/features/rewards_gallery/domain/usecase/get_rewards_gallery.dart';
-import 'package:my_custom_widget/features/rewards_gallery/domain/usecase/redeem_reward.dart';
 import 'package:my_custom_widget/shared/helper/shared_preferences_storage.dart';
 
 import 'core/utils/network_info.dart';
@@ -107,10 +102,6 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetCampaignList(sl()));
   sl.registerLazySingleton(() => GetCampaignRewards(sl()));
 
-  ///Rewards Gallery
-  sl.registerLazySingleton(() => GetGalleryRewards(sl()));
-  sl.registerLazySingleton(() => RedeemReward(sl()));
-
   ///User Barcode
   sl.registerLazySingleton(() => GetUserBarcode(sl()));
 
@@ -123,7 +114,6 @@ Future<void> init() async {
   sl.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(remoteDataSource: sl()));
   sl.registerLazySingleton<LoyaltyRepository>(() => LoyaltyRepositoryImpl(remoteDataSource: sl()));
   sl.registerLazySingleton<RewardsRepository>(() => RewardsRepositoryImpl(remoteDataSource: sl()));
-  sl.registerLazySingleton<RewardsGalleryRepository>(() => RewardsGalleryRepositoryImpl(remoteDataSource: sl()));
   sl.registerLazySingleton<UserBarcodeRepository>(() => UserBarcodeRepositoryImpl(remoteDataSource: sl()));
 
   ///*************************///
@@ -134,7 +124,6 @@ Future<void> init() async {
   sl.registerLazySingleton<BranchApiDataSource>(() => BranchApiDataSourceImpl());
   sl.registerLazySingleton<HomeApiDataSource>(() => HomeApiDataSourceImpl());
   sl.registerLazySingleton<RewardsApiDataSource>(() => RewardsApiDataSourceImpl());
-  sl.registerLazySingleton<RewardsGalleryApiDatasource>(() => RewardsGalleryApiDatasourceImpl());
   sl.registerLazySingleton<LoyaltyApiDataSource>(() => LoyaltyApiDataSourceImpl());
   sl.registerLazySingleton<UserBarCodeApiDataSource>(() => UserBarCodeApiDataSourceImpl());
 }

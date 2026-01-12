@@ -16,7 +16,6 @@ import "../../../barcode/presentation/pages/barcode_screen.dart";
 import "../../../branch/domain/entities/branch_details.dart";
 import "../../../branch/domain/usecases/check_in_customer.dart";
 import "../../../branch/domain/usecases/get_closest_branches.dart";
-import "../../../main/presentation/getx/main_controller.dart";
 import "../../../rewards/domain/entity/campaign_details.dart";
 import "../../../rewards/domain/entity/user_rewards.dart";
 import "../../../rewards/domain/usecase/get_campaign_list.dart";
@@ -260,34 +259,16 @@ class HomeController extends GetxController {
   }
 
   void gotoRewards({bool isDeals = false, bool isPoints = false}) {
-    MainController mainController;
-    if (Get.isRegistered<MainController>()) {
-      mainController = Get.find<MainController>();
-      if (isPoints) {
-        mainController.onTapChanged(1);
-      } else {
-        mainController.onTapChanged(2);
-        if (isDeals) {
-          RewardsController rewardsController = Get.put(RewardsController());
-          rewardsController.tabController!.animateTo(1);
-        } else {
-          RewardsController rewardsController = Get.put(RewardsController());
-          rewardsController.tabController!.animateTo(0);
-        }
-      }
+    if (isPoints) {
+      SDKNav.toNamed(RouteConstant.pointsScreen);
     } else {
-      SDKNav.offAllNamed(RouteConstant.mainPage);
-      if (isPoints) {
-        Get.put(MainController({"index": 2}));
+      SDKNav.toNamed(RouteConstant.rewardsScreen);
+      if (isDeals) {
+        RewardsController rewardsController = Get.put(RewardsController());
+        rewardsController.tabController!.animateTo(1);
       } else {
-        Get.put(MainController({"index": 3}));
-        if (isDeals) {
-          RewardsController rewardsController = Get.put(RewardsController());
-          rewardsController.tabController!.animateTo(1);
-        } else {
-          RewardsController rewardsController = Get.put(RewardsController());
-          rewardsController.tabController!.animateTo(0);
-        }
+        RewardsController rewardsController = Get.put(RewardsController());
+        rewardsController.tabController!.animateTo(0);
       }
     }
   }
@@ -379,6 +360,7 @@ class HomeController extends GetxController {
   }
 
   void redeemPoints() {
+    print("I am here ${MozaicLoyaltySDK.settings.redeemPointsQRCode}");
     if (MozaicLoyaltySDK.settings.redeemPointsQRCode == true) {
       Get.delete<UserBarcodeController>();
       SharedHelper().needLogin(() => SharedHelper().scaleDialog(BarcodeScreen()));

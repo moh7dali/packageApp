@@ -196,11 +196,6 @@ class AuthController extends GetxController with CodeAutoFill {
     super.onInit();
   }
 
-  skip() {
-    FocusManager.instance.primaryFocus?.unfocus();
-    SDKNav.offAllNamed(RouteConstant.mainPage);
-  }
-
   verifyMobileNumber() async {
     btnState = ButtonState.loading;
     update();
@@ -270,7 +265,7 @@ class AuthController extends GetxController with CodeAutoFill {
               Future.delayed(const Duration(seconds: 1), () async {
                 if (checkValidationCode.isCompleted == true) {
                   Get.deleteAll();
-                  SDKNav.offAllNamed(RouteConstant.mainPage);
+                  SDKNav.offAllNamed(RouteConstant.homeScreen);
                 } else {
                   SDKNav.offAllNamed(RouteConstant.completeProfile);
                 }
@@ -356,7 +351,7 @@ class AuthController extends GetxController with CodeAutoFill {
                 if (await sl<SharedPreferencesStorage>().getHasReferral() == true) {
                   ///Go to Main Screen
                   Get.deleteAll();
-                  SDKNav.offAllNamed(RouteConstant.mainPage);
+                  SDKNav.offAllNamed(RouteConstant.homeScreen);
                 } else {
                   ///Go to Referral Screen
                   Get.deleteAll();
@@ -393,7 +388,7 @@ class AuthController extends GetxController with CodeAutoFill {
               sl<SharedPreferencesStorage>().setHasReferral(true);
               resetBtnState();
               Get.deleteAll();
-              SDKNav.offAllNamed(RouteConstant.mainPage);
+              SDKNav.offAllNamed(RouteConstant.homeScreen);
             },
           ),
         );

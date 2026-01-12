@@ -7,9 +7,7 @@ import '../../../../core/constants/constants.dart';
 import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../../../shared/widgets/button_widget.dart';
-import '../../../barcode/presentation/getx/user_barcode_controller.dart';
-import '../../../barcode/presentation/pages/barcode_screen.dart';
-import '../../../main/presentation/widgets/hero_app_bar.dart';
+import '../widget/hero_app_bar.dart';
 import '../widget/loyalty_card_loading.dart';
 import '../widget/loyalty_card_widget.dart';
 import '../widget/missioons_widget.dart';
@@ -55,8 +53,7 @@ class HomeScreen extends StatelessWidget {
                           title: "redeemPoints".tr,
                           isDoneBtn: false,
                           function: () {
-                            Get.delete<UserBarcodeController>();
-                            SharedHelper().needLogin(() => SharedHelper().scaleDialog(BarcodeScreen()));
+                            controller.redeemPoints();
                           },
                         ),
                       ),
