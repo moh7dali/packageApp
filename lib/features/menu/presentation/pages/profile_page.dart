@@ -74,7 +74,6 @@ class ProfilePage extends StatelessWidget {
                         Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-
                             borderRadius: BorderRadius.circular(22),
                             border: Border.all(color: AppTheme.primaryColor.withOpacity(0.4)),
                           ),

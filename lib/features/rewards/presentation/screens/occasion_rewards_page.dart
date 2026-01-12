@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 import 'package:my_custom_widget/features/rewards/domain/entity/campaign_details.dart';
 import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
 
+import '../../../../core/constants/constants.dart';
 import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../shared/widgets/pagination_list/pagination_list_view.dart';
 import '../getx/rewards_controller.dart';
 import '../widgets/reward_widget.dart';
 import '../widgets/user_rewards_loading_widget.dart';
-import 'campign_rewards_screen.dart';
 
 class OccasionRewards extends StatelessWidget {
   const OccasionRewards({super.key, required this.categoriesId});
@@ -27,7 +27,7 @@ class OccasionRewards extends StatelessWidget {
                 loadMoreList: (page) async => controller.getCampaignListApi(page: page, catId: categoriesId),
                 itemBuilder: (context, value) => OccasionCampaignCard(
                   campaignDetails: value,
-                  onTap: () => SDKNav.to(CampaignRewardsScreen(selectedCampaignDetails: value)),
+                  onTap: () => SDKNav.toNamed(RouteConstant.campaignRewards, arguments: value),
                 ),
                 emptyWidget: NoItemWidget(),
                 loadingWidget: UserRewardsLoadingWidget(hasImg: false),

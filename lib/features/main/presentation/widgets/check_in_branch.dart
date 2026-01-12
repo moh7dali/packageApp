@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 
+import '../../../../core/constants/constants.dart';
 import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../branch/domain/entities/branch_details.dart';
-import '../../../branch/presentaion/pages/branch_details_screen.dart';
 
 class CheckInBranches extends StatelessWidget {
   CheckInBranches({super.key, required this.selectedBranch, required this.isOutBranch});
@@ -44,7 +44,7 @@ class CheckInBranches extends StatelessWidget {
           GestureDetector(
             onTap: () {
               SharedHelper().closeAllDialogs();
-              SDKNav.to(BranchDetailsScreen(branchID: selectedBranch.id!));
+              SDKNav.toNamed(RouteConstant.branchDetailsPage, arguments: selectedBranch.id!);
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,

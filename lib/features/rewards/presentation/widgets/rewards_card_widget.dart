@@ -66,9 +66,9 @@ class RewardCardWidget extends StatelessWidget {
         },
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppTheme.bgThemeColor,
             borderRadius: AppTheme.bigBorderRadius,
-            border: Border.all(color: AppTheme.primaryColor.withOpacity(0.10)),
+            border: Border.all(color: AppTheme.primaryColor),
             boxShadow: [BoxShadow(color: AppTheme.primaryColor.withOpacity(0.06), blurRadius: 14, offset: const Offset(0, 6))],
           ),
           child: Row(
@@ -140,7 +140,6 @@ class RewardCardWidget extends StatelessWidget {
                         style: AppTheme.textStyle(color: AppTheme.textColor.withOpacity(0.75), size: AppTheme.size12),
                       ),
 
-                      // Dates row (My Rewards)
                       if (isMyRewards) ...[
                         const SizedBox(height: 10),
                         Wrap(

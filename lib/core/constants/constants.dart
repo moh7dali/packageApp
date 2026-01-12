@@ -54,6 +54,7 @@ class RouteConstant {
   static const String invitePage = '/InvitePage';
   static const String branchDetailsPage = '/BranchDetailsScreen';
   static const String rewardsScreen = '/RewardsTabScreen';
+  static const String campaignRewards = '/CampaignRewards';
   static const String pointsHistoryScreen = '/PointsHistoryScreen';
   static const String pointSchemaPage = '/PointSchemaPage';
   static const String barCodeScreen = '/BarcodeScreen';
@@ -61,6 +62,7 @@ class RouteConstant {
   static const String rewardsGalleryPage = '/RewardsGalleryPage';
   static const String topUpListScreen = '/TopUpListPage';
   static const String topUpPage = '/TopUpPage';
+  static const String developerWidget = '/DeveloperWidget';
 }
 
 class SelectWidgetConstant {

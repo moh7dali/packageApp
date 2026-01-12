@@ -30,7 +30,7 @@ class OccasionCampaignCard extends StatelessWidget {
           ),
           child: Container(
             decoration: BoxDecoration(
-              color: AppTheme.whiteColor,
+              color: AppTheme.bgThemeColor,
               borderRadius: AppTheme.bigBorderRadius,
               boxShadow: [BoxShadow(color: AppTheme.primaryColor.withOpacity(0.06), blurRadius: 16, offset: const Offset(0, 8))],
             ),

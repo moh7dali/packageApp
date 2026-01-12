@@ -8,7 +8,6 @@ import '../../../../core/constants/constants.dart';
 import '../../../../core/sdk/sdk_rouutes.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../../main/presentation/widgets/hero_app_bar.dart';
-import '../../../rewards/presentation/screens/campign_rewards_screen.dart';
 import '../../domain/entities/slider.dart';
 import '../widget/loyalty_card_loading.dart';
 import '../widget/loyalty_card_widget.dart';
@@ -111,7 +110,7 @@ class HomeScreen extends StatelessWidget {
                                           return MissionsWidget(
                                             campaignDetails: controller.missions[index],
                                             onTab: () {
-                                              SDKNav.to(CampaignRewardsScreen(selectedCampaignDetails: controller.missions[index]));
+                                              SDKNav.toNamed(RouteConstant.campaignRewards, arguments: controller.missions[index]);
                                             },
                                             isHome: true,
                                             isPrimary: index % 2 != 0,

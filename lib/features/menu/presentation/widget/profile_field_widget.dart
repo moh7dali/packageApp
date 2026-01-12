@@ -18,8 +18,8 @@ class ProfileFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final borderRadius = AppTheme.bigBorderRadius;
-    final borderColor = isDelete ? AppTheme.redColor.withOpacity(.25) : AppTheme.primaryColor.withOpacity(.12);
-    final bgColor = isDelete ? AppTheme.redColor.withOpacity(.08) : Colors.white;
+    final borderColor = isDelete ? AppTheme.redColor.withOpacity(.25) : AppTheme.primaryColor.withOpacity(.9);
+    final bgColor = isDelete ? AppTheme.redColor.withOpacity(.08) : AppTheme.bgThemeColor;
     final iconBg = isDelete ? AppTheme.redColor.withOpacity(.12) : AppTheme.primaryColor.withOpacity(.10);
     final textColor = isDelete ? AppTheme.redColor : AppTheme.textColor;
 

@@ -55,10 +55,7 @@ class HomeController extends GetxController {
         .getHomeDetails(
           body: {
             "HomeFeatures": [
-              {"HomeFeatures": 1, "MaximumParentResult": 0, "MaximumChildResult": 0},
               {"HomeFeatures": 5, "MaximumParentResult": 10, "MaximumChildResult": 0},
-              {"HomeFeatures": 11, "MaximumParentResult": 100, "MaximumChildResult": 100},
-              {"HomeFeatures": 12, "MaximumParentResult": 100, "MaximumChildResult": 100},
             ],
           },
         )
@@ -85,11 +82,8 @@ class HomeController extends GetxController {
         .getCustomerHomeContents(
           body: {
             "HomeFeatures": [
-              {"HomeFeatures": 1, "MaximumParentResult": 0, "MaximumChildResult": 0},
               {"HomeFeatures": 5, "MaximumParentResult": 10, "MaximumChildResult": 0},
               {"HomeFeatures": 9, "MaximumParentResult": 0, "MaximumChildResult": 0},
-              {"HomeFeatures": 11, "MaximumParentResult": 100, "MaximumChildResult": 100},
-              {"HomeFeatures": 12, "MaximumParentResult": 100, "MaximumChildResult": 100},
             ],
           },
         )
