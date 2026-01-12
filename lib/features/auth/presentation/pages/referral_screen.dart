@@ -83,7 +83,7 @@ class ReferralScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    HeroLogo(smallLogo: true),
+                    HeroLogo(),
                     Container(
                       width: double.infinity,
                       decoration: BoxDecoration(

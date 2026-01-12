@@ -41,7 +41,7 @@ class VerifyScreen extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(height: Get.height * .01),
-                  HeroLogo(smallLogo: true),
+                  HeroLogo(),
                   SizedBox(height: Get.height * .03),
                   Container(
                     width: double.infinity,

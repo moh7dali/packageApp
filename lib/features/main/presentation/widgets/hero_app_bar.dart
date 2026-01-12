@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:my_custom_widget/shared/widgets/hero_logo.dart';
 
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/utils/theme.dart';
@@ -12,13 +12,7 @@ AppBar heroAppBar({HomeController? controller, required Color bg}) {
     titleSpacing: 10,
     title: Row(
       children: [
-        Container(
-          decoration: BoxDecoration(shape: BoxShape.circle, color: AppTheme.whiteColor),
-          child: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: SvgPicture.asset(AssetsConsts.iconLogo, height: Get.height * .04),
-          ),
-        ),
+        SizedBox(height: Get.height * .06, child: HeroLogo()),
         SizedBox(width: 10),
         if (controller != null)
           Column(

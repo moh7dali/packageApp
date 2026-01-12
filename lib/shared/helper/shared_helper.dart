@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:lottie/lottie.dart';
 import 'package:my_custom_widget/core/utils/app_log.dart';
-import 'package:my_custom_widget/features/barcode/presentation/pages/barcode_screen.dart';
 import 'package:my_custom_widget/shared/widgets/bottom_widget.dart';
 import 'package:my_custom_widget/shared/widgets/button_widget.dart';
 
@@ -48,7 +47,6 @@ class SharedHelper<T> {
       }
     }
   }
-
 
   static String getNumberFormat(num number, {bool isCurrency = false}) {
     if (isCurrency) {
@@ -340,7 +338,7 @@ class SharedHelper<T> {
           );
         },
       ),
-      icon:  Icon(Icons.error, color: AppTheme.primaryColor),
+      icon: Icon(Icons.error, color: AppTheme.primaryColor),
       mainButton: TextButton(
         onPressed: () {
           closeOne ? SDKNav.back() : SharedHelper().closeAllDialogs();
@@ -484,10 +482,6 @@ class SharedHelper<T> {
 
   Future<T> noInternetDialog({required Future<T> Function() request}) async {
     SharedHelper().closeAllDialogs();
-    String? phone = await sl<SharedPreferencesStorage>().getMobile() ?? "";
-    if (phone.startsWith('+9620')) {
-      phone = phone.replaceFirst('+9620', '+962');
-    }
     final completer = Completer<T>();
     SharedHelper().scaleDialog(
       WillPopScope(
@@ -546,15 +540,6 @@ class SharedHelper<T> {
                   ),
                 ],
               ),
-              if (phone != "")
-                GestureDetector(
-                  onTap: () {
-                    if (phone != "") {
-                      SharedHelper().scaleDialog(BarcodeScreen());
-                    }
-                  },
-                  child: Image.asset(AssetsConsts.qrIcon, color: AppTheme.textColor, width: Get.height * .06),
-                ),
               SizedBox(height: 8),
             ],
           ),

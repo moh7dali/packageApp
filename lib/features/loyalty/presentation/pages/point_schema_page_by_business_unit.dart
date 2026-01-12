@@ -90,7 +90,7 @@ class PointSchemaPageByBusinessUnit extends StatelessWidget {
                                                             height: 50,
                                                             fit: BoxFit.cover,
                                                             placeholder: (w, e) => Image.asset(AssetsConsts.loading, fit: BoxFit.cover),
-                                                            errorWidget: (c, e, s) => SvgPicture.asset(AssetsConsts.iconLogo, width: 60),
+                                                            errorWidget: (c, e, s) => Container(),
                                                           ),
                                                         ),
                                                         SizedBox(width: 16),

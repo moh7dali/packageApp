@@ -74,7 +74,6 @@ class LoyaltyCardWidget extends StatelessWidget {
                                     direction: Axis.vertical,
                                     shapePath: buildCupPath(),
                                   ),
-                                  Image.asset(AssetsConsts.cup, height: 100, width: 100),
                                 ],
                               ),
                             ),

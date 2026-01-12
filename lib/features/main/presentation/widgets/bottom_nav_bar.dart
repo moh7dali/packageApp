@@ -48,7 +48,11 @@ class AppBottomNavigationBar extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () => controller.onTapChanged(4),
-                    child: SvgPicture.asset(AssetsConsts.iconLogo, color: AppTheme.primaryColor, height: 30, width: 30),
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      color: AppTheme.primaryColor,
+                    ),
                   ),
                   NavigationItem(
                     label: 'rewards'.tr,

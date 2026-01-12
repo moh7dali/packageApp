@@ -43,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                             child: Column(
                               children: [
                                 SizedBox(height: Get.height * .02),
-                                HeroLogo(smallLogo: true),
+                                HeroLogo(),
                                 SizedBox(height: Get.height * .08),
                                 Container(
                                   width: double.infinity,

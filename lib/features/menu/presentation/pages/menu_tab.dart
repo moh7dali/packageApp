@@ -27,19 +27,6 @@ class MenuTab extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    gradient: AppTheme.gradient1,
-                    borderRadius: BorderRadius.only(bottomRight: Radius.circular(12), bottomLeft: Radius.circular(12)),
-                    border: Border.all(color: AppTheme.primaryColor.withOpacity(0.08)),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(children: [const HeroLogo(isWhite: true), const SizedBox(height: 20)]),
-                    ],
-                  ),
-                ),
                 Padding(
                   padding: const EdgeInsets.all(8),
                   child: Container(
@@ -101,18 +88,6 @@ class MenuTab extends StatelessWidget {
                             SDKNav.toNamed(RouteConstant.developerWidget);
                           },
                           isLast: true,
-                        ),
-                        MenuTabItemWidget(
-                          title: 'nightMode',
-                          icon: AssetsConsts.iconLogo,
-                          onTap: () {
-                            controller.changeTheme = !controller.changeTheme;
-                            controller.update();
-                            themeController.toggleTheme();
-                            Get.back();
-                          },
-                          isNight: true,
-                          controller: controller,
                         ),
                       ],
                     ),

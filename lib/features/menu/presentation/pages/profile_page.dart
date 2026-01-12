@@ -69,7 +69,7 @@ class ProfilePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(height: Get.height * .02),
-                        HeroLogo(smallLogo: true),
+                        HeroLogo(),
                         SizedBox(height: Get.height * .02),
                         Container(
                           width: double.infinity,

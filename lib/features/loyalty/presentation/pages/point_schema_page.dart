@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:my_custom_widget/core/utils/theme.dart';
 
@@ -132,7 +131,7 @@ class PointSchemaPage extends StatelessWidget {
                                                           imageUrl: controller.pointSchemaList![index].tierData?.imageUrl ?? "",
                                                           fit: BoxFit.cover,
                                                           placeholder: (w, e) => Image.asset(AssetsConsts.loading, fit: BoxFit.cover),
-                                                          errorWidget: (c, e, s) => SvgPicture.asset(AssetsConsts.iconLogo, width: 34),
+                                                          errorWidget: (c, e, s) => Container(),
                                                         ),
                                                       ),
                                                     ),

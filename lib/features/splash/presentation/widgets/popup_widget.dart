@@ -39,25 +39,22 @@ class PopupWidget extends StatelessWidget {
             ),
           ),
           const Positioned(
-              top: 40,
-              left: 0,
-              right: 0,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: HeroLogo(
-                  height: 0,
-                ),
-              )),
+            top: 40,
+            left: 0,
+            right: 0,
+            child: Padding(padding: EdgeInsets.symmetric(horizontal: 10), child: HeroLogo()),
+          ),
           Positioned(
-              bottom: 0,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30),
-                child: CircularCountdownWidget(
-                  onFinish: () {
-                    controller.finishAdvertising();
-                  },
-                ),
-              ))
+            bottom: 0,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              child: CircularCountdownWidget(
+                onFinish: () {
+                  controller.finishAdvertising();
+                },
+              ),
+            ),
+          ),
         ],
       ),
     );

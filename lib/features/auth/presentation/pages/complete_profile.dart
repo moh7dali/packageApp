@@ -73,7 +73,7 @@ class CompleteProfileScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       SizedBox(height: Get.height * .02),
-                      HeroLogo(smallLogo: true),
+                      HeroLogo(),
                       SizedBox(height: Get.height * .04),
                       Container(
                         width: double.infinity,
