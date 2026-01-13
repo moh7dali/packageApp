@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:my_custom_widget/shared/widgets/card_widget.dart';
 
-import '../../core/sdk/sdk_rouutes.dart';
+import '../../core/sdk/sdk_routes.dart';
 import '../../core/utils/theme.dart';
 
 class LoadingWidget extends StatelessWidget {

@@ -5,7 +5,7 @@ import 'package:my_custom_widget/core/constants/assets_constants.dart';
 import 'package:my_custom_widget/features/auth/presentation/getx/auth_controller.dart';
 
 import '../../../../core/constants/constants.dart';
-import '../../../../core/sdk/sdk_rouutes.dart';
+import '../../../../core/sdk/sdk_routes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../../injection_container.dart';
 import '../../../../shared/helper/shared_helper.dart';

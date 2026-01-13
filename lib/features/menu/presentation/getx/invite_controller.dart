@@ -20,7 +20,7 @@ class InviteFriendsController extends GetxController {
     getUserCode();
   }
 
-  getUserCode() async {
+  Future<void> getUserCode() async {
     code = await sl<SharedPreferencesStorage>().getUserCode() ?? "";
     update();
     await getSystemResource.repository

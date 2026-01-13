@@ -4,7 +4,7 @@ import 'package:my_custom_widget/features/rewards/domain/entity/campaign_details
 import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
 
 import '../../../../core/constants/constants.dart';
-import '../../../../core/sdk/sdk_rouutes.dart';
+import '../../../../core/sdk/sdk_routes.dart';
 import '../../../../shared/widgets/pagination_list/pagination_list_view.dart';
 import '../getx/rewards_controller.dart';
 import '../widgets/reward_widget.dart';

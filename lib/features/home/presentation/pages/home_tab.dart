@@ -4,7 +4,7 @@ import 'package:my_custom_widget/core/utils/theme.dart';
 import 'package:my_custom_widget/features/home/presentation/getx/home_controller.dart';
 
 import '../../../../core/constants/constants.dart';
-import '../../../../core/sdk/sdk_rouutes.dart';
+import '../../../../core/sdk/sdk_routes.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../../../shared/widgets/button_widget.dart';
 import '../widget/hero_app_bar.dart';

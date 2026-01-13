@@ -25,22 +25,20 @@ class CompleteProfileScreen extends StatelessWidget {
       controller = Get.put<AuthController>(AuthController());
     }
     return PopScope(
-      canPop: controller.isProfile,
+      canPop: false,
       onPopInvoked: (didPop) async {
-        if (!controller.isProfile) {
-          SharedHelper().actionDialog(
-            "exitApp",
-            "confirmExitApp",
-            confirm: () {
-              SystemNavigator.pop();
-            },
-          );
-        }
+        SharedHelper().actionDialog(
+          "exitApp",
+          "confirmExitApp",
+          confirm: () {
+            SystemNavigator.pop();
+          },
+        );
       },
       child: GetBuilder<AuthController>(
         builder: (c) {
           return Scaffold(
-            appBar: AppBar(title: Text(controller.profile == null ? "completeProfile".tr : 'editProfile'.tr), elevation: 0),
+            appBar: AppBar(title: Text("completeProfile".tr), elevation: 0),
             bottomNavigationBar: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column(
@@ -147,187 +145,38 @@ class CompleteProfileScreen extends StatelessWidget {
                                   );
                                 },
                               ),
-                              if (controller.profile == null)
-                                ProfileTextField(
-                                  label: 'bod',
-                                  maxLength: 500,
-                                  icon: AssetsConsts.bodIcon,
-                                  type: TextInputType.text,
-                                  controller: controller.bodController,
-                                  validator: (value) {
-                                    if (value!.length < 3) {
-                                      controller.bodShakeKey.currentState!.shake();
-                                      return 'selectYourBirthdate'.tr;
-                                    }
-                                    return null;
-                                  },
-                                  shakeKey: controller.bodShakeKey,
-                                  readOnly: true,
-                                  onTap: () {
-                                    controller.isTheCupertinoPickerMove = false;
-                                    SharedHelper().bottomSheet(
-                                      SelectWidget<DateTime>(
-                                        tag: SelectWidgetConstant.dateOfBirth,
-                                        title: 'bod',
-                                        isDate: true,
-                                        selectedItem: controller.selectedDateOfBirth,
-                                        controller: controller,
-                                      ),
-                                    );
-                                  },
-                                ),
+                              ProfileTextField(
+                                label: 'bod',
+                                maxLength: 500,
+                                icon: AssetsConsts.bodIcon,
+                                type: TextInputType.text,
+                                controller: controller.bodController,
+                                validator: (value) {
+                                  if (value!.length < 3) {
+                                    controller.bodShakeKey.currentState!.shake();
+                                    return 'selectYourBirthdate'.tr;
+                                  }
+                                  return null;
+                                },
+                                shakeKey: controller.bodShakeKey,
+                                readOnly: true,
+                                onTap: () {
+                                  controller.isTheCupertinoPickerMove = false;
+                                  SharedHelper().bottomSheet(
+                                    SelectWidget<DateTime>(
+                                      tag: SelectWidgetConstant.dateOfBirth,
+                                      title: 'bod',
+                                      isDate: true,
+                                      selectedItem: controller.selectedDateOfBirth,
+                                      controller: controller,
+                                    ),
+                                  );
+                                },
+                              ),
                             ],
                           ),
                         ),
                       ),
-
-                      // GetBuilder<LookUpController>(
-                      //   init: LookUpController(isProfile: controller.isProfile),
-                      //   builder: (lookUpController) {
-                      //     return Column(
-                      //       children: [
-                      //         lookUpController.isLookUpLoading
-                      //             ? Padding(
-                      //                 padding: const EdgeInsets.only(bottom: 8.0),
-                      //                 child: ClipRRect(
-                      //                   borderRadius: BorderRadius.circular(12),
-                      //                   child: Image.asset(
-                      //                     AssetsConsts.loading,
-                      //                     height: Get.height * .055,
-                      //                     width: Get.width,
-                      //                     fit: BoxFit.cover,
-                      //                   ),
-                      //                 ),
-                      //               )
-                      //             : ProfileTextField(
-                      //                 label: 'visitorType'.tr,
-                      //                 maxLength: 25,
-                      //                 icon: AssetsConsts.person,
-                      //                 isOptional: true,
-                      //                 type: TextInputType.text,
-                      //                 controller: controller.visitorTypeController,
-                      //                 // validator: (value) {
-                      //                 //   if (value!.isEmpty) {
-                      //                 //     controller.visitorTypeShakeKey.currentState!.shake();
-                      //                 //     return 'selectYourVisitorType'.tr;
-                      //                 //   }
-                      //                 //   return null;
-                      //                 // },
-                      //                 shakeKey: controller.visitorTypeShakeKey,
-                      //                 readOnly: true,
-                      //                 onTap: () async {
-                      //                   if (controller.isProfile) {
-                      //                     await lookUpController.getLookUpList();
-                      //                   }
-                      //                   controller.isTheCupertinoPickerMove = false;
-                      //                   SharedHelper().bottomSheet(
-                      //                     SelectWidget<LookUp>(
-                      //                       tag: SelectWidgetConstant.lookup,
-                      //                       title: 'visitorType'.tr,
-                      //                       listOfItems: lookUpController.allLookUps,
-                      //                       selectedItem: controller.selectedVisitorType,
-                      //                       controller: controller,
-                      //                     ),
-                      //                   );
-                      //                 },
-                      //               ),
-                      //       ],
-                      //     );
-                      //   },
-                      // ),
-                      // GetBuilder<CityAndAreaController>(
-                      //   init: CityAndAreaController(isProfile: controller.isProfile),
-                      //   builder: (cityAndAreaController) {
-                      //     return Column(
-                      //       children: [
-                      //         cityAndAreaController.isCityLoading
-                      //             ? Padding(
-                      //                 padding: const EdgeInsets.only(bottom: 8.0),
-                      //                 child: ClipRRect(
-                      //                   borderRadius: AppTheme.borderRadius,
-                      //                   child: Image.asset(AssetsConsts.loading, height: Get.height * .055, width: Get.width, fit: BoxFit.cover),
-                      //                 ),
-                      //               )
-                      //             : ProfileTextField(
-                      //                 label: 'city',
-                      //                 maxLength: 10,
-                      //                 icon: AssetsConsts.city,
-                      //                 type: TextInputType.text,
-                      //                 controller: controller.cityController,
-                      //                 validator: (value) {
-                      //                   if (value!.isEmpty) {
-                      //                     controller.cityShakeKey.currentState!.shake();
-                      //                     return 'selectYourCity'.tr;
-                      //                   }
-                      //                   return null;
-                      //                 },
-                      //                 shakeKey: controller.cityShakeKey,
-                      //                 readOnly: true,
-                      //                 onTap: () async {
-                      //                   if (controller.isProfile) {
-                      //                     await cityAndAreaController.getCitiesList();
-                      //                   }
-                      //                   controller.isTheCupertinoPickerMove = false;
-                      //                   SharedHelper().bottomSheet(
-                      //                     SelectWidget<City>(
-                      //                       tag: SelectWidgetConstant.city,
-                      //                       title: 'city',
-                      //                       listOfItems: cityAndAreaController.allCities,
-                      //                       selectedItem: controller.selectedCity,
-                      //                       controller: controller,
-                      //                       cityAndAreaController: cityAndAreaController,
-                      //                     ),
-                      //                   );
-                      //                 },
-                      //               ),
-                      //         //         // if (controller.cityController.text.isNotEmpty)
-                      //         //         //   cityAndAreaController.isAreaLoading
-                      //         //         //       ? Padding(
-                      //         //         //           padding: const EdgeInsets.only(bottom: 8.0),
-                      //         //         //           child: ClipRRect(
-                      //         //         //             borderRadius: AppTheme.borderRadius,
-                      //         //         //             child: Image.asset(
-                      //         //         //               AssetsConsts.loading,
-                      //         //         //               height: Get.height * .055,
-                      //         //         //               width: Get.width,
-                      //         //         //               fit: BoxFit.cover,
-                      //         //         //             ),
-                      //         //         //           ),
-                      //         //         //         )
-                      //         //         //       : ProfileTextField(
-                      //         //         //           label: 'area',
-                      //         //         //           maxLength: 10,
-                      //         //         //           type: TextInputType.text,
-                      //         //         //           controller: controller.areaController,
-                      //         //         //           validator: (value) {
-                      //         //         //             if (value!.isEmpty) {
-                      //         //         //               controller.areaShakeKey.currentState!.shake();
-                      //         //         //               return 'selectArea'.tr;
-                      //         //         //             }
-                      //         //         //             return null;
-                      //         //         //           },
-                      //         //         //           shakeKey: controller.areaShakeKey,
-                      //         //         //           readOnly: true,
-                      //         //         //           onTap: () async {
-                      //         //         //             if (controller.isProfile && ((cityAndAreaController.allCities ?? []).isEmpty)) {
-                      //         //         //               await cityAndAreaController.getAreaList(cityId: controller.profile?.city?.id ?? 0);
-                      //         //         //             }
-                      //         //         //             controller.isTheCupertinoPickerMove = false;
-                      //         //         //             SharedHelper().bottomSheet(
-                      //         //         //               SelectWidget<Area>(
-                      //         //         //                 tag: SelectWidgetConstant.area,
-                      //         //         //                 title: 'area',
-                      //         //         //                 listOfItems: cityAndAreaController.allArea,
-                      //         //         //                 selectedItem: controller.selectedArea,
-                      //         //         //                 controller: controller,
-                      //         //         //               ),
-                      //         //         //             );
-                      //         //         //           },
-                      //         //         //         ),
-                      //       ],
-                      //     );
-                      //   },
-                      // ),
                     ],
                   ),
                 ),

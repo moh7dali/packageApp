@@ -11,7 +11,7 @@ import '../../shared/helper/shared_preferences_storage.dart';
 import '../../shared/model/login_model.dart';
 import '../constants/constants.dart';
 import '../error/exceptions.dart';
-import '../sdk/sdk_rouutes.dart';
+import '../sdk/sdk_routes.dart';
 import '../utils/app_log.dart';
 import 'api_end_points.dart';
 import 'api_response.dart';

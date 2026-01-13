@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -7,8 +6,6 @@ import 'package:my_custom_widget/shared/widgets/hero_logo.dart';
 import 'package:my_custom_widget/shared/widgets/loading_button_widget/progress_button.dart';
 
 import '../../../../core/utils/theme.dart';
-import '../../../../my_custom_widget.dart';
-import '../../../../shared/helper/shared_helper.dart';
 import '../../../../shared/widgets/button_widget.dart';
 import '../../../../shared/widgets/shake_widget.dart';
 import '../getx/auth_controller.dart';
@@ -202,80 +199,7 @@ class LoginScreen extends StatelessWidget {
                                                   ],
                                                 ),
                                         ),
-
-                                        const SizedBox(height: 10),
-                                        ShakeWidget(
-                                          key: controller.termsAndPolicy,
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              color: AppTheme.bgThemeColor,
-                                              borderRadius: BorderRadius.circular(18),
-                                              border: Border.all(color: AppTheme.primaryColor.withOpacity(.12)),
-                                            ),
-                                            child: CheckboxListTile(
-                                              contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                                              controlAffinity: ListTileControlAffinity.leading,
-                                              value: controller.acceptTerms,
-                                              onChanged: (val) {
-                                                controller.acceptTerms = val!;
-                                                controller.update();
-                                              },
-                                              title: Transform.translate(
-                                                offset: Offset(appLanguage == "ar" ? 18 : -18, 0),
-                                                child: RichText(
-                                                  text: TextSpan(
-                                                    children: [
-                                                      TextSpan(
-                                                        text: 'acceptTermsPrivacy'.tr,
-                                                        style: AppTheme.textStyle(
-                                                          color: AppTheme.textColor.withOpacity(.85),
-                                                          size: AppTheme.size12,
-                                                        ).copyWith(height: 1.6),
-                                                      ),
-                                                      TextSpan(
-                                                        text: " ${'privacyPolicy'.tr}",
-                                                        style: AppTheme.textStyle(
-                                                          color: AppTheme.primaryColor,
-                                                          size: AppTheme.size12,
-                                                        ).copyWith(height: 1.6),
-                                                        recognizer: TapGestureRecognizer()
-                                                          ..onTap = () => Navigator.pushNamed(
-                                                            context,
-                                                            RouteConstant.appWebViewPage,
-                                                            arguments: {"url": AppConstants.privacyPolicy, "title": 'privacyPolicy'.tr},
-                                                          ),
-                                                      ),
-                                                      TextSpan(
-                                                        text: '${'and'.tr} ',
-                                                        style: AppTheme.textStyle(
-                                                          color: AppTheme.textColor.withOpacity(.85),
-                                                          size: AppTheme.size12,
-                                                        ).copyWith(height: 1.6),
-                                                      ),
-                                                      TextSpan(
-                                                        text: 'termsCondition'.tr,
-                                                        style: AppTheme.textStyle(
-                                                          color: AppTheme.primaryColor,
-                                                          size: AppTheme.size12,
-                                                        ).copyWith(height: 1.6),
-                                                        recognizer: TapGestureRecognizer()
-                                                          ..onTap = () => Navigator.pushNamed(
-                                                            context,
-                                                            RouteConstant.appWebViewPage,
-                                                            arguments: {"url": AppConstants.termsAndCondition, "title": 'termsCondition'.tr},
-                                                          ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-
                                         SizedBox(height: Get.height * .025),
-
-                                        // ✅ Next button (same logic)
                                         Row(
                                           children: [
                                             Expanded(
@@ -286,15 +210,7 @@ class LoginScreen extends StatelessWidget {
                                                 function: () {
                                                   if (controller.btnState == ButtonState.normal) {
                                                     if (controller.loginFormKey.currentState!.validate()) {
-                                                      if (controller.acceptTerms) {
-                                                        controller.verifyMobileNumber();
-                                                      } else {
-                                                        controller.termsAndPolicy.currentState!.shake();
-                                                        SharedHelper().errorSnackBar("pleaseAgreeTermsAlert".tr, durationInSeconds: 3);
-                                                        controller.btnState = ButtonState.fail;
-                                                        controller.update();
-                                                        controller.resetBtnState();
-                                                      }
+                                                      controller.verifyMobileNumber();
                                                     }
                                                   }
                                                 },
@@ -306,7 +222,6 @@ class LoginScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-
                               ],
                             ),
                           ),

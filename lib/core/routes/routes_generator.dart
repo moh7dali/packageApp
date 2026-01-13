@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/features/loyalty/presentation/pages/point_schema_page.dart';
-import 'package:my_custom_widget/features/menu/presentation/widget/developer_widget.dart';
 
 import '../../features/auth/presentation/pages/complete_profile.dart';
 import '../../features/auth/presentation/pages/login_screen.dart';
@@ -11,11 +9,9 @@ import '../../features/branch/presentaion/pages/branch_details_screen.dart';
 import '../../features/home/presentation/pages/home_tab.dart';
 import '../../features/loyalty/presentation/pages/points_tab.dart';
 import '../../features/menu/presentation/pages/invite_page.dart';
-import '../../features/menu/presentation/pages/profile_page.dart';
 import '../../features/rewards/presentation/screens/campign_rewards_screen.dart';
 import '../../features/rewards/presentation/screens/rewards_tab.dart';
 import '../../features/splash/presentation/pages/splash_screen.dart';
-import '../../shared/screens/app_web_view_Screen.dart';
 import '../constants/constants.dart';
 
 class RouteGeneratorList {
@@ -28,9 +24,7 @@ class RouteGeneratorList {
     GetPage(name: RouteConstant.homeScreen, page: () => const HomeScreen()),
     GetPage(name: RouteConstant.rewardsScreen, page: () => const RewardsTabScreen()),
     GetPage(name: RouteConstant.pointsScreen, page: () => const PointsScreen()),
-    GetPage(name: RouteConstant.profilePage, page: () => const ProfilePage()),
     GetPage(name: RouteConstant.invitePage, page: () => const InvitePage()),
-    GetPage(name: RouteConstant.developerWidget, page: () => const DeveloperWidget()),
     GetPage(
       name: RouteConstant.branchDetailsPage,
       page: () {
@@ -44,10 +38,6 @@ class RouteGeneratorList {
         final args = Get.arguments;
         return CampaignRewardsScreen(selectedCampaignDetails: args);
       },
-    ),
-    GetPage(
-      name: RouteConstant.appWebViewPage,
-      page: () => AppWebViewScreen(title: (Get.arguments as Map)["title"], url: (Get.arguments as Map)["url"]),
     ),
   ];
 

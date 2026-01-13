@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:my_custom_widget/core/constants/constants.dart';
 import 'package:my_custom_widget/shared/widgets/button_widget.dart';
 
-import '../../../../core/sdk/sdk_rouutes.dart';
+import '../../../../core/sdk/sdk_routes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../domain/entities/gender.dart';
 import '../getx/auth_controller.dart';

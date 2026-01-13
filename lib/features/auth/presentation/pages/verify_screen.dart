@@ -9,7 +9,7 @@ import 'package:my_custom_widget/shared/widgets/loading_button_widget/progress_b
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../core/sdk/sdk_rouutes.dart';
+import '../../../../core/sdk/sdk_routes.dart';
 import '../../../../shared/getx/merchant_info_controller.dart';
 import '../../../../shared/widgets/button_widget.dart';
 import '../../../../shared/widgets/shake_widget.dart';

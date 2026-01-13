@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:my_custom_widget/shared/helper/shared_helper.dart';
 
 import '../../../../core/constants/constants.dart';
-import '../../../../core/sdk/sdk_rouutes.dart';
+import '../../../../core/sdk/sdk_routes.dart';
 import '../../../../core/utils/theme.dart';
 import '../../../branch/domain/entities/branch_details.dart';
 

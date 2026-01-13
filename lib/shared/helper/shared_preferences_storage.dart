@@ -25,7 +25,7 @@ class SharedPreferencesStorage {
     _preferences = await SharedPreferences.getInstance();
   }
 
-  setAppLanguage(String appLanguage) async {
+  Future<void> setAppLanguage(String appLanguage) async {
     await _preferences!.setString(SharedPreferencesKeyConstants.appLang, appLanguage);
   }
 
@@ -33,7 +33,7 @@ class SharedPreferencesStorage {
     return _preferences!.getString(SharedPreferencesKeyConstants.appLang) ?? Get.deviceLocale!.languageCode;
   }
 
-  setTheme(bool isDark) async {
+  Future<void> setTheme(bool isDark) async {
     await _preferences!.setBool(SharedPreferencesKeyConstants.appTheme, isDark);
   }
 
@@ -51,7 +51,7 @@ class SharedPreferencesStorage {
     return SchedulerBinding.instance.platformDispatcher.platformBrightness == Brightness.dark;
   }
 
-  setTempToken(String tempToken) async {
+  Future<void> setTempToken(String tempToken) async {
     await _preferences!.setString(SharedPreferencesKeyConstants.tempToken, tempToken);
   }
 
@@ -59,7 +59,7 @@ class SharedPreferencesStorage {
     return _preferences!.getString(SharedPreferencesKeyConstants.tempToken);
   }
 
-  setAccessToken(String accessToken) async {
+  Future<void> setAccessToken(String accessToken) async {
     await _preferences!.setString(SharedPreferencesKeyConstants.accessToken, accessToken);
   }
 
@@ -67,15 +67,15 @@ class SharedPreferencesStorage {
     return _preferences!.getString(SharedPreferencesKeyConstants.accessToken);
   }
 
-  setUserCode(String userCode) async {
-    return _preferences!.setString(SharedPreferencesKeyConstants.userCode, userCode);
+  Future<void> setUserCode(String userCode) async {
+    await _preferences!.setString(SharedPreferencesKeyConstants.userCode, userCode);
   }
 
   Future<String?> getUserCode() async {
     return _preferences!.getString(SharedPreferencesKeyConstants.userCode);
   }
 
-  setSessionToken(String sessionToken) async {
+  Future<void> setSessionToken(String sessionToken) async {
     await _preferences!.setString(SharedPreferencesKeyConstants.sessionToken, sessionToken);
   }
 
@@ -83,7 +83,7 @@ class SharedPreferencesStorage {
     return _preferences!.getString(SharedPreferencesKeyConstants.sessionToken);
   }
 
-  setIsCompleted(bool isComplete) async {
+  Future<void> setIsCompleted(bool isComplete) async {
     await _preferences!.setBool(SharedPreferencesKeyConstants.isCompleted, isComplete);
   }
 
@@ -91,7 +91,7 @@ class SharedPreferencesStorage {
     return _preferences!.getBool(SharedPreferencesKeyConstants.isCompleted) ?? false;
   }
 
-  Future setHasReferral(bool hasReferral) async {
+  Future<void> setHasReferral(bool hasReferral) async {
     await _preferences!.setBool(SharedPreferencesKeyConstants.hasReferral, hasReferral);
   }
 
@@ -99,31 +99,7 @@ class SharedPreferencesStorage {
     return _preferences!.getBool(SharedPreferencesKeyConstants.hasReferral) ?? false;
   }
 
-  setFullName(String fullName) async {
-    await _preferences!.setString(SharedPreferencesKeyConstants.fullName, fullName);
-  }
-
-  Future<String> getFullName() async {
-    return _preferences!.getString(SharedPreferencesKeyConstants.fullName) ?? '';
-  }
-
-  setMobile(String mobile) async {
-    await _preferences!.setString(SharedPreferencesKeyConstants.mobile, mobile);
-  }
-
-  Future<String?> getMobile() async {
-    return _preferences!.getString(SharedPreferencesKeyConstants.mobile);
-  }
-
-  setGender(int gender) async {
-    await _preferences!.setInt(SharedPreferencesKeyConstants.gender, gender);
-  }
-
-  Future<int?> getGender() async {
-    return _preferences!.getInt(SharedPreferencesKeyConstants.gender);
-  }
-
-  setIsUserLoggedIn(bool isLogin) async {
+  Future<void> setIsUserLoggedIn(bool isLogin) async {
     await _preferences!.setBool(SharedPreferencesKeyConstants.isLogin, isLogin);
   }
 
@@ -131,15 +107,7 @@ class SharedPreferencesStorage {
     return _preferences!.getBool(SharedPreferencesKeyConstants.isLogin) ?? false;
   }
 
-  Future setShowQr(bool show) async {
-    await _preferences!.setBool(SharedPreferencesKeyConstants.showQr, show);
-  }
-
-  Future<bool> getShowQr() async {
-    return _preferences!.getBool(SharedPreferencesKeyConstants.showQr) ?? false;
-  }
-
-  setUserCountry(Country country) async {
+  Future<void> setUserCountry(Country country) async {
     final countryModel = CountryModel.fromCountry(country);
     final countryString = jsonEncode(countryModel.toJson());
     await _preferences!.setString(SharedPreferencesKeyConstants.userCountry, countryString);
@@ -152,6 +120,15 @@ class SharedPreferencesStorage {
     }
     return CountryModel.fromJson(json.decode(countryString));
   }
+
+  setMobile(String mobile) async {
+    await _preferences!.setString(SharedPreferencesKeyConstants.mobile, mobile);
+  }
+
+  Future<String?> getMobile() async {
+    return _preferences!.getString(SharedPreferencesKeyConstants.mobile);
+  }
+
 
   Future deleteAllData() async {
     final keys = _preferences!.getKeys();

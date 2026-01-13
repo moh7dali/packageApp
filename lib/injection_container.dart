@@ -36,11 +36,8 @@ import 'features/loyalty/domain/usecase/get_user_loyalty_data.dart';
 import 'features/menu/data/datasources/menu_api_datasource.dart';
 import 'features/menu/data/repositories/menu_repository_impl.dart';
 import 'features/menu/domain/repositories/menu_repository.dart';
-import 'features/menu/domain/usecases/delete_account.dart';
 import 'features/menu/domain/usecases/get_merchant_info.dart';
-import 'features/menu/domain/usecases/get_profile_info.dart';
 import 'features/menu/domain/usecases/get_system_resource.dart';
-import 'features/menu/domain/usecases/logout.dart';
 import 'features/rewards/data/datasoursces/rewards_api_datasourse.dart';
 import 'features/rewards/data/repositories/rewards_repository_impl.dart';
 import 'features/rewards/domain/repositories/rewards_repository.dart';
@@ -77,11 +74,8 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetCountries(sl()));
 
   ///MENU
-  sl.registerLazySingleton(() => GetProfileInfo(sl()));
   sl.registerLazySingleton(() => GetSystemResource(sl()));
   sl.registerLazySingleton(() => GetMerchantContactInfo(sl()));
-  sl.registerLazySingleton(() => DeleteAccount(sl()));
-  sl.registerLazySingleton(() => Logout(sl()));
 
   ///Home
   sl.registerLazySingleton(() => GetHomeDetails(sl()));
