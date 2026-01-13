@@ -15,7 +15,7 @@ class RewardsTabScreen extends StatelessWidget {
       init: RewardsController(),
       builder: (controller) {
         return Scaffold(
-          appBar: AppBar(title: Text("rewards".tr)),
+          appBar: AppBar(title: Text("Rewards".tr)),
           body: SafeArea(
             child: Column(
               children: [

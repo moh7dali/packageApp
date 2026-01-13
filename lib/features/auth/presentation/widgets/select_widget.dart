@@ -80,7 +80,7 @@ class _SelectWidgetState<T> extends State<SelectWidget<T>> {
                 : (widget.listOfItems ?? []).isEmpty
                 ? Center(
                     child: Text(
-                      'citiesListEmpty'.tr,
+                      'listIsEmpty'.tr,
                       style: AppTheme.textStyle(color: AppTheme.redColor, size: AppTheme.size12),
                     ),
                   )

@@ -561,21 +561,4 @@ class SharedHelper<T> {
     return completer.future;
   }
 
-  void notAvailableProductInBranch({BranchDetails? branch}) {
-    SharedHelper().actionDialog(
-      "",
-      "${"IsActivePerBranch".tr} ${branch?.name}",
-      height: Get.height * .25,
-      hasImage: true,
-      image: AssetsConsts.noItems,
-      isCenter: true,
-      isLottieImage: true,
-      isLocalImage: true,
-      confirmText: "done",
-      noCancel: true,
-      confirm: () {
-        SharedHelper().closeAllDialogs();
-      },
-    );
-  }
 }

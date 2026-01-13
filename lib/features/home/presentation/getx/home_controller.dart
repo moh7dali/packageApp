@@ -222,20 +222,6 @@ class HomeController extends GetxController {
         );
   }
 
-  Future<String> getHeaderTitle() async {
-    String timeTitle;
-    final currentHour = DateTime.now().hour;
-    if (currentHour >= 6 && currentHour < 12) {
-      timeTitle = 'GoodMorning'.tr;
-    } else if (currentHour >= 12 && currentHour < 18) {
-      timeTitle = 'GoodAfternoon'.tr;
-    } else if (currentHour >= 18 && currentHour < 24) {
-      timeTitle = 'GoodEvening'.tr;
-    } else {
-      timeTitle = 'welcome'.tr;
-    }
-    return '$timeTitle,';
-  }
 
   final GetUserRewards getUserRewards;
 
