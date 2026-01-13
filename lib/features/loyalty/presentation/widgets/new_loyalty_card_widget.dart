@@ -16,8 +16,7 @@ class NewLoyaltyCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => SharedHelper().scaleDialog(PointSchemaPage()),
-      child:
-      Padding(
+      child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
           decoration: BoxDecoration(
@@ -84,8 +83,8 @@ class NewLoyaltyCardWidget extends StatelessWidget {
                   children: [
                     LoyaltyCardDetails(
                       controller: controller,
-                      label: "wallet".tr,
-                      value: controller.userLoyaltyData?.loyaltyData?.walletBalance ?? 0,
+                      label: "visits".tr,
+                      value: controller.userLoyaltyData?.loyaltyData?.numberOfVisits ?? 0,
                     ),
                     const SizedBox(width: 10),
                     LoyaltyCardDetails(
@@ -98,12 +97,6 @@ class NewLoyaltyCardWidget extends StatelessWidget {
                 const SizedBox(height: 10),
                 Row(
                   children: [
-                    LoyaltyCardDetails(
-                      controller: controller,
-                      label: "visits".tr,
-                      value: controller.userLoyaltyData?.loyaltyData?.numberOfVisits ?? 0,
-                    ),
-                    const SizedBox(width: 10),
                     LoyaltyCardDetails(
                       controller: controller,
                       label: "redeemed".tr,
