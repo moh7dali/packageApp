@@ -14,7 +14,5 @@ abstract class AuthRepositories {
 
   Future<Either<AppFailure, bool>> resendVerificationCode();
 
-  Future<Either<AppFailure, dynamic>> addReferral({Map<String, dynamic>? body});
-
   Future<Either<AppFailure, CountriesList>> getCountries({Map<String, dynamic>? body});
 }

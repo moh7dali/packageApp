@@ -6,7 +6,6 @@ import 'core/utils/network_info.dart';
 import 'features/auth/data/datasources/auth_api_datasource.dart';
 import 'features/auth/data/repositories/auth_repository_impl.dart';
 import 'features/auth/domain/repositories/auth_repository.dart';
-import 'features/auth/domain/usecases/add_referral.dart';
 import 'features/auth/domain/usecases/get_countries.dart';
 import 'features/auth/domain/usecases/post_check_validation_code.dart';
 import 'features/auth/domain/usecases/post_complete_profile.dart';
@@ -33,11 +32,6 @@ import 'features/loyalty/domain/repositories/loyalty_repository.dart';
 import 'features/loyalty/domain/usecase/get_tiers_loyalty_data.dart';
 import 'features/loyalty/domain/usecase/get_user_balance_history.dart';
 import 'features/loyalty/domain/usecase/get_user_loyalty_data.dart';
-import 'features/menu/data/datasources/menu_api_datasource.dart';
-import 'features/menu/data/repositories/menu_repository_impl.dart';
-import 'features/menu/domain/repositories/menu_repository.dart';
-import 'features/menu/domain/usecases/get_merchant_info.dart';
-import 'features/menu/domain/usecases/get_system_resource.dart';
 import 'features/rewards/data/datasoursces/rewards_api_datasourse.dart';
 import 'features/rewards/data/repositories/rewards_repository_impl.dart';
 import 'features/rewards/domain/repositories/rewards_repository.dart';
@@ -70,12 +64,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => PostCheckValidationCode(sl()));
   sl.registerLazySingleton(() => PostCompleteProfile(sl()));
   sl.registerLazySingleton(() => ResendVerificationCode(sl()));
-  sl.registerLazySingleton(() => AddReferral(sl()));
   sl.registerLazySingleton(() => GetCountries(sl()));
-
-  ///MENU
-  sl.registerLazySingleton(() => GetSystemResource(sl()));
-  sl.registerLazySingleton(() => GetMerchantContactInfo(sl()));
 
   ///Home
   sl.registerLazySingleton(() => GetHomeDetails(sl()));
@@ -103,7 +92,6 @@ Future<void> init() async {
   ///REPOSITORIES
   ///*************************///
   sl.registerLazySingleton<AuthRepositories>(() => AuthRepositoryImpl(remoteDataSource: sl()));
-  sl.registerLazySingleton<MenuRepositories>(() => MenuRepositoryImpl(remoteDataSource: sl()));
   sl.registerLazySingleton<BranchRepository>(() => BranchRepositoryImpl(remoteDataSource: sl()));
   sl.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(remoteDataSource: sl()));
   sl.registerLazySingleton<LoyaltyRepository>(() => LoyaltyRepositoryImpl(remoteDataSource: sl()));
@@ -114,7 +102,6 @@ Future<void> init() async {
   ///DATASOURCES
   ///*************************///
   sl.registerLazySingleton<AuthApiDataSource>(() => AuthApiDataSourceImpl());
-  sl.registerLazySingleton<MenuApiDataSource>(() => MenuApiDataSourceImpl());
   sl.registerLazySingleton<BranchApiDataSource>(() => BranchApiDataSourceImpl());
   sl.registerLazySingleton<HomeApiDataSource>(() => HomeApiDataSourceImpl());
   sl.registerLazySingleton<RewardsApiDataSource>(() => RewardsApiDataSourceImpl());

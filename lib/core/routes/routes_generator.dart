@@ -3,12 +3,10 @@ import 'package:get/get.dart';
 
 import '../../features/auth/presentation/pages/complete_profile.dart';
 import '../../features/auth/presentation/pages/login_screen.dart';
-import '../../features/auth/presentation/pages/referral_screen.dart';
 import '../../features/auth/presentation/pages/verify_screen.dart';
 import '../../features/branch/presentaion/pages/branch_details_screen.dart';
 import '../../features/home/presentation/pages/home_tab.dart';
 import '../../features/loyalty/presentation/pages/points_tab.dart';
-import '../../features/menu/presentation/pages/invite_page.dart';
 import '../../features/rewards/presentation/screens/campign_rewards_screen.dart';
 import '../../features/rewards/presentation/screens/rewards_tab.dart';
 import '../../features/splash/presentation/pages/splash_screen.dart';
@@ -20,11 +18,9 @@ class RouteGeneratorList {
     GetPage(name: RouteConstant.authPage, page: () => const LoginScreen()),
     GetPage(name: RouteConstant.verifyPage, page: () => const VerifyScreen()),
     GetPage(name: RouteConstant.completeProfile, page: () => const CompleteProfileScreen()),
-    GetPage(name: RouteConstant.referralPage, page: () => const ReferralScreen()),
     GetPage(name: RouteConstant.homeScreen, page: () => const HomeScreen()),
     GetPage(name: RouteConstant.rewardsScreen, page: () => const RewardsTabScreen()),
     GetPage(name: RouteConstant.pointsScreen, page: () => const PointsScreen()),
-    GetPage(name: RouteConstant.invitePage, page: () => const InvitePage()),
     GetPage(
       name: RouteConstant.branchDetailsPage,
       page: () {

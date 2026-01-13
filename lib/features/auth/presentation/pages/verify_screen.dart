@@ -7,10 +7,8 @@ import 'package:my_custom_widget/shared/widgets/bottom_widget.dart';
 import 'package:my_custom_widget/shared/widgets/hero_logo.dart';
 import 'package:my_custom_widget/shared/widgets/loading_button_widget/progress_button.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/sdk/sdk_routes.dart';
-import '../../../../shared/getx/merchant_info_controller.dart';
 import '../../../../shared/widgets/button_widget.dart';
 import '../../../../shared/widgets/shake_widget.dart';
 import '../getx/auth_controller.dart';
@@ -277,49 +275,6 @@ class VerifyScreen extends StatelessWidget {
 
                   const SizedBox(height: 14),
 
-                  // ✅ Need help (same logic)
-                  GetBuilder<MerchantInfoController>(
-                    init: MerchantInfoController(),
-                    builder: (merchantInfoController) => GestureDetector(
-                      onTap: () async {
-                        String? mobile = merchantInfoController.merchantInfo?.mobile == null
-                            ? ""
-                            : "${controller.selectedCountry.callingCode}${merchantInfoController.merchantInfo?.mobile ?? ""}";
-                        SharedHelper().bottomSheet(
-                          BottomWidget(
-                            title: "",
-                            description: "${'wantToCall'.tr}\n\n$mobile",
-                            onCancel: () {
-                              SharedHelper().closeAllDialogs();
-                            },
-                            onConfirm: () async {
-                              SharedHelper().closeAllDialogs();
-                              Uri uri = Uri.parse("tel:$mobile");
-                              if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-                                throw 'Could not launch $uri';
-                              }
-                            },
-                            confirmText: 'callUs'.tr,
-                          ),
-                        );
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'needHelp'.tr,
-                            style: AppTheme.textStyle(
-                              color: AppTheme.primaryColor,
-                              size: AppTheme.size14,
-                              isBold: true,
-                            ).copyWith(decoration: TextDecoration.underline, decorationColor: AppTheme.primaryColor),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-
-                  SizedBox(height: Get.height * .03),
                 ],
               ),
             ),

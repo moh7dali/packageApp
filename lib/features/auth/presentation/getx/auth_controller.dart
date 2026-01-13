@@ -9,7 +9,6 @@ import 'package:sms_autofill/sms_autofill.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/sdk/sdk_routes.dart';
-import '../../../../core/utils/app_log.dart';
 import '../../../../injection_container.dart';
 import '../../../../shared/helper/device_info.dart';
 import '../../../../shared/helper/shared_helper.dart';
@@ -20,7 +19,6 @@ import '../../../../shared/widgets/shake_widget.dart';
 import '../../domain/entities/country.dart';
 import '../../domain/entities/gender.dart';
 import '../../domain/entities/marital_status.dart';
-import '../../domain/usecases/add_referral.dart';
 import '../../domain/usecases/get_countries.dart';
 import '../../domain/usecases/post_check_validation_code.dart';
 import '../../domain/usecases/post_complete_profile.dart';
@@ -32,7 +30,6 @@ class AuthController extends GetxController with CodeAutoFill {
   final PostCheckValidationCode postCheckValidationCode;
   final PostCompleteProfile postCompleteProfile;
   final ResendVerificationCode resendVerificationCode;
-  final AddReferral addReferral;
   final GetCountries getCountries;
 
   AuthController()
@@ -40,7 +37,6 @@ class AuthController extends GetxController with CodeAutoFill {
       postCheckValidationCode = sl(),
       postCompleteProfile = sl(),
       resendVerificationCode = sl(),
-      addReferral = sl(),
       getCountries = sl();
 
   ButtonState btnState = ButtonState.normal;
@@ -148,7 +144,7 @@ class AuthController extends GetxController with CodeAutoFill {
     return PaginationListModel(totalNumberOfResult: totalNumberOfResult, listOfObjects: countries);
   }
 
-  selectCountry(Country country) {
+  void selectCountry(Country country) {
     selectedCountry = country;
     sl<SharedPreferencesStorage>().setUserCountry(country);
     SharedHelper().closeAllDialogs();
@@ -161,7 +157,7 @@ class AuthController extends GetxController with CodeAutoFill {
     super.onInit();
   }
 
-  verifyMobileNumber() async {
+  Future<void> verifyMobileNumber() async {
     btnState = ButtonState.loading;
     update();
     Map<String, String> deviceInfo = await DeviceInfo.getDeviceData();
@@ -196,7 +192,7 @@ class AuthController extends GetxController with CodeAutoFill {
                 errorController = StreamController<ErrorAnimationType>();
                 SDKNav.toNamed(RouteConstant.verifyPage);
                 startTimer();
-                sl<SharedPreferencesStorage>().setMobile("${AppConstants.countryCode}$number");
+                sl<SharedPreferencesStorage>().setMobile(number);
               });
             },
           ),
@@ -204,7 +200,7 @@ class AuthController extends GetxController with CodeAutoFill {
     update();
   }
 
-  checkValidationCode() async {
+  Future<void> checkValidationCode() async {
     btnState = ButtonState.loading;
     update();
     await postCheckValidationCode.repository
@@ -222,9 +218,7 @@ class AuthController extends GetxController with CodeAutoFill {
               btnState = ButtonState.success;
               sl<SharedPreferencesStorage>().setAccessToken(checkValidationCode.accessToken!);
               sl<SharedPreferencesStorage>().setSessionToken(checkValidationCode.sessionToken!);
-              sl<SharedPreferencesStorage>().setUserCode(checkValidationCode.userCode!);
               sl<SharedPreferencesStorage>().setIsCompleted(checkValidationCode.isCompleted!);
-              sl<SharedPreferencesStorage>().setHasReferral(checkValidationCode.hasReferral!);
               sl<SharedPreferencesStorage>().setIsUserLoggedIn(true);
               resetBtnState();
               Future.delayed(const Duration(seconds: 1), () async {
@@ -240,7 +234,7 @@ class AuthController extends GetxController with CodeAutoFill {
         );
   }
 
-  resendCode() async {
+  Future<void> resendCode() async {
     btnState = ButtonState.loading;
     update();
     await resendVerificationCode.repository.resendVerificationCode().then(
@@ -260,7 +254,7 @@ class AuthController extends GetxController with CodeAutoFill {
     update();
   }
 
-  startTimer() {
+  void startTimer() {
     listenForCode();
     getAppSignature();
     isResend = false;
@@ -279,7 +273,7 @@ class AuthController extends GetxController with CodeAutoFill {
     });
   }
 
-  completeProfile() async {
+  Future<void> completeProfile() async {
     btnState = ButtonState.loading;
     update();
     var body = {
@@ -303,15 +297,8 @@ class AuthController extends GetxController with CodeAutoFill {
               update();
               sl<SharedPreferencesStorage>().setIsCompleted(true);
               await resetBtnState();
-              if (await sl<SharedPreferencesStorage>().getHasReferral() == true) {
-                ///Go to Main Screen
-                Get.deleteAll();
-                SDKNav.offAllNamed(RouteConstant.homeScreen);
-              } else {
-                ///Go to Referral Screen
-                Get.deleteAll();
-                SDKNav.offAllNamed(RouteConstant.referralPage);
-              }
+              Get.deleteAll();
+              SDKNav.offAllNamed(RouteConstant.homeScreen);
             },
           ),
         );
@@ -324,31 +311,7 @@ class AuthController extends GetxController with CodeAutoFill {
     });
   }
 
-  addReferralApi() async {
-    btnState = ButtonState.loading;
-    update();
-    await addReferral.repository
-        .addReferral(body: {"referralCode": referralController.text})
-        .then(
-          (value) => value.fold(
-            (failure) async {
-              btnState = ButtonState.fail;
-              update();
-              await resetBtnState();
-              SharedHelper().errorSnackBar(failure.errorsModel.errorMessage ?? "");
-            },
-            (completeProfile) {
-              btnState = ButtonState.success;
-              sl<SharedPreferencesStorage>().setHasReferral(true);
-              resetBtnState();
-              Get.deleteAll();
-              SDKNav.offAllNamed(RouteConstant.homeScreen);
-            },
-          ),
-        );
-  }
-
-  resetValues() {
+  void resetValues() {
     mobileController.clear();
     referralController.clear();
     smsCodeController.clear();
@@ -395,8 +358,8 @@ class AuthController extends GetxController with CodeAutoFill {
     print("App Signature: $appSignature");
   }
 
-  getDataAfterDelete() async {
-    mobileController.text = (await sl<SharedPreferencesStorage>().getMobile() ?? "").replaceFirst("+962", "");
+  Future<void> getDataAfterDelete() async {
+    mobileController.text = (await sl<SharedPreferencesStorage>().getMobile() ?? "");
     startTimer();
   }
 }

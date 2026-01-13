@@ -18,10 +18,7 @@ abstract class AuthApiDataSource {
 
   Future<bool> resendVerificationCode();
 
-  Future<dynamic> addReferral({required Map<String, dynamic> body});
-
   Future<CountriesList> getCountries({required Map<String, dynamic> body});
-
 }
 
 class AuthApiDataSourceImpl implements AuthApiDataSource {
@@ -75,19 +72,6 @@ class AuthApiDataSourceImpl implements AuthApiDataSource {
   }
 
   @override
-  Future addReferral({required Map<String, dynamic> body}) async {
-    dynamic addReferralApi = await ApiRequest<dynamic>().request(
-      method: HttpMethodRequest.postMethode,
-      url: ApiEndPoints.addReferral,
-      body: {},
-      queryParameters: body,
-      authorized: true,
-      isNull: true,
-      fromJson: getDynamic,
-    );
-    return addReferralApi;
-  }
-
   Future<CountriesList> getCountries({required Map<String, dynamic> body}) async {
     CountriesList countriesList = await ApiRequest<CountriesList>().request(
       method: HttpMethodRequest.postMethode,

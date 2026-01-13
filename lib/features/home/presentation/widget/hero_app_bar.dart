@@ -5,8 +5,13 @@ import 'package:my_custom_widget/shared/widgets/hero_logo.dart';
 AppBar heroAppBar() {
   return AppBar(
     titleSpacing: 10,
-    title: Row(
-      children: [SizedBox(height: Get.height * .06, child: HeroLogo())],
+    title: GestureDetector(
+      onTap: () {
+
+      },
+      child: Row(
+        children: [SizedBox(height: Get.height * .06, child: HeroLogo())],
+      ),
     ),
   );
 }

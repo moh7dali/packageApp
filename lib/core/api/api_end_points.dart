@@ -12,7 +12,6 @@ class ApiEndPoints {
   static const String resendVerificationCode = '${apiLink}Profile/ResendVerificationCode';
   static const String checkValidationCode = '${apiLink}Profile/CheckValidationCode';
   static const String completeProfile = '${apiLink}Profile/CompleteProfile';
-  static const String addReferral = '${apiLink}Profile/AddReferral';
   static const String getCountries = '${apiLink}Country/GetCountries';
 
   ///branch
@@ -34,10 +33,6 @@ class ApiEndPoints {
 
   ///barcode
   static const String getBarcodeUserData = '${apiLink}UserLoyalty/GetBarcodeUserData';
-
-  ///menus
-  static const String getSystemResource = '${apiLink}Common/GetSystemResource';
-  static const String getMerchantContactInfo = '${apiLink}Merchant/GetMerchantContactInfo';
 
   ///rewards
   static const String getCampaignList = '${apiLink}Campaign/GetCampaignList';

@@ -20,12 +20,10 @@ class RouteConstant {
   static const String authPage = '/AuthPage';
   static const String verifyPage = '/VerifyScreen';
   static const String completeProfile = '/CompleteProfileScreen';
-  static const String referralPage = '/ReferralScreen';
   static const String homeScreen = '/HomeScreen';
   static const String pointsScreen = '/PointsScreen';
   static const String rewardsScreen = '/RewardsTabScreen';
   static const String campaignRewards = '/CampaignRewards';
-  static const String invitePage = '/InvitePage';
   static const String branchDetailsPage = '/BranchDetailsScreen';
 }
 
@@ -47,11 +45,7 @@ class SharedPreferencesKeyConstants {
 
   static const String isCompleted = "isCompleted";
 
-  static const String hasReferral = "hasReferral";
-
   static const String isLogin = "isLogin";
-
-  static const String userCode = "userCode";
 
   static const String userCountry = "userCountry";
 

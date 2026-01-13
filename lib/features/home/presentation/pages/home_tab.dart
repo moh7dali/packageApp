@@ -12,7 +12,6 @@ import '../widget/loyalty_card_loading.dart';
 import '../widget/loyalty_card_widget.dart';
 import '../widget/missioons_widget.dart';
 import '../widget/pages_card_loading.dart';
-import '../widget/refere_widget.dart';
 import '../widget/rewards_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -58,12 +57,7 @@ class HomeScreen extends StatelessWidget {
                           },
                         ),
                       ),
-                      if (controller.isShowReferral && controller.referralCampaign != null)
-                        SuperPremiumReferAndEarnButton(
-                          onTap: () {
-                            SharedHelper().needLogin(() => SDKNav.toNamed(RouteConstant.invitePage));
-                          },
-                        ),
+
                       SizedBox(height: Get.height * .01),
                       if ((controller.missions).isNotEmpty)
                         Padding(

@@ -67,14 +67,6 @@ class SharedPreferencesStorage {
     return _preferences!.getString(SharedPreferencesKeyConstants.accessToken);
   }
 
-  Future<void> setUserCode(String userCode) async {
-    await _preferences!.setString(SharedPreferencesKeyConstants.userCode, userCode);
-  }
-
-  Future<String?> getUserCode() async {
-    return _preferences!.getString(SharedPreferencesKeyConstants.userCode);
-  }
-
   Future<void> setSessionToken(String sessionToken) async {
     await _preferences!.setString(SharedPreferencesKeyConstants.sessionToken, sessionToken);
   }
@@ -89,14 +81,6 @@ class SharedPreferencesStorage {
 
   Future<bool> getIsCompleted() async {
     return _preferences!.getBool(SharedPreferencesKeyConstants.isCompleted) ?? false;
-  }
-
-  Future<void> setHasReferral(bool hasReferral) async {
-    await _preferences!.setBool(SharedPreferencesKeyConstants.hasReferral, hasReferral);
-  }
-
-  Future<bool> getHasReferral() async {
-    return _preferences!.getBool(SharedPreferencesKeyConstants.hasReferral) ?? false;
   }
 
   Future<void> setIsUserLoggedIn(bool isLogin) async {
@@ -121,7 +105,7 @@ class SharedPreferencesStorage {
     return CountryModel.fromJson(json.decode(countryString));
   }
 
-  setMobile(String mobile) async {
+  Future<void> setMobile(String mobile) async {
     await _preferences!.setString(SharedPreferencesKeyConstants.mobile, mobile);
   }
 

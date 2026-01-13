@@ -75,21 +75,6 @@ class AuthRepositoryImpl implements AuthRepositories {
   }
 
   @override
-  Future<Either<AppFailure, dynamic>> addReferral({Map<String, dynamic>? body}) async {
-    try {
-      final remoteAddReferral = await remoteDataSource.addReferral(body: body!);
-      return Right(remoteAddReferral);
-    } on ApiErrorsException catch (e) {
-      return Left(
-        AppFailure(
-          errorsModel: ErrorsModel(errorCode: e.errorCode, errorMessage: e.errorMessage),
-          failureType: FailureType.serverFailure,
-        ),
-      );
-    }
-  }
-
-  @override
   Future<Either<AppFailure, CountriesList>> getCountries({Map<String, dynamic>? body}) async {
     try {
       final remoteGetCountry = await remoteDataSource.getCountries(body: body!);
