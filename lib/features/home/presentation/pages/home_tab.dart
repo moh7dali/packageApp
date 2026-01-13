@@ -228,7 +228,7 @@ class LAdoreNavButtons extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          "Points",
+                          "Points".tr,
                           style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size16),
                         ),
                         SizedBox(width: 8),
@@ -251,7 +251,7 @@ class LAdoreNavButtons extends StatelessWidget {
                         Icon(Icons.card_giftcard, color: AppTheme.primaryColor, size: AppTheme.size20),
                         SizedBox(width: 8),
                         Text(
-                          "Rewards",
+                          "Rewards".tr,
                           style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size16),
                         ),
                       ],

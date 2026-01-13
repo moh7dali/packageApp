@@ -47,8 +47,10 @@ class LoyaltyCardWidget extends StatelessWidget {
                             ),
                             BalanceCard(
                               title: "balance".tr,
-                              value:
-                                  "${SharedHelper.getNumberFormat(homeController.customerData?.customerLoyaltyData?.cashBalance ?? 0, isCurrency: true)}",
+                              value: SharedHelper.getNumberFormat(
+                                homeController.customerData?.customerLoyaltyData?.cashBalance ?? 0,
+                                isCurrency: true,
+                              ),
                               showCurrency: true,
                               onInfoTap: () {
                                 homeController.gotoRewards(isPoints: true, isDeals: false);
@@ -60,58 +62,61 @@ class LoyaltyCardWidget extends StatelessWidget {
                       SizedBox(height: 20),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: SizedBox(
-                                height: Get.height * .03,
-                                child: LayoutBuilder(
-                                  builder: (context, constraints) {
-                                    final progress =
-                                        homeController.valueOfTheLine(
-                                          homeController.customerData?.customerLoyaltyData?.customerTierData?.currentTier ?? 0,
-                                        ) ??
-                                        0;
-                                    final iconSize = Get.height * .03;
-                                    final barWidth = constraints.maxWidth;
-                                    return Stack(
-                                      alignment: Alignment.bottomLeft,
-                                      children: [
-                                        Positioned(
-                                          child: LinearPercentIndicator(
-                                            width: barWidth,
-                                            lineHeight: Get.height * .03,
-                                            animation: true,
-                                            animationDuration: 3000,
-                                            barRadius: const Radius.circular(20),
-                                            percent: progress,
-                                            linearGradient: AppTheme.gradient1,
-                                            linearGradientBackgroundColor: AppTheme.gradient1.withOpacity(.2),
+                        child: Directionality(
+                          textDirection: TextDirection.ltr,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: SizedBox(
+                                  height: Get.height * .03,
+                                  child: LayoutBuilder(
+                                    builder: (context, constraints) {
+                                      final progress =
+                                          homeController.valueOfTheLine(
+                                            homeController.customerData?.customerLoyaltyData?.customerTierData?.currentTier ?? 0,
+                                          ) ??
+                                          0;
+                                      final iconSize = Get.height * .03;
+                                      final barWidth = constraints.maxWidth;
+                                      return Stack(
+                                        alignment: Alignment.bottomLeft,
+                                        children: [
+                                          Positioned(
+                                            child: LinearPercentIndicator(
+                                              width: barWidth,
+                                              lineHeight: Get.height * .03,
+                                              animation: true,
+                                              animationDuration: 3000,
+                                              barRadius: const Radius.circular(20),
+                                              percent: progress,
+                                              linearGradient: AppTheme.gradient1,
+                                              linearGradientBackgroundColor: AppTheme.gradient1.withOpacity(.2),
+                                            ),
                                           ),
-                                        ),
-                                        Positioned(
-                                          left: (barWidth - iconSize) * (progress),
-                                          child: CachedNetworkImage(
-                                            imageUrl: homeController.currentImageTier ?? "",
-                                            errorWidget: (context, url, error) => Container(),
-                                            fit: BoxFit.cover,
-                                            height: iconSize,
+                                          Positioned(
+                                            left: (barWidth - iconSize) * (progress),
+                                            child: CachedNetworkImage(
+                                              imageUrl: homeController.currentImageTier ?? "",
+                                              errorWidget: (context, url, error) => Container(),
+                                              fit: BoxFit.cover,
+                                              height: iconSize,
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    );
-                                  },
+                                        ],
+                                      );
+                                    },
+                                  ),
                                 ),
                               ),
-                            ),
-                            if ((homeController.customerData?.customerLoyaltyData?.customerTierData?.currentTier ?? 0) <
-                                (homeController.homeDetails?.tiers?.tiers?.length ?? 0))
-                              CachedNetworkImage(
-                                imageUrl: homeController.nextImageTier ?? "",
-                                errorWidget: (context, url, error) => Container(),
-                                height: Get.height * .03,
-                              ),
-                          ],
+                              if ((homeController.customerData?.customerLoyaltyData?.customerTierData?.currentTier ?? 0) <
+                                  (homeController.homeDetails?.tiers?.tiers?.length ?? 0))
+                                CachedNetworkImage(
+                                  imageUrl: homeController.nextImageTier ?? "",
+                                  errorWidget: (context, url, error) => Container(),
+                                  height: Get.height * .03,
+                                ),
+                            ],
+                          ),
                         ),
                       ),
                       SizedBox(height: 10),
