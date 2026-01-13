@@ -123,4 +123,5 @@ final Map<String, String> en = {
   "noInternet": "No Internet Connection",
   "noInternetBody": "Please check your internet connection and try again",
   "refresh": "Refresh",
+  "unauthorized": "Session expired, please login again",
 };

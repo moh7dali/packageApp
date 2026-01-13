@@ -6,9 +6,6 @@ AppBar heroAppBar() {
   return AppBar(
     titleSpacing: 10,
     title: GestureDetector(
-      onTap: () {
-
-      },
       child: Row(
         children: [SizedBox(height: Get.height * .06, child: HeroLogo())],
       ),

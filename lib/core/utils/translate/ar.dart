@@ -123,4 +123,5 @@ final Map<String, String> ar = {
   "noInternet": "لا يوجد اتصال بالإنترنت",
   "noInternetBody": "يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى",
   "refresh": "تحديث",
+  "unauthorized": "انتهت الجلسة، يرجى تسجيل الدخول مرة أخرى",
 };
