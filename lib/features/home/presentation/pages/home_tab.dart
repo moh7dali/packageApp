@@ -46,18 +46,18 @@ class HomeScreen extends StatelessWidget {
                 : Column(
                     children: [
                       LoyaltyCardWidget(homeController: controller),
-                      SizedBox(height: Get.height * .01),
+                      LAdoreNavButtons(),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: AppButton(
                           title: "redeemPoints".tr,
                           isDoneBtn: false,
+                          isSmall: true,
                           function: () {
                             controller.redeemPoints();
                           },
                         ),
                       ),
-                      SizedBox(height: Get.height * .01),
                       if (controller.isShowReferral && controller.referralCampaign != null)
                         SuperPremiumReferAndEarnButton(
                           onTap: () {
@@ -199,6 +199,73 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(height: Get.height * .04),
                     ],
                   ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class LAdoreNavButtons extends StatelessWidget {
+  const LAdoreNavButtons({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      child: Container(
+        height: 55,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30),
+          border: Border.all(color: AppTheme.primaryColor.withOpacity(0.4), width: 1.2),
+          color: Colors.white,
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(30),
+          child: Row(
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    SDKNav.toNamed(RouteConstant.pointsScreen);
+                  },
+                  child: Center(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          "Points",
+                          style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size16),
+                        ),
+                        SizedBox(width: 8),
+                        Icon(Icons.stars_outlined, color: AppTheme.primaryColor, size: AppTheme.size20),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(width: 1, height: 25, color: AppTheme.primaryColor.withOpacity(0.3)),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    SDKNav.toNamed(RouteConstant.rewardsScreen);
+                  },
+                  child: Center(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.card_giftcard, color: AppTheme.primaryColor, size: AppTheme.size20),
+                        SizedBox(width: 8),
+                        Text(
+                          "Rewards",
+                          style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size16),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

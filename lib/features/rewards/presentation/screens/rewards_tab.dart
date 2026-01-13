@@ -15,63 +15,50 @@ class RewardsTabScreen extends StatelessWidget {
       init: RewardsController(),
       builder: (controller) {
         return Scaffold(
-          body: Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(gradient: AppTheme.gradient1),
-                padding: const EdgeInsets.fromLTRB(16, 16, 16, 12),
-                child: Container(
-                  padding: const EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: AppTheme.whiteColor.withOpacity(0.10),
-                    borderRadius: AppTheme.bigBorderRadius,
-                    border: Border.all(color: AppTheme.whiteColor.withOpacity(0.16)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.10),
-                        blurRadius: 16,
-                        offset: const Offset(0, 8),
+          appBar: AppBar(title: Text("rewards".tr)),
+          body: SafeArea(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: AppTheme.primaryColor.withOpacity(0.1),
+                      borderRadius: AppTheme.bigBorderRadius,
+                      border: Border.all(color: AppTheme.primaryColor.withOpacity(0.25), width: 1),
+                      boxShadow: [BoxShadow(color: AppTheme.textColor.withOpacity(0.10), blurRadius: 18, offset: const Offset(0, 10))],
+                    ),
+                    child: TabBar(
+                      controller: controller.tabController,
+                      dividerHeight: 0,
+                      indicatorSize: TabBarIndicatorSize.tab,
+                      indicatorPadding: const EdgeInsets.all(4),
+                      labelStyle: AppTheme.textStyle(color: AppTheme.whiteColor, isBold: true, size: AppTheme.size14),
+                      unselectedLabelStyle: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size14),
+                      indicator: BoxDecoration(
+                        color: AppTheme.primaryColor.withOpacity(0.95),
+                        borderRadius: AppTheme.borderRadius,
+                        boxShadow: [BoxShadow(color: AppTheme.primaryColor.withOpacity(0.25), blurRadius: 12, offset: const Offset(0, 5))],
                       ),
+                      tabs: controller.pageTabs.map((e) {
+                        return Tab(
+                          child: Center(child: Text(e.tr, textAlign: TextAlign.center)),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: TabBarView(
+                    controller: controller.tabController,
+                    children: const [
+                      MyRewardsPage(),
+                      OccasionRewards(categoriesId: "1,2,3,4"),
                     ],
                   ),
-                  child: TabBar(
-                    controller: controller.tabController,
-                    dividerHeight: 0,
-                    indicatorSize: TabBarIndicatorSize.tab,
-                    indicatorPadding: const EdgeInsets.all(4),
-                    labelStyle: AppTheme.textStyle(color: AppTheme.whiteColor, isBold: true, size: AppTheme.size14),
-                    unselectedLabelStyle: AppTheme.textStyle(color: AppTheme.whiteColor.withOpacity(.75), size: AppTheme.size14),
-                    indicator: BoxDecoration(
-                      color: AppTheme.primaryColor.withOpacity(0.95),
-                      borderRadius: AppTheme.borderRadius,
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppTheme.primaryColor.withOpacity(0.25),
-                          blurRadius: 12,
-                          offset: const Offset(0, 5),
-                        ),
-                      ],
-                    ),
-                    tabs: controller.pageTabs.map((e) {
-                      return Tab(
-                        child: Center(
-                          child: Text(e.tr, textAlign: TextAlign.center),
-                        ),
-                      );
-                    }).toList(),
-                  ),
                 ),
-              ),
-              Expanded(
-                child: TabBarView(
-                  controller: controller.tabController,
-                  children: const [
-                    MyRewardsPage(),
-                    OccasionRewards(categoriesId: "1,2,3,4"),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },

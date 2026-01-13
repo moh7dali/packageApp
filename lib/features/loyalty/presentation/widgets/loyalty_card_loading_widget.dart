@@ -9,10 +9,14 @@ class LoyaltyCardLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(gradient: AppTheme.gradient1),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppTheme.primaryColor.withOpacity(0.1),
+          borderRadius: AppTheme.bigBorderRadius,
+          border: Border.all(color: AppTheme.primaryColor.withOpacity(0.25), width: 1),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
