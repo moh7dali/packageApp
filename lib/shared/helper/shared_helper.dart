@@ -15,7 +15,6 @@ import '../../core/constants/assets_constants.dart';
 import '../../core/constants/constants.dart';
 import '../../core/sdk/sdk_routes.dart';
 import '../../core/utils/theme.dart';
-import '../../features/branch/domain/entities/branch_details.dart';
 import '../../injection_container.dart';
 import '../../mozaic_loyalty_sdk.dart';
 import 'shared_preferences_storage.dart';
@@ -30,7 +29,7 @@ class SharedHelper<T> {
   Future<void> closeAllDialogs() async {
     SnackbarController.cancelAllSnackbars();
 
-    if (MozaicLoyaltySDK.settings.hostAppUseGetx == false) {
+    if (MozaicLoyaltySDK.settings.appUseGetx == false) {
       Get.until((_) => !Get.isDialogOpen!);
       Get.until((_) => !Get.isBottomSheetOpen!);
     } else {
@@ -124,7 +123,7 @@ class SharedHelper<T> {
 
   void scaleDialog(Widget widget, {bool dismissible = true, double horizontal = 0}) {
     Get.generalDialog(
-      navigatorKey: MozaicLoyaltySDK.settings.hostAppUseGetx ? Get.nestedKey(1) : MozaicLoyaltySDK.sdkNavKey,
+      navigatorKey: MozaicLoyaltySDK.settings.appUseGetx ? Get.nestedKey(1) : MozaicLoyaltySDK.sdkNavKey,
       barrierDismissible: dismissible,
       barrierLabel: "appName".tr,
       barrierColor: AppTheme.bgThemeColor.withOpacity(.75),
@@ -560,5 +559,4 @@ class SharedHelper<T> {
     );
     return completer.future;
   }
-
 }

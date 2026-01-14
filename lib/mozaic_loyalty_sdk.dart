@@ -81,7 +81,7 @@ class MozaicLoyaltySDK extends StatelessWidget {
               Navigator.of(context).pop();
             }
           },
-          child: MozaicLoyaltySDK.settings.hostAppUseGetx ? _buildNestedNavigator() : _buildStandaloneApp(),
+          child: MozaicLoyaltySDK.settings.appUseGetx ? _buildNestedNavigator() : _buildStandaloneApp(),
         );
       },
     );

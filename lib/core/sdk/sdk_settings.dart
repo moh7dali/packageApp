@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MozaicLoyaltySDKSettings {
-  final bool hostAppUseGetx;
+  final bool appUseGetx;
   final String? accessToken;
   final String? sessionToken;
   final Widget logoWidget;
@@ -15,7 +15,7 @@ class MozaicLoyaltySDKSettings {
 
   const MozaicLoyaltySDKSettings({
     required this.logoWidget,
-    this.hostAppUseGetx = false,
+    this.appUseGetx = false,
     this.redeemPointsQRCode = true,
     this.accessToken,
     this.sessionToken,
@@ -30,7 +30,7 @@ class MozaicLoyaltySDKSettings {
   MozaicLoyaltySDKSettings copyWith({String? sessionToken, String? accessToken}) {
     return MozaicLoyaltySDKSettings(
       logoWidget: logoWidget,
-      hostAppUseGetx: hostAppUseGetx,
+      appUseGetx: appUseGetx,
       primaryColor: primaryColor,
       secondaryColor: secondaryColor,
       sdkLanguage: sdkLanguage,
