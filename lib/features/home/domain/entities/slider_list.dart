@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:my_custom_widget/features/home/domain/entities/slider.dart';
+import 'package:mozaic_loyalty_sdk/features/home/domain/entities/slider.dart';
 
 class SliderList extends Equatable {
   final List<Slider>? sliders;

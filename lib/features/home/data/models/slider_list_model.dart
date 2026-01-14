@@ -1,4 +1,4 @@
-import 'package:my_custom_widget/features/home/data/models/slider_model.dart';
+import 'package:mozaic_loyalty_sdk/features/home/data/models/slider_model.dart';
 
 import '../../domain/entities/slider.dart';
 import '../../domain/entities/slider_list.dart';

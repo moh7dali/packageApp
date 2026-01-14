@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/core/utils/theme.dart';
-import 'package:my_custom_widget/features/home/presentation/getx/home_controller.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/theme.dart';
+import 'package:mozaic_loyalty_sdk/features/home/presentation/getx/home_controller.dart';
 
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/constants/constants.dart';

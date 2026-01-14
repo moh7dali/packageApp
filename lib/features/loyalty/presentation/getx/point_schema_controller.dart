@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/features/loyalty/domain/entity/point_schema_brand.dart';
-import 'package:my_custom_widget/features/loyalty/domain/usecase/get_tiers_loyalty_data.dart';
+import 'package:mozaic_loyalty_sdk/features/loyalty/domain/entity/point_schema_brand.dart';
+import 'package:mozaic_loyalty_sdk/features/loyalty/domain/usecase/get_tiers_loyalty_data.dart';
 
 import '../../../../injection_container.dart';
 import '../../../../shared/helper/shared_helper.dart';

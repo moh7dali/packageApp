@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../my_custom_widget.dart';
+import '../../mozaic_loyalty_sdk.dart';
 
 class AppTheme {
   static const blackColor = Colors.black;

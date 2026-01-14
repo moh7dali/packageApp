@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_custom_widget/core/error/failures.dart';
-import 'package:my_custom_widget/features/rewards/domain/entity/campaign_list.dart';
-import 'package:my_custom_widget/features/rewards/domain/entity/campaign_rewards.dart';
-import 'package:my_custom_widget/features/rewards/domain/entity/user_reward_list.dart';
+import 'package:mozaic_loyalty_sdk/core/error/failures.dart';
+import 'package:mozaic_loyalty_sdk/features/rewards/domain/entity/campaign_list.dart';
+import 'package:mozaic_loyalty_sdk/features/rewards/domain/entity/campaign_rewards.dart';
+import 'package:mozaic_loyalty_sdk/features/rewards/domain/entity/user_reward_list.dart';
 
 import '../../../../core/api/api_response_error.dart';
 import '../../../../core/error/exceptions.dart';

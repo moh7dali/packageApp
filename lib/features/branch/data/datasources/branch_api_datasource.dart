@@ -1,4 +1,4 @@
-import 'package:my_custom_widget/core/api/api_response.dart';
+import 'package:mozaic_loyalty_sdk/core/api/api_response.dart';
 
 import '../../../../core/api/api_end_points.dart';
 import '../../../../core/api/api_request.dart';

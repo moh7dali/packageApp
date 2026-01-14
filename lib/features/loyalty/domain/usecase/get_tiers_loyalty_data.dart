@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_custom_widget/core/error/failures.dart';
+import 'package:mozaic_loyalty_sdk/core/error/failures.dart';
 
 import '../../../../core/usecases/usecase.dart';
 import '../entity/point_schema_brand.dart';

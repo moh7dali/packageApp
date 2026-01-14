@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/features/rewards/presentation/screens/my_rewards_page.dart';
+import 'package:mozaic_loyalty_sdk/features/rewards/presentation/screens/my_rewards_page.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../getx/rewards_controller.dart';

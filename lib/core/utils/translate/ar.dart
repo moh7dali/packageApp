@@ -1,4 +1,4 @@
-import '../../../my_custom_widget.dart';
+import '../../../mozaic_loyalty_sdk.dart';
 import '../../constants/constants.dart';
 
 final Map<String, String> ar = {

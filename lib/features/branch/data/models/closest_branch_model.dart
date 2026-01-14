@@ -1,4 +1,4 @@
-import 'package:my_custom_widget/features/branch/domain/entities/closest_branches.dart';
+import 'package:mozaic_loyalty_sdk/features/branch/domain/entities/closest_branches.dart';
 
 import '../../domain/entities/branch_details.dart';
 import 'branch_details_model.dart';

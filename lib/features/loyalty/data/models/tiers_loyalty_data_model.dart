@@ -1,4 +1,4 @@
-import 'package:my_custom_widget/features/loyalty/domain/entity/tiers_loyalty_data.dart';
+import 'package:mozaic_loyalty_sdk/features/loyalty/domain/entity/tiers_loyalty_data.dart';
 
 class TiersLoyaltyDataModel extends TiersLoyaltyData {
   const TiersLoyaltyDataModel({required super.conversionValue, required super.discount, required super.brandName});

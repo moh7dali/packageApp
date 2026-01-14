@@ -7,9 +7,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:lottie/lottie.dart';
-import 'package:my_custom_widget/core/utils/app_log.dart';
-import 'package:my_custom_widget/shared/widgets/bottom_widget.dart';
-import 'package:my_custom_widget/shared/widgets/button_widget.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/app_log.dart';
+import 'package:mozaic_loyalty_sdk/shared/widgets/bottom_widget.dart';
+import 'package:mozaic_loyalty_sdk/shared/widgets/button_widget.dart';
 
 import '../../core/constants/assets_constants.dart';
 import '../../core/constants/constants.dart';
@@ -17,7 +17,7 @@ import '../../core/sdk/sdk_routes.dart';
 import '../../core/utils/theme.dart';
 import '../../features/branch/domain/entities/branch_details.dart';
 import '../../injection_container.dart';
-import '../../my_custom_widget.dart';
+import '../../mozaic_loyalty_sdk.dart';
 import 'shared_preferences_storage.dart';
 
 class SharedHelper<T> {

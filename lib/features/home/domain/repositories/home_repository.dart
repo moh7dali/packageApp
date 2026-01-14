@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_custom_widget/features/home/domain/entities/home_details.dart';
+import 'package:mozaic_loyalty_sdk/features/home/domain/entities/home_details.dart';
 
 import '../../../../core/error/failures.dart';
 

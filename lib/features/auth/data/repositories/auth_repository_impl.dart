@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_custom_widget/core/api/api_response_error.dart';
-import 'package:my_custom_widget/features/auth/domain/entities/check_validation_code.dart';
-import 'package:my_custom_widget/features/auth/domain/entities/verify_mobile_number.dart';
+import 'package:mozaic_loyalty_sdk/core/api/api_response_error.dart';
+import 'package:mozaic_loyalty_sdk/features/auth/domain/entities/check_validation_code.dart';
+import 'package:mozaic_loyalty_sdk/features/auth/domain/entities/verify_mobile_number.dart';
 
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';

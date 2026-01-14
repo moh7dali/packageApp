@@ -1,4 +1,4 @@
-import 'package:my_custom_widget/features/loyalty/domain/entity/user_balance_history.dart';
+import 'package:mozaic_loyalty_sdk/features/loyalty/domain/entity/user_balance_history.dart';
 
 class UserBalanceHistoryModel extends UserBalanceHistory {
   const UserBalanceHistoryModel(

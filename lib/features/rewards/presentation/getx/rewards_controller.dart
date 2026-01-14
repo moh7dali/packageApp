@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/features/rewards/domain/entity/campaign_details.dart';
+import 'package:mozaic_loyalty_sdk/features/rewards/domain/entity/campaign_details.dart';
 
 import '../../../../core/utils/app_log.dart';
 import '../../../../injection_container.dart';

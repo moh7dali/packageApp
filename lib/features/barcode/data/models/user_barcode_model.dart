@@ -1,4 +1,4 @@
-import 'package:my_custom_widget/features/barcode/domain/entities/user_barcode.dart';
+import 'package:mozaic_loyalty_sdk/features/barcode/domain/entities/user_barcode.dart';
 
 class UserBarcodeModel extends UserBarcode {
   const UserBarcodeModel({

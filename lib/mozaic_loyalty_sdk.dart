@@ -5,10 +5,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:http_proxy_override/http_proxy_override.dart';
-import 'package:my_custom_widget/core/utils/theme.dart';
-import 'package:my_custom_widget/core/utils/translate/translation.dart';
-import 'package:my_custom_widget/shared/helper/shared_helper.dart';
-import 'package:my_custom_widget/shared/helper/shared_preferences_storage.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/theme.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
+import 'package:mozaic_loyalty_sdk/shared/helper/shared_helper.dart';
+import 'package:mozaic_loyalty_sdk/shared/helper/shared_preferences_storage.dart';
 
 import 'core/constants/constants.dart';
 import 'core/routes/routes_generator.dart';

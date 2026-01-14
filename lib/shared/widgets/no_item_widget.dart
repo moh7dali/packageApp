@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:my_custom_widget/core/constants/assets_constants.dart';
+import 'package:mozaic_loyalty_sdk/core/constants/assets_constants.dart';
 
 class NoItemWidget extends StatelessWidget {
   const NoItemWidget({super.key, this.isSmall = false});

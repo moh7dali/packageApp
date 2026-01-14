@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/features/home/presentation/getx/home_controller.dart';
-import 'package:my_custom_widget/shared/helper/shared_helper.dart';
-import 'package:my_custom_widget/shared/widgets/button_widget.dart';
+import 'package:mozaic_loyalty_sdk/features/home/presentation/getx/home_controller.dart';
+import 'package:mozaic_loyalty_sdk/shared/helper/shared_helper.dart';
+import 'package:mozaic_loyalty_sdk/shared/widgets/button_widget.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/widgets/loading_widget.dart';

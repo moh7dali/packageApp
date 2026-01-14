@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:my_custom_widget/shared/helper/shared_preferences_storage.dart';
+import 'package:mozaic_loyalty_sdk/shared/helper/shared_preferences_storage.dart';
 
 import 'core/utils/network_info.dart';
 import 'features/auth/data/datasources/auth_api_datasource.dart';

@@ -1,5 +1,5 @@
-import 'package:my_custom_widget/features/loyalty/data/models/loyalty_data_model.dart';
-import 'package:my_custom_widget/features/loyalty/domain/entity/user_loyalty_data.dart';
+import 'package:mozaic_loyalty_sdk/features/loyalty/data/models/loyalty_data_model.dart';
+import 'package:mozaic_loyalty_sdk/features/loyalty/domain/entity/user_loyalty_data.dart';
 
 import '../../../home/data/models/tier_model.dart';
 import '../../../home/domain/entities/tier.dart';

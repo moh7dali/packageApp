@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../my_custom_widget.dart';
+import '../../mozaic_loyalty_sdk.dart';
 
 class SDKNav {
   static NavigatorState? get _state => MozaicLoyaltySDK.sdkNavKey.currentState;

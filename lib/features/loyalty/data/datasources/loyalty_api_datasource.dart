@@ -1,5 +1,5 @@
-import 'package:my_custom_widget/features/loyalty/data/models/point_schema_brand_model.dart';
-import 'package:my_custom_widget/shared/helper/shared_helper.dart';
+import 'package:mozaic_loyalty_sdk/features/loyalty/data/models/point_schema_brand_model.dart';
+import 'package:mozaic_loyalty_sdk/shared/helper/shared_helper.dart';
 
 import '../../../../core/api/api_end_points.dart';
 import '../../../../core/api/api_request.dart';

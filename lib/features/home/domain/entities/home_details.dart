@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:my_custom_widget/features/home/domain/entities/slider_list.dart';
-import 'package:my_custom_widget/features/home/domain/entities/tiers_list.dart';
+import 'package:mozaic_loyalty_sdk/features/home/domain/entities/slider_list.dart';
+import 'package:mozaic_loyalty_sdk/features/home/domain/entities/tiers_list.dart';
 
 import 'brand_data_list.dart';
 import 'brand_list.dart';

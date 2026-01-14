@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/core/utils/theme.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/theme.dart';
 
 import 'loading_button_widget/iconed_button.dart';
 import 'loading_button_widget/progress_button.dart';

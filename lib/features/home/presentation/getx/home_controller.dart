@@ -1,12 +1,12 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:my_custom_widget/features/home/domain/usecases/get_home_details.dart";
+import "package:mozaic_loyalty_sdk/features/home/domain/usecases/get_home_details.dart";
 
 import "../../../../core/constants/constants.dart";
 import "../../../../core/sdk/sdk_routes.dart";
 import "../../../../core/utils/theme.dart";
 import "../../../../injection_container.dart";
-import "../../../../my_custom_widget.dart";
+import "../../../../mozaic_loyalty_sdk.dart";
 import "../../../../shared/helper/device_info.dart";
 import "../../../../shared/helper/location_helper.dart";
 import "../../../../shared/helper/shared_helper.dart";

@@ -1,5 +1,5 @@
-import 'package:my_custom_widget/features/branch/data/models/branch_image_model.dart';
-import 'package:my_custom_widget/features/branch/domain/entities/branch_image.dart';
+import 'package:mozaic_loyalty_sdk/features/branch/data/models/branch_image_model.dart';
+import 'package:mozaic_loyalty_sdk/features/branch/domain/entities/branch_image.dart';
 
 import '../../domain/entities/branch_details.dart';
 

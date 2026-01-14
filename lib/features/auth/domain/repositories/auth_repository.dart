@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_custom_widget/features/auth/domain/entities/check_validation_code.dart';
+import 'package:mozaic_loyalty_sdk/features/auth/domain/entities/check_validation_code.dart';
 
 import '../../../../core/error/failures.dart';
 import '../entities/countries_list.dart';

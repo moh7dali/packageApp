@@ -1,5 +1,5 @@
-import 'package:my_custom_widget/features/rewards/data/models/user_rewards_model.dart';
-import 'package:my_custom_widget/features/rewards/domain/entity/user_reward_list.dart';
+import 'package:mozaic_loyalty_sdk/features/rewards/data/models/user_rewards_model.dart';
+import 'package:mozaic_loyalty_sdk/features/rewards/domain/entity/user_reward_list.dart';
 
 import '../../domain/entity/user_rewards.dart';
 

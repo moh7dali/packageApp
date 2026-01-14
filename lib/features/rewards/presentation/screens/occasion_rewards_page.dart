@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/features/rewards/domain/entity/campaign_details.dart';
-import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
+import 'package:mozaic_loyalty_sdk/features/rewards/domain/entity/campaign_details.dart';
+import 'package:mozaic_loyalty_sdk/shared/widgets/no_item_widget.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/sdk/sdk_routes.dart';

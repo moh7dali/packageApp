@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:my_custom_widget/features/home/domain/entities/tier.dart';
-import 'package:my_custom_widget/features/loyalty/domain/entity/tiers_loyalty_data.dart';
+import 'package:mozaic_loyalty_sdk/features/home/domain/entities/tier.dart';
+import 'package:mozaic_loyalty_sdk/features/loyalty/domain/entity/tiers_loyalty_data.dart';
 
 class PointSchemaBrand extends Equatable {
   final TiersData? tierData;

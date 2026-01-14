@@ -16,7 +16,7 @@ class HttpMethodRequest {
 }
 
 class RouteConstant {
-  static const String splashPage = '/my_custom_widget/splash';
+  static const String splashPage = '/mozaic_loyalty_sdk/splash';
   static const String authPage = '/AuthPage';
   static const String verifyPage = '/VerifyScreen';
   static const String completeProfile = '/CompleteProfileScreen';

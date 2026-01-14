@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_custom_widget/features/home/domain/entities/home_details.dart';
-import 'package:my_custom_widget/features/home/domain/repositories/home_repository.dart';
+import 'package:mozaic_loyalty_sdk/features/home/domain/entities/home_details.dart';
+import 'package:mozaic_loyalty_sdk/features/home/domain/repositories/home_repository.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';

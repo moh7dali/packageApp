@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_custom_widget/core/usecases/usecase.dart';
-import 'package:my_custom_widget/features/barcode/domain/entities/user_barcode.dart';
-import 'package:my_custom_widget/features/barcode/domain/repositories/user_barcode_repository.dart';
+import 'package:mozaic_loyalty_sdk/core/usecases/usecase.dart';
+import 'package:mozaic_loyalty_sdk/features/barcode/domain/entities/user_barcode.dart';
+import 'package:mozaic_loyalty_sdk/features/barcode/domain/repositories/user_barcode_repository.dart';
 
 import '../../../../core/error/failures.dart';
 

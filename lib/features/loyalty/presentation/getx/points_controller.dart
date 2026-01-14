@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/features/loyalty/domain/entity/user_loyalty_data.dart';
-import 'package:my_custom_widget/features/loyalty/domain/usecase/get_user_balance_history.dart';
-import 'package:my_custom_widget/features/loyalty/domain/usecase/get_user_loyalty_data.dart';
-import 'package:my_custom_widget/injection_container.dart';
+import 'package:mozaic_loyalty_sdk/features/loyalty/domain/entity/user_loyalty_data.dart';
+import 'package:mozaic_loyalty_sdk/features/loyalty/domain/usecase/get_user_balance_history.dart';
+import 'package:mozaic_loyalty_sdk/features/loyalty/domain/usecase/get_user_loyalty_data.dart';
+import 'package:mozaic_loyalty_sdk/injection_container.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../../../../shared/helper/shared_helper.dart';

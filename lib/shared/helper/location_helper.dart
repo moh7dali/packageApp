@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/shared/helper/shared_helper.dart';
+import 'package:mozaic_loyalty_sdk/shared/helper/shared_helper.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../../core/utils/app_log.dart';

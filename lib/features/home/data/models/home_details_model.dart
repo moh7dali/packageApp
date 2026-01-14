@@ -1,5 +1,5 @@
-import 'package:my_custom_widget/features/home/data/models/slider_list_model.dart';
-import 'package:my_custom_widget/features/home/data/models/tiers_list_model.dart';
+import 'package:mozaic_loyalty_sdk/features/home/data/models/slider_list_model.dart';
+import 'package:mozaic_loyalty_sdk/features/home/data/models/tiers_list_model.dart';
 
 import '../../domain/entities/home_details.dart';
 import 'brand_data_list_model.dart';

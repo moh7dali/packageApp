@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/shared/widgets/hero_logo.dart';
+import 'package:mozaic_loyalty_sdk/shared/widgets/hero_logo.dart';
 
 AppBar heroAppBar() {
   return AppBar(

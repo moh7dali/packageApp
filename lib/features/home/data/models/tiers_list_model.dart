@@ -1,4 +1,4 @@
-import 'package:my_custom_widget/features/home/data/models/tier_model.dart';
+import 'package:mozaic_loyalty_sdk/features/home/data/models/tier_model.dart';
 
 import '../../domain/entities/tier.dart';
 import '../../domain/entities/tiers_list.dart';

@@ -1,5 +1,5 @@
-import 'package:my_custom_widget/features/auth/data/models/check_validation_code_model.dart';
-import 'package:my_custom_widget/features/auth/domain/entities/check_validation_code.dart';
+import 'package:mozaic_loyalty_sdk/features/auth/data/models/check_validation_code_model.dart';
+import 'package:mozaic_loyalty_sdk/features/auth/domain/entities/check_validation_code.dart';
 
 import '../../../../core/api/api_end_points.dart';
 import '../../../../core/api/api_request.dart';

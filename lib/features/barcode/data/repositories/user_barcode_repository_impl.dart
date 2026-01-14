@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_custom_widget/features/barcode/data/datasources/user_barcode_api_datasource.dart';
-import 'package:my_custom_widget/features/barcode/data/models/user_barcode_model.dart';
+import 'package:mozaic_loyalty_sdk/features/barcode/data/datasources/user_barcode_api_datasource.dart';
+import 'package:mozaic_loyalty_sdk/features/barcode/data/models/user_barcode_model.dart';
 
 import '../../../../core/api/api_response_error.dart';
 import '../../../../core/error/exceptions.dart';

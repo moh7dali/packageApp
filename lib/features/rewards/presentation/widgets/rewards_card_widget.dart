@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/sdk/sdk_routes.dart';
 import '../../../../core/utils/theme.dart';
-import '../../../../my_custom_widget.dart';
+import '../../../../mozaic_loyalty_sdk.dart';
 import '../../../../shared/helper/shared_helper.dart';
 import '../../domain/entity/user_rewards.dart';
 

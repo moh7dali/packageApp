@@ -1,5 +1,5 @@
-import 'package:my_custom_widget/features/home/data/models/home_details_model.dart';
-import 'package:my_custom_widget/features/home/domain/entities/home_details.dart';
+import 'package:mozaic_loyalty_sdk/features/home/data/models/home_details_model.dart';
+import 'package:mozaic_loyalty_sdk/features/home/domain/entities/home_details.dart';
 
 import '../../../../core/api/api_end_points.dart';
 import '../../../../core/api/api_request.dart';

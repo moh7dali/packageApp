@@ -1,9 +1,9 @@
 class AssetsConsts {
-  static String get svgPath => "packages/my_custom_widget/assets/svgs/";
+  static String get svgPath => "packages/mozaic_loyalty_sdk/assets/svgs/";
 
-  static String get imagesPath => "packages/my_custom_widget/assets/images/";
+  static String get imagesPath => "packages/mozaic_loyalty_sdk/assets/images/";
 
-  static String get gifPath => "packages/my_custom_widget/assets/gif/";
+  static String get gifPath => "packages/mozaic_loyalty_sdk/assets/gif/";
 
   ///*************************///
   ///SVG

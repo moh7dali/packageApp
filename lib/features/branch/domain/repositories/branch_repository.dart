@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_custom_widget/features/branch/domain/entities/branch_details.dart';
+import 'package:mozaic_loyalty_sdk/features/branch/domain/entities/branch_details.dart';
 
 import '../../../../core/error/failures.dart';
 import '../entities/closest_branches.dart';

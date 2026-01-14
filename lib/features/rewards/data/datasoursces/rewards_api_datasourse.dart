@@ -1,5 +1,5 @@
-import 'package:my_custom_widget/features/rewards/data/models/campaign_rewards_model.dart';
-import 'package:my_custom_widget/features/rewards/domain/entity/campaign_rewards.dart';
+import 'package:mozaic_loyalty_sdk/features/rewards/data/models/campaign_rewards_model.dart';
+import 'package:mozaic_loyalty_sdk/features/rewards/domain/entity/campaign_rewards.dart';
 
 import '../../../../core/api/api_end_points.dart';
 import '../../../../core/api/api_request.dart';

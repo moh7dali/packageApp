@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/core/utils/app_log.dart';
-import 'package:my_custom_widget/features/branch/data/datasources/branch_api_datasource.dart';
-import 'package:my_custom_widget/features/branch/domain/entities/branch_details.dart';
-import 'package:my_custom_widget/features/branch/domain/entities/closest_branches.dart';
-import 'package:my_custom_widget/features/branch/domain/repositories/branch_repository.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/app_log.dart';
+import 'package:mozaic_loyalty_sdk/features/branch/data/datasources/branch_api_datasource.dart';
+import 'package:mozaic_loyalty_sdk/features/branch/domain/entities/branch_details.dart';
+import 'package:mozaic_loyalty_sdk/features/branch/domain/entities/closest_branches.dart';
+import 'package:mozaic_loyalty_sdk/features/branch/domain/repositories/branch_repository.dart';
 
 import '../../../../core/api/api_response_error.dart';
 import '../../../../core/error/exceptions.dart';

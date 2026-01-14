@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/core/utils/theme.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/theme.dart';
 
 class BottomWidget extends StatelessWidget {
   final String title;

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_custom_widget/features/rewards/domain/entity/user_reward_list.dart';
-import 'package:my_custom_widget/features/rewards/domain/repositories/rewards_repository.dart';
+import 'package:mozaic_loyalty_sdk/features/rewards/domain/entity/user_reward_list.dart';
+import 'package:mozaic_loyalty_sdk/features/rewards/domain/repositories/rewards_repository.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';

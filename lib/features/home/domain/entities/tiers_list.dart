@@ -1,4 +1,4 @@
-import 'package:my_custom_widget/features/home/domain/entities/tier.dart';
+import 'package:mozaic_loyalty_sdk/features/home/domain/entities/tier.dart';
 
 class TiersList extends TiersData {
   final List<TiersData>? tiers;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/features/rewards/presentation/getx/campaign_rewards_controller.dart';
-import 'package:my_custom_widget/features/rewards/presentation/widgets/reward_widget.dart';
-import 'package:my_custom_widget/features/rewards/presentation/widgets/rewards_card_widget.dart';
-import 'package:my_custom_widget/features/rewards/presentation/widgets/rule_rewards_widget.dart';
-import 'package:my_custom_widget/shared/widgets/no_item_widget.dart';
+import 'package:mozaic_loyalty_sdk/features/rewards/presentation/getx/campaign_rewards_controller.dart';
+import 'package:mozaic_loyalty_sdk/features/rewards/presentation/widgets/reward_widget.dart';
+import 'package:mozaic_loyalty_sdk/features/rewards/presentation/widgets/rewards_card_widget.dart';
+import 'package:mozaic_loyalty_sdk/features/rewards/presentation/widgets/rule_rewards_widget.dart';
+import 'package:mozaic_loyalty_sdk/shared/widgets/no_item_widget.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../../domain/entity/campaign_details.dart';

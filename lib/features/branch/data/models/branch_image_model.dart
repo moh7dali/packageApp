@@ -1,4 +1,4 @@
-import 'package:my_custom_widget/features/branch/domain/entities/branch_image.dart';
+import 'package:mozaic_loyalty_sdk/features/branch/domain/entities/branch_image.dart';
 
 class BranchImagesModel extends BranchImages {
   const BranchImagesModel({

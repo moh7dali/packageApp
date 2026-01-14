@@ -3,7 +3,7 @@ import "package:get/get.dart";
 import "../../../../core/constants/constants.dart";
 import "../../../../core/sdk/sdk_routes.dart";
 import "../../../../injection_container.dart";
-import "../../../../my_custom_widget.dart";
+import "../../../../mozaic_loyalty_sdk.dart";
 import "../../../../shared/helper/shared_helper.dart";
 import "../../../../shared/helper/shared_preferences_storage.dart";
 

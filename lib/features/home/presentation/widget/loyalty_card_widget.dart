@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/features/home/presentation/widget/loyalty_card_no_user_widget.dart';
+import 'package:mozaic_loyalty_sdk/features/home/presentation/widget/loyalty_card_no_user_widget.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../core/utils/theme.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:my_custom_widget/features/splash/presentation/getx/splash_controller.dart';
+import 'package:mozaic_loyalty_sdk/features/splash/presentation/getx/splash_controller.dart';
 
 import '../../../../core/api/api_end_points.dart';
 import '../../../../core/utils/theme.dart';

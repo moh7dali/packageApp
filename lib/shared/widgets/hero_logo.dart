@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_custom_widget/my_custom_widget.dart';
+import 'package:mozaic_loyalty_sdk/mozaic_loyalty_sdk.dart';
 
 class HeroLogo extends StatelessWidget {
   const HeroLogo({super.key});

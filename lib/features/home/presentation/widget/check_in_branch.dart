@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/shared/helper/shared_helper.dart';
+import 'package:mozaic_loyalty_sdk/shared/helper/shared_helper.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/sdk/sdk_routes.dart';

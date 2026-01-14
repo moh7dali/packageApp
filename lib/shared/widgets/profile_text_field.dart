@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:my_custom_widget/core/utils/app_log.dart';
-import 'package:my_custom_widget/shared/widgets/shake_widget.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/app_log.dart';
+import 'package:mozaic_loyalty_sdk/shared/widgets/shake_widget.dart';
 
 import '../../core/utils/theme.dart';
 import '../helper/shared_helper.dart';

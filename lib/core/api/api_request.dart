@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:my_custom_widget/core/api/request_logger.dart';
+import 'package:mozaic_loyalty_sdk/core/api/request_logger.dart';
 
 import '../../injection_container.dart';
-import '../../my_custom_widget.dart';
+import '../../mozaic_loyalty_sdk.dart';
 import '../../shared/helper/shared_helper.dart';
 import '../../shared/helper/shared_preferences_storage.dart';
 import '../../shared/model/login_model.dart';

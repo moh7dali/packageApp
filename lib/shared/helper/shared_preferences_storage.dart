@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../core/constants/constants.dart';
 import '../../features/auth/data/models/country_model.dart';
 import '../../features/auth/domain/entities/country.dart';
-import '../../my_custom_widget.dart';
+import '../../mozaic_loyalty_sdk.dart';
 
 class SharedPreferencesStorage {
   static late SharedPreferences? _preferences;
