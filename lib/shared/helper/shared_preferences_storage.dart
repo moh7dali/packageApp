@@ -113,7 +113,6 @@ class SharedPreferencesStorage {
     return _preferences!.getString(SharedPreferencesKeyConstants.mobile);
   }
 
-
   Future deleteAllData() async {
     final keys = _preferences!.getKeys();
     for (String key in keys) {

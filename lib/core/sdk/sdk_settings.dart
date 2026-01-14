@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 class MozaicLoyaltySDKSettings {
   final bool hostAppUseGetx;
+  final String? accessToken;
+  final String? sessionToken;
   final Widget logoWidget;
   final Color? primaryColor;
   final Color? secondaryColor;
@@ -15,6 +17,8 @@ class MozaicLoyaltySDKSettings {
     required this.logoWidget,
     this.hostAppUseGetx = false,
     this.redeemPointsQRCode = true,
+    this.accessToken,
+    this.sessionToken,
     this.primaryColor,
     this.secondaryColor,
     this.appTitleEn,
@@ -22,4 +26,19 @@ class MozaicLoyaltySDKSettings {
     this.sdkLanguage,
     this.sdkTheme,
   });
+
+  MozaicLoyaltySDKSettings copyWith({String? sessionToken, String? accessToken}) {
+    return MozaicLoyaltySDKSettings(
+      logoWidget: logoWidget,
+      hostAppUseGetx: hostAppUseGetx,
+      primaryColor: primaryColor,
+      secondaryColor: secondaryColor,
+      sdkLanguage: sdkLanguage,
+      appTitleAr: appTitleAr,
+      appTitleEn: appTitleEn,
+      sdkTheme: sdkTheme,
+      sessionToken: sessionToken ?? this.sessionToken,
+      accessToken: accessToken ?? this.accessToken,
+    );
+  }
 }

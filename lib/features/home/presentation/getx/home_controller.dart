@@ -222,7 +222,6 @@ class HomeController extends GetxController {
         );
   }
 
-
   final GetUserRewards getUserRewards;
 
   List<UserRewards> userRewardsList = [];
