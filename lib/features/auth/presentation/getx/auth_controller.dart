@@ -3,9 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:sms_autofill/sms_autofill.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/sdk/sdk_routes.dart';
@@ -25,7 +23,7 @@ import '../../domain/usecases/post_complete_profile.dart';
 import '../../domain/usecases/post_verify_mobile_number.dart';
 import '../../domain/usecases/resend_verification_code.dart';
 
-class AuthController extends GetxController with CodeAutoFill {
+class AuthController extends GetxController {
   final PostVerifyMobileNumber postVerifyMobileNumber;
   final PostCheckValidationCode postCheckValidationCode;
   final PostCompleteProfile postCompleteProfile;
@@ -161,8 +159,6 @@ class AuthController extends GetxController with CodeAutoFill {
     btnState = ButtonState.loading;
     update();
     Map<String, String> deviceInfo = await DeviceInfo.getDeviceData();
-    var oneSignalToken = OneSignal.User.pushSubscription.id;
-    deviceInfo["NotificationToken"] = "$oneSignalToken";
     String number = "";
     if (mobileController.text.startsWith("0")) {
       number = mobileController.text.replaceFirst("0", "");
@@ -255,8 +251,6 @@ class AuthController extends GetxController with CodeAutoFill {
   }
 
   void startTimer() {
-    listenForCode();
-    getAppSignature();
     isResend = false;
     update();
     if (timer?.isActive ?? false) {
@@ -343,19 +337,6 @@ class AuthController extends GetxController with CodeAutoFill {
       return Gender(name: "female".tr, id: 2);
     }
     return null;
-  }
-
-  @override
-  void codeUpdated() {
-    print("codeUpdated $code");
-    otpCode = code;
-    smsCodeController.text = otpCode!;
-    update();
-  }
-
-  void getAppSignature() async {
-    String appSignature = await SmsAutoFill().getAppSignature;
-    print("App Signature: $appSignature");
   }
 
   Future<void> getDataAfterDelete() async {
