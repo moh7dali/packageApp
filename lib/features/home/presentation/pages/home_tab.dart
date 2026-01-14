@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:my_custom_widget/core/utils/theme.dart';
 import 'package:my_custom_widget/features/home/presentation/getx/home_controller.dart';
 
+import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/constants/constants.dart';
 import '../../../../core/sdk/sdk_routes.dart';
 import '../../../../shared/helper/shared_helper.dart';
@@ -45,7 +47,6 @@ class HomeScreen extends StatelessWidget {
                 : Column(
                     children: [
                       LoyaltyCardWidget(homeController: controller),
-                      LAdoreNavButtons(),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: AppButton(
@@ -57,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                           },
                         ),
                       ),
-
+                      LAdoreDualCards(),
                       SizedBox(height: Get.height * .01),
                       if ((controller.missions).isNotEmpty)
                         Padding(
@@ -200,64 +201,52 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class LAdoreNavButtons extends StatelessWidget {
-  const LAdoreNavButtons({super.key});
+class LAdoreDualCards extends StatelessWidget {
+  const LAdoreDualCards({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      child: Row(
+        children: [
+          Expanded(
+            child: _buildNavCard(title: "Points".tr, icon: AssetsConsts.points, onTap: () => SDKNav.toNamed(RouteConstant.pointsScreen)),
+          ),
+          const SizedBox(width: 15),
+          Expanded(
+            child: _buildNavCard(title: "Rewards".tr, icon: AssetsConsts.rewards, onTap: () => SDKNav.toNamed(RouteConstant.rewardsScreen)),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildNavCard({required String title, required String icon, required VoidCallback onTap}) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: AppTheme.bigBorderRadius,
       child: Container(
-        height: 55,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
-          border: Border.all(color: AppTheme.primaryColor.withOpacity(0.4), width: 1.2),
-          color: Colors.white,
+          color: AppTheme.bgThemeColor,
+          borderRadius: AppTheme.bigBorderRadius,
+          border: Border.all(color: AppTheme.primaryColor.withOpacity(0.8), width: 1),
+          boxShadow: [BoxShadow(color: AppTheme.primaryColor.withOpacity(0.2), blurRadius: 10, offset: const Offset(0, 4))],
         ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(30),
-          child: Row(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    SDKNav.toNamed(RouteConstant.pointsScreen);
-                  },
-                  child: Center(
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          "Points".tr,
-                          style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size16),
-                        ),
-                        SizedBox(width: 8),
-                        Icon(Icons.stars_outlined, color: AppTheme.primaryColor, size: AppTheme.size20),
-                      ],
-                    ),
-                  ),
-                ),
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(color: AppTheme.primaryColor.withOpacity(0.1), shape: BoxShape.circle),
+                child: SvgPicture.asset(icon, color: AppTheme.primaryColor),
               ),
-              Container(width: 1, height: 25, color: AppTheme.primaryColor.withOpacity(0.3)),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    SDKNav.toNamed(RouteConstant.rewardsScreen);
-                  },
-                  child: Center(
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.card_giftcard, color: AppTheme.primaryColor, size: AppTheme.size20),
-                        SizedBox(width: 8),
-                        Text(
-                          "Rewards".tr,
-                          style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size16),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+              const SizedBox(height: 10),
+              Text(
+                title,
+                style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size14),
               ),
             ],
           ),

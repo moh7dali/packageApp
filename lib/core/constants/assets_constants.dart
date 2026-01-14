@@ -22,6 +22,10 @@ class AssetsConsts {
 
   static String get referral => "${svgPath}profile_referral.svg";
 
+  static String get points => '${svgPath}tab_points.svg';
+
+  static String get rewards => '${svgPath}tab_rewards.svg';
+
   ///*************************///
   ///Images
   ///*************************///
