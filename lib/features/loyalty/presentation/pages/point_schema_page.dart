@@ -75,7 +75,8 @@ class PointSchemaPage extends StatelessWidget {
                                                 '${'points'.tr} / ',
                                                 style: AppTheme.textStyle(color: AppTheme.textColor.withOpacity(.85), size: AppTheme.size12),
                                               ),
-                                              SarWidget(size: 12, color: AppTheme.textColor.withOpacity(.85)),
+                                              CurrencyWidget(
+size: 12, color: AppTheme.textColor.withOpacity(.85)),
                                             ],
                                           ),
                                         ],
@@ -160,7 +161,8 @@ class PointSchemaPage extends StatelessWidget {
                                                                     size: AppTheme.size12,
                                                                   ),
                                                                 ),
-                                                                SarWidget(size: AppTheme.size12, color: AppTheme.textColor.withOpacity(.75)),
+                                                                CurrencyWidget(
+size: AppTheme.size12, color: AppTheme.textColor.withOpacity(.75)),
                                                                 if (index != (controller.pointSchemaList!.length - 1)) ...[
                                                                   Text(
                                                                     " ${"to".tr} ${SharedHelper.getNumberFormat(max - 1)} ",
@@ -169,7 +171,8 @@ class PointSchemaPage extends StatelessWidget {
                                                                       size: AppTheme.size12,
                                                                     ),
                                                                   ),
-                                                                  SarWidget(size: AppTheme.size12, color: AppTheme.textColor.withOpacity(.75)),
+                                                                  CurrencyWidget(
+size: AppTheme.size12, color: AppTheme.textColor.withOpacity(.75)),
                                                                 ],
                                                               ],
                                                             ),

@@ -11,17 +11,6 @@ class AssetsConsts {
 
   static String get sarLogo => '${svgPath}sar_logo.svg';
 
-  ///Profile Screen
-  static String get person => "${svgPath}profile_name.svg";
-
-  static String get callProfile => "${svgPath}profile_phone.svg";
-
-  static String get bodIcon => '${svgPath}profile_data.svg';
-
-  static String get genderIcon => '${svgPath}profile_gender.svg';
-
-  static String get referral => "${svgPath}profile_referral.svg";
-
   static String get points => '${svgPath}tab_points.svg';
 
   static String get rewards => '${svgPath}tab_rewards.svg';

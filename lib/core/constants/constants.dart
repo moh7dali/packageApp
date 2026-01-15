@@ -1,10 +1,9 @@
+import 'package:mozaic_loyalty_sdk/core/sdk/sdk_settings.dart';
+
 import '../../mozaic_loyalty_sdk.dart';
 
 class AppConstants {
-  static const String countryCode = "+966";
-  static const String currencyCode = "sar";
-  static final int merchantId = MozaicLoyaltySDK.settings.merchantId;
-  static const int resourceGroup = 2;
+  static final Currency currencyCode = MozaicLoyaltySDK.settings.currencyCode;
   static const bool isProxyEnable = true;
 }
 
@@ -24,27 +23,14 @@ class RouteConstant {
   static const String branchDetailsPage = '/BranchDetailsScreen';
 }
 
-class SelectWidgetConstant {
-  static const String gender = 'gender';
-  static const String dateOfBirth = 'dateOfBirth';
-}
-
 class SharedPreferencesKeyConstants {
   static const String appLang = 'appLang';
 
   static const String appTheme = "appTheme";
 
-  static const String tempToken = "tempToken";
-
   static const String accessToken = "accessToken";
 
   static const String sessionToken = "sessionToken";
 
-  static const String isCompleted = "isCompleted";
-
   static const String isLogin = "isLogin";
-
-  static const String userCountry = "userCountry";
-
-  static const String mobile = "mobile";
 }

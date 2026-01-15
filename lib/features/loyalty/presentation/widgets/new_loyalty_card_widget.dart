@@ -151,7 +151,8 @@ class NewLoyaltyCardWidget extends StatelessWidget {
               TextSpan(text: " ${getRemaining(currentTier, controller)} "),
               WidgetSpan(
                 alignment: PlaceholderAlignment.middle,
-                child: SarWidget(size: 14, color: AppTheme.textColor),
+                child: CurrencyWidget(
+size: 14, color: AppTheme.textColor),
               ),
             ],
           ),
@@ -190,7 +191,8 @@ class NewLoyaltyCardWidget extends StatelessWidget {
                     TextSpan(text: " ${getMaintainingAmount(currentTier, controller)} "),
                     WidgetSpan(
                       alignment: PlaceholderAlignment.middle,
-                      child: SarWidget(size: 14, color: AppTheme.textColor),
+                      child: CurrencyWidget(
+size: 14, color: AppTheme.textColor),
                     ),
                   ],
                 ),

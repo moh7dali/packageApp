@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 
 import '../../core/constants/assets_constants.dart';
 import '../../core/constants/constants.dart';
+import '../../core/sdk/sdk_settings.dart';
 import '../../core/utils/theme.dart';
-import '../helper/shared_helper.dart';
 
-class SarWidget extends StatelessWidget {
-  const SarWidget({super.key, this.size = 18, this.color});
+class CurrencyWidget extends StatelessWidget {
+  const CurrencyWidget({super.key, this.size = 18, this.color, this.textStyle, this.currencyCode});
 
   final double size;
   final Color? color;
+  final TextStyle? textStyle;
+  final Currency? currencyCode;
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(AssetsConsts.sarLogo, width: size, height: size, color: color ?? AppTheme.primaryColor);
+    final Currency code = currencyCode ?? AppConstants.currencyCode;
+
+    if (code == Currency.sar) {
+      final Color effectiveColor = color ?? textStyle?.color ?? AppTheme.primaryColor;
+      return SvgPicture.asset(AssetsConsts.sarLogo, width: size, height: size, color: effectiveColor);
+    }
+
+    final TextStyle effectiveStyle = (textStyle ?? AppTheme.textStyle(size: size, color: color ?? AppTheme.primaryColor));
+
+    return Text(code.tr, style: effectiveStyle);
   }
 }
 
@@ -42,31 +52,29 @@ class CurrencyAmountText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextStyle effectiveCurrencyStyle = currencyStyle ?? amountStyle;
+    final Currency code = AppConstants.currencyCode;
 
-    if (!useIcon) {
+    if (!useIcon || code != Currency.sar) {
       return Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(amountText, style: amountStyle),
           SizedBox(width: space),
-          Text(AppConstants.currencyCode.tr, style: effectiveCurrencyStyle),
+          Text(code.tr, style: effectiveCurrencyStyle),
         ],
       );
     }
-    final color = iconColor ?? effectiveCurrencyStyle.color ?? amountStyle.color ?? AppTheme.textColor;
-    final size = iconSize ?? effectiveCurrencyStyle.fontSize ?? amountStyle.fontSize ?? 14;
+
+    final Color color = iconColor ?? effectiveCurrencyStyle.color ?? amountStyle.color ?? AppTheme.textColor;
+    final double size = iconSize ?? effectiveCurrencyStyle.fontSize ?? amountStyle.fontSize ?? 14;
 
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(amountText, style: amountStyle),
         SizedBox(width: space),
-        SarWidget(size: size, color: color),
+        CurrencyWidget(size: size, color: color, textStyle: effectiveCurrencyStyle, currencyCode: code),
       ],
     );
   }
-}
-
-String formatAmountWithCurrency(num value) {
-  return "${SharedHelper.getNumberFormat(value, isCurrency: true)} ${AppConstants.currencyCode.tr}";
 }

@@ -122,4 +122,8 @@ final Map<String, String> en = {
   "noAccount": "Account Not Found",
   "noAccountDescription":
       "It looks like this profile isn't registered in our loyalty system yet. Please contact support or register to start earning rewards!",
+  "sar": "SAR",
+  "jd": "JOD",
+  "usd": "USD",
+  "kwd": "KWD",
 };

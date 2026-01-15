@@ -8,7 +8,6 @@ class HeaderInterceptor {
     Map<String, String> headers = {
       'DeviceLanguage': "${appLanguage == 'en' ? 2 : 1}",
       'Content-Type': 'application/json',
-      'MI': "${AppConstants.merchantId}",
     };
     String? token;
     if (isAuthorized) {

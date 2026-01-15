@@ -154,7 +154,8 @@ class LoyaltyCardWidget extends StatelessWidget {
               TextSpan(text: " ${getRemaining(currentTier, controller)} "),
               WidgetSpan(
                 alignment: PlaceholderAlignment.middle,
-                child: SarWidget(size: 14, color: AppTheme.primaryColor),
+                child: CurrencyWidget(
+size: 14, color: AppTheme.primaryColor),
               ),
             ],
           ),
@@ -203,7 +204,8 @@ class BalanceCard extends StatelessWidget {
                   value,
                   style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size14).copyWith(fontWeight: FontWeight.w600),
                 ),
-                if (showCurrency) ...[const SizedBox(width: 4), SarWidget(color: AppTheme.textColor)],
+                if (showCurrency) ...[const SizedBox(width: 4), CurrencyWidget(
+color: AppTheme.textColor)],
               ],
             ),
           ),

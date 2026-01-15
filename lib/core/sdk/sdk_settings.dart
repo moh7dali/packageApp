@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MozaicLoyaltySDKSettings {
   final Widget logoWidget;
   final bool appUseGetx;
   final EnvironmentType environmentType;
-  final int merchantId;
   final bool? redeemPointsQRCode;
   final String? accessToken;
   final String? sessionToken;
@@ -12,11 +12,11 @@ class MozaicLoyaltySDKSettings {
   final Color? secondaryColor;
   final ThemeMode? sdkTheme;
   final String? sdkLanguage;
+  final Currency currencyCode;
 
   const MozaicLoyaltySDKSettings({
     required this.logoWidget,
     required this.appUseGetx,
-    required this.merchantId,
     required this.environmentType,
     this.redeemPointsQRCode = true,
     this.accessToken,
@@ -25,18 +25,19 @@ class MozaicLoyaltySDKSettings {
     this.secondaryColor,
     this.sdkLanguage,
     this.sdkTheme,
+    this.currencyCode = Currency.sar,
   });
 
   MozaicLoyaltySDKSettings copyWith({String? sessionToken, String? accessToken}) {
     return MozaicLoyaltySDKSettings(
       logoWidget: logoWidget,
       environmentType: environmentType,
-      merchantId: merchantId,
       appUseGetx: appUseGetx,
       primaryColor: primaryColor,
       secondaryColor: secondaryColor,
       sdkLanguage: sdkLanguage,
       sdkTheme: sdkTheme,
+      currencyCode: currencyCode,
       sessionToken: sessionToken ?? this.sessionToken,
       accessToken: accessToken ?? this.accessToken,
     );
@@ -44,3 +45,12 @@ class MozaicLoyaltySDKSettings {
 }
 
 enum EnvironmentType { live, test }
+
+enum Currency {
+  sar,
+  jd,
+  usd,
+  kwd;
+
+  String get tr => name.tr;
+}
