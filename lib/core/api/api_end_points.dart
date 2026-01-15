@@ -11,13 +11,6 @@ class ApiEndPoints {
   ///*************************///
   ///
 
-  /// auth
-  static final String verifyMobileNumber = '${apiLink}Profile/VerifyMobileNumber';
-  static final String resendVerificationCode = '${apiLink}Profile/ResendVerificationCode';
-  static final String checkValidationCode = '${apiLink}Profile/CheckValidationCode';
-  static final String completeProfile = '${apiLink}Profile/CompleteProfile';
-  static final String getCountries = '${apiLink}Country/GetCountries';
-
   ///branch
   static final String getBranchDetails = '${apiLink}Branch/GetBranchDetails';
   static final String getClosestBranches = '${apiLink}Branch/GetClosestBranches';
@@ -32,7 +25,6 @@ class ApiEndPoints {
   static final String getUserBalanceHistory = '${apiLink}UserLoyalty/GetUserBalanceHistory';
 
   ///home
-  static final String getHomeContents = '${apiLink}Home/GetHomeContents';
   static final String getCustomerHomeContents = '${apiLink}Home/GetCustomerHomeContents';
 
   ///barcode

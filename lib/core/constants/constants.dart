@@ -2,8 +2,6 @@ import '../../mozaic_loyalty_sdk.dart';
 
 class AppConstants {
   static const String countryCode = "+966";
-  static const String countryCodeStart = "5";
-  static const String countryCodeStartWithZero = "05";
   static const String currencyCode = "sar";
   static final int merchantId = MozaicLoyaltySDK.settings.merchantId;
   static const int resourceGroup = 2;
@@ -19,9 +17,6 @@ class HttpMethodRequest {
 
 class RouteConstant {
   static const String splashPage = '/mozaic_loyalty_sdk/splash';
-  static const String authPage = '/AuthPage';
-  static const String verifyPage = '/VerifyScreen';
-  static const String completeProfile = '/CompleteProfileScreen';
   static const String homeScreen = '/HomeScreen';
   static const String pointsScreen = '/PointsScreen';
   static const String rewardsScreen = '/RewardsTabScreen';

@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../features/auth/presentation/pages/complete_profile.dart';
-import '../../features/auth/presentation/pages/login_screen.dart';
-import '../../features/auth/presentation/pages/verify_screen.dart';
 import '../../features/branch/presentaion/pages/branch_details_screen.dart';
 import '../../features/home/presentation/pages/home_tab.dart';
 import '../../features/loyalty/presentation/pages/points_tab.dart';
@@ -15,9 +11,6 @@ import '../constants/constants.dart';
 class RouteGeneratorList {
   final List<GetPage> appRoutes = [
     GetPage(name: RouteConstant.splashPage, page: () => SplashScreen()),
-    GetPage(name: RouteConstant.authPage, page: () => const LoginScreen()),
-    GetPage(name: RouteConstant.verifyPage, page: () => const VerifyScreen()),
-    GetPage(name: RouteConstant.completeProfile, page: () => const CompleteProfileScreen()),
     GetPage(name: RouteConstant.homeScreen, page: () => const HomeScreen()),
     GetPage(name: RouteConstant.rewardsScreen, page: () => const RewardsTabScreen()),
     GetPage(name: RouteConstant.pointsScreen, page: () => const PointsScreen()),

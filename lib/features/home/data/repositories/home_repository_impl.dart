@@ -10,33 +10,20 @@ import '../../domain/repositories/home_repository.dart';
 class HomeRepositoryImpl implements HomeRepository {
   final HomeApiDataSource remoteDataSource;
 
-  
-
   HomeRepositoryImpl({required this.remoteDataSource});
 
   @override
-  Future<Either<AppFailure, HomeDetails>> getHomeDetails({Map<String, dynamic>? body}) async {
-   
-      try {
-        final homeDetailsData = await remoteDataSource.getHomeDetails(body: body!);
-        return Right(homeDetailsData);
-      } on ApiErrorsException catch (e) {
-        return Left(
-            AppFailure(errorsModel: ErrorsModel(errorCode: e.errorCode, errorMessage: e.errorMessage), failureType: FailureType.serverFailure));
-      }
-    
-  }
-
-  @override
   Future<Either<AppFailure, HomeDetails>> getCustomerHomeContents({Map<String, dynamic>? body}) async {
-   
-      try {
-        final homeDetailsData = await remoteDataSource.getCustomerHomeContents(body: body!);
-        return Right(homeDetailsData);
-      } on ApiErrorsException catch (e) {
-        return Left(
-            AppFailure(errorsModel: ErrorsModel(errorCode: e.errorCode, errorMessage: e.errorMessage), failureType: FailureType.serverFailure));
-      }
-    
+    try {
+      final homeDetailsData = await remoteDataSource.getCustomerHomeContents(body: body!);
+      return Right(homeDetailsData);
+    } on ApiErrorsException catch (e) {
+      return Left(
+        AppFailure(
+          errorsModel: ErrorsModel(errorCode: e.errorCode, errorMessage: e.errorMessage),
+          failureType: FailureType.serverFailure,
+        ),
+      );
+    }
   }
 }

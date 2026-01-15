@@ -3,18 +3,16 @@ import '../../shared/helper/shared_preferences_storage.dart';
 import '../constants/constants.dart';
 
 class HeaderInterceptor {
-  static Future<Map<String, String>> getHeaders({bool isAuthorized = false, bool isTemp = false, bool fromLogin = false}) async {
+  static Future<Map<String, String>> getHeaders({bool isAuthorized = false, bool fromLogin = false}) async {
     String appLanguage = await sl<SharedPreferencesStorage>().getAppLanguage();
     Map<String, String> headers = {
       'DeviceLanguage': "${appLanguage == 'en' ? 2 : 1}",
       'Content-Type': 'application/json',
-      'MI': "${AppConstants.merchantId}"
+      'MI': "${AppConstants.merchantId}",
     };
     String? token;
     if (isAuthorized) {
       token = await sl<SharedPreferencesStorage>().getAccessToken();
-    } else if (isTemp) {
-      token = await sl<SharedPreferencesStorage>().getTempToken();
     } else if (fromLogin) {
       token = await sl<SharedPreferencesStorage>().getSessionToken();
     }

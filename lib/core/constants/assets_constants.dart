@@ -55,4 +55,6 @@ class AssetsConsts {
   static String get qrCodeLoading => '${gifPath}qr_code_loading.json';
 
   static String get noItems => '${gifPath}empty_box.json';
+
+  static String get noAccount => '${gifPath}no_account.json';
 }

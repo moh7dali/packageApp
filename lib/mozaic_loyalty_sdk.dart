@@ -55,7 +55,6 @@ class MozaicLoyaltySDK extends StatelessWidget {
     di.sl<SharedPreferencesStorage>().setSessionToken(sessionToken);
     di.sl<SharedPreferencesStorage>().setAccessToken(accessToken);
     di.sl<SharedPreferencesStorage>().setIsUserLoggedIn(true);
-    di.sl<SharedPreferencesStorage>().setIsCompleted(true);
   }
 
   @override

@@ -1,5 +1,3 @@
-import '../../constants/constants.dart';
-
 final Map<String, String> ar = {
   // Login Screen
   "getStartedNow": "ابدأ الآن",
@@ -7,7 +5,6 @@ final Map<String, String> ar = {
   "mobileNumber": "رقم المحمول",
   "isReq": "مطلوب",
   "wrongMobile": "رقم المحمول غير صحيح",
-  "numberShouldStart5": "يجب ان يبدأ الرقم ${AppConstants.countryCodeStart} أو ${AppConstants.countryCodeStartWithZero}",
   "next": "التالي",
 
   // Verify Screen
@@ -122,4 +119,6 @@ final Map<String, String> ar = {
   "noInternetBody": "يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى",
   "refresh": "تحديث",
   "unauthorized": "انتهت الجلسة، يرجى تسجيل الدخول مرة أخرى",
+  "noAccount": "الحساب غير موجود",
+  "noAccountDescription": "يبدو أن هذا الملف الشخصي غير مسجل في نظام الولاء الخاص بنا حتى الآن. يرجى الاتصال بالدعم أو التسجيل لبدء كسب المكافآت!",
 };

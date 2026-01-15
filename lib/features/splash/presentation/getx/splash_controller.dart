@@ -3,7 +3,6 @@ import "package:get/get.dart";
 import "../../../../core/constants/constants.dart";
 import "../../../../core/sdk/sdk_routes.dart";
 import "../../../../injection_container.dart";
-import "../../../../mozaic_loyalty_sdk.dart";
 import "../../../../shared/helper/shared_helper.dart";
 import "../../../../shared/helper/shared_preferences_storage.dart";
 
@@ -18,14 +17,9 @@ class SplashController extends GetxController {
 
   Future loginFlow() async {
     if (await SharedHelper().isUserLoggedIn()) {
-      if (await sl<SharedPreferencesStorage>().getIsCompleted()) {
-        SDKNav.offAllNamed(RouteConstant.homeScreen);
-      } else {
-        Get.deleteAll();
-        SDKNav.offAllNamed(RouteConstant.completeProfile);
-      }
+      SDKNav.offAllNamed(RouteConstant.homeScreen);
     } else {
-      SDKNav.offAllNamed(RouteConstant.authPage);
+      SharedHelper().showUnRegisterPopUp();
     }
   }
 }

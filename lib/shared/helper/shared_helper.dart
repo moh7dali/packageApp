@@ -8,11 +8,9 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:lottie/lottie.dart';
 import 'package:mozaic_loyalty_sdk/core/utils/app_log.dart';
-import 'package:mozaic_loyalty_sdk/shared/widgets/bottom_widget.dart';
 import 'package:mozaic_loyalty_sdk/shared/widgets/button_widget.dart';
 
 import '../../core/constants/assets_constants.dart';
-import '../../core/constants/constants.dart';
 import '../../core/sdk/sdk_routes.dart';
 import '../../core/utils/theme.dart';
 import '../../injection_container.dart';
@@ -62,27 +60,6 @@ class SharedHelper<T> {
 
   Future<bool> isUserLoggedIn() async {
     return sl<SharedPreferencesStorage>().getIsUserLoggedIn();
-  }
-
-  void needLogin(Function() function) async {
-    if (await isUserLoggedIn()) {
-      function();
-    } else {
-      SharedHelper().bottomSheet(
-        BottomWidget(
-          title:  "".tr,
-          description: 'pleaseLogin'.tr,
-          onCancel: () {
-            SharedHelper().closeAllDialogs();
-          },
-          confirmText: 'login'.tr,
-          onConfirm: () {
-            SharedHelper().closeAllDialogs();
-            SDKNav.offAllNamed(RouteConstant.authPage);
-          },
-        ),
-      );
-    }
   }
 
   static String dateFormatToString(DateTime dateTime, {bool withTime = false}) {
@@ -374,7 +351,7 @@ class SharedHelper<T> {
     return text.codeUnitAt(0) >= 0x0600 && text.codeUnitAt(0) <= 0x06FF;
   }
 
-  successfullySnackBar(String message, {Icon? icon}) {
+  void successfullySnackBar(String message, {Icon? icon}) {
     Fluttertoast.cancel().then((value) {
       Fluttertoast.showToast(
         msg: message,
@@ -558,5 +535,29 @@ class SharedHelper<T> {
       ),
     );
     return completer.future;
+  }
+
+  void showUnRegisterPopUp() {
+    SharedHelper().actionDialog(
+      "noAccount",
+      "noAccountDescription",
+      hasImage: true,
+      image: AssetsConsts.noAccount,
+      isLottieImage: true,
+      isLocalImage: true,
+      confirmText: "close".tr,
+      noCancel: true,
+      confirm: () {
+        if (Get.isDialogOpen!) {
+          Get.back();
+        }
+        final context = MozaicLoyaltySDK.sdkNavKey.currentContext;
+        if (context != null) {
+          Navigator.of(context, rootNavigator: true).pop();
+        } else {
+          Get.back(closeOverlays: true);
+        }
+      },
+    );
   }
 }

@@ -50,7 +50,7 @@ class LoyaltyApiDataSourceImpl implements LoyaltyApiDataSource {
       method: HttpMethodRequest.getMethode,
       url: ApiEndPoints.getTiersLoyaltyData,
       body: {},
-      authorized: await SharedHelper().isUserLoggedIn(),
+      authorized: true,
       fromJson: tierSchemaBrandFromMap,
     );
     return pointSchemaBrand ?? [];

@@ -86,29 +86,24 @@ class UserBalanceHistoryController extends GetxController with GetTickerProvider
   }
 
   Future<PaginationListModel> getUserBalanceHistoryApi({int page = 1}) async {
-    bool isLogin = await SharedHelper().isUserLoggedIn();
-    if (isLogin) {
-      userBalanceHistoryList = [];
-      int totalNumberOfResult = 0;
-      await getUserBalanceHistory.repository
-          .getUserBalanceHistory(body: {"pageNumber": "$page"})
-          .then(
-            (value) => value.fold(
-              (failure) {
-                SharedHelper().errorSnackBar(failure.errorsModel.errorMessage ?? "");
-              },
-              (userBalanceList) async {
-                List<UserBalanceHistory> userBalanceHistoryListForSize = userBalanceList.userBalanceHistoryList ?? [];
-                userBalanceHistoryList = userBalanceHistoryListForSize;
-                totalNumberOfResult = userBalanceList.totalNumberOfResult ?? 0;
-                update();
-              },
-            ),
-          );
-      return PaginationListModel(totalNumberOfResult: totalNumberOfResult, listOfObjects: userBalanceHistoryList);
-    } else {
-      return PaginationListModel(totalNumberOfResult: 0, listOfObjects: []);
-    }
+    userBalanceHistoryList = [];
+    int totalNumberOfResult = 0;
+    await getUserBalanceHistory.repository
+        .getUserBalanceHistory(body: {"pageNumber": "$page"})
+        .then(
+          (value) => value.fold(
+            (failure) {
+              SharedHelper().errorSnackBar(failure.errorsModel.errorMessage ?? "");
+            },
+            (userBalanceList) async {
+              List<UserBalanceHistory> userBalanceHistoryListForSize = userBalanceList.userBalanceHistoryList ?? [];
+              userBalanceHistoryList = userBalanceHistoryListForSize;
+              totalNumberOfResult = userBalanceList.totalNumberOfResult ?? 0;
+              update();
+            },
+          ),
+        );
+    return PaginationListModel(totalNumberOfResult: totalNumberOfResult, listOfObjects: userBalanceHistoryList);
   }
 
   Color getTierColor() {

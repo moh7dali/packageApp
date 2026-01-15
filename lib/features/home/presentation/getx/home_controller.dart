@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:mozaic_loyalty_sdk/features/home/domain/usecases/get_home_details.dart";
 
 import "../../../../core/constants/constants.dart";
 import "../../../../core/sdk/sdk_routes.dart";
@@ -29,7 +28,6 @@ import "../widget/check_in_branch.dart";
 import "../widget/select_with_in_the_range_branches.dart";
 
 class HomeController extends GetxController {
-  final GetHomeDetails getHomeDetails;
   final GetCustomerHomeContents getCustomerHomeContents;
   final GetCampaignList getCampaignList;
   final GetClosestBranches getClosestBranches;
@@ -37,7 +35,6 @@ class HomeController extends GetxController {
 
   HomeDetails? homeDetails;
   bool isHomeLoading = true;
-  bool isLogin = false;
   BranchDetails? selectedBranch;
   CustomerData? customerData;
   String? currentTier;
@@ -50,13 +47,7 @@ class HomeController extends GetxController {
   List<Map<String, dynamic>> tiersBoundaries = [];
   ScrollController scrollController = ScrollController();
 
-  HomeController()
-    : getHomeDetails = sl(),
-      getCustomerHomeContents = sl(),
-      getCampaignList = sl(),
-      getUserRewards = sl(),
-      getClosestBranches = sl(),
-      checkInCustomer = sl();
+  HomeController() : getCustomerHomeContents = sl(), getCampaignList = sl(), getUserRewards = sl(), getClosestBranches = sl(), checkInCustomer = sl();
 
   @override
   void onInit() {
@@ -65,39 +56,7 @@ class HomeController extends GetxController {
   }
 
   Future<void> init() async {
-    isLogin = await SharedHelper().isUserLoggedIn();
-    if (isLogin) {
-      getHomeForAuthUser();
-    } else {
-      getHomeDetailsData();
-    }
-  }
-
-  Future<void> getHomeDetailsData() async {
-    isHomeLoading = true;
-    update();
-    await getHomeDetails.repository
-        .getHomeDetails(
-          body: {
-            "HomeFeatures": [
-              {"HomeFeatures": 5, "MaximumParentResult": 10, "MaximumChildResult": 0},
-            ],
-          },
-        )
-        .then(
-          (value) => value.fold(
-            (failure) {
-              SharedHelper().errorSnackBar(failure.errorsModel.errorMessage ?? "");
-              isHomeLoading = false;
-              update();
-            },
-            (details) async {
-              homeDetails = details;
-              isHomeLoading = false;
-              update();
-            },
-          ),
-        );
+    getHomeForAuthUser();
   }
 
   Future<void> getHomeForAuthUser() async {
@@ -347,7 +306,7 @@ class HomeController extends GetxController {
   void redeemPoints() {
     if (MozaicLoyaltySDK.settings.redeemPointsQRCode == true) {
       Get.delete<UserBarcodeController>();
-      SharedHelper().needLogin(() => SharedHelper().scaleDialog(BarcodeScreen()));
+      SharedHelper().scaleDialog(BarcodeScreen());
     } else {
       getUserLocation();
     }

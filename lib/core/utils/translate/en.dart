@@ -1,5 +1,3 @@
-import '../../constants/constants.dart';
-
 final Map<String, String> en = {
   // Login Screen
   "getStartedNow": "Get Started Now",
@@ -7,7 +5,6 @@ final Map<String, String> en = {
   "mobileNumber": "Mobile Number",
   "isReq": "is required",
   "wrongMobile": "Invalid mobile number",
-  "numberShouldStart5": "The number must start with ${AppConstants.countryCodeStart} or ${AppConstants.countryCodeStartWithZero}",
   "next": "Next",
 
   // Verify Screen
@@ -122,4 +119,7 @@ final Map<String, String> en = {
   "noInternetBody": "Please check your internet connection and try again",
   "refresh": "Refresh",
   "unauthorized": "Session expired, please login again",
+  "noAccount": "Account Not Found",
+  "noAccountDescription":
+      "It looks like this profile isn't registered in our loyalty system yet. Please contact support or register to start earning rewards!",
 };
