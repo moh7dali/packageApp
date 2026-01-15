@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 
 class MozaicLoyaltySDKSettings {
+  final Widget logoWidget;
   final bool appUseGetx;
+  final EnvironmentType environmentType;
+  final int merchantId;
+  final bool? redeemPointsQRCode;
   final String? accessToken;
   final String? sessionToken;
-  final Widget logoWidget;
   final Color? primaryColor;
   final Color? secondaryColor;
-  final String? appTitleEn;
-  final String? appTitleAr;
-  final String? sdkLanguage;
-  final bool? redeemPointsQRCode;
   final ThemeMode? sdkTheme;
+  final String? sdkLanguage;
 
   const MozaicLoyaltySDKSettings({
     required this.logoWidget,
-    this.appUseGetx = false,
+    required this.appUseGetx,
+    required this.merchantId,
+    required this.environmentType,
     this.redeemPointsQRCode = true,
     this.accessToken,
     this.sessionToken,
     this.primaryColor,
     this.secondaryColor,
-    this.appTitleEn,
-    this.appTitleAr,
     this.sdkLanguage,
     this.sdkTheme,
   });
@@ -30,15 +30,17 @@ class MozaicLoyaltySDKSettings {
   MozaicLoyaltySDKSettings copyWith({String? sessionToken, String? accessToken}) {
     return MozaicLoyaltySDKSettings(
       logoWidget: logoWidget,
+      environmentType: environmentType,
+      merchantId: merchantId,
       appUseGetx: appUseGetx,
       primaryColor: primaryColor,
       secondaryColor: secondaryColor,
       sdkLanguage: sdkLanguage,
-      appTitleAr: appTitleAr,
-      appTitleEn: appTitleEn,
       sdkTheme: sdkTheme,
       sessionToken: sessionToken ?? this.sessionToken,
       accessToken: accessToken ?? this.accessToken,
     );
   }
 }
+
+enum EnvironmentType { live, test }

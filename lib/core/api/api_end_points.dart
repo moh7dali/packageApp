@@ -1,41 +1,45 @@
+import '../../mozaic_loyalty_sdk.dart';
+import '../sdk/sdk_settings.dart';
+
 class ApiEndPoints {
-  static const production = "https://webapi.mozaicloyaltyclub.com/";
-  static const staging = "https://retailclubstaging.lazordclub.com/RetailClub.WebAPI/";
-  static const apiLink = "${staging}api/";
+  static final production = "https://webapi.mozaicloyaltyclub.com/";
+  static final staging = "https://retailclubstaging.lazordclub.com/RetailClub.WebAPI/";
+
+  static final apiLink = "${MozaicLoyaltySDK.settings.environmentType == EnvironmentType.test ? staging : production}api/";
 
   /// Ends points
   ///*************************///
   ///
 
   /// auth
-  static const String verifyMobileNumber = '${apiLink}Profile/VerifyMobileNumber';
-  static const String resendVerificationCode = '${apiLink}Profile/ResendVerificationCode';
-  static const String checkValidationCode = '${apiLink}Profile/CheckValidationCode';
-  static const String completeProfile = '${apiLink}Profile/CompleteProfile';
-  static const String getCountries = '${apiLink}Country/GetCountries';
+  static final String verifyMobileNumber = '${apiLink}Profile/VerifyMobileNumber';
+  static final String resendVerificationCode = '${apiLink}Profile/ResendVerificationCode';
+  static final String checkValidationCode = '${apiLink}Profile/CheckValidationCode';
+  static final String completeProfile = '${apiLink}Profile/CompleteProfile';
+  static final String getCountries = '${apiLink}Country/GetCountries';
 
   ///branch
-  static const String getBranchDetails = '${apiLink}Branch/GetBranchDetails';
-  static const String getClosestBranches = '${apiLink}Branch/GetClosestBranches';
-  static const String checkInCustomer = '${apiLink}UserLoyalty/CheckInCustomer';
+  static final String getBranchDetails = '${apiLink}Branch/GetBranchDetails';
+  static final String getClosestBranches = '${apiLink}Branch/GetClosestBranches';
+  static final String checkInCustomer = '${apiLink}UserLoyalty/CheckInCustomer';
 
   ///API Request
-  static const String login = '${apiLink}Profile/RefreshCustomerToken';
+  static final String login = '${apiLink}Profile/RefreshCustomerToken';
 
   ///Loyalty
-  static const String getUserLoyaltyData = '${apiLink}UserLoyalty/GetUserLoyaltyData';
-  static const String getTiersLoyaltyData = '${apiLink}UserLoyalty/GetTiersLoyaltyData';
-  static const String getUserBalanceHistory = '${apiLink}UserLoyalty/GetUserBalanceHistory';
+  static final String getUserLoyaltyData = '${apiLink}UserLoyalty/GetUserLoyaltyData';
+  static final String getTiersLoyaltyData = '${apiLink}UserLoyalty/GetTiersLoyaltyData';
+  static final String getUserBalanceHistory = '${apiLink}UserLoyalty/GetUserBalanceHistory';
 
   ///home
-  static const String getHomeContents = '${apiLink}Home/GetHomeContents';
-  static const String getCustomerHomeContents = '${apiLink}Home/GetCustomerHomeContents';
+  static final String getHomeContents = '${apiLink}Home/GetHomeContents';
+  static final String getCustomerHomeContents = '${apiLink}Home/GetCustomerHomeContents';
 
   ///barcode
-  static const String getBarcodeUserData = '${apiLink}UserLoyalty/GetBarcodeUserData';
+  static final String getBarcodeUserData = '${apiLink}UserLoyalty/GetBarcodeUserData';
 
   ///rewards
-  static const String getCampaignList = '${apiLink}Campaign/GetCampaignList';
-  static const String getUserRewards = '${apiLink}Reward/GetUserRewards';
-  static const String getCampaignRewards = '${apiLink}Campaign/GetCampaignRewards';
+  static final String getCampaignList = '${apiLink}Campaign/GetCampaignList';
+  static final String getUserRewards = '${apiLink}Reward/GetUserRewards';
+  static final String getCampaignRewards = '${apiLink}Campaign/GetCampaignRewards';
 }

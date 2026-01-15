@@ -1,9 +1,11 @@
+import '../../mozaic_loyalty_sdk.dart';
+
 class AppConstants {
   static const String countryCode = "+966";
   static const String countryCodeStart = "5";
   static const String countryCodeStartWithZero = "05";
   static const String currencyCode = "sar";
-  static const int merchantId = 79;
+  static final int merchantId = MozaicLoyaltySDK.settings.merchantId;
   static const int resourceGroup = 2;
   static const bool isProxyEnable = true;
 }

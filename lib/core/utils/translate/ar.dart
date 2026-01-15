@@ -1,4 +1,3 @@
-import '../../../mozaic_loyalty_sdk.dart';
 import '../../constants/constants.dart';
 
 final Map<String, String> ar = {
@@ -112,7 +111,6 @@ final Map<String, String> ar = {
   "locationPermissionShouldAllowed": "للعثور على أقرب الفروع، يرجى السماح بالوصول إلى الموقع من إعدادات جهازك.",
   "openAppSettings": "فتح الإعدادات",
   // Shared Helper & Dialogs
-  "title": "${MozaicLoyaltySDK.settings.appTitleAr}",
   "pleaseLogin": "يرجى تسجيل الدخول للوصول إلى هذه الميزة",
   "login": "تسجيل الدخول",
   "appName": "تطبيق الولاء",

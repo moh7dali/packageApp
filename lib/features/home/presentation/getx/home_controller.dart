@@ -345,7 +345,6 @@ class HomeController extends GetxController {
   }
 
   void redeemPoints() {
-    print("I am here ${MozaicLoyaltySDK.settings.redeemPointsQRCode}");
     if (MozaicLoyaltySDK.settings.redeemPointsQRCode == true) {
       Get.delete<UserBarcodeController>();
       SharedHelper().needLogin(() => SharedHelper().scaleDialog(BarcodeScreen()));

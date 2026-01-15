@@ -1,4 +1,3 @@
-import '../../../mozaic_loyalty_sdk.dart';
 import '../../constants/constants.dart';
 
 final Map<String, String> en = {
@@ -112,7 +111,6 @@ final Map<String, String> en = {
   "locationPermissionShouldAllowed": "To find the nearest branches, please allow location access in your device settings.",
   "openAppSettings": "Open Settings",
   // Shared Helper & Dialogs
-  "title": "${MozaicLoyaltySDK.settings.appTitleEn}",
   "pleaseLogin": "Please login to access this feature",
   "login": "Login",
   "appName": "Loyalty App",

@@ -70,7 +70,7 @@ class SharedHelper<T> {
     } else {
       SharedHelper().bottomSheet(
         BottomWidget(
-          title: "title".tr,
+          title:  "".tr,
           description: 'pleaseLogin'.tr,
           onCancel: () {
             SharedHelper().closeAllDialogs();
