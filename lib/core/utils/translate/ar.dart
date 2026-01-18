@@ -124,5 +124,6 @@ final Map<String, String> ar = {
   "sar": "ر.س",
   "jd": "د.أ",
   "usd": "دولار",
+  "aed": "د.إ",
   "kwd": "د.ك",
 };

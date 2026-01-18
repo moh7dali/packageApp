@@ -23,6 +23,11 @@ class CurrencyWidget extends StatelessWidget {
       return SvgPicture.asset(AssetsConsts.sarLogo, width: size, height: size, color: effectiveColor);
     }
 
+    if (code == Currency.aed) {
+      final Color effectiveColor = color ?? textStyle?.color ?? AppTheme.primaryColor;
+      return SvgPicture.asset(AssetsConsts.aedLogo, width: size, height: size, color: effectiveColor);
+    }
+
     final TextStyle effectiveStyle = (textStyle ?? AppTheme.textStyle(size: size, color: color ?? AppTheme.primaryColor));
 
     return Text(code.tr, style: effectiveStyle);

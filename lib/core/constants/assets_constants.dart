@@ -11,6 +11,8 @@ class AssetsConsts {
 
   static String get sarLogo => '${svgPath}sar_logo.svg';
 
+  static String get aedLogo => '${svgPath}aed_logo.svg';
+
   static String get points => '${svgPath}tab_points.svg';
 
   static String get rewards => '${svgPath}tab_rewards.svg';

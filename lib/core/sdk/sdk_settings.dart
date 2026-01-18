@@ -50,6 +50,7 @@ enum Currency {
   sar,
   jd,
   usd,
+  aed,
   kwd;
 
   String get tr => name.tr;

@@ -125,5 +125,6 @@ final Map<String, String> en = {
   "sar": "SAR",
   "jd": "JOD",
   "usd": "USD",
+  "aed": "AED",
   "kwd": "KWD",
 };
