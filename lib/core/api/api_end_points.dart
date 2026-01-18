@@ -1,11 +1,8 @@
 import '../../mozaic_loyalty_sdk.dart';
-import '../sdk/sdk_settings.dart';
 
 class ApiEndPoints {
-  static final production = "https://webapi.mozaicloyaltyclub.com/";
-  static final staging = "https://retailclubstaging.lazordclub.com/RetailClub.WebAPI/";
-
-  static final apiLink = "${MozaicLoyaltySDK.settings.environmentType == EnvironmentType.test ? staging : production}api/";
+  static final baseUrl = MozaicLoyaltySDK.settings.baseUrl;
+  static final apiLink = "$baseUrl/api/";
 
   /// Ends points
   ///*************************///

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MozaicLoyaltySDKSettings {
-  final Widget logoWidget;
+  final Widget widgetLogo;
   final bool appUseGetx;
-  final EnvironmentType environmentType;
+  final String  baseUrl;
   final bool? redeemPointsQRCode;
   final String? accessToken;
   final String? sessionToken;
@@ -15,9 +15,9 @@ class MozaicLoyaltySDKSettings {
   final Currency currencyCode;
 
   const MozaicLoyaltySDKSettings({
-    required this.logoWidget,
+    required this.widgetLogo,
     required this.appUseGetx,
-    required this.environmentType,
+    required this.baseUrl,
     this.redeemPointsQRCode = true,
     this.accessToken,
     this.sessionToken,
@@ -30,8 +30,8 @@ class MozaicLoyaltySDKSettings {
 
   MozaicLoyaltySDKSettings copyWith({String? sessionToken, String? accessToken}) {
     return MozaicLoyaltySDKSettings(
-      logoWidget: logoWidget,
-      environmentType: environmentType,
+      widgetLogo: widgetLogo,
+      baseUrl: baseUrl,
       appUseGetx: appUseGetx,
       primaryColor: primaryColor,
       secondaryColor: secondaryColor,
@@ -43,8 +43,6 @@ class MozaicLoyaltySDKSettings {
     );
   }
 }
-
-enum EnvironmentType { live, test }
 
 enum Currency {
   sar,
