@@ -34,9 +34,9 @@ class SharedPreferencesStorage {
   }
 
   Future<bool> getTheme() async {
-    if (MozaicLoyaltySDK.settings.sdkTheme != null) {
-      print("Priority: SDK Settings Found - ${MozaicLoyaltySDK.settings.sdkTheme}");
-      return MozaicLoyaltySDK.settings.sdkTheme == ThemeMode.dark;
+    if (MozaicLoyaltySDK.settings.theme != null) {
+      print("Priority: SDK Settings Found - ${MozaicLoyaltySDK.settings.theme}");
+      return MozaicLoyaltySDK.settings.theme == ThemeMode.dark;
     }
     bool? savedTheme = _preferences!.getBool(SharedPreferencesKeyConstants.appTheme);
     if (savedTheme != null) {

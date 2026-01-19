@@ -6,6 +6,6 @@ class HeroLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Hero(tag: "HeroLogo", child: MozaicLoyaltySDK.settings.widgetLogo);
+    return Hero(tag: "HeroLogo", child: MozaicLoyaltySDK.settings.logo);
   }
 }
