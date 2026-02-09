@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 
 class MozaicLoyaltySDKSettings {
   final Widget logo;
@@ -51,5 +52,5 @@ enum Currency {
   aed,
   kwd;
 
-  String get tr => name.tr;
+  String get tr => name.sdkTr;
 }

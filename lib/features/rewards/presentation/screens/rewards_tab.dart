@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:mozaic_loyalty_sdk/features/rewards/presentation/screens/my_rewards_page.dart';
 
 import '../../../../core/utils/theme.dart';
@@ -11,11 +12,11 @@ class RewardsTabScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<RewardsController>(
-      init: RewardsController(),
+    return GetBuilder<SDKRewardsController>(
+      init: SDKRewardsController(),
       builder: (controller) {
         return Scaffold(
-          appBar: AppBar(title: Text("Rewards".tr)),
+          appBar: AppBar(title: Text("Rewards".sdkTr)),
           body: SafeArea(
             child: Column(
               children: [
@@ -42,7 +43,7 @@ class RewardsTabScreen extends StatelessWidget {
                       ),
                       tabs: controller.pageTabs.map((e) {
                         return Tab(
-                          child: Center(child: Text(e.tr, textAlign: TextAlign.center)),
+                          child: Center(child: Text(e.sdkTr, textAlign: TextAlign.center)),
                         );
                       }).toList(),
                     ),

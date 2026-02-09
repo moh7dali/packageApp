@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:mozaic_loyalty_sdk/features/home/presentation/getx/home_controller.dart';
 import 'package:mozaic_loyalty_sdk/shared/helper/shared_helper.dart';
 import 'package:mozaic_loyalty_sdk/shared/widgets/button_widget.dart';
@@ -12,7 +13,7 @@ class SelectWithInTheRangeBranches extends StatelessWidget {
   SelectWithInTheRangeBranches({super.key, required this.withinTheRangeBranches, required this.mainController});
 
   List<BranchDetails> withinTheRangeBranches;
-  HomeController mainController;
+  SDKHomeController mainController;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class SelectWithInTheRangeBranches extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'branches'.tr,
+            'branches'.sdkTr,
             style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size18, isBold: true),
           ),
           SizedBox(
@@ -46,7 +47,7 @@ class SelectWithInTheRangeBranches extends StatelessWidget {
             height: 8,
           ),
           AppButton(
-            title: "done".tr,
+            title: "done".sdkTr,
             function: () {
               SharedHelper().bottomSheet(BottomLoadingWidget());
               mainController.checkInUser(mainController.selectedBranch!);

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mozaic_loyalty_sdk/core/utils/theme.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../shared/helper/shared_helper.dart';
@@ -62,7 +63,7 @@ class PointSchemaPage extends StatelessWidget {
                                                 ),
                                                 const SizedBox(width: 10),
                                                 Text(
-                                                  "tier".tr,
+                                                  "tier".sdkTr,
                                                   style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size16, isBold: true),
                                                 ),
                                               ],
@@ -72,7 +73,7 @@ class PointSchemaPage extends StatelessWidget {
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
                                               Text(
-                                                '${'points'.tr} / ',
+                                                '${'points'.sdkTr} / ',
                                                 style: AppTheme.textStyle(color: AppTheme.textColor.withOpacity(.85), size: AppTheme.size12),
                                               ),
                                               CurrencyWidget(
@@ -154,8 +155,8 @@ size: 12, color: AppTheme.textColor.withOpacity(.85)),
                                                               children: [
                                                                 Text(
                                                                   index != (controller.pointSchemaList!.length - 1)
-                                                                      ? "${"from".tr} ${SharedHelper.getNumberFormat(min)} "
-                                                                      : "${"above".tr} ${SharedHelper.getNumberFormat(min)} ",
+                                                                      ? "${"from".sdkTr} ${SharedHelper.getNumberFormat(min)} "
+                                                                      : "${"above".sdkTr} ${SharedHelper.getNumberFormat(min)} ",
                                                                   style: AppTheme.textStyle(
                                                                     color: AppTheme.textColor.withOpacity(.75),
                                                                     size: AppTheme.size12,
@@ -165,7 +166,7 @@ size: 12, color: AppTheme.textColor.withOpacity(.85)),
 size: AppTheme.size12, color: AppTheme.textColor.withOpacity(.75)),
                                                                 if (index != (controller.pointSchemaList!.length - 1)) ...[
                                                                   Text(
-                                                                    " ${"to".tr} ${SharedHelper.getNumberFormat(max - 1)} ",
+                                                                    " ${"to".sdkTr} ${SharedHelper.getNumberFormat(max - 1)} ",
                                                                     style: AppTheme.textStyle(
                                                                       color: AppTheme.textColor.withOpacity(.75),
                                                                       size: AppTheme.size12,

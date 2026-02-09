@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../../../rewards/domain/entity/campaign_details.dart';
@@ -57,7 +58,7 @@ class MissionsWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    "discoverNow".tr,
+                    "discoverNow".sdkTr,
                     style: AppTheme.textStyle(
                       color: isPrimary ? AppTheme.whiteColor : AppTheme.primaryColor,
                       size: AppTheme.size16,
@@ -110,7 +111,7 @@ class MissionsWidget extends StatelessWidget {
                           const Text("✨", style: TextStyle(fontSize: 12)),
                           const SizedBox(width: 4),
                           Text(
-                            "Deals".tr,
+                            "Deals".sdkTr,
                             style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size10, isBold: true),
                           ),
                         ],
@@ -143,7 +144,7 @@ class MissionsWidget extends StatelessWidget {
                               Icon(Icons.arrow_forward_ios_rounded, size: 12, color: AppTheme.primaryColor),
                               const SizedBox(width: 4),
                               Text(
-                                "discoverNow".tr,
+                                "discoverNow".sdkTr,
                                 style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size10, isBold: true),
                               ),
                             ],

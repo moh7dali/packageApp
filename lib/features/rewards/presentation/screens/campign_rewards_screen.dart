@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:mozaic_loyalty_sdk/features/rewards/presentation/getx/campaign_rewards_controller.dart';
 import 'package:mozaic_loyalty_sdk/features/rewards/presentation/widgets/reward_widget.dart';
 import 'package:mozaic_loyalty_sdk/features/rewards/presentation/widgets/rewards_card_widget.dart';
@@ -17,8 +18,8 @@ class CampaignRewardsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<CampaignRewardsController>(
-      init: CampaignRewardsController(selectedCampaignDetails: selectedCampaignDetails),
+    return GetBuilder<SDKCampaignRewardsController>(
+      init: SDKCampaignRewardsController(selectedCampaignDetails: selectedCampaignDetails),
       builder: (controller) {
         return Scaffold(
           appBar: AppBar(title: Text(selectedCampaignDetails.name ?? "")),
@@ -43,7 +44,7 @@ class CampaignRewardsScreen extends StatelessWidget {
                             children: [
                               NoItemWidget(),
                               Text(
-                                'emptyRewards'.tr,
+                                'emptyRewards'.sdkTr,
                                 style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size14),
                                 textAlign: TextAlign.center,
                               ),
@@ -64,7 +65,7 @@ class CampaignRewardsScreen extends StatelessWidget {
                       children: [
                         NoItemWidget(),
                         Text(
-                          'emptyRewards'.tr,
+                          'emptyRewards'.sdkTr,
                           style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size14),
                           textAlign: TextAlign.center,
                         ),

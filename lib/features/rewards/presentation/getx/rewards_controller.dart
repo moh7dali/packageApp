@@ -10,11 +10,11 @@ import '../../domain/entity/user_rewards.dart';
 import '../../domain/usecase/get_campaign_list.dart';
 import '../../domain/usecase/get_user_rewards.dart';
 
-class RewardsController extends GetxController with GetTickerProviderStateMixin {
+class SDKRewardsController extends GetxController with GetTickerProviderStateMixin {
   final GetCampaignList getCampaignList;
   final GetUserRewards getUserRewards;
 
-  RewardsController()
+  SDKRewardsController()
       : getCampaignList = sl(),
         getUserRewards = sl();
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class WidgetController extends GetxController with GetSingleTickerProviderStateMixin {
-  WidgetController({required this.length});
+class SDKWidgetController extends GetxController with GetSingleTickerProviderStateMixin {
+  SDKWidgetController({required this.length});
 
   int length;
   TabController? tabController;

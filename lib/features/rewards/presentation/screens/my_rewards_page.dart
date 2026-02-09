@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:mozaic_loyalty_sdk/features/rewards/presentation/getx/rewards_controller.dart';
 import 'package:mozaic_loyalty_sdk/shared/widgets/no_item_widget.dart';
 
@@ -13,8 +14,8 @@ class MyRewardsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<RewardsController>(
-      init: RewardsController(),
+    return GetBuilder<SDKRewardsController>(
+      init: SDKRewardsController(),
       builder: (controller) {
         return Column(
           children: [
@@ -25,7 +26,7 @@ class MyRewardsPage extends StatelessWidget {
                 itemBuilder: (context, value) => RewardCardWidget(reward: value, isMyRewards: true),
                 emptyWidget: NoItemWidget(),
                 loadingWidget: UserRewardsLoadingWidget(hasImg: false),
-                emptyText: 'emptyRewards'.tr,
+                emptyText: 'emptyRewards'.sdkTr,
               ),
             ),
           ],

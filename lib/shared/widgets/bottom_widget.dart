@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mozaic_loyalty_sdk/core/utils/theme.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 
 class BottomWidget extends StatelessWidget {
   final String title;
@@ -60,7 +61,7 @@ class BottomWidget extends StatelessWidget {
                   ),
                   onPressed: onCancel,
                   child: Text(
-                    cancelText.tr,
+                    cancelText.sdkTr,
                     style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size14),
                   ),
                 ),
@@ -74,7 +75,7 @@ class BottomWidget extends StatelessWidget {
                   ),
                   onPressed: onConfirm,
                   child: Text(
-                    confirmText.tr,
+                    confirmText.sdkTr,
                     style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size14),
                   ),
                 ),

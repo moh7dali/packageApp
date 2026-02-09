@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:mozaic_loyalty_sdk/features/loyalty/presentation/getx/points_controller.dart';
 
 import '../../../../core/utils/theme.dart';
@@ -10,7 +11,7 @@ import '../pages/point_schema_page.dart';
 class NewLoyaltyCardWidget extends StatelessWidget {
   const NewLoyaltyCardWidget({super.key, required this.controller});
 
-  final UserBalanceHistoryController controller;
+  final SDKUserBalanceHistoryController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,7 @@ class NewLoyaltyCardWidget extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: Text(
-                      "${'validUntil'.tr} ${SharedHelper.dateFormatToString(controller.userLoyaltyData?.loyaltyData?.tierExpiryDate ?? DateTime.now())}",
+                      "${'validUntil'.sdkTr} ${SharedHelper.dateFormatToString(controller.userLoyaltyData?.loyaltyData?.tierExpiryDate ?? DateTime.now())}",
                       textAlign: TextAlign.center,
                       style: AppTheme.textStyle(color: AppTheme.textColor.withOpacity(.85), size: AppTheme.size12),
                     ),
@@ -83,13 +84,13 @@ class NewLoyaltyCardWidget extends StatelessWidget {
                   children: [
                     LoyaltyCardDetails(
                       controller: controller,
-                      label: "visits".tr,
+                      label: "visits".sdkTr,
                       value: controller.userLoyaltyData?.loyaltyData?.numberOfVisits ?? 0,
                     ),
                     const SizedBox(width: 10),
                     LoyaltyCardDetails(
                       controller: controller,
-                      label: "points".tr,
+                      label: "points".sdkTr,
                       value: controller.userLoyaltyData?.loyaltyData?.pointsBalance ?? 0,
                     ),
                   ],
@@ -99,13 +100,13 @@ class NewLoyaltyCardWidget extends StatelessWidget {
                   children: [
                     LoyaltyCardDetails(
                       controller: controller,
-                      label: "redeemed".tr,
+                      label: "redeemed".sdkTr,
                       value: controller.userLoyaltyData?.loyaltyData?.redeemedPoints ?? 0,
                     ),
                     const SizedBox(width: 10),
                     LoyaltyCardDetails(
                       controller: controller,
-                      label: "expired".tr,
+                      label: "expired".sdkTr,
                       value: controller.userLoyaltyData?.loyaltyData?.expiredPoints ?? 0,
                     ),
                   ],
@@ -116,14 +117,14 @@ class NewLoyaltyCardWidget extends StatelessWidget {
                 //     LoyaltyCardDetails(
                 //       img: AssetsConsts.loyaltyRedeemedIcon,
                 //       controller: controller,
-                //       label: "redeemed".tr,
+                //       label: "redeemed".sdkTr,
                 //       value: controller.userLoyaltyData?.loyaltyData?.redeemedPoints ?? 0,
                 //     ),
                 //     const SizedBox(width: 10),
                 //     LoyaltyCardDetails(
                 //       img: AssetsConsts.loyaltyExpiredIcon,
                 //       controller: controller,
-                //       label: "expired".tr,
+                //       label: "expired".sdkTr,
                 //       value: controller.userLoyaltyData?.loyaltyData?.expiredPoints ?? 0,
                 //     ),
                 //   ],
@@ -137,12 +138,12 @@ class NewLoyaltyCardWidget extends StatelessWidget {
     );
   }
 
-  Widget getNextTier(int currentTier, UserBalanceHistoryController controller) {
+  Widget getNextTier(int currentTier, SDKUserBalanceHistoryController controller) {
     return RichText(
       textAlign: TextAlign.center,
       textDirection: TextDirection.ltr,
       text: TextSpan(
-        text: "spend".tr,
+        text: "spend".sdkTr,
         style: AppTheme.textStyle(color: AppTheme.textColor.withOpacity(.75), size: AppTheme.size14),
         children: [
           TextSpan(
@@ -157,7 +158,7 @@ size: 14, color: AppTheme.textColor),
             ],
           ),
           TextSpan(
-            text: ' ${'toReach'.tr} ',
+            text: ' ${'toReach'.sdkTr} ',
             style: AppTheme.textStyle(color: AppTheme.textColor.withOpacity(.75), size: AppTheme.size14),
           ),
           TextSpan(
@@ -176,13 +177,13 @@ size: 14, color: AppTheme.textColor),
     );
   }
 
-  Widget getMaintainingAmountText(int currentTier, UserBalanceHistoryController controller) {
+  Widget getMaintainingAmountText(int currentTier, SDKUserBalanceHistoryController controller) {
     return getMaintainingAmount(currentTier, controller) != null
         ? RichText(
             textAlign: TextAlign.center,
             textDirection: TextDirection.ltr,
             text: TextSpan(
-              text: "spend".tr,
+              text: "spend".sdkTr,
               style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size14),
               children: [
                 TextSpan(
@@ -197,7 +198,7 @@ size: 14, color: AppTheme.textColor),
                   ],
                 ),
                 TextSpan(
-                  text: ' ${'toStayIn'.tr} ',
+                  text: ' ${'toStayIn'.sdkTr} ',
                   style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size14),
                 ),
                 TextSpan(
@@ -210,14 +211,14 @@ size: 14, color: AppTheme.textColor),
         : Container();
   }
 
-  String getRemaining(int currentTier, UserBalanceHistoryController controller) {
+  String getRemaining(int currentTier, SDKUserBalanceHistoryController controller) {
     double max = controller.tiersBoundaries.firstWhereOrNull((element) => element["id"] == currentTier)?["max"];
     double min = controller.tiersBoundaries.firstWhereOrNull((element) => element["id"] == currentTier)?["lower"];
     double tierAmount = controller.userLoyaltyData?.loyaltyData?.tierAmount ?? 0;
     return SharedHelper.getNumberFormat((max - (min + tierAmount)), isCurrency: true);
   }
 
-  String? getMaintainingAmount(int currentTier, UserBalanceHistoryController controller) {
+  String? getMaintainingAmount(int currentTier, SDKUserBalanceHistoryController controller) {
     double maintainingAmount = controller.tiersBoundaries.firstWhereOrNull((element) => element["id"] == currentTier)?["maintainingAmount"] ?? 0;
     double tierAmount = controller.userLoyaltyData?.loyaltyData?.tierAmount ?? 0;
     if (maintainingAmount > tierAmount) {
@@ -233,7 +234,7 @@ class LoyaltyCardDetails extends StatelessWidget {
 
   final String label;
   final dynamic value;
-  final UserBalanceHistoryController controller;
+  final SDKUserBalanceHistoryController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -253,7 +254,7 @@ class LoyaltyCardDetails extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    label.tr,
+                    label.sdkTr,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: AppTheme.textStyle(color: AppTheme.textColor.withOpacity(0.85), size: AppTheme.size12),

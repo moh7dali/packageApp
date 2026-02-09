@@ -17,8 +17,8 @@ class SplashScreen extends StatelessWidget {
         children: <Widget>[
           const SizedBox(height: 10),
           Expanded(
-            child: GetBuilder<SplashController>(
-              init: SplashController(),
+            child: GetBuilder<SDKSplashController>(
+              init: SDKSplashController(),
               builder: (controller) {
                 return Stack(
                   alignment: Alignment.center,
@@ -31,9 +31,7 @@ class SplashScreen extends StatelessWidget {
                       duration: const Duration(milliseconds: 300),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          LoadingAnimationWidget.newtonCradle(color: AppTheme.primaryColor, size: Get.height * .25),
-                        ],
+                        children: [LoadingAnimationWidget.newtonCradle(color: AppTheme.primaryColor, size: Get.height * .25)],
                       ),
                     ),
                     Positioned(

@@ -7,7 +7,7 @@ import "../../domain/usecases/get_uaer_barcode.dart";
 
 enum LoyaltySource { points, wallet }
 
-class UserBarcodeController extends GetxController with GetTickerProviderStateMixin {
+class SDKUserBarcodeController extends GetxController with GetTickerProviderStateMixin {
   Map<String, dynamic> data = {};
   UserBarcode? userBarcode;
   final GetUserBarcode getUserBarcode;
@@ -17,7 +17,7 @@ class UserBarcodeController extends GetxController with GetTickerProviderStateMi
   late Animation<double> animation;
   LoyaltySource? selectedSource;
 
-  UserBarcodeController() : getUserBarcode = sl();
+  SDKUserBarcodeController() : getUserBarcode = sl();
 
   @override
   void onInit() {

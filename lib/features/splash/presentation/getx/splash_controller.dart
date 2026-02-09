@@ -6,7 +6,7 @@ import "../../../../injection_container.dart";
 import "../../../../shared/helper/shared_helper.dart";
 import "../../../../shared/helper/shared_preferences_storage.dart";
 
-class SplashController extends GetxController {
+class SDKSplashController extends GetxController {
   @override
   void onInit() {
     super.onInit();

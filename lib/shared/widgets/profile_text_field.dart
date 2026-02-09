@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:mozaic_loyalty_sdk/core/utils/app_log.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:mozaic_loyalty_sdk/shared/widgets/shake_widget.dart';
 
 import '../../core/utils/theme.dart';
@@ -62,7 +63,7 @@ class ProfileTextField extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    label.tr,
+                    label.sdkTr,
                     style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size14),
                   ),
                 ],
@@ -92,7 +93,7 @@ class ProfileTextField extends StatelessWidget {
                 filled: true,
                 fillColor: AppTheme.bgThemeColor,
                 counter: const SizedBox(width: 0, height: 0),
-                hintText: label.tr,
+                hintText: label.sdkTr,
                 hintStyle: AppTheme.textStyle(color: AppTheme.greyColor, size: AppTheme.size14),
                 contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
                 border: OutlineInputBorder(
@@ -144,7 +145,7 @@ class ProfileTextField extends StatelessWidget {
                             children: [
                               SizedBox(width: 12),
                               Text(
-                                "optional".tr,
+                                "optional".sdkTr,
                                 style: AppTheme.textStyle(color: AppTheme.greyColor, size: AppTheme.size14),
                               ),
                               SizedBox(width: 12),

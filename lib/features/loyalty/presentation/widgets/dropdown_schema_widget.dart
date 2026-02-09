@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:mozaic_loyalty_sdk/shared/widgets/no_item_widget.dart';
 
 import '../../../../core/utils/theme.dart';
@@ -67,7 +68,7 @@ class _DropDownSchemaState extends State<DropDownSchema> {
           children: [
             NoItemWidget(),
             Text(
-              "somethingWrong".tr,
+              "somethingWrong".sdkTr,
               style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size14),
             ),
           ],

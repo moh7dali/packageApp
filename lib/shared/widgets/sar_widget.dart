@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 
 import '../../core/constants/assets_constants.dart';
 import '../../core/constants/constants.dart';
@@ -30,21 +31,12 @@ class CurrencyWidget extends StatelessWidget {
 
     final TextStyle effectiveStyle = (textStyle ?? AppTheme.textStyle(size: size, color: color ?? AppTheme.primaryColor));
 
-    return Text(code.tr, style: effectiveStyle);
+    return Text(code.name.sdkTr, style: effectiveStyle);
   }
 }
 
 class CurrencyAmountText extends StatelessWidget {
-  const CurrencyAmountText({
-    super.key,
-    required this.amountText,
-    required this.amountStyle,
-    this.currencyStyle,
-    this.useIcon = true,
-    this.iconSize,
-    this.iconColor,
-    this.space = 4,
-  });
+  const CurrencyAmountText({super.key, required this.amountText, required this.amountStyle, this.currencyStyle, this.useIcon = true, this.iconSize, this.iconColor, this.space = 4});
 
   final String amountText;
   final TextStyle amountStyle;
@@ -65,7 +57,7 @@ class CurrencyAmountText extends StatelessWidget {
         children: [
           Text(amountText, style: amountStyle),
           SizedBox(width: space),
-          Text(code.tr, style: effectiveCurrencyStyle),
+          Text(code.name.sdkTr, style: effectiveCurrencyStyle),
         ],
       );
     }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:mozaic_loyalty_sdk/shared/helper/shared_helper.dart';
 
 import '../../../../core/constants/constants.dart';
@@ -33,7 +34,7 @@ class CheckInBranches extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  isOutBranch ? "checkInNotComplete".tr : "checkInComplete".tr,
+                  isOutBranch ? "checkInNotComplete".sdkTr : "checkInComplete".sdkTr,
                   style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size16),
                   textAlign: TextAlign.center,
                 ),

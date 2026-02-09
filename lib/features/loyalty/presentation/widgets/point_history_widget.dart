@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../../domain/entity/user_balance_history.dart';
@@ -87,7 +88,7 @@ class PointHistoryWidget extends StatelessWidget {
                         ),
                         const SizedBox(width: 6),
                         Text(
-                          "points".tr,
+                          "points".sdkTr,
                           style: AppTheme.textStyle(color: AppTheme.textColor.withOpacity(.65), size: AppTheme.size12),
                         ),
                       ],
@@ -98,19 +99,19 @@ class PointHistoryWidget extends StatelessWidget {
 
               const SizedBox(height: 10),
 
-              _infoLine(icon: Icons.local_offer_outlined, label: "TransactionType".tr, value: userBalanceHistory.triggerActionName ?? "-"),
+              _infoLine(icon: Icons.local_offer_outlined, label: "TransactionType".sdkTr, value: userBalanceHistory.triggerActionName ?? "-"),
               const SizedBox(height: 6),
               if (userBalanceHistory.branchName != null)
-                _infoLine(icon: Icons.store_outlined, label: "branchName".tr, value: userBalanceHistory.branchName ?? "-"),
+                _infoLine(icon: Icons.store_outlined, label: "branchName".sdkTr, value: userBalanceHistory.branchName ?? "-"),
               const SizedBox(height: 6),
-              _infoLine(icon: Icons.calendar_today_outlined, label: "creationDate".tr, value: dateText.isEmpty ? "-" : dateText),
+              _infoLine(icon: Icons.calendar_today_outlined, label: "creationDate".sdkTr, value: dateText.isEmpty ? "-" : dateText),
               if (userBalanceHistory.expiryDate != null) ...[
                 const SizedBox(height: 6),
-                _infoLine(icon: Icons.auto_delete_outlined, label: "expiryDate".tr, value: expiryDateText.isEmpty ? "-" : expiryDateText),
+                _infoLine(icon: Icons.auto_delete_outlined, label: "expiryDate".sdkTr, value: expiryDateText.isEmpty ? "-" : expiryDateText),
               ],
               if (userBalanceHistory.activationDate != null) ...[
                 const SizedBox(height: 6),
-                _infoLine(icon: Icons.auto_delete_outlined, label: "activationDate".tr, value: activationDateText.isEmpty ? "-" : activationDateText),
+                _infoLine(icon: Icons.auto_delete_outlined, label: "activationDate".sdkTr, value: activationDateText.isEmpty ? "-" : activationDateText),
               ],
             ],
           ),

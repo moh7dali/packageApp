@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/utils/theme.dart';
@@ -72,7 +73,7 @@ class UserRewardsWidget extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      '${'validUntil'.tr}: ${DateFormat('yyyy-MM-dd').format(DateTime.parse(userRewards.expiryDate!))}',
+                      '${'validUntil'.sdkTr}: ${DateFormat('yyyy-MM-dd').format(DateTime.parse(userRewards.expiryDate!))}',
                       style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size14),
                     ),
                   ),
@@ -85,27 +86,27 @@ class UserRewardsWidget extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    '${'status'.tr}: ',
+                    '${'status'.sdkTr}: ',
                     style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size14),
                   ),
                   userRewards.status == 1
                       ? Expanded(
                           child: Text(
-                            '[${'valid'.tr}]',
+                            '[${'valid'.sdkTr}]',
                             style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size14),
                           ),
                         )
                       : userRewards.status == 2
                           ? Expanded(
                               child: Text(
-                                '[${'redeemed'.tr}]',
+                                '[${'redeemed'.sdkTr}]',
                                 style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size14),
                               ),
                             )
                           : userRewards.status == 3
                               ? Expanded(
                                   child: Text(
-                                    '[${'expired'.tr}]',
+                                    '[${'expired'.sdkTr}]',
                                     style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size14),
                                   ),
                                 )

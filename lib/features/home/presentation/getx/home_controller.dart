@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:mozaic_loyalty_sdk/core/utils/translate/translation.dart";
 
 import "../../../../core/constants/constants.dart";
 import "../../../../core/sdk/sdk_routes.dart";
@@ -27,7 +28,7 @@ import "../../domain/usecases/get_customer_home_contents.dart";
 import "../widget/check_in_branch.dart";
 import "../widget/select_with_in_the_range_branches.dart";
 
-class HomeController extends GetxController {
+class SDKHomeController extends GetxController {
   final GetCustomerHomeContents getCustomerHomeContents;
   final GetCampaignList getCampaignList;
   final GetClosestBranches getClosestBranches;
@@ -47,7 +48,7 @@ class HomeController extends GetxController {
   List<Map<String, dynamic>> tiersBoundaries = [];
   ScrollController scrollController = ScrollController();
 
-  HomeController() : getCustomerHomeContents = sl(), getCampaignList = sl(), getUserRewards = sl(), getClosestBranches = sl(), checkInCustomer = sl();
+  SDKHomeController() : getCustomerHomeContents = sl(), getCampaignList = sl(), getUserRewards = sl(), getClosestBranches = sl(), checkInCustomer = sl();
 
   @override
   void onInit() {
@@ -93,30 +94,14 @@ class HomeController extends GetxController {
 
   Future getUserData() async {
     customerData = homeDetails?.customerData;
-    currentTier =
-        homeDetails?.tiers?.tiers
-            ?.firstWhereOrNull((element) => element.id == customerData?.customerLoyaltyData?.customerTierData?.currentTier)
-            ?.name ??
-        "silver".tr;
+    currentTier = homeDetails?.tiers?.tiers?.firstWhereOrNull((element) => element.id == customerData?.customerLoyaltyData?.customerTierData?.currentTier)?.name ?? "silver".sdkTr;
     if ((customerData?.customerLoyaltyData?.customerTierData?.currentTier ?? 0) < (homeDetails?.tiers?.tiers?.length ?? 0)) {
-      nextTier =
-          homeDetails?.tiers?.tiers
-              ?.firstWhereOrNull((element) => element.id == ((customerData?.customerLoyaltyData?.customerTierData?.currentTier ?? 0) + 1))
-              ?.name ??
-          "";
+      nextTier = homeDetails?.tiers?.tiers?.firstWhereOrNull((element) => element.id == ((customerData?.customerLoyaltyData?.customerTierData?.currentTier ?? 0) + 1))?.name ?? "";
 
-      nextImageTier =
-          homeDetails?.tiers?.tiers
-              ?.firstWhereOrNull((element) => element.id == ((customerData?.customerLoyaltyData?.customerTierData?.currentTier ?? 0) + 1))
-              ?.imageUrl ??
-          "";
+      nextImageTier = homeDetails?.tiers?.tiers?.firstWhereOrNull((element) => element.id == ((customerData?.customerLoyaltyData?.customerTierData?.currentTier ?? 0) + 1))?.imageUrl ?? "";
     }
     currentTierId = customerData?.customerLoyaltyData?.customerTierData?.currentTier ?? 1;
-    currentImageTier =
-        homeDetails?.tiers?.tiers
-            ?.firstWhereOrNull((element) => element.id == customerData?.customerLoyaltyData?.customerTierData?.currentTier)
-            ?.imageUrl ??
-        "";
+    currentImageTier = homeDetails?.tiers?.tiers?.firstWhereOrNull((element) => element.id == customerData?.customerLoyaltyData?.customerTierData?.currentTier)?.imageUrl ?? "";
     customerNumber = customerData?.customerInfo?.mobileNumber?.replaceFirst("+", "");
     for (int i = 0; i < (homeDetails?.tiers?.tiers?.length ?? 0); i++) {
       TiersData tier = homeDetails!.tiers!.tiers![i];
@@ -124,18 +109,11 @@ class HomeController extends GetxController {
       if (i < (homeDetails?.tiers?.tiers?.length ?? 0) - 1) {
         max = (homeDetails?.tiers?.tiers?[i + 1].lowerLimit ?? 1).toDouble();
       }
-      tiersBoundaries.add({
-        "id": tier.id!.toInt(),
-        "lower": tier.lowerLimit!.toDouble(),
-        "max": max,
-        "gradient": tier.tierColor,
-        "maintainingAmount": tier.maintainingAmount,
-      });
+      tiersBoundaries.add({"id": tier.id!.toInt(), "lower": tier.lowerLimit!.toDouble(), "max": max, "gradient": tier.tierColor, "maintainingAmount": tier.maintainingAmount});
     }
     currentValue =
         (customerData?.customerLoyaltyData?.customerTierData?.tierAmount ?? 0).toDouble() +
-        (tiersBoundaries.firstWhereOrNull((element) => element["id"] == customerData?.customerLoyaltyData?.customerTierData?.currentTier)?["lower"] ??
-            0);
+        (tiersBoundaries.firstWhereOrNull((element) => element["id"] == customerData?.customerLoyaltyData?.customerTierData?.currentTier)?["lower"] ?? 0);
   }
 
   double? valueOfTheLine(int currentTier) {
@@ -208,10 +186,10 @@ class HomeController extends GetxController {
     } else {
       SDKNav.toNamed(RouteConstant.rewardsScreen);
       if (isDeals) {
-        RewardsController rewardsController = Get.put(RewardsController());
+        SDKRewardsController rewardsController = Get.put(SDKRewardsController());
         rewardsController.tabController!.animateTo(1);
       } else {
-        RewardsController rewardsController = Get.put(RewardsController());
+        SDKRewardsController rewardsController = Get.put(SDKRewardsController());
         rewardsController.tabController!.animateTo(0);
       }
     }
@@ -265,20 +243,14 @@ class HomeController extends GetxController {
                 if ((closestBranches.withinTheRangeBranches ?? []).isNotEmpty) {
                   selectedBranch = closestBranches.withinTheRangeBranches?.firstOrNull;
                   if ((closestBranches.totalNumberOfResult ?? 0) > 1) {
-                    SharedHelper().bottomSheet(
-                      SelectWithInTheRangeBranches(withinTheRangeBranches: closestBranches.withinTheRangeBranches!, mainController: this),
-                      isScrollControlled: true,
-                    );
+                    SharedHelper().bottomSheet(SelectWithInTheRangeBranches(withinTheRangeBranches: closestBranches.withinTheRangeBranches!, mainController: this), isScrollControlled: true);
                   } else {
                     if ((closestBranches.totalNumberOfResult ?? 0) == 1) {
                       await checkInUser(selectedBranch!);
                     }
                   }
                 } else if (closestBranches.outSideTheRangeBranch != null) {
-                  SharedHelper().bottomSheet(
-                    CheckInBranches(selectedBranch: closestBranches.outSideTheRangeBranch!, isOutBranch: true),
-                    isScrollControlled: true,
-                  );
+                  SharedHelper().bottomSheet(CheckInBranches(selectedBranch: closestBranches.outSideTheRangeBranch!, isOutBranch: true), isScrollControlled: true);
                 }
               }
             },
@@ -305,7 +277,7 @@ class HomeController extends GetxController {
 
   void redeemPoints() {
     if (MozaicLoyaltySDK.settings.customerIdentificationMethod == 1) {
-      Get.delete<UserBarcodeController>();
+      Get.delete<SDKUserBarcodeController>();
       SharedHelper().scaleDialog(BarcodeScreen());
     } else {
       getUserLocation();

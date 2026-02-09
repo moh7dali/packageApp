@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:mozaic_loyalty_sdk/features/rewards/domain/entity/campaign_details.dart';
 import 'package:mozaic_loyalty_sdk/shared/widgets/no_item_widget.dart';
 
@@ -17,7 +18,7 @@ class OccasionRewards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<RewardsController>(
+    return GetBuilder<SDKRewardsController>(
       builder: (controller) {
         return Column(
           children: [
@@ -31,7 +32,7 @@ class OccasionRewards extends StatelessWidget {
                 ),
                 emptyWidget: NoItemWidget(),
                 loadingWidget: UserRewardsLoadingWidget(hasImg: false),
-                emptyText: 'emptyRewards'.tr,
+                emptyText: 'emptyRewards'.sdkTr,
               ),
             ),
             SizedBox(height: Get.height * .01),

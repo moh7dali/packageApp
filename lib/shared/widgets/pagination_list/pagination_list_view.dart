@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 
 import '../../../core/utils/app_log.dart';
 import '../../../core/utils/theme.dart';
@@ -218,7 +219,7 @@ class _PaginationListViewState<T> extends State<PaginationListView<T>> {
               children: [
                 Expanded(
                   child: Text(
-                    widget.emptyText.tr,
+                    widget.emptyText.sdkTr,
                     style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size14),
                     textAlign: TextAlign.center,
                   ),

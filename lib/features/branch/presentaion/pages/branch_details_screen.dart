@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/constants/assets_constants.dart';
@@ -15,8 +16,8 @@ class BranchDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<BranchDetailsController>(
-      init: BranchDetailsController(branchID),
+    return GetBuilder<SDKBranchDetailsController>(
+      init: SDKBranchDetailsController(branchID),
       builder: (controller) => Scaffold(
         appBar: AppBar(title: Text(controller.branchDetails?.name ?? "")),
         bottomNavigationBar: Column(
@@ -35,7 +36,7 @@ class BranchDetailsScreen extends StatelessWidget {
                         children: [
                           Icon(Icons.location_on, color: AppTheme.bgThemeColor),
                           SizedBox(width: 10),
-                          Text("location".tr, style: AppTheme.textStyle(color: AppTheme.bgThemeColor, size: 16)),
+                          Text("location".sdkTr, style: AppTheme.textStyle(color: AppTheme.bgThemeColor, size: 16)),
                         ],
                       ),
                     ),
@@ -55,7 +56,7 @@ class BranchDetailsScreen extends StatelessWidget {
                         children: [
                           Icon(Icons.call, color: AppTheme.bgThemeColor),
                           SizedBox(width: 10),
-                          Text("callUs".tr, style: AppTheme.textStyle(color: AppTheme.bgThemeColor, size: 16)),
+                          Text("callUs".sdkTr, style: AppTheme.textStyle(color: AppTheme.bgThemeColor, size: 16)),
                         ],
                       ),
                     ),
@@ -113,7 +114,7 @@ class BranchDetailsScreen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            '${'address'.tr}: ${controller.branchDetails?.address ?? ""}',
+                            '${'address'.sdkTr}: ${controller.branchDetails?.address ?? ""}',
                             style: AppTheme.textStyle(color: AppTheme.textColor, size: 14),
                           ),
                         ),
@@ -124,7 +125,7 @@ class BranchDetailsScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('${'workingHour'.tr}: ', style: AppTheme.textStyle(color: AppTheme.textColor, size: 14)),
+                        Text('${'workingHour'.sdkTr}: ', style: AppTheme.textStyle(color: AppTheme.textColor, size: 14)),
                         Expanded(
                           child: Text(
                             controller.branchDetails?.openTime ?? "",

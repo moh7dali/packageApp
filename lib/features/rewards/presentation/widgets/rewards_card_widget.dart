@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/sdk/sdk_routes.dart';
@@ -24,11 +25,11 @@ class RewardCardWidget extends StatelessWidget {
     final statusText = !hasStatus
         ? ""
         : reward?.status == 1
-        ? 'valid'.tr
+        ? 'valid'.sdkTr
         : reward?.status == 2
-        ? 'redeemed'.tr
+        ? 'redeemed'.sdkTr
         : reward?.status == 3
-        ? 'expired'.tr
+        ? 'expired'.sdkTr
         : '';
 
     final statusColor = !hasStatus
@@ -47,19 +48,19 @@ class RewardCardWidget extends StatelessWidget {
         onTap: () {
           SharedHelper().actionDialog(
             "${reward?.title}",
-            "${reward?.description}${isMyRewards ? "\n\n${reward?.creationDate != null ? '${"creationDate".tr}: ${DateFormat('yyyy-MM-dd').format(DateTime.parse(reward!.creationDate!))}' : ""}\n ${reward?.expiryDate != null ? '${"expiryDate".tr}: ${DateFormat('yyyy-MM-dd').format(DateTime.parse(reward!.expiryDate!))}'
-                            '${(reward?.status != null && reward?.rewardTypeId != 3) ? '\n${"status".tr}:' : ""}${(reward?.status != null && reward?.rewardTypeId != 3)
+            "${reward?.description}${isMyRewards ? "\n\n${reward?.creationDate != null ? '${"creationDate".sdkTr}: ${DateFormat('yyyy-MM-dd').format(DateTime.parse(reward!.creationDate!))}' : ""}\n ${reward?.expiryDate != null ? '${"expiryDate".sdkTr}: ${DateFormat('yyyy-MM-dd').format(DateTime.parse(reward!.expiryDate!))}'
+                            '${(reward?.status != null && reward?.rewardTypeId != 3) ? '\n${"status".sdkTr}:' : ""}${(reward?.status != null && reward?.rewardTypeId != 3)
                                 ? reward?.status == 1
-                                      ? 'valid'.tr
+                                      ? 'valid'.sdkTr
                                       : reward?.status == 2
-                                      ? 'redeemed'.tr
+                                      ? 'redeemed'.sdkTr
                                       : reward?.status == 3
-                                      ? 'expired'.tr
+                                      ? 'expired'.sdkTr
                                       : ''
                                 : ''}' : ""}" : ""}",
             hasImage: true,
             image: img,
-            confirmText: "close".tr,
+            confirmText: "close".sdkTr,
             noCancel: true,
             confirm: () => SDKNav.back(),
           );
@@ -149,13 +150,13 @@ class RewardCardWidget extends StatelessWidget {
                             if (reward?.creationDate != null)
                               _dateChip(
                                 icon: Icons.calendar_today_outlined,
-                                label: "creationDate".tr,
+                                label: "creationDate".sdkTr,
                                 value: DateFormat('yyyy-MM-dd').format(DateTime.parse(reward!.creationDate!)),
                               ),
                             if (reward?.expiryDate != null)
                               _dateChip(
                                 icon: Icons.event_outlined,
-                                label: "expiryDate".tr,
+                                label: "expiryDate".sdkTr,
                                 value: DateFormat('yyyy-MM-dd').format(DateTime.parse(reward!.expiryDate!)),
                               ),
                           ],

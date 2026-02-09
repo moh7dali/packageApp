@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 
 import '../../../../core/constants/assets_constants.dart';
 import '../../../../core/utils/theme.dart';
@@ -100,9 +101,9 @@ class HomeRewardCard extends StatelessWidget {
   String _getStatusText(int? status, int? rewardTypeId) {
     if (status == null) return "";
 
-    if (status == 1) return 'valid'.tr;
-    if (status == 2) return 'redeemed'.tr;
-    if (status == 3) return 'expired'.tr;
+    if (status == 1) return 'valid'.sdkTr;
+    if (status == 2) return 'redeemed'.sdkTr;
+    if (status == 3) return 'expired'.sdkTr;
     return "";
   }
 

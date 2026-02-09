@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
 import 'package:mozaic_loyalty_sdk/core/utils/app_log.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:mozaic_loyalty_sdk/features/branch/data/datasources/branch_api_datasource.dart';
 import 'package:mozaic_loyalty_sdk/features/branch/domain/entities/branch_details.dart';
 import 'package:mozaic_loyalty_sdk/features/branch/domain/entities/closest_branches.dart';
@@ -23,7 +24,7 @@ class BranchRepositoryImpl implements BranchRepository {
     } on ApiErrorsException catch (e) {
       return Left(
         AppFailure(
-          errorsModel: ErrorsModel(errorCode: e.errorCode, errorMessage: e.errorMessage ?? 'somethingWrong'.tr),
+          errorsModel: ErrorsModel(errorCode: e.errorCode, errorMessage: e.errorMessage ?? 'somethingWrong'.sdkTr),
           failureType: FailureType.serverFailure,
         ),
       );
@@ -38,7 +39,7 @@ class BranchRepositoryImpl implements BranchRepository {
     } on ApiErrorsException catch (e) {
       return Left(
         AppFailure(
-          errorsModel: ErrorsModel(errorCode: e.errorCode, errorMessage: e.errorMessage ?? 'somethingWrong'.tr),
+          errorsModel: ErrorsModel(errorCode: e.errorCode, errorMessage: e.errorMessage ?? 'somethingWrong'.sdkTr),
           failureType: FailureType.serverFailure,
         ),
       );
@@ -54,7 +55,7 @@ class BranchRepositoryImpl implements BranchRepository {
       appLog(e.errorCode, tag: "AAAAAA");
       return Left(
         AppFailure(
-          errorsModel: ErrorsModel(errorCode: e.errorCode, errorMessage: e.errorMessage ?? 'somethingWrong'.tr),
+          errorsModel: ErrorsModel(errorCode: e.errorCode, errorMessage: e.errorMessage ?? 'somethingWrong'.sdkTr),
           failureType: FailureType.serverFailure,
         ),
       );

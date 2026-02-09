@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:lottie/lottie.dart';
 import 'package:mozaic_loyalty_sdk/core/utils/app_log.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:mozaic_loyalty_sdk/shared/widgets/button_widget.dart';
 
 import '../../core/constants/assets_constants.dart';
@@ -102,7 +103,7 @@ class SharedHelper<T> {
     Get.generalDialog(
       navigatorKey: MozaicLoyaltySDK.settings.appUseGetx ? Get.nestedKey(1) : MozaicLoyaltySDK.sdkNavKey,
       barrierDismissible: dismissible,
-      barrierLabel: "appName".tr,
+      barrierLabel: "appName".sdkTr,
       barrierColor: AppTheme.bgThemeColor.withOpacity(.75),
       transitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (ctx, a1, a2) => const SizedBox.shrink(),
@@ -180,7 +181,7 @@ class SharedHelper<T> {
                       children: [
                         Expanded(
                           child: Text(
-                            title.tr,
+                            title.sdkTr,
                             textAlign: isCenter ? TextAlign.center : TextAlign.start,
                             style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size16, isBold: true),
                           ),
@@ -196,7 +197,7 @@ class SharedHelper<T> {
                       child: Padding(
                         padding: const EdgeInsets.all(12),
                         child: Text(
-                          body.tr,
+                          body.sdkTr,
                           textAlign: isCenter ? TextAlign.center : TextAlign.start,
                           style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size16),
                         ),
@@ -218,7 +219,7 @@ class SharedHelper<T> {
                             children: [
                               Expanded(
                                 child: AppButton(
-                                  title: (cancelText != null ? cancelText.tr : 'cancel'.tr),
+                                  title: (cancelText != null ? cancelText.sdkTr : 'cancel'.sdkTr),
                                   function: cancel ?? closeAllDialogs,
                                   isDoneBtn: false,
                                   isSmall: true,
@@ -232,7 +233,7 @@ class SharedHelper<T> {
                         child: Row(
                           children: [
                             Expanded(
-                              child: AppButton(title: (confirmText != null ? confirmText.tr : 'confirm'.tr), function: confirm!, isSmall: true),
+                              child: AppButton(title: (confirmText != null ? confirmText.sdkTr : 'confirm'.sdkTr), function: confirm!, isSmall: true),
                             ),
                           ],
                         ),
@@ -246,7 +247,7 @@ class SharedHelper<T> {
                           children: [
                             Expanded(
                               child: AppButton(
-                                title: (cancelText != null ? cancelText.tr : 'cancel'.tr),
+                                title: (cancelText != null ? cancelText.sdkTr : 'cancel'.sdkTr),
                                 function: cancel ?? closeAllDialogs,
                                 isDoneBtn: false,
                                 isSmall: true,
@@ -258,7 +259,7 @@ class SharedHelper<T> {
                       Row(
                         children: [
                           Expanded(
-                            child: AppButton(title: (confirmText != null ? confirmText.tr : 'confirm'.tr), function: confirm!, isSmall: true),
+                            child: AppButton(title: (confirmText != null ? confirmText.sdkTr : 'confirm'.sdkTr), function: confirm!, isSmall: true),
                           ),
                         ],
                       ),
@@ -387,7 +388,7 @@ class SharedHelper<T> {
                 children: [
                   Expanded(
                     child: Text(
-                      "somethingWrong".tr,
+                      "somethingWrong".sdkTr,
                       textAlign: TextAlign.center,
                       style: AppTheme.textStyle(color: AppTheme.blackColor, size: AppTheme.size18, isBold: true),
                     ),
@@ -405,7 +406,7 @@ class SharedHelper<T> {
                       child: Directionality(
                         textDirection: TextDirection.ltr,
                         child: Text(
-                          "pleaseTryAgain".tr,
+                          "pleaseTryAgain".sdkTr,
                           textAlign: TextAlign.center,
                           style: AppTheme.textStyle(color: AppTheme.blackColor, size: AppTheme.size16),
                         ),
@@ -435,7 +436,7 @@ class SharedHelper<T> {
                   children: [
                     Expanded(
                       child: AppButton(
-                        title: "tryAgain".tr,
+                        title: "tryAgain".sdkTr,
                         function: () {
                           completer.complete(request());
                           SDKNav.back();
@@ -489,7 +490,7 @@ class SharedHelper<T> {
                 children: [
                   Expanded(
                     child: Text(
-                      "noInternet".tr,
+                      "noInternet".sdkTr,
                       textAlign: TextAlign.center,
                       style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size18),
                     ),
@@ -507,7 +508,7 @@ class SharedHelper<T> {
                       child: Directionality(
                         textDirection: TextDirection.ltr,
                         child: Text(
-                          "noInternetBody".tr,
+                          "noInternetBody".sdkTr,
                           textAlign: TextAlign.center,
                           style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size16),
                         ),
@@ -522,7 +523,7 @@ class SharedHelper<T> {
           actionsAlignment: MainAxisAlignment.spaceBetween,
           actions: [
             AppButton(
-              title: "refresh".tr,
+              title: "refresh".sdkTr,
               function: () async {
                 if (await networkInfo!.isConnected) {
                   completer.complete(request());
@@ -545,7 +546,7 @@ class SharedHelper<T> {
       image: AssetsConsts.noAccount,
       isLottieImage: true,
       isLocalImage: true,
-      confirmText: "close".tr,
+      confirmText: "close".sdkTr,
       noCancel: true,
       confirm: () {
         if (Get.isDialogOpen!) {

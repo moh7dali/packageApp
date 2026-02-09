@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:mozaic_loyalty_sdk/features/rewards/presentation/widgets/rewards_card_widget.dart';
 import 'package:mozaic_loyalty_sdk/shared/widgets/no_item_widget.dart';
 
@@ -15,8 +16,8 @@ class RuleRewardsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final rules = (campaignRulesRewards ?? []);
-    return GetBuilder<WidgetController>(
-      init: WidgetController(length: rules.length),
+    return GetBuilder<SDKWidgetController>(
+      init: SDKWidgetController(length: rules.length),
       builder: (controller) {
         return Column(
           children: [
@@ -53,7 +54,7 @@ class RuleRewardsWidget extends StatelessWidget {
                     tabs: rules.map((e) {
                       return Tab(
                         child: Center(
-                          child: Text((e.ruleName ?? "").tr, textAlign: TextAlign.center, maxLines: 1, overflow: TextOverflow.ellipsis),
+                          child: Text((e.ruleName ?? "").sdkTr, textAlign: TextAlign.center, maxLines: 1, overflow: TextOverflow.ellipsis),
                         ),
                       );
                     }).toList(),
@@ -72,7 +73,7 @@ class RuleRewardsWidget extends StatelessWidget {
                         children: [
                           NoItemWidget(),
                           Text(
-                            'emptyRewards'.tr,
+                            'emptyRewards'.sdkTr,
                             style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size14, isBold: true),
                             textAlign: TextAlign.center,
                           ),

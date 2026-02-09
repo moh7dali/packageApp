@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 
 import '../../../../core/utils/theme.dart';
 import '../getx/rewards_controller.dart';
@@ -10,8 +11,8 @@ class MoreRewardsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<RewardsController>(
-        init: RewardsController(),
+    return GetBuilder<SDKRewardsController>(
+        init: SDKRewardsController(),
         builder: (controller) {
           return Column(
             children: [
@@ -30,7 +31,7 @@ class MoreRewardsPage extends StatelessWidget {
                     return Tab(
                       child: GestureDetector(
                         child: Text(
-                          e.tr,
+                          e.sdkTr,
                           textAlign: TextAlign.center,
                         ),
                       ),

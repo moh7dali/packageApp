@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:mozaic_loyalty_sdk/features/barcode/presentation/getx/user_barcode_controller.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -17,8 +18,8 @@ class BarcodeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<UserBarcodeController>(
-      init: UserBarcodeController(),
+    return GetBuilder<SDKUserBarcodeController>(
+      init: SDKUserBarcodeController(),
       builder: (controller) => Scaffold(
         backgroundColor: Colors.transparent,
         body: GestureDetector(
@@ -90,7 +91,7 @@ class BarcodeScreen extends StatelessWidget {
                                         Icon(Icons.loyalty_rounded, color: Colors.white, size: 36),
                                         const SizedBox(height: 8),
                                         Text(
-                                          "redeemPoints".tr,
+                                          "redeemPoints".sdkTr,
                                           style: AppTheme.textStyle(color: AppTheme.whiteColor, size: AppTheme.size16),
                                         ),
                                         const SizedBox(height: 4),
@@ -98,7 +99,7 @@ class BarcodeScreen extends StatelessWidget {
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Text(
-                                              "${"balance".tr}: ",
+                                              "${"balance".sdkTr}: ",
                                               style: AppTheme.textStyle(color: AppTheme.whiteColor, size: AppTheme.size14, isBold: true),
                                             ),
                                             CurrencyAmountText(
@@ -132,7 +133,7 @@ class BarcodeScreen extends StatelessWidget {
                                         Icon(Icons.account_balance_wallet_rounded, color: Colors.white, size: 36),
                                         const SizedBox(height: 8),
                                         Text(
-                                          "useWallet".tr,
+                                          "useWallet".sdkTr,
                                           style: AppTheme.textStyle(color: AppTheme.whiteColor, size: AppTheme.size16, isBold: true),
                                         ),
                                         const SizedBox(height: 4),
@@ -140,7 +141,7 @@ class BarcodeScreen extends StatelessWidget {
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Text(
-                                              "${"balance".tr}: ",
+                                              "${"balance".sdkTr}: ",
                                               style: AppTheme.textStyle(color: AppTheme.whiteColor, size: AppTheme.size14, isBold: true),
                                             ),
                                             CurrencyAmountText(
@@ -197,7 +198,7 @@ class BarcodeScreen extends StatelessWidget {
                                 ),
                                 const Spacer(),
                                 Text(
-                                  "scanQR".tr,
+                                  "scanQR".sdkTr,
                                   style: AppTheme.textStyle(color: AppTheme.whiteColor, size: AppTheme.size20, isBold: true),
                                   textAlign: TextAlign.center,
                                 ),

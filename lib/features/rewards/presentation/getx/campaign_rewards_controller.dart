@@ -7,10 +7,10 @@ import '../../domain/entity/campaign_details.dart';
 import '../../domain/entity/campaign_rewards.dart';
 import '../../domain/usecase/get_campaign_rewards.dart';
 
-class CampaignRewardsController extends GetxController {
+class SDKCampaignRewardsController extends GetxController {
   final GetCampaignRewards getCampaignRewards;
 
-  CampaignRewardsController({required this.selectedCampaignDetails}) : getCampaignRewards = sl();
+  SDKCampaignRewardsController({required this.selectedCampaignDetails}) : getCampaignRewards = sl();
 
   CampaignRewards? campaignRewards;
   bool isLoading = true;

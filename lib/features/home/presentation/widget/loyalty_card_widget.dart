@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:mozaic_loyalty_sdk/features/home/presentation/widget/loyalty_card_no_user_widget.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
@@ -12,7 +13,7 @@ import '../getx/home_controller.dart';
 class LoyaltyCardWidget extends StatelessWidget {
   const LoyaltyCardWidget({super.key, required this.homeController});
 
-  final HomeController homeController;
+  final SDKHomeController homeController;
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +43,11 @@ class LoyaltyCardWidget extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              ("${homeController.currentTier}").toUpperCase().tr,
+                              ("${homeController.currentTier}").toUpperCase().sdkTr,
                               style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size14, isBold: true),
                             ),
                             BalanceCard(
-                              title: "balance".tr,
+                              title: "balance".sdkTr,
                               value: SharedHelper.getNumberFormat(
                                 homeController.customerData?.customerLoyaltyData?.cashBalance ?? 0,
                                 isCurrency: true,
@@ -133,19 +134,19 @@ class LoyaltyCardWidget extends StatelessWidget {
           );
   }
 
-  String getRemaining(int currentTier, HomeController controller) {
+  String getRemaining(int currentTier, SDKHomeController controller) {
     double max = controller.tiersBoundaries.firstWhereOrNull((element) => element["id"] == currentTier)?["max"];
     double min = controller.tiersBoundaries.firstWhereOrNull((element) => element["id"] == currentTier)?["lower"];
     double tierAmount = controller.customerData?.customerLoyaltyData?.customerTierData?.tierAmount ?? 0;
     return SharedHelper.getNumberFormat((max - (min + tierAmount)));
   }
 
-  Widget getNextTier(int currentTier, HomeController controller) {
+  Widget getNextTier(int currentTier, SDKHomeController controller) {
     return RichText(
       textAlign: TextAlign.center,
       textDirection: TextDirection.ltr,
       text: TextSpan(
-        text: "${"spend".tr}",
+        text: "${"spend".sdkTr}",
         style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size14),
         children: [
           TextSpan(
@@ -160,7 +161,7 @@ size: 14, color: AppTheme.primaryColor),
             ],
           ),
           TextSpan(
-            text: ' ${'toReach'.tr} ',
+            text: ' ${'toReach'.sdkTr} ',
             style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size14),
           ),
           TextSpan(

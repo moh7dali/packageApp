@@ -18,7 +18,7 @@ import 'injection_container.dart' as di;
 import 'shared/getx/theme_controller.dart';
 
 String appLanguage = 'en';
-NetworkInfo? networkInfo;
+SDKNetworkInfo? networkInfo;
 
 ThemeController get themeController => Get.find<ThemeController>();
 
@@ -34,16 +34,18 @@ class MozaicLoyaltySDK extends StatelessWidget {
     if (_initialized) return;
     _initialized = true;
     settings = sdkSettings;
-    await di.init();
+    await di.initSDK();
+
     final controller = Get.put(ThemeController(), permanent: true);
     await controller.initTheme();
-    final sdkTranslations = Translation();
-    Get.appendTranslations(sdkTranslations.keys);
+
     String defaultLanguage = settings.language ?? await di.sl<SharedPreferencesStorage>().getAppLanguage();
     await di.sl<SharedPreferencesStorage>().setAppLanguage(defaultLanguage);
     appLanguage = defaultLanguage;
+
     Get.updateLocale(Locale(appLanguage));
-    networkInfo = NetworkInfoImpl(di.sl());
+
+    networkInfo = SDKNetworkInfoImpl(di.sl());
     if (AppConstants.isProxyEnable) {
       final proxy = await HttpProxyOverride.createHttpProxy();
       HttpOverrides.global = proxy;

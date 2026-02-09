@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:mozaic_loyalty_sdk/core/api/request_logger.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 
 import '../../injection_container.dart';
 import '../../mozaic_loyalty_sdk.dart';
@@ -45,15 +46,7 @@ class ApiRequest<T> {
     } else {
       return await SharedHelper().noInternetDialog(
         request: () async {
-          return this.request(
-            method: method,
-            url: url,
-            body: body,
-            fromJson: fromJson,
-            authorized: authorized,
-            fromLogin: fromLogin,
-            queryParameters: queryParameters,
-          );
+          return this.request(method: method, url: url, body: body, fromJson: fromJson, authorized: authorized, fromLogin: fromLogin, queryParameters: queryParameters);
         },
       );
     }
@@ -106,10 +99,7 @@ class ApiRequest<T> {
       if ((apiResponse.isSucceeded ?? false) && (apiResponse.errors ?? []).isEmpty) {
         return apiResponse.data;
       }
-      throw ApiErrorsException(
-        errorCode: apiResponse.errors?.first.errorCode ?? "-1",
-        errorMessage: apiResponse.errors?.first.errorMessage ?? "somethingWrong".tr,
-      );
+      throw ApiErrorsException(errorCode: apiResponse.errors?.first.errorCode ?? "-1", errorMessage: apiResponse.errors?.first.errorMessage ?? "somethingWrong".sdkTr);
     }
 
     if (response.statusCode == 401) {
@@ -121,38 +111,21 @@ class ApiRequest<T> {
       final nextToken = await loginApi();
       if (nextToken != null) {
         final headerNew = await _getHeaders(authorized, fromLogin);
-        return await request(
-          method: method,
-          url: url,
-          body: body,
-          fromJson: fromJson,
-          authorized: authorized,
-          fromLogin: true,
-          headerLogin: headerNew,
-          queryParameters: queryParameters,
-        );
+        return await request(method: method, url: url, body: body, fromJson: fromJson, authorized: authorized, fromLogin: true, headerLogin: headerNew, queryParameters: queryParameters);
       }
       // }
-      throw ApiErrorsException(errorCode: "${response.statusCode}", errorMessage: "unauthorized".tr);
+      // throw ApiErrorsException(errorCode: "${response.statusCode}", errorMessage: "unauthorized".sdkTr);
     }
 
     if (response.statusCode == 503 || response.statusCode == 408) {
       SharedHelper().closeAllDialogs();
       return await SharedHelper().serverErrorDialog(
         request: () async {
-          return request(
-            method: method,
-            url: url,
-            body: body,
-            fromJson: fromJson,
-            authorized: authorized,
-            fromLogin: fromLogin,
-            queryParameters: queryParameters,
-          );
+          return request(method: method, url: url, body: body, fromJson: fromJson, authorized: authorized, fromLogin: fromLogin, queryParameters: queryParameters);
         },
       );
     }
 
-    throw ApiErrorsException(errorCode: "-1", errorMessage: "somethingWrong".tr);
+    throw ApiErrorsException(errorCode: "-1", errorMessage: "somethingWrong".sdkTr);
   }
 }

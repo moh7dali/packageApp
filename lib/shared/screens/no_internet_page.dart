@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 
 import '../../core/utils/theme.dart';
 import '../widgets/hero_logo.dart';
@@ -19,7 +20,7 @@ class NoInternetPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('noInternet'.tr, style: AppTheme.textStyle(color: AppTheme.blackColor, size: AppTheme.size16, isBold: true)),
+              Text('noInternet'.sdkTr, style: AppTheme.textStyle(color: AppTheme.blackColor, size: AppTheme.size16, isBold: true)),
             ],
           )
         ],

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:mozaic_loyalty_sdk/shared/helper/shared_helper.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -21,10 +22,10 @@ class LocationHelper {
       final permissionStatus = await Geolocator.requestPermission();
       if (permissionStatus != LocationPermission.always && permissionStatus != LocationPermission.whileInUse) {
         SharedHelper().actionDialog(
-          'permissionNotAllowed'.tr,
-          'locationPermissionShouldAllowed'.tr,
-          cancelText: 'close'.tr,
-          confirmText: 'openAppSettings'.tr,
+          'permissionNotAllowed'.sdkTr,
+          'locationPermissionShouldAllowed'.sdkTr,
+          cancelText: 'close'.sdkTr,
+          confirmText: 'openAppSettings'.sdkTr,
           confirm: () async {
             SharedHelper().closeAllDialogs();
             if (Platform.isIOS) {

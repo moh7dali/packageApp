@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:mozaic_loyalty_sdk/core/utils/theme.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:mozaic_loyalty_sdk/features/home/presentation/getx/home_controller.dart';
 
 import '../../../../core/constants/assets_constants.dart';
@@ -21,8 +22,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(
-      init: HomeController(),
+    return GetBuilder<SDKHomeController>(
+      init: SDKHomeController(),
       builder: (controller) => Scaffold(
         appBar: heroAppBar(),
         body: RefreshIndicator(
@@ -50,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: AppButton(
-                          title: "redeemPoints".tr,
+                          title: "redeemPoints".sdkTr,
                           isDoneBtn: false,
                           isSmall: true,
                           function: () {
@@ -72,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "Deals".tr,
+                                      "Deals".sdkTr,
                                       textAlign: TextAlign.center,
                                       style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size20, isBold: true),
                                     ),
@@ -87,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                                           borderRadius: BorderRadius.circular(20),
                                         ),
                                         child: Text(
-                                          "seeMore".tr,
+                                          "seeMore".sdkTr,
                                           style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size12, isBold: true),
                                         ),
                                       ),
@@ -134,7 +135,7 @@ class HomeScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "myRewards".tr,
+                                      "myRewards".sdkTr,
                                       style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size20, isBold: true),
                                     ),
                                     GestureDetector(
@@ -148,7 +149,7 @@ class HomeScreen extends StatelessWidget {
                                           borderRadius: BorderRadius.circular(20),
                                         ),
                                         child: Text(
-                                          "seeMore".tr,
+                                          "seeMore".sdkTr,
                                           style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size12, isBold: true),
                                         ),
                                       ),
@@ -174,7 +175,7 @@ class HomeScreen extends StatelessWidget {
                                                 "${reward.description}",
                                                 hasImage: true,
                                                 image: "${reward.imageUrl}",
-                                                confirmText: "close".tr,
+                                                confirmText: "close".sdkTr,
                                                 noCancel: true,
                                                 confirm: () {
                                                   SDKNav.back();
@@ -211,11 +212,11 @@ class LAdoreDualCards extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: _buildNavCard(title: "Points".tr, icon: AssetsConsts.points, onTap: () => SDKNav.toNamed(RouteConstant.pointsScreen)),
+            child: _buildNavCard(title: "Points".sdkTr, icon: AssetsConsts.points, onTap: () => SDKNav.toNamed(RouteConstant.pointsScreen)),
           ),
           const SizedBox(width: 15),
           Expanded(
-            child: _buildNavCard(title: "Rewards".tr, icon: AssetsConsts.rewards, onTap: () => SDKNav.toNamed(RouteConstant.rewardsScreen)),
+            child: _buildNavCard(title: "Rewards".sdkTr, icon: AssetsConsts.rewards, onTap: () => SDKNav.toNamed(RouteConstant.rewardsScreen)),
           ),
         ],
       ),

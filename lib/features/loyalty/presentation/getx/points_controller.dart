@@ -11,11 +11,11 @@ import '../../../../shared/model/pagination_list_model.dart';
 import '../../../home/domain/entities/tier.dart';
 import '../../domain/entity/user_balance_history.dart';
 
-class UserBalanceHistoryController extends GetxController with GetTickerProviderStateMixin {
+class SDKUserBalanceHistoryController extends GetxController with GetTickerProviderStateMixin {
   final GetUserBalanceHistory getUserBalanceHistory;
   final GetUserLoyaltyData getUserLoyaltyData;
 
-  UserBalanceHistoryController({this.context}) : getUserBalanceHistory = sl(), getUserLoyaltyData = sl();
+  SDKUserBalanceHistoryController({this.context}) : getUserBalanceHistory = sl(), getUserLoyaltyData = sl();
 
   List<UserBalanceHistory> userBalanceHistoryList = [];
   UserLoyaltyData? userLoyaltyData;

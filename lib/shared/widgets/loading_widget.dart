@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:mozaic_loyalty_sdk/core/utils/translate/translation.dart';
 import 'package:mozaic_loyalty_sdk/shared/widgets/card_widget.dart';
 
 import '../../core/sdk/sdk_routes.dart';
@@ -37,7 +38,7 @@ class LoadingWidget extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(text.tr, style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size18, isBold: true)),
+                      Text(text.sdkTr, style: AppTheme.textStyle(color: AppTheme.primaryColor, size: AppTheme.size18, isBold: true)),
                       SizedBox(width: 10),
                       LoadingAnimationWidget.progressiveDots(
                         color: AppTheme.primaryColor,
@@ -72,7 +73,7 @@ class BottomLoadingWidget extends StatelessWidget {
             height: Get.height * .1,
           ),
           Text(
-            'pleaseWait'.tr,
+            'pleaseWait'.sdkTr,
             style: AppTheme.textStyle(color: AppTheme.textColor, size: AppTheme.size18),
           )
         ],

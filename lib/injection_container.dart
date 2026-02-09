@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart' as connect;
 import 'package:mozaic_loyalty_sdk/shared/helper/shared_preferences_storage.dart';
 
 import 'core/utils/network_info.dart';
@@ -33,7 +33,7 @@ import 'features/rewards/domain/usecase/get_user_rewards.dart';
 final sl = GetIt.instance;
 bool _isDiInitialized = false;
 
-Future<void> init() async {
+Future<void> initSDK() async {
   if (_isDiInitialized) return;
   _isDiInitialized = true;
   //Shared Preferences
@@ -41,10 +41,10 @@ Future<void> init() async {
   sl.registerLazySingleton<SharedPreferencesStorage>(() => SharedPreferencesStorage());
 
   //! Core
-  sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
+  sl.registerLazySingleton<SDKNetworkInfo>(() => SDKNetworkInfoImpl(sl()));
 
   //! External
-  sl.registerLazySingleton<InternetConnectionChecker>(() => InternetConnectionChecker());
+  sl.registerLazySingleton<connect.InternetConnectionChecker>(() => connect.InternetConnectionChecker());
 
   ///*************************///
   ///USECASES
