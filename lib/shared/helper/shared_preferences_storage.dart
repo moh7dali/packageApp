@@ -72,11 +72,14 @@ class SharedPreferencesStorage {
   }
 
   Future deleteAllData() async {
-    final keys = _preferences!.getKeys();
-    for (String key in keys) {
-      if (key != SharedPreferencesKeyConstants.appLang && key != SharedPreferencesKeyConstants.appTheme) {
-        await _preferences!.remove(key);
-      }
-    }
+    // final keys = _preferences!.getKeys();
+    // for (String key in keys) {
+    //   if (key != SharedPreferencesKeyConstants.appLang && key != SharedPreferencesKeyConstants.appTheme) {
+    //     await _preferences!.remove(key);
+    //   }
+    // }
+    await _preferences!.remove(SharedPreferencesKeyConstants.accessToken);
+    await _preferences!.remove(SharedPreferencesKeyConstants.sessionToken);
+    await _preferences!.remove(SharedPreferencesKeyConstants.isLogin);
   }
 }
